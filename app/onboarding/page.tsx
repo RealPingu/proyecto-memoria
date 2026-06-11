@@ -29,7 +29,7 @@ export default function OnboardingPage() {
   };
 
   return (
-    <div className="flex flex-col h-screen w-full bg-game-bg text-game-text p-6 md:p-12 overflow-hidden">
+    <div className="flex flex-col h-screen w-full bg-game-bg text-game-text p-6 md:p-12 overflow-hidden items-center justify-center">
       <div className="flex flex-col h-full max-w-2xl w-full mx-auto space-y-6">
         
         {/* Cabecera fija */}

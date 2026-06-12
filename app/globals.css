@@ -33,3 +33,9 @@ body {
   --color-game-muted: #a1a1aa;
   --color-game-accent: #ffffff;
 }
+
+@utility rendering-pixelated {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+

@@ -190,13 +190,14 @@ export default function OnboardingPage() {
                         onViewportEnter={() => logInteraction('view_persuasion')}
                         className="bg-game-surface border border-game-muted/30 p-8 max-w-md w-full space-y-6 text-center shadow-2xl"
                     >
-                        {/* SVG CARA TRISTE (Apelación a la emoción) */}
-                        <svg className="w-16 h-16 mx-auto text-game-muted/40 fill-none stroke-current stroke-1" viewBox="0 0 24 24">
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="M8 15s1.5-2 4-2 4 2 4 2" />
-                            <line x1="9" y1="9" x2="9.01" y2="9" strokeWidth="2" strokeLinecap="round" />
-                            <line x1="15" y1="9" x2="15.01" y2="9" strokeWidth="2" strokeLinecap="round" />
-                        </svg>
+                        {/* PINGÜINO ANIMADO */}
+                        <div className="w-24 h-24 mx-auto overflow-hidden">
+                            <img
+                                src="/assets/penguin/spin-attack.gif"
+                                alt="Pingüino rotando"
+                                className="w-full h-full object-contain rendering-pixelated scale-200"
+                            />
+                        </div>
 
                         <h2 className="text-xl font-bold text-game-accent uppercase tracking-tighter">
                             ¿Estás seguro de esta decisión?

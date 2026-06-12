@@ -1,6 +1,34 @@
 import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
 
+// GET: Recuperar datos del perfil
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const playerId = searchParams.get('playerId');
+
+  if (!playerId) {
+    return NextResponse.json({ error: 'Falta el ID del jugador' }, { status: 400 });
+  }
+
+  try {
+    const result = await sql`
+      SELECT nickname, age FROM players 
+      WHERE anonymous_id = ${playerId}
+      LIMIT 1;
+    `;
+
+    if (result.rows.length === 0) {
+      return NextResponse.json({ error: 'Jugador no encontrado' }, { status: 404 });
+    }
+
+    return NextResponse.json(result.rows[0], { status: 200 });
+  } catch (error: any) {
+    console.error('Error al obtener perfil:', error);
+    return NextResponse.json({ error: 'Error interno' }, { status: 500 });
+  }
+}
+
+// POST: Actualizar datos del perfil
 export async function POST(request: Request) {
   try {
     const { playerId, nickname, age } = await request.json();
@@ -29,14 +57,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'NICKNAME_TAKEN', message: 'Este nombre ya está en uso' }, { status: 409 });
     }
 
-    // 2. Actualizamos el perfil del jugador
+    // 3. Actualizamos el perfil del jugador
     await sql`
       UPDATE players 
       SET nickname = ${nickname}, age = ${age}
       WHERE anonymous_id = ${playerId};
     `;
 
-    return NextResponse.json({ message: 'Perfil actualizado correctamente' }, { status: 200 });
+    return NextResponse.json({ message: 'Datos del jugador actualizados correctamente' }, { status: 200 });
 
   } catch (error: any) {
     console.error('Error al actualizar perfil:', error);

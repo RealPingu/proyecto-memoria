@@ -34,6 +34,20 @@ async function setup() {
           );
         `;
         console.log("Tabla 'interaction_logs' creada exitosamente con restricción UNIQUE");
+
+        // 3. Crear la tabla de respuestas de la encuesta Likert
+        await client.sql`DROP TABLE IF EXISTS likert_responses;`;
+        await client.sql`
+          CREATE TABLE IF NOT EXISTS likert_responses (
+            id SERIAL PRIMARY KEY,
+            player_id UUID NOT NULL,
+            question_id VARCHAR(50) NOT NULL,
+            score INTEGER NOT NULL CHECK (score >= 1 AND score <= 5),
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            UNIQUE(player_id, question_id)
+          );
+        `;
+        console.log("Tabla 'likert_responses' creada exitosamente");
     } catch (error) {
         console.error("Error creando las tablas:", error);
     } finally {

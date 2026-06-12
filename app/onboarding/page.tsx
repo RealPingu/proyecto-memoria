@@ -90,7 +90,7 @@ export default function OnboardingPage() {
                         <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
                         <p className="leading-relaxed text-zinc-300">
                             <span className="text-lg font-bold text-red-500 block mb-1">Requisito de Edad:</span>
-                            Esta experiencia está diseñada exclusivamente para personas <span className="text-red-500 font-bold uppercase">mayores de edad</span> (18+ años). Si usted es menor de edad, le solicitamos que <span>porfavor abandone la pagina </span>, ya que el protocolo ético de este estudio prohíbe la participación de menores.
+                            Esta experiencia está diseñada exclusivamente para personas <span className="text-red-500 font-bold uppercase">mayores de edad</span> (18+ años). Si eres menor de edad, te solicitamos que <span className="underline decoration-red-500">por favor abandones la página</span>, ya que el protocolo ético de este estudio prohíbe la participación de menores.
                         </p>
                     </motion.div>
 
@@ -98,7 +98,7 @@ export default function OnboardingPage() {
                         <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-game-accent shrink-0" />
                         <p className="leading-relaxed text-zinc-300">
                             <span className="text-lg font-bold text-game-accent block mb-1">Propósito:</span>
-                            Antipatron fue diseñado como una experiencia gamificada (demo) sobre patrones oscuros, con el fin de recaudar datos de estudio sobre su capacidad para enseñar a identificarlos.
+                            Antipatron fue diseñado como una experiencia gamificada <span className='text-blue-500'>(demo)</span> sobre patrones oscuros, con el fin de recaudar datos de estudio sobre su capacidad para enseñar a identificarlos.
                         </p>
                     </motion.div>
 
@@ -158,20 +158,20 @@ export default function OnboardingPage() {
                     </div>
 
                     <div className="flex flex-col w-full max-w-xs mx-auto space-y-3">
-                      <Link 
-                        href={consent ? "/survey-intro" : "/no-consent-intro"}
-                        onClick={handleSaveConsent}
-                        className="flex items-center justify-center h-14 w-full bg-game-accent text-game-bg font-bold uppercase tracking-widest transition-all hover:bg-game-text active:scale-95 text-center"
-                      >
-                        Entrar al juego
-                      </Link>
+                        <Link
+                            href={consent ? "/survey/profile" : "/no-consent-intro"}
+                            onClick={handleSaveConsent}
+                            className="flex items-center justify-center h-14 w-full bg-game-accent text-game-bg font-bold uppercase tracking-widest transition-all hover:bg-game-text active:scale-95 text-center"
+                        >
+                            Comenzar la Experiencia
+                        </Link>
 
                         <Link
                             href="/"
                             onClick={() => logInteraction('return_to_menu')}
                             className="flex items-center justify-center h-14 w-full border border-zinc-700 text-game-muted font-bold uppercase tracking-widest transition-all hover:bg-game-surface hover:text-game-accent active:scale-95 text-center"
                         >
-                            Volver al menú
+                            Volver al menú principal
                         </Link>
                     </div>
                 </motion.div>
@@ -199,11 +199,11 @@ export default function OnboardingPage() {
                         </svg>
 
                         <h2 className="text-xl font-bold text-game-accent uppercase tracking-tighter">
-                            ¿Está seguro de esta decisión?
+                            ¿Estás seguro de esta decisión?
                         </h2>
                         <p className="text-sm text-game-muted leading-relaxed">
-                            Al deshabilitar el consentimiento, la integridad de los datos académicos se verá comprometida, y se perdera el propósito de este estudio.
-                            Ademas haras a un estudiante de ingeniria bastante triste ;(
+                            Al deshabilitar el consentimiento, la integridad de los datos académicos se verá comprometida, y se perderá el propósito de este estudio y de la experiencia.
+                            Además, harás a un estudiante de ingeniería bastante triste ;(
                         </p>
 
                         <div className="flex flex-col space-y-3">
@@ -248,13 +248,13 @@ export default function OnboardingPage() {
                     >
                         <div className="space-y-4 text-left border-l-2 border-game-accent pl-6">
                             <h2 className="text-2xl font-bold text-game-accent uppercase italic tracking-tighter">
-                                Felicidades, has resistido!.
+                                ¡Felicidades, has resistido!
                             </h2>
                             <div className="space-y-4 text-zinc-400 text-sm leading-relaxed font-mono">
-                                <p>Si llegaste hasta aquí, significa que presenciaste y evadiste <span className="text-game-accent">3 patrones oscuros</span>: el Desvío de la atención, la Apelación a las emociones y el Nagging.</p>
+                                <p>Si llegaste hasta aquí, significa que presenciaste e ignoraste <span className="text-game-accent">3 patrones oscuros</span>: el Desvío de la atención, la Apelación a las emociones y el Nagging.</p>
                                 <p>Estos conceptos serán abordados más adelante y son parte de la primera etapa de la experiencia.</p>
                                 <p>Tal como lo quieres, tus datos no serán guardados ni utilizados, solamente el registro técnico de que llegaste hasta esta ventana y rechazaste el consentimiento.</p>
-                                <p className="italic text-zinc-500">Puedes experimentar la experiencia, pero algunas funciones no fundamentales serán omitidas.</p>
+                                <p className="italic text-zinc-500">Puedes experimentar la experiencia, pero algunas funciones y partes de la misma serán omitidas.</p>
                             </div>
                         </div>
 

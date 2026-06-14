@@ -95,14 +95,33 @@ export default function SurveyPage() {
     };
 
     const goToQuestion = (index: number) => {
-        setDirection(index > currentIndex ? 1 : -1);
-        setCurrentIndex(index);
+        // Bloqueo de seguridad: Calculamos la primera pregunta vacía
+        const firstUnansweredIndex = SURVEY_QUESTIONS.findIndex(q => answers[q.id] === undefined);
+        
+        // El usuario solo puede ir a:
+        // 1. Cualquier pregunta que ya respondió (índice < firstUnansweredIndex o que tenga valor en answers)
+        // 2. La siguiente pregunta inmediata (índice === firstUnansweredIndex)
+        const isAlreadyAnswered = answers[SURVEY_QUESTIONS[index]?.id] !== undefined;
+        const isNextAvailable = index === firstUnansweredIndex;
+        const isPrevious = index < firstUnansweredIndex;
+
+        if (isAlreadyAnswered || isNextAvailable || (firstUnansweredIndex === -1 && index < SURVEY_QUESTIONS.length)) {
+            setDirection(index > currentIndex ? 1 : -1);
+            setCurrentIndex(index);
+        }
     };
 
     const handleFinish = async () => {
         if (isSubmitting || !playerId) return;
-        setIsSubmitting(true);
 
+        // Validación final de integridad
+        const totalAnswered = Object.keys(answers).length;
+        if (totalAnswered < SURVEY_QUESTIONS.length) {
+            alert(`Por favor, responde todas las preguntas antes de finalizar (${totalAnswered}/${SURVEY_QUESTIONS.length})`);
+            return;
+        }
+
+        setIsSubmitting(true);
         const formattedResponses = Object.entries(answers).map(([id, score]) => ({
             questionId: id,
             score: score
@@ -139,6 +158,7 @@ export default function SurveyPage() {
     const progress = ((currentIndex + 1) / SURVEY_QUESTIONS.length) * 100;
     const isLastQuestion = currentIndex === SURVEY_QUESTIONS.length - 1;
     const hasAnsweredCurrent = answers[currentQuestion.id] !== undefined;
+    const allAnswered = Object.keys(answers).length === SURVEY_QUESTIONS.length;
 
     return (
         <div className="flex flex-col h-screen w-full bg-game-bg text-game-text overflow-hidden relative font-sans">
@@ -171,17 +191,27 @@ export default function SurveyPage() {
                     </div>
 
                     <div className="grid grid-cols-10 gap-1 bg-game-surface/20 p-2 border border-game-muted/10 rounded-sm">
-                        {SURVEY_QUESTIONS.map((q, idx) => (
-                            <button
-                                key={q.id}
-                                onClick={() => goToQuestion(idx)}
-                                className={`w-3 h-3 text-[7px] flex items-center justify-center transition-all
-                ${currentIndex === idx ? 'bg-game-accent text-game-bg scale-110' :
-                                        answers[q.id] ? 'bg-game-muted/40 text-white' : 'bg-zinc-900 text-zinc-700'}`}
-                            >
-                                {idx + 1}
-                            </button>
-                        ))}
+                        {SURVEY_QUESTIONS.map((q, idx) => {
+                            const isAnswered = answers[q.id] !== undefined;
+                            const firstUnanswered = SURVEY_QUESTIONS.findIndex(sq => answers[sq.id] === undefined);
+                            const isAccessible = idx <= firstUnanswered || (firstUnanswered === -1);
+                            const isCurrent = currentIndex === idx;
+
+                            return (
+                                <button
+                                    key={q.id}
+                                    onClick={() => isAccessible && goToQuestion(idx)}
+                                    disabled={!isAccessible}
+                                    className={`w-3 h-3 text-[7px] flex items-center justify-center transition-all border
+                                    ${isCurrent ? 'bg-game-accent border-game-accent text-game-bg scale-110 shadow-[0_0_8px_rgba(255,255,255,0.4)] z-10' : 
+                                      isAnswered ? 'bg-game-muted/40 border-transparent text-white hover:bg-game-muted/60 cursor-pointer' : 
+                                      isAccessible ? 'bg-zinc-900 border-zinc-700/30 text-zinc-500 cursor-pointer hover:bg-zinc-800' :
+                                      'bg-zinc-950 border-transparent text-zinc-800 cursor-not-allowed'}`}
+                                >
+                                    {idx + 1}
+                                </button>
+                            );
+                        })}
                     </div>
                 </header>
 
@@ -237,7 +267,7 @@ export default function SurveyPage() {
 
                         <div className="flex-1 flex justify-end">
                             {isLastQuestion ? (
-                                hasAnsweredCurrent && (
+                                allAnswered && (
                                     <motion.button
                                         initial={{ opacity: 0, scale: 0.9 }}
                                         animate={{ opacity: 1, scale: 1 }}

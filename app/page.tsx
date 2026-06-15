@@ -3,15 +3,15 @@ import Link from "next/link";
 
 export default function Home() {
     return (
-        <div className="flex flex-col min-h-screen items-center justify-center bg-game-bg text-game-text p-8">
+        <div className="flex flex-col h-screen w-full items-center justify-center bg-game-bg text-game-text p-6 overflow-hidden">
             <InitializePlayer />
 
-            <main className="flex flex-col items-center max-w-2xl w-full space-y-12">
+            <main className="flex flex-col items-center max-w-2xl w-full space-y-12 shrink-0">
                 <header className="text-center space-y-4">
-                    <h1 className="text-6xl font-bold tracking-tighter text-game-accent uppercase italic">
+                    <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-game-accent uppercase italic leading-none">
                         Antipatron (Nombre por Definir)
                     </h1>
-                    <p className="text-game-muted text-lg tracking-wide uppercase">
+                    <p className="text-game-muted text-sm md:text-lg tracking-wide uppercase">
                         Una experiencia narrativa web
                     </p>
                 </header>

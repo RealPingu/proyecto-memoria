@@ -62,7 +62,7 @@ export default function OnboardingPage() {
         <div className="flex flex-col h-screen w-full bg-game-bg text-game-text p-4 md:p-8 overflow-hidden items-center justify-center relative font-sans">
             <div className="flex flex-col h-full max-w-4xl w-full mx-auto space-y-4 md:space-y-6">
 
-                {/* Cabecera más compacta para dar espacio al cuadro */}
+                {/* Cabecera */}
                 <motion.header
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -77,7 +77,7 @@ export default function OnboardingPage() {
                     </p>
                 </motion.header>
 
-                {/* CUADRO DE REGLAS EXPANDIDO (Con scroll interno permitido) */}
+                {/* CUADRO DE REGLAS EXPANDIDO */}
                 <motion.section
                     variants={containerVariants}
                     initial="hidden"
@@ -176,23 +176,23 @@ export default function OnboardingPage() {
                 </motion.div>
             </div>
 
-            {/* POPUPS (Se mantienen igual de diseño) */}
+            {/* POPUP 2: PERSUASIÓN EMOCIONAL (Nagging) - RESPONSIVO */}
             <AnimatePresence>
                 {showPopup && (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="absolute inset-0 z-50 flex items-center justify-center bg-game-bg/95 backdrop-blur-sm p-6"
+                        className="absolute inset-0 z-50 flex items-center justify-center bg-game-bg/95 backdrop-blur-sm p-4"
                     >
                         <motion.div
                             initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.9, opacity: 0 }}
                             onViewportEnter={() => logInteraction('view_persuasion')}
-                            className="bg-game-surface border border-game-muted/30 p-8 max-w-md w-full space-y-6 text-center shadow-2xl"
+                            className="bg-game-surface border border-game-muted/30 p-6 md:p-8 w-[95%] max-w-md space-y-6 text-center shadow-2xl overflow-y-auto max-h-[90vh]"
                         >
-                            <div className="w-24 h-24 mx-auto overflow-hidden">
+                            <div className="w-20 h-20 md:w-24 md:h-24 mx-auto overflow-hidden">
                                 <motion.img 
                                     initial={{ scale: 0.5 }}
                                     animate={{ scale: 1.5 }}
@@ -200,42 +200,44 @@ export default function OnboardingPage() {
                                     className="w-full h-full object-contain rendering-pixelated"
                                 />
                             </div>
-                            <h2 className="text-xl font-bold text-game-accent uppercase tracking-tighter">¿Estás seguro de esta decisión?</h2>
-                            <p className="text-sm text-game-muted leading-relaxed">
+                            <h2 className="text-lg md:text-xl font-bold text-game-accent uppercase tracking-tighter">¿Estás seguro de esta decisión?</h2>
+                            <p className="text-xs md:text-sm text-game-muted leading-relaxed">
                                 Al deshabilitar el consentimiento, la integridad de los datos académicos se verá comprometida. Además, harás a un estudiante de ingeniería bastante triste ;(
                             </p>
                             <div className="flex flex-col space-y-3">
-                                <button onClick={() => {setConsent(true); setShowPopup(false); logInteraction('reactivate_consent');}} className="h-12 bg-game-accent text-game-bg font-bold uppercase text-xs tracking-widest hover:bg-game-text transition-all">Re-activar consentimiento (Recomendado)</button>
-                                <button onClick={() => {setShowPopup(false); setShowFinalPopup(true); logInteraction('reject_persuasion');}} className="text-[10px] text-game-muted/50 hover:text-game-muted transition-colors uppercase tracking-widest underline underline-offset-4">Continuar sin consentimiento</button>
+                                <button onClick={() => {setConsent(true); setShowPopup(false); logInteraction('reactivate_consent');}} className="h-11 md:h-12 bg-game-accent text-game-bg font-bold uppercase text-[10px] md:text-xs tracking-widest hover:bg-game-text transition-all">Re-activar consentimiento (Recomendado)</button>
+                                <button onClick={() => {setShowPopup(false); setShowFinalPopup(true); logInteraction('reject_persuasion');}} className="text-[9px] md:text-[10px] text-game-muted/50 hover:text-game-muted transition-colors uppercase tracking-widest underline underline-offset-4">Continuar sin consentimiento</button>
                             </div>
                         </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>
 
+            {/* POPUP 3: REVELACIÓN META-NARRATIVA - RESPONSIVO */}
             <AnimatePresence>
                 {showFinalPopup && (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="absolute inset-0 z-50 flex items-center justify-center bg-game-bg/98 backdrop-blur-md p-6"
+                        className="absolute inset-0 z-50 flex items-center justify-center bg-game-bg/98 backdrop-blur-md p-4"
                     >
                         <motion.div
                             initial={{ y: 20, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             exit={{ y: 20, opacity: 0 }}
                             onViewportEnter={() => logInteraction('view_revelation')}
-                            className="bg-game-bg border-2 border-game-accent/20 p-10 max-w-lg w-full space-y-8 text-center"
+                            className="bg-game-bg border-2 border-game-accent/20 p-6 md:p-10 w-[95%] max-w-lg space-y-6 md:space-y-8 text-center overflow-y-auto max-h-[90vh]"
                         >
-                            <div className="space-y-4 text-left border-l-2 border-game-accent pl-6">
-                                <h2 className="text-2xl font-bold text-game-accent uppercase italic tracking-tighter">¡Felicidades, has resistido!</h2>
-                                <div className="space-y-4 text-zinc-400 text-sm leading-relaxed font-mono">
-                                    <p>Si llegaste hasta aquí, significa que presenciaste e ignoraste <span className="text-game-accent">3 patrones oscuros</span>: el Desvío de la atención, la Apelación a las emociones y el Nagging.</p>
+                            <div className="space-y-4 text-left border-l-2 border-game-accent pl-4 md:pl-6">
+                                <h2 className="text-xl md:text-2xl font-bold text-game-accent uppercase italic tracking-tighter">¡Felicidades, has resistido!</h2>
+                                <div className="space-y-3 md:space-y-4 text-zinc-400 text-xs md:text-sm leading-relaxed font-mono">
+                                    <p>Si llegaste hasta aquí, significa que presenciaste e ignoraste <span className="text-game-accent font-bold">3 patrones oscuros</span>: el Desvío de la atención, la Apelación a las emociones y el Nagging.</p>
+                                    <p>Estos conceptos serán abordados más adelante y son parte de la primera etapa de la experiencia.</p>
                                     <p>Tal como lo quieres, tus datos no serán guardados ni utilizados, solamente el registro técnico de que rechazaste el consentimiento.</p>
                                 </div>
                             </div>
-                            <button onClick={() => {setShowFinalPopup(false); logInteraction('close_revelation');}} className="h-14 w-full bg-transparent border border-game-accent text-game-accent font-bold uppercase text-xs tracking-widest hover:bg-game-accent hover:text-game-bg transition-all">Aceptar y Continuar</button>
+                            <button onClick={() => {setShowFinalPopup(false); logInteraction('close_revelation');}} className="h-12 md:h-14 w-full bg-transparent border border-game-accent text-game-accent font-bold uppercase text-[10px] md:text-xs tracking-widest hover:bg-game-accent hover:text-game-bg transition-all">Aceptar y Continuar</button>
                         </motion.div>
                     </motion.div>
                 )}

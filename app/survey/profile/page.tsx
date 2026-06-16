@@ -89,15 +89,15 @@ export default function PlayerProfilePage() {
 
     return (
         <div className="flex flex-col h-screen w-full bg-game-bg text-game-text p-4 md:p-8 overflow-hidden items-center justify-center font-sans">
-            
+
             <div className="flex flex-col h-full max-w-4xl w-full mx-auto justify-between py-4 md:py-12">
 
                 {/* 1. HEADER (shrink-0) */}
-                <motion.header 
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
-                  className="text-center space-y-1 shrink-0 py-2"
+                <motion.header
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="text-center space-y-1 shrink-0 py-2"
                 >
                     <h1 className="text-3xl md:text-5xl font-bold uppercase italic tracking-tighter text-game-accent">
                         Datos del Jugador
@@ -108,18 +108,18 @@ export default function PlayerProfilePage() {
                 </motion.header>
 
                 {/* 2. ÁREA CENTRAL (flex-1): Con scroll interno si es necesario */}
-                <motion.main 
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.2, duration: 0.6 }}
-                  className="flex-1 flex flex-col items-center min-h-0 overflow-y-auto custom-scrollbar"
+                <motion.main
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.2, duration: 0.6 }}
+                    className="flex-1 flex flex-col items-center min-h-0 overflow-y-auto custom-scrollbar"
                 >
                     {/* El div con my-auto garantiza el centrado vertical seguro */}
                     <div className="my-auto w-full max-w-md bg-game-surface/30 p-8 border border-game-muted/10 rounded-sm shadow-2xl shrink-0 py-10">
                         <form onSubmit={handleSubmit} className="space-y-8">
                             <div className="space-y-3">
                                 <label className="text-[10px] uppercase tracking-widest text-game-muted italic ml-1 font-bold text-game-accent/70">Nombre o Nickname</label>
-                                <input 
+                                <input
                                     type="text"
                                     required
                                     minLength={3}
@@ -141,7 +141,7 @@ export default function PlayerProfilePage() {
 
                             <div className="space-y-3">
                                 <label className="text-[10px] uppercase tracking-widest text-game-muted italic ml-1 font-bold text-game-accent/70">Edad</label>
-                                <input 
+                                <input
                                     type="number"
                                     required
                                     min="18"
@@ -157,7 +157,7 @@ export default function PlayerProfilePage() {
                                     </p>
                                 ) : (
                                     <p className="text-[9px] text-red-500 font-medium uppercase italic px-1">
-                                        * Mínimo 18 años requerido por protocolo ético.
+                                        * Mínimo 18 años requerido.
                                     </p>
                                 )}
                             </div>
@@ -174,20 +174,19 @@ export default function PlayerProfilePage() {
                 {/* 3. FOOTER (shrink-0) */}
                 <footer className="shrink-0 pt-4 pb-2 md:pb-6">
                     <div className="flex flex-col md:flex-row w-full max-w-lg mx-auto gap-3 md:gap-4">
-                        <button 
+                        <button
                             onClick={handleSubmit}
                             disabled={isSubmitting || nickname.length < 3 || !age || parsedAge < 18}
-                            className={`flex-1 h-12 font-bold uppercase tracking-widest text-xs transition-all active:scale-95 shadow-lg ${
-                                nickname.length < 3 || !age || isSubmitting || parsedAge < 18
-                                ? 'bg-game-surface text-game-muted opacity-50 cursor-not-allowed'
-                                : 'bg-game-accent text-game-bg hover:bg-game-text'
-                            }`}
+                            className={`flex-1 h-12 font-bold uppercase tracking-widest text-xs transition-all active:scale-95 shadow-lg ${nickname.length < 3 || !age || isSubmitting || parsedAge < 18
+                                    ? 'bg-game-surface text-game-muted opacity-50 cursor-not-allowed'
+                                    : 'bg-game-accent text-game-bg hover:bg-game-text'
+                                }`}
                         >
                             {isSubmitting ? 'Guardando...' : 'Confirmar Datos'}
                         </button>
 
-                        <Link 
-                            href="/onboarding" 
+                        <Link
+                            href="/onboarding"
                             className="flex-1 flex items-center justify-center h-12 border border-zinc-700 text-game-muted font-bold uppercase tracking-widest text-xs transition-all hover:bg-game-surface hover:text-game-accent active:scale-95 text-center"
                         >
                             Regresar

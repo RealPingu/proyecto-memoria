@@ -135,9 +135,15 @@ export default function SurveyPage() {
             <div className="flex flex-col h-full max-w-4xl w-full mx-auto justify-between py-6 md:py-8 px-6">
                 
                 <header className="flex justify-between items-start shrink-0">
-                    <div className="space-y-1 max-w-[50%] md:max-w-[60%]">
+                    <div className="space-y-1 text-left">
                         <AnimatePresence mode="wait">
-                            <motion.p key={currentQuestion.dimension} initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 5 }} className="text-[9px] md:text-[10px] uppercase tracking-widest text-game-accent font-bold italic truncate">
+                            <motion.p 
+                                key={currentQuestion.dimension} 
+                                initial={{ opacity: 0, y: -5 }} 
+                                animate={{ opacity: 1, y: 0 }} 
+                                exit={{ opacity: 0, y: 5 }} 
+                                className="hidden md:block text-[10px] uppercase tracking-[0.15em] text-game-accent font-bold italic leading-tight"
+                            >
                                 {DIMENSIONS[currentQuestion.dimension]}
                             </motion.p>
                         </AnimatePresence>
@@ -180,9 +186,16 @@ export default function SurveyPage() {
                     </div>
                 </header>
 
-                <div className="relative flex-1 flex items-center justify-center overflow-hidden py-4 md:py-12">
+                <div className="relative flex-1 flex flex-col items-center min-h-0 overflow-y-auto custom-scrollbar py-4 md:py-12">
                     <AnimatePresence mode="wait" custom={direction}>
-                        <motion.div key={currentQuestion.id} initial={{ x: direction > 0 ? 50 : -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: direction > 0 ? -50 : 50, opacity: 0 }} transition={{ duration: 0.3 }} className="w-full max-w-2xl text-center px-2">
+                        <motion.div 
+                            key={currentQuestion.id} 
+                            initial={{ x: direction > 0 ? 50 : -50, opacity: 0 }} 
+                            animate={{ x: 0, opacity: 1 }} 
+                            exit={{ x: direction > 0 ? -50 : 50, opacity: 0 }} 
+                            transition={{ duration: 0.3 }} 
+                            className="w-full max-w-2xl text-center px-2 my-auto shrink-0"
+                        >
                             <h2 className="text-lg md:text-3xl font-medium leading-relaxed text-zinc-200 italic">"{currentQuestion.text}"</h2>
                         </motion.div>
                     </AnimatePresence>

@@ -1,0 +1,20 @@
+<svg width="400" height="800" viewBox="0 0 400 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="800" fill="#F4F4F5"/>
+  <rect width="400" height="60" fill="#18181B"/>
+  <text x="20" y="40" fill="white" font-family="sans-serif" font-weight="bold" font-size="20">MOCKUP MOBILE</text>
+  
+  <rect x="20" y="100" width="360" height="200" rx="10" fill="#E4E4E7"/>
+  <text x="50" y="210" fill="#A1A1AA" font-family="sans-serif" font-weight="bold" font-size="14">IMAGEN DE PRODUCTO (SNEAKING)</text>
+  
+  <text x="20" y="340" fill="#18181B" font-family="sans-serif" font-weight="bold" font-size="24">Smartwatch Pro</text>
+  <text x="20" y="380" fill="#EF4444" font-family="sans-serif" font-weight="black" font-size="32">$299.00</text>
+  
+  <rect x="20" y="420" width="360" height="50" rx="5" fill="#18181B"/>
+  <text x="120" y="450" fill="white" font-family="sans-serif" font-weight="bold" font-size="16">COMPRAR AHORA</text>
+  
+  <rect x="20" y="490" width="20" height="20" rx="4" fill="#18181B"/>
+  <text x="50" y="505" fill="#71717A" font-family="sans-serif" font-size="12">Añadir seguro de envío ($15.00)</text>
+  
+  <rect x="0" y="740" width="400" height="60" fill="#FAFAFA"/>
+  <text x="100" y="775" fill="#D4D4D8" font-family="sans-serif" font-size="10">POLÍTICA DE PRIVACIDAD | COOKIES</text>
+</svg>

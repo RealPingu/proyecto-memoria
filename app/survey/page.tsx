@@ -91,21 +91,33 @@ export default function SurveyPage() {
     };
 
     const handleFinish = async () => {
-        if (isSubmitting || !playerId) return;
-        if (Object.keys(answers).length < SURVEY_QUESTIONS.length) {
-            alert("Responde todas las preguntas antes de continuar.");
+        if (!playerId) {
+            alert("No se encontró ID de jugador. Por favor, regresa al inicio.");
             return;
         }
+        
+        if (isSubmitting) return;
+
         setIsSubmitting(true);
         try {
-            await fetch('/api/survey', {
+            const response = await fetch('/api/survey', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ playerId, responses: Object.entries(answers).map(([id, score]) => ({ questionId: id, score })) }),
+                body: JSON.stringify({ 
+                    playerId, 
+                    responses: Object.entries(answers).map(([id, score]) => ({ questionId: id, score })) 
+                }),
             });
-            router.push('/game');
+
+            if (response.ok) {
+                router.push('/game/marking/intro');
+            } else {
+                throw new Error("Error en el servidor");
+            }
         } catch (error) {
             console.error("Error:", error);
+            alert("No pudimos guardar tus respuestas, pero puedes continuar.");
+            router.push('/game/marking/intro'); // Navegamos de todas formas para no bloquear al usuario
         } finally {
             setIsSubmitting(false);
         }

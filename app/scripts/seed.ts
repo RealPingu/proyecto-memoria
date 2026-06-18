@@ -48,6 +48,23 @@ async function setup() {
           );
         `;
         console.log("Tabla 'likert_responses' creada exitosamente");
+
+        // 4. Crear la tabla de resultados de las pruebas de marcado
+        await client.sql`DROP TABLE IF EXISTS marking_results;`;
+        await client.sql`
+          CREATE TABLE IF NOT EXISTS marking_results (
+            id SERIAL PRIMARY KEY,
+            player_id UUID NOT NULL,
+            scenario_id VARCHAR(50) NOT NULL,
+            phase VARCHAR(10) NOT NULL, -- 'pre' o 'post'
+            points JSONB DEFAULT '[]',
+            selected_patterns JSONB DEFAULT '[]',
+            time_taken DECIMAL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            UNIQUE(player_id, scenario_id, phase)
+          );
+        `;
+        console.log("Tabla 'marking_results' creada exitosamente");
     } catch (error) {
         console.error("Error creando las tablas:", error);
     } finally {

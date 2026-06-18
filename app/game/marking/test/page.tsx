@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import MarkingVisor from '@/app/components/MarkingVisor';
-import { SCENARIOS, PatternOption } from './scenarios';
+import { SCENARIOS } from './scenarios';
 
 function MarkingTestContent() {
     const [currentStep, setCurrentStep] = useState(0);
@@ -14,20 +14,24 @@ function MarkingTestContent() {
     const [selectedPatterns, setSelectedPatterns] = useState<string[]>([]);
     const [timeLeft, setTimeLeft] = useState(0);
     const [isActive, setIsActive] = useState(false);
+    const [startTime, setStartTime] = useState(0);
     const [isSubmitting, setIsSubmitting] = useState(false);
     
+    const [playerId, setPlayerId] = useState<string | null>(null);
     const router = useRouter();
     const searchParams = useSearchParams();
     
-    // Detectamos si es la fase previa o posterior a la narrativa
     const isPostTest = searchParams.get('phase') === 'post';
-
     const scenario = SCENARIOS[currentStep];
+
+    useEffect(() => {
+        setPlayerId(localStorage.getItem('antipatron_player_id'));
+    }, []);
 
     // Lógica del Temporizador
     useEffect(() => {
         if (!isActive || timeLeft <= 0) {
-            if (timeLeft <= 0 && isActive) setIsActive(false);
+            if (timeLeft <= 0 && isActive) handleConfirmMarking(); // Auto-confirmar al acabar el tiempo
             return;
         }
         const timer = setInterval(() => setTimeLeft(prev => prev - 1), 1000);
@@ -38,13 +42,13 @@ function MarkingTestContent() {
         setMarkedPoints([]);
         setSelectedPatterns([]);
         setTimeLeft(scenario.time);
+        setStartTime(Date.now());
         setMode('marking');
         setIsActive(true);
     };
 
     const handleMark = (x: number, y: number) => {
         if (!isActive) return;
-
         const threshold = 4;
         const existingIndex = markedPoints.findIndex(pt => 
             Math.abs(pt.x - x) < threshold && Math.abs(pt.y - y) < threshold
@@ -63,12 +67,47 @@ function MarkingTestContent() {
         );
     };
 
-    const handleConfirmMarking = () => {
+    const handleConfirmMarking = async () => {
         setIsActive(false);
-        if (isPostTest) {
-            setMode('selection');
-        } else {
+        
+        // Si es Pre-Test, guardamos aquí y pasamos al siguiente
+        if (!isPostTest) {
+            await saveResults();
             nextScenario();
+        } else {
+            // Si es Post-Test, vamos a la selección de patrones
+            setMode('selection');
+        }
+    };
+
+    const handleConfirmSelection = async () => {
+        await saveResults();
+        nextScenario();
+    };
+
+    const saveResults = async () => {
+        if (!playerId || isSubmitting) return;
+        setIsSubmitting(true);
+
+        const timeTaken = (Date.now() - startTime) / 1000;
+
+        try {
+            await fetch('/api/marking/save', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    playerId,
+                    scenarioId: scenario.id,
+                    phase: isPostTest ? 'post' : 'pre',
+                    points: markedPoints.map(p => ({ x: p.x, y: p.y })),
+                    selectedPatterns,
+                    timeTaken
+                }),
+            });
+        } catch (e) {
+            console.error("Error guardando resultados:", e);
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -77,8 +116,7 @@ function MarkingTestContent() {
             setCurrentStep(prev => prev + 1);
             setMode('context');
         } else {
-            // Fin de la prueba de marcado
-            router.push(isPostTest ? '/game/results' : '/game/narrative-intro');
+            router.push(isPostTest ? '/game/results' : '/game/narrative/intro');
         }
     };
 
@@ -95,13 +133,13 @@ function MarkingTestContent() {
                         exit={{ opacity: 0, scale: 1.05 }}
                         className="flex flex-col h-full items-center justify-center p-6 text-center"
                     >
-                        <div className="my-auto space-y-12">
+                        <div className="my-auto space-y-12 shrink-0">
                             <header className="space-y-2 shrink-0">
-                                <h2 className="text-game-accent uppercase tracking-[0.3em] text-[10px] font-bold">Escenario {currentStep + 1} de {SCENARIOS.length}</h2>
+                                <h2 className="text-game-accent uppercase tracking-[0.3em] text-[10px] font-bold italic">Escenario {currentStep + 1} de {SCENARIOS.length}</h2>
                                 <h1 className="text-3xl md:text-5xl font-bold uppercase italic tracking-tighter">Misión</h1>
                             </header>
 
-                            <div className="bg-game-surface/30 p-8 md:p-12 border border-game-muted/20 rounded-sm max-w-xl mx-auto shadow-2xl shrink-0 text-center">
+                            <div className="bg-game-surface/30 p-8 md:p-12 border border-game-muted/20 rounded-sm max-w-xl mx-auto shadow-2xl shrink-0">
                                 <p className="text-zinc-300 leading-relaxed text-sm md:text-xl italic">
                                     "{scenario.context}"
                                 </p>
@@ -110,7 +148,7 @@ function MarkingTestContent() {
                             <div className="flex flex-col w-full max-w-xs mx-auto space-y-4 shrink-0">
                                 <button 
                                     onClick={startMarking}
-                                    className="h-14 w-full bg-game-accent text-game-bg font-bold uppercase tracking-widest text-xs active:scale-95 transition-all shadow-2xl mx-auto"
+                                    className="h-14 w-full bg-game-accent text-game-bg font-bold uppercase tracking-widest text-xs active:scale-95 transition-all shadow-2xl"
                                 >
                                     Iniciar Evaluación
                                 </button>
@@ -168,7 +206,7 @@ function MarkingTestContent() {
                     </motion.div>
                 )}
 
-                {/* 3. MODO SELECCIÓN TÉCNICA (Fase 3 únicamente) */}
+                {/* 3. MODO SELECCIÓN TÉCNICA */}
                 {mode === 'selection' && (
                     <motion.div 
                         key="selection"
@@ -214,12 +252,12 @@ function MarkingTestContent() {
 
                             <footer className="shrink-0 pt-4">
                                 <button 
-                                    onClick={nextScenario}
+                                    onClick={handleConfirmSelection}
                                     disabled={selectedPatterns.length === 0}
                                     className={`h-14 w-full font-bold uppercase tracking-widest text-xs transition-all active:scale-95 shadow-xl
                                     ${selectedPatterns.length > 0 ? 'bg-game-accent text-game-bg hover:bg-game-text' : 'bg-game-surface text-game-muted opacity-50 cursor-not-allowed'}`}
                                 >
-                                    Siguiente Escenario
+                                    {isSubmitting ? 'Guardando...' : 'Siguiente Escenario'}
                                 </button>
                             </footer>
                         </div>

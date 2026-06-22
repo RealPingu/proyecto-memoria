@@ -43,3 +43,6 @@ next-env.d.ts
 # proyecto
 /documentacion/
 /recursos_externos/
+/app/game/playground/
+/app/api/playground/
+.agents/

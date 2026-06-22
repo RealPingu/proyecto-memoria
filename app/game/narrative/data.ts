@@ -25,7 +25,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
   'scene_1_init': {
     id: 'scene_1_init',
     speaker: 'system',
-    text: 'Tu espíritu se levanta desorientado, hay una "oscuridad" absoluta. Decides #caminar#.',
+    text: 'Tu espíritu se encuentra desorientado, hay una "oscuridad" absoluta. Decides #levantarte#.',
     illustration: {
       position: 'center',
       aspectRatio: 'aspect-video',

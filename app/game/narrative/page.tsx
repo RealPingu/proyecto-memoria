@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NARRATIVE_NODES, DialogueNode } from './data';
+import SleepingPenguinLying from './illustrations/sleeping_penguin_lying';
 
 // Tokenizador para dar formato especial a "" y #
 interface TextToken {
@@ -56,7 +57,7 @@ function parseDialogueText(text: string): TextToken[] {
 
 export default function NarrativeIntroPage() {
   const [currentNodeId, setCurrentNodeId] = useState('scene_1_init');
-  const [displayedText, setDisplayedText] = useState('');
+  const [visibleCharCount, setVisibleCharCount] = useState(0);
   const [isTyping, setIsTyping] = useState(false);
   const [nickname, setNickname] = useState('Jugador');
   const [showExplanation, setShowExplanation] = useState(false);
@@ -94,17 +95,20 @@ export default function NarrativeIntroPage() {
   const startTyping = useCallback((textToType: string) => {
     if (typingTimer.current) clearInterval(typingTimer.current);
     setIsTyping(true);
-    setDisplayedText('');
-    let idx = 0;
+    setVisibleCharCount(0);
     
+    const tokens = parseDialogueText(textToType);
+    const totalLength = tokens.reduce((sum, token) => sum + token.content.length, 0);
+    
+    let currentCount = 0;
     typingTimer.current = setInterval(() => {
-      idx++;
-      setDisplayedText(textToType.substring(0, idx));
-      if (idx >= textToType.length) {
+      currentCount++;
+      setVisibleCharCount(currentCount);
+      if (currentCount >= totalLength) {
         setIsTyping(false);
         if (typingTimer.current) clearInterval(typingTimer.current);
       }
-    }, 20); // 20ms por carácter (veloz e inmersivo)
+    }, 55); // 55ms por carácter (velocidad de lectura calmada y cómoda)
   }, []);
 
   // Reiniciar tipeo al cambiar de nodo
@@ -139,12 +143,16 @@ export default function NarrativeIntroPage() {
     }
   };
 
-  // Forzar completado inmediato del texto al hacer clic
+  // Forzar completado inmediato del texto al hacer clic (skip) o avanzar
   const handleBoxClick = () => {
     if (isTyping) {
       if (typingTimer.current) clearInterval(typingTimer.current);
+      
       const processedText = getProcessedText(currentNode.text);
-      setDisplayedText(processedText);
+      const tokens = parseDialogueText(processedText);
+      const totalLength = tokens.reduce((sum, token) => sum + token.content.length, 0);
+      
+      setVisibleCharCount(totalLength);
       setIsTyping(false);
     } else {
       // Solo avanzar por clic en la caja si no hay decisiones ni botones de acción bloqueando la vista
@@ -176,8 +184,8 @@ export default function NarrativeIntroPage() {
       setHistory(prevHistory);
       setCurrentNodeId(prevNodeId);
     } else {
-      // Si está en el principio, retrocede de página en el navegador
-      router.back();
+      // Regresa a la pantalla explicativa posterior al pre-test
+      router.push('/game/narrative/instructions');
     }
   };
 
@@ -204,19 +212,53 @@ export default function NarrativeIntroPage() {
   };
 
   // Parser dinámico para formatear "" y ## en React
-  const renderDialogue = (text: string) => {
-    const tokens = parseDialogueText(text);
+  const renderDialogue = (tokens: TextToken[], visibleCount: number) => {
+    let charsRemaining = visibleCount;
     return tokens.map((token, index) => {
+      if (charsRemaining <= 0) return null;
+      
+      const tokenLength = token.content.length;
+      const visibleLength = Math.min(tokenLength, charsRemaining);
+      charsRemaining -= tokenLength;
+      
+      const visibleContent = token.content.substring(0, visibleLength);
+
       if (token.type === 'highlight') {
+        const chars = Array.from(visibleContent.toUpperCase());
         return (
           <span 
             key={index} 
-            className="text-yellow-400 font-bold drop-shadow-[0_0_6px_rgba(250,204,21,0.35)] animate-pulse mx-0.5"
+            style={{
+              color: '#000000',
+              WebkitTextStroke: '0.8px #ffffff',
+              textShadow: '0 0 3px #ffffff, 0 0 6px #ffffff, 0 0 1px #ffffff',
+              display: 'inline-block'
+            }}
+            className="font-bold mx-1 select-none"
           >
-            {token.content}
+            {chars.map((char, charIdx) => (
+              <motion.span 
+                key={charIdx} 
+                style={{ display: 'inline-block', whiteSpace: 'pre' }}
+                animate={{ 
+                  y: [0, -3.5, 0]
+                }}
+                transition={{ 
+                  repeat: Infinity, 
+                  duration: 2.2, 
+                  ease: "easeInOut",
+                  delay: charIdx * 0.12
+                }}
+              >
+                {char}
+              </motion.span>
+            ))}
           </span>
         );
       } else if (token.type === 'action') {
+        if (visibleLength < tokenLength) {
+          return <span key={index}>{visibleContent}</span>;
+        }
         return (
           <button
             key={index}
@@ -224,13 +266,13 @@ export default function NarrativeIntroPage() {
               e.stopPropagation(); // Evitamos que se propague el clic a la caja de diálogo general
               handleActionClick();
             }}
-            className="inline-block bg-game-accent text-game-bg font-extrabold px-3 py-0.5 mx-1 uppercase tracking-widest text-[9px] rounded-sm hover:bg-game-text hover:text-game-bg transition-all cursor-pointer active:scale-95 shadow-[0_0_12px_rgba(255,255,255,0.15)] border border-game-accent select-none animate-pulse"
+            className="inline-block bg-game-accent text-game-bg font-extrabold px-1.5 py-0.5 mx-1 uppercase tracking-widest text-[8px] rounded-sm hover:bg-game-text hover:text-game-bg transition-all cursor-pointer active:scale-95 border border-game-accent select-none animate-pulse leading-none align-middle"
           >
-            {token.content}
+            {visibleContent}
           </button>
         );
       } else {
-        return <span key={index}>{token.content}</span>;
+        return <span key={index}>{visibleContent}</span>;
       }
     });
   };
@@ -240,81 +282,8 @@ export default function NarrativeIntroPage() {
   // Determinar qué ilustración SVG renderizar
   const renderIllustrationSVG = () => {
     if (currentNodeId === 'scene_1_init') {
-      // Escena 1: El pingüino caminando solo en el limbo oscuro
-      return (
-        <svg viewBox="0 0 200 120" className="w-full h-full">
-          <defs>
-            <radialGradient id="limbo-grad" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#1e1b4b" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#09090b" stopOpacity="0.8" />
-            </radialGradient>
-          </defs>
-          
-          {/* Fondo */}
-          <rect width="200" height="120" fill="url(#limbo-grad)" />
-          <line x1="10" y1="95" x2="190" y2="95" stroke="#27272a" strokeWidth="0.5" strokeDasharray="3 3" />
-          
-          {/* Pingüino caminando */}
-          <g transform="translate(100, 48)">
-            <motion.g
-              animate={{ 
-                y: [-1, 1, -1],
-                rotate: [-2, 2, -2]
-              }}
-              transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}
-            >
-              {/* Sombras y pies */}
-              <ellipse cx="0" cy="40" rx="12" ry="2" fill="black" opacity="0.4" />
-              
-              {/* Patas */}
-              <motion.path 
-                animate={{ rotate: [-8, 8, -8] }}
-                transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}
-                d="M-5,36 L-7,42 L-2,42 Z" 
-                fill="#f59e0b" 
-              />
-              <motion.path 
-                animate={{ rotate: [8, -8, 8] }}
-                transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}
-                d="M5,36 L3,42 L8,42 Z" 
-                fill="#f59e0b" 
-              />
-
-              {/* Aleta Izquierda */}
-              <motion.path
-                animate={{ rotate: [10, -5, 10] }}
-                transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                d="M-13,10 C-18,15 -18,25 -13,28 C-11,24 -11,15 -13,10 Z"
-                fill="#18181b"
-              />
-
-              {/* Cuerpo base */}
-              <ellipse cx="0" cy="18" rx="14" ry="22" fill="#18181b" stroke="#27272a" strokeWidth="0.5" />
-              
-              {/* Vientre blanco */}
-              <ellipse cx="0" cy="20" rx="9" ry="16" fill="#f4f4f5" />
-
-              {/* Aleta Derecha */}
-              <motion.path
-                animate={{ rotate: [-10, 5, -10] }}
-                transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                d="M13,10 C18,15 18,25 13,28 C11,24 11,15 13,10 Z"
-                fill="#18181b"
-              />
-
-              {/* Cabeza */}
-              <circle cx="0" cy="-6" r="10" fill="#18181b" />
-              
-              {/* Ojos cerrados (desorientado) */}
-              <path d="M-5,-6 Q-3,-4 -2,-6" stroke="#a1a1aa" strokeWidth="0.75" fill="none" />
-              <path d="M2,-6 Q3,-4 5,-6" stroke="#a1a1aa" strokeWidth="0.75" fill="none" />
-
-              {/* Pico */}
-              <polygon points="0,-4 -3,-1 3,-1" fill="#f59e0b" />
-            </motion.g>
-          </g>
-        </svg>
-      );
+      // Escena 1: El pingüino acostado durmiendo (SleepingPenguinLying)
+      return <SleepingPenguinLying />;
     }
 
     if (currentNodeId.startsWith('scene_2')) {
@@ -474,16 +443,8 @@ export default function NarrativeIntroPage() {
       {/* Contenedor adaptado a la Consistencia de Escenas (Layout Sándwich sin footer) */}
       <div className="flex flex-col h-full max-w-lg w-full mx-auto justify-between py-2 md:py-4 relative">
 
-        {/* 1. HEADER (shrink-0) - Título más inmersivo y botón Atrás funcional */}
-        <header className="flex justify-between items-center shrink-0 border-b border-game-muted/10 pb-3">
-          <div className="space-y-0.5">
-            <p className="text-[9px] uppercase tracking-[0.2em] text-game-accent font-bold italic">
-              Fase 2: Conexión Mental
-            </p>
-            <h1 className="text-xs font-mono text-game-muted uppercase tracking-wider">
-              El Umbral del Limbo
-            </h1>
-          </div>
+        {/* 1. HEADER (shrink-0) - Solo el botón Atrás */}
+        <header className="flex justify-start items-center shrink-0 pb-3">
           <button
             onClick={handleBack}
             className="text-[9px] border border-zinc-800 text-game-muted hover:border-zinc-500 hover:text-game-accent transition-all px-3 py-1 font-bold uppercase tracking-wider rounded-sm active:scale-95 cursor-pointer"
@@ -523,11 +484,13 @@ export default function NarrativeIntroPage() {
             
             <div 
               onClick={handleBoxClick}
-              className={`flex-1 min-h-0 w-full bg-game-surface/30 border border-game-muted/10 p-5 rounded-md flex flex-col justify-start relative transition-all duration-300 select-none overflow-y-auto custom-scrollbar
-                ${isTyping ? 'cursor-wait' : 'cursor-pointer hover:border-game-muted/20 hover:bg-game-surface/40'}`}
+              className="flex-1 min-h-0 w-full bg-game-surface/30 border border-game-muted/10 p-5 rounded-md flex flex-col justify-start relative transition-all duration-300 select-none overflow-y-auto custom-scrollbar cursor-pointer hover:border-game-muted/20 hover:bg-game-surface/40"
             >
-              <div className="text-zinc-200 text-xs md:text-sm leading-relaxed tracking-wide w-full font-medium italic pr-4">
-                {renderDialogue(displayedText)}
+              <div 
+                style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }}
+                className={`${currentNode.speaker === 'subconscious' ? 'text-white' : 'text-zinc-400'} text-xs md:text-sm leading-relaxed tracking-wide w-full font-medium italic pr-4`}
+              >
+                {renderDialogue(parseDialogueText(getProcessedText(currentNode.text)), visibleCharCount)}
 
                 {/* OPCIONES DE DIÁLOGO INCRUSTADAS AL FINAL DEL TEXTO */}
                 {!isTyping && hasChoices && currentNode.choices && (

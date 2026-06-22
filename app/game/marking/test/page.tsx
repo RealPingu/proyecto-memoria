@@ -116,7 +116,7 @@ function MarkingTestContent() {
             setCurrentStep(prev => prev + 1);
             setMode('context');
         } else {
-            router.push(isPostTest ? '/game/results' : '/game/narrative/intro');
+            router.push(isPostTest ? '/game/results' : '/game/narrative/instructions');
         }
     };
 

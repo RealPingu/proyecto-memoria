@@ -57,7 +57,7 @@ export default function NarrativeInstructionsPage() {
               Comenzar Aventura
             </button>
             <button
-              onClick={() => router.push('/game/marking/intro')}
+              onClick={() => router.push('/marking/intro')}
               className="flex-1 h-12 border border-zinc-700 text-game-muted font-bold uppercase tracking-widest text-xs flex items-center justify-center hover:bg-game-surface hover:text-game-accent transition-all active:scale-95 cursor-pointer"
             >
               Regresar

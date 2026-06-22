@@ -153,7 +153,7 @@ function MarkingTestContent() {
                                     Iniciar Evaluación
                                 </button>
                                 <Link 
-                                    href="/game/marking/intro"
+                                    href="/marking/intro"
                                     className="h-12 w-full border border-zinc-700 text-game-muted font-bold uppercase tracking-widest text-[10px] flex items-center justify-center hover:bg-game-surface hover:text-game-accent transition-all active:scale-95"
                                 >
                                     Regresar

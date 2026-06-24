@@ -68,8 +68,39 @@ function getVariantStaticSvg(variantId: number): string {
   // Generar partículas estáticas
   const staticParticlesSvg = PARTICLE_TEMPLATES.map((p, idx) => {
     const color = config.particleColors[idx % config.particleColors.length];
-    return `  <circle id="alma-particula-estatica-${p.id}" cx="${165 + p.dx}" cy="${90 + p.dy - 6}" r="${p.r}" fill="${color}" opacity="0.65" />`;
+    return `  <circle id="alma-particula-estatica-${p.id}" cx="${165 + p.dx}" cy="${90 + p.dy - 6}" r="${p.r * 0.8}" fill="${color}" opacity="0.45" />`;
   }).join('\n');
+
+  const staticEyes = (id: number) => {
+    switch (id) {
+      case 1:
+        return `    <path d="M 160 82 C 160.5 83.5 162.5 83.5 163 82" stroke="#ffffff" fill="none" stroke-width="0.75" stroke-linecap="round" id="ojo-izq" />
+    <path d="M 167 82 C 167.5 83.5 169.5 83.5 170 82" stroke="#ffffff" fill="none" stroke-width="0.75" stroke-linecap="round" id="ojo-der" />`;
+      case 2:
+        return `    <path d="M 159.5 82.5 H 163" stroke="#e2e8f0" stroke-width="0.8" stroke-linecap="round" id="ojo-izq" />
+    <path d="M 167 82.5 H 170.5" stroke="#e2e8f0" stroke-width="0.8" stroke-linecap="round" id="ojo-der" />`;
+      case 3:
+        return `    <path d="M 160 83.5 L 162.5 81.5" stroke="#e2e8f0" stroke-width="0.95" stroke-linecap="round" id="ojo-izq" />
+    <path d="M 167 81.5 L 169.5 83.5" stroke="#e2e8f0" stroke-width="0.95" stroke-linecap="round" id="ojo-der" />`;
+      case 4:
+        return `    <path d="M 159.5 82.5 H 163" stroke="#ffffff" stroke-width="0.65" stroke-linecap="round" id="ojo-izq" />
+    <path d="M 167 82.5 H 170.5" stroke="#ffffff" stroke-width="0.65" stroke-linecap="round" id="ojo-der" />`;
+      case 5:
+        return `    <rect x="160" y="81.5" width="2" height="2" fill="#cbd5e1" id="ojo-izq" />
+    <rect x="168" y="81.5" width="2" height="2" fill="#cbd5e1" id="ojo-der" />`;
+      case 6:
+        return `    <circle cx="161" cy="82.5" r="1.2" fill="#22d3ee" id="ojo-izq" />
+    <circle cx="169" cy="82.5" r="1.2" fill="#22d3ee" id="ojo-der" />`;
+      case 7:
+        return `    <path d="M 160 83 C 160.5 81.5 162.5 81.5 163 83" stroke="#cbd5e1" fill="none" stroke-width="0.75" stroke-linecap="round" id="ojo-izq" />
+    <path d="M 167 83 C 167.5 81.5 169.5 81.5 170 83" stroke="#cbd5e1" fill="none" stroke-width="0.75" stroke-linecap="round" id="ojo-der" />`;
+      case 8:
+        return `    <path d="M 161 80.5 L 162 82.5 L 164 82.5 L 162 83.5 L 161 85.5 L 160 83.5 L 158 82.5 L 160 82.5 Z" fill="#fef08a" stroke="#fbbf24" stroke-width="0.4" id="ojo-izq" />
+    <path d="M 169 80.5 L 170 82.5 L 172 82.5 L 170 83.5 L 169 85.5 L 168 83.5 L 166 82.5 L 168 82.5 Z" fill="#fef08a" stroke="#fbbf24" stroke-width="0.4" id="ojo-der" />`;
+      default:
+        return '';
+    }
+  };
 
   const baseStart = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="200px" height="120px">
   <defs>
@@ -172,6 +203,8 @@ function getVariantStaticSvg(variantId: number): string {
     </g>
     <path id="aleta" d="M -56.369 37.201 C -57.631 41.252 -39.926 36.511 -37.926 32.511" stroke-width="2.5" stroke-linecap="round" stroke="rgb(0, 0, 0)" fill="none"></path>
   </g>
+  <!-- Ojo Subconsciente (Posición izquierda superior) -->
+  <g transform="${transformMatrix}">
     <circle id="ojo-glow" cx="1.961" cy="-10.68" r="18" fill="#ffffff" opacity="0.08" transform="matrix(1.726517, 0, 0, 1.260335, 10.344875, -0.379963)"></circle>
     <circle id="ojo-esclera" cx="3.705" cy="-5.231" r="10.733" fill="#f8fafc" stroke-width="0.5" stroke="#e2e8f0" style="transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(1.4985, -0.537148, 0.642825, 1.013572, 3.086092, -7.914055)"></circle>
     <path id="ojo-trazo-luz" style="fill: none; stroke: rgb(255, 255, 255);" d="M -17.728 -18.374 C -19.172 -20.359 42.448 -40.704 45.523 -36.475 C 48.876 -32.004 13.029 7.732 11.259 5.372"></path>
@@ -179,13 +212,16 @@ function getVariantStaticSvg(variantId: number): string {
     <circle id="ojo-pupila-brillo" cx="-4.8" cy="-1.8" r="1.5" fill="#ffffff" transform="matrix(-1.397505, 0, 0, 1.944474, -10.963154, -5.601462)"></circle>
   </g>
 
-  <!-- Sombra/Glow del Alma de Camo (derecha abajo) -->
-  <circle cx="165" cy="90" r="22" fill="url(#camo-glow)" opacity="0.8" />
-  
-  <!-- Gota Invertida (Alma de Camo) -->
-  <path id="alma-gota-invertida" d="M 165 106 C 157 98 153 90 153 84 A 12 12 0 0 1 177 84 C 177 90 173 98 165 106 Z" fill="${config.patternUrl}" stroke="${config.stroke}" stroke-width="0.8" />
-  <!-- Partículas de Alma Estáticas -->
-${staticParticlesSvg}
+  <!-- Sombra/Glow del Alma de Camo (derecha abajo) con opacidad reducida -->
+  <g id="camo-alma-contenedor" opacity="0.6">
+    <circle cx="165" cy="90" r="22" fill="url(#camo-glow)" opacity="0.8" />
+    <!-- Gota Invertida (Alma de Camo) -->
+    <path id="alma-gota-invertida" d="M 165 106 C 157 98 153 90 153 84 A 12 12 0 0 1 177 84 C 177 90 173 98 165 106 Z" fill="${config.patternUrl}" stroke="${config.stroke}" stroke-width="0.8" />
+    <!-- Ojos del Alma -->
+  ${staticEyes(variantId)}
+    <!-- Partículas de Alma Estáticas -->
+  ${staticParticlesSvg}
+  </g>
 </svg>`;
 
   return baseStart;
@@ -212,14 +248,14 @@ export default function Scene4PlaygroundPage() {
   });
 
   const VARIANTS = [
-    { id: 1, name: 'v1: Ojo Editado' },
-    { id: 2, name: 'v2: Pupila Felina' },
-    { id: 3, name: 'v3: Doble Trazo' },
-    { id: 4, name: 'v4: Órbita Interna' },
-    { id: 5, name: 'v5: Destellos' },
-    { id: 6, name: 'v6: Párpado Sesgado' },
-    { id: 7, name: 'v7: Glitch Pixel' },
-    { id: 8, name: 'v8: Celestial Halo' }
+    { id: 1, name: 'v1: Gota Camo Estándar' },
+    { id: 2, name: 'v2: Gota Camo Bosque' },
+    { id: 3, name: 'v3: Gota Camo Desierto' },
+    { id: 4, name: 'v4: Gota Camo Ártico' },
+    { id: 5, name: 'v5: Gota Camo Digital' },
+    { id: 6, name: 'v6: Gota Camo Nocturno' },
+    { id: 7, name: 'v7: Gota Camo Urbano' },
+    { id: 8, name: 'v8: Gota Camo Dorado' }
   ];
 
   // Typewriter effect simulation

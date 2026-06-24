@@ -312,8 +312,8 @@ export default function Scene4Walking({ variantId = 1 }: Scene4WalkingProps) {
         </motion.g>
       </g>
 
-      {/* 3. El Alma de Camo (Gota Invertida con Partículas Flotantes - en la derecha abajo) */}
-      <g id="camo-alma-contenedor">
+      {/* 3. El Alma de Camo (Gota Invertida con Partículas Flotantes y Ojos - en la derecha abajo) */}
+      <g id="camo-alma-contenedor" opacity="0.6">
         {/* Glow de Fondo para el alma */}
         <motion.circle
           id="alma-fondo-glow"
@@ -321,33 +321,100 @@ export default function Scene4Walking({ variantId = 1 }: Scene4WalkingProps) {
           cy="90"
           r="22"
           fill="url(#camo-glow)"
-          animate={{ scale: [0.9, 1.15, 0.9], opacity: [0.7, 0.95, 0.7] }}
+          animate={{ scale: [0.9, 1.15, 0.9], opacity: [0.5, 0.8, 0.5] }}
           transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
         />
 
-        {/* Gota Invertida principal del Alma con patrón militar dinámico, morphing fluido de balanceo (cuerpo y punta) */}
-        <motion.path
-          id="alma-gota-invertida"
-          d="M 165 106 C 157 98 153 90 153 84 A 12 12 0 0 1 177 84 C 177 90 173 98 165 106 Z"
-          fill={config.patternUrl}
-          stroke={config.stroke}
-          strokeWidth="0.8"
+        {/* Grupo que se mueve arriba y abajo (bobbing) y escala */}
+        <motion.g
+          id="alma-gota-y-ojos"
           animate={{ 
-            d: [
-              "M 159 106 C 153 98 151 90 151 84 A 12 12 0 0 1 175 84 C 175 90 170 98 159 106 Z",
-              "M 171 106 C 160 98 155 90 155 84 A 12 12 0 0 1 179 84 C 179 90 177 98 171 106 Z",
-              "M 159 106 C 153 98 151 90 151 84 A 12 12 0 0 1 175 84 C 175 90 170 98 159 106 Z"
-            ],
             y: [-1.2, 1.2, -1.2],
             scale: [0.98, 1.02, 0.98]
           }}
           transition={{ 
-            d: { duration: 4.0, ease: "easeInOut", repeat: Infinity },
             y: { duration: 3.1, ease: "easeInOut", repeat: Infinity },
             scale: { duration: 3.1, ease: "easeInOut", repeat: Infinity }
           }}
           style={{ originX: "165px", originY: "90px" }}
-        />
+        >
+          {/* Gota Invertida principal del Alma con patrón militar dinámico, morphing fluido de balanceo (cuerpo y punta) */}
+          <motion.path
+            id="alma-gota-invertida"
+            d="M 165 106 C 157 98 153 90 153 84 A 12 12 0 0 1 177 84 C 177 90 173 98 165 106 Z"
+            fill={config.patternUrl}
+            stroke={config.stroke}
+            strokeWidth="0.8"
+            animate={{ 
+              d: [
+                "M 159 106 C 153 98 151 90 151 84 A 12 12 0 0 1 175 84 C 175 90 170 98 159 106 Z",
+                "M 171 106 C 160 98 155 90 155 84 A 12 12 0 0 1 179 84 C 179 90 177 98 171 106 Z",
+                "M 159 106 C 153 98 151 90 151 84 A 12 12 0 0 1 175 84 C 175 90 170 98 159 106 Z"
+              ]
+            }}
+            transition={{ 
+              d: { duration: 4.0, ease: "easeInOut", repeat: Infinity }
+            }}
+            opacity="0.65"
+          />
+
+          {/* Ojos del Alma (se mueven lateralmente en sincronía con el balanceo del cuerpo) */}
+          <motion.g
+            id="alma-ojos-contenedor"
+            animate={{ x: [-2, 2, -2] }}
+            transition={{ duration: 4.0, ease: "easeInOut", repeat: Infinity }}
+            style={{ originX: "165px", originY: "90px" }}
+          >
+            {variantId === 1 && (
+              <g id="alma-ojos-v1">
+                <path d="M 160 82 C 160.5 83.5 162.5 83.5 163 82" stroke="#ffffff" fill="none" strokeWidth="0.75" strokeLinecap="round" id="ojo-izq-v1" />
+                <path d="M 167 82 C 167.5 83.5 169.5 83.5 170 82" stroke="#ffffff" fill="none" strokeWidth="0.75" strokeLinecap="round" id="ojo-der-v1" />
+              </g>
+            )}
+            {variantId === 2 && (
+              <g id="alma-ojos-v2">
+                <path d="M 159.5 82.5 H 163" stroke="#e2e8f0" strokeWidth="0.8" strokeLinecap="round" id="ojo-izq-v2" />
+                <path d="M 167 82.5 H 170.5" stroke="#e2e8f0" strokeWidth="0.8" strokeLinecap="round" id="ojo-der-v2" />
+              </g>
+            )}
+            {variantId === 3 && (
+              <g id="alma-ojos-v3">
+                <path d="M 160 83.5 L 162.5 81.5" stroke="#e2e8f0" strokeWidth="0.95" strokeLinecap="round" id="ojo-izq-v3" />
+                <path d="M 167 81.5 L 169.5 83.5" stroke="#e2e8f0" strokeWidth="0.95" strokeLinecap="round" id="ojo-der-v3" />
+              </g>
+            )}
+            {variantId === 4 && (
+              <g id="alma-ojos-v4">
+                <path d="M 159.5 82.5 H 163" stroke="#ffffff" strokeWidth="0.65" strokeLinecap="round" id="ojo-izq-v4" />
+                <path d="M 167 82.5 H 170.5" stroke="#ffffff" strokeWidth="0.65" strokeLinecap="round" id="ojo-der-v4" />
+              </g>
+            )}
+            {variantId === 5 && (
+              <g id="alma-ojos-v5">
+                <rect x="160" y="81.5" width="2" height="2" fill="#cbd5e1" id="ojo-izq-v5" />
+                <rect x="168" y="81.5" width="2" height="2" fill="#cbd5e1" id="ojo-der-v5" />
+              </g>
+            )}
+            {variantId === 6 && (
+              <g id="alma-ojos-v6">
+                <circle cx="161" cy="82.5" r="1.2" fill="#22d3ee" style={{ filter: "drop-shadow(0 0 1px #22d3ee)" }} id="ojo-izq-v6" />
+                <circle cx="169" cy="82.5" r="1.2" fill="#22d3ee" style={{ filter: "drop-shadow(0 0 1px #22d3ee)" }} id="ojo-der-v6" />
+              </g>
+            )}
+            {variantId === 7 && (
+              <g id="alma-ojos-v7">
+                <path d="M 160 83 C 160.5 81.5 162.5 81.5 163 83" stroke="#cbd5e1" fill="none" strokeWidth="0.75" strokeLinecap="round" id="ojo-izq-v7" />
+                <path d="M 167 83 C 167.5 81.5 169.5 81.5 170 83" stroke="#cbd5e1" fill="none" strokeWidth="0.75" strokeLinecap="round" id="ojo-der-v7" />
+              </g>
+            )}
+            {variantId === 8 && (
+              <g id="alma-ojos-v8">
+                <path d="M 161 80.5 L 162 82.5 L 164 82.5 L 162 83.5 L 161 85.5 L 160 83.5 L 158 82.5 L 160 82.5 Z" fill="#fef08a" stroke="#fbbf24" strokeWidth="0.4" id="ojo-izq-v8" />
+                <path d="M 169 80.5 L 170 82.5 L 172 82.5 L 170 83.5 L 169 85.5 L 168 83.5 L 166 82.5 L 168 82.5 Z" fill="#fef08a" stroke="#fbbf24" strokeWidth="0.4" id="ojo-der-v8" />
+              </g>
+            )}
+          </motion.g>
+        </motion.g>
 
         {/* Partículas que flotan tenuemente alrededor de la gota */}
         <g id="alma-particulas-flotantes">
@@ -359,12 +426,12 @@ export default function Scene4Walking({ variantId = 1 }: Scene4WalkingProps) {
                 id={`alma-particula-${p.id}`}
                 cx={165 + p.dx}
                 cy={90 + p.dy}
-                r={p.r}
+                r={p.r * 0.8}
                 fill={color}
                 animate={{
                   y: [0, -20],
                   x: [0, p.dx > 0 ? 2 : -2, 0],
-                  opacity: [0, 0.8, 0]
+                  opacity: [0, 0.6, 0]
                 }}
                 transition={{
                   repeat: Infinity,

@@ -181,13 +181,13 @@ export default function CamoPenguin({
             {/* Aleta */}
             <path 
               id="camo-aleta" 
-              d={isSleeping ? "M -72.827 33.598 C -73.949 29.15 -87.13 36.186 -85.352 40.578" : "M -72.827 33.598 C -73.949 29.15 -58.211 34.355 -56.433 38.747"} 
+              d={isSleeping ? "M 128.233 -33.688 C 127.111 -38.136 113.93 -31.1 115.708 -26.708" : "M -72.827 33.598 C -73.949 29.15 -58.211 34.355 -56.433 38.747"} 
               strokeWidth="2.5" 
               strokeLinecap="round" 
               stroke="rgb(0, 0, 0)" 
               fill="none" 
-              style={{ transformBox: "fill-box", transformOrigin: isSleeping ? "-79.1718px 36.3784px" : "50% 50%" }} 
-              transform={isSleeping ? "matrix(-1, 0, 0, -1, -93.006, -68.726)" : "matrix(-1, 0, 0, -1, 0.000009, 0.000004)"} 
+              style={{ transformBox: "fill-box", transformOrigin: isSleeping ? "-623.907% 433.118%" : "50% 50%" }} 
+              transform={isSleeping ? "matrix(-1, 0, 0, -1, -0.00004, 0)" : "matrix(-1, 0, 0, -1, 0.000009, 0.000004)"} 
             />
 
             {/* CASCO MILITAR */}

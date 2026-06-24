@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Scene5Approaching from '../../components/scene_5_approaching';
 import { SOUL_CONFIGS } from '../../components/scene_4_walking';
 
-// Generar código SVG estático limpio para exportar al portapapeles (Camo durmiendo + Alma)
+// Generar código SVG estático limpio para exportar al portapapeles (Camo durmiendo + Alma + Protagonista + Ojo Subconsciente)
 function getScene5StaticSvg(
   camoVariantId: number,
   showHelmet: boolean,
@@ -91,6 +91,19 @@ function getScene5StaticSvg(
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="200px" height="120px">
   <defs>
+    <!-- Gradiente Ojo Blanco Metálico/Plata -->
+    <radialGradient id="white-eye-grad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="70%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#cbd5e1" />
+    </radialGradient>
+    <!-- Gradiente Brillo/Halo Blanco -->
+    <radialGradient id="white-glow-grad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+
     <!-- Glow Radial para el alma de Camo -->
     <radialGradient id="camo-glow-s5" cx="50%" cy="50%" r="50%">
       <stop offset="0%" stop-color="#879f84" stop-opacity="0.4" />
@@ -102,7 +115,7 @@ function getScene5StaticSvg(
     <pattern id="camo-standard" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(25)">
       <rect width="40" height="40" fill="#4f5d4e" />
       <path d="M -10,5 C 5,12 15,2 25,10 C 35,18 42,6 55,12 L 55,22 C 40,16 35,26 22,18 C 10,10 -2,15 -10,12 Z" fill="#5c4033" />
-      <path d="M -10,25 C 2,28 12,20 24,32 C 34,40 40,28 55,30 L 55,38 C 42,35 34,45 22,38 C 12,30 2,36 -10,32 Z" fill="#d8d8d0" />
+      <path d="M -10,25 C 2,28 12,20 24,32 L 55,30 L 55,38 Z" fill="#d8d8d0" />
       <path d="M -10,-8 C 5,-2 15,-10 25,-4 C 35,2 42,-8 55,-4 L 55,4 C 40,-1 35,6 22,0 C 10,-6 -2,2 -10,-2 Z" fill="#7ba077" />
     </pattern>
 
@@ -164,8 +177,25 @@ function getScene5StaticSvg(
 
   <rect width="200" height="120" fill="#000000" />
 
+  <!-- 1. El Ojo Subconsciente (Ojo Blanco flotando arriba a la izquierda, mirando a Camo) -->
+  <g transform="matrix(-0.498268, 0, 0, 0.532384, 30.760, 49.912)" id="ojo-subconsciente-grupo">
+    <g id="ojo-subconsciente-flotacion">
+      <!-- Ojo Glow -->
+      <circle id="ojo-glow" cx="1.961" cy="-10.68" r="18" fill="#ffffff" opacity="0.08" transform="matrix(1.726517, 0, 0, 1.260335, 10.344875, -0.379963)" />
+      <!-- Ojo Esclera -->
+      <circle id="ojo-esclera" cx="3.705" cy="-5.231" r="10.733" fill="url(#white-eye-grad)" stroke-width="0.5" stroke="#e2e8f0" style="transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(1.4985, -0.537148, 0.642825, 1.013572, 3.086092, -7.914055)" />
+      <!-- Ojo Trazo Luz -->
+      <path id="ojo-trazo-luz" style="fill: none; stroke: rgb(255, 255, 255);" d="M -17.728 -18.374 C -19.172 -20.359 42.448 -40.704 45.523 -36.475 C 48.876 -32.004 13.029 7.732 11.259 5.372" opacity="0.8" />
+      <!-- Pupila & Brillo mirando abajo-derecha hacia Camo -->
+      <g id="ojo-pupila-grupo">
+        <circle id="ojo-pupila-centro" cx="-4.5" cy="-8.0" r="6.2" fill="#0f172a" />
+        <circle id="ojo-pupila-brillo" cx="-4.8" cy="-1.8" r="1.5" fill="#ffffff" transform="matrix(-1.397505, 0, 0, 1.944474, -13.336, -3.14)" />
+      </g>
+    </g>
+  </g>
+
   <!-- Camo durmiendo en el piso con colores muy apagados -->
-  <g id="camo-durmiendo-cuerpo" style="filter: brightness(0.28) saturate(0.35); opacity: 0.65;">
+  <g id="camo-durmiendo-cuerpo" style="filter: brightness(0.28) saturate(0.35); opacity: 0.65;" transform="matrix(0.746926, 0, 0, 0.755891, 68.90875, 16.34582)">
     <g id="camo-contenedor" transform="${facing === 'left' ? 'translate(200, 0) scale(-1, 1)' : ''}">
       <g id="camo-desplazamiento" transform="matrix(1, 0, 0, 1, 150, 65)">
         <path id="camo-pata-superior" d="M -32.417 31.796 L -25.744 26.644 L -25.774 33.746 L -32.417 31.796 Z" fill="#f59e0b" />
@@ -177,24 +207,24 @@ function getScene5StaticSvg(
         <g id="camo-patas-contenedor" transform="matrix(1, 0, 0, 1, -51.910336, 17.303471)">
           <path id="camo-pata-inferior" d="M 26.663 20.735 L 26.851 27.446 L 19.486 24.256 L 26.663 20.735 Z" fill="#f59e0b" />
         </g>
-        <path id="camo-aleta" d="${eyeStyle === 'sleeping' ? 'M -72.827 33.598 C -73.949 29.15 -87.13 36.186 -85.352 40.578' : 'M -72.827 33.598 C -73.949 29.15 -58.211 34.355 -56.433 38.747'}" stroke-width="2.5" stroke-linecap="round" stroke="rgb(0, 0, 0)" fill="none" style="transform-box: fill-box; transform-origin: ${eyeStyle === 'sleeping' ? '-79.1718px 36.3784px' : '50% 50%'};" transform="${eyeStyle === 'sleeping' ? 'matrix(-1, 0, 0, -1, -93.006, -68.726)' : 'matrix(-1, 0, 0, -1, 0.000009, 0.000004)'}" />
+        <path id="camo-aleta" d="${eyeStyle === 'sleeping' ? 'M 128.233 -33.688 C 127.111 -38.136 113.93 -31.1 115.708 -26.708' : 'M -72.827 33.598 C -73.949 29.15 -58.211 34.355 -56.433 38.747'}" stroke-width="2.5" stroke-linecap="round" stroke="rgb(0, 0, 0)" fill="none" style="transform-box: fill-box; transform-origin: ${eyeStyle === 'sleeping' ? '-623.907% 433.118%' : '50% 50%'};" transform="${eyeStyle === 'sleeping' ? 'matrix(-1, 0, 0, -1, -0.00004, 0)' : 'matrix(-1, 0, 0, -1, 0.000009, 0.000004)'}" />
         ${camoHelmetSvg}
       </g>
     </g>
   </g>
 
   <!-- Burbuja anime de sueño estática -->
-  <circle id="burbuja-sueno" cx="81" cy="84" r="3" fill="#38bdf8" fill-opacity="0.25" stroke="#0284c7" stroke-width="0.8" />
+  <circle id="burbuja-sueno" cx="131.714" cy="78.034" r="3" fill="#38bdf8" fill-opacity="0.25" stroke="#0284c7" stroke-width="0.8" />
 
   <!-- Zzz estáticas -->
-  <g id="sueno-zs" transform="translate(81, 84)">
+  <g id="sueno-zs" transform="translate(127.8, 81.95)">
     <text x="0" y="-8" fill="#a5f3fc" font-size="4" font-weight="bold" font-family="monospace" opacity="0.8">z</text>
     <text x="3" y="-16" fill="#a5f3fc" font-size="5" font-weight="bold" font-family="monospace" opacity="0.6">z</text>
     <text x="6" y="-24" fill="#a5f3fc" font-size="6.5" font-weight="bold" font-family="monospace" opacity="0.4">Z</text>
   </g>
 
   <!-- Alma de Camo flotando (cx: 90, cy: 35) -->
-  <g id="camo-alma-contenedor">
+  <g id="camo-alma-contenedor" transform="matrix(0.756577, 0, 0, 0.772114, 81.479, 9.468)">
     <circle id="alma-fondo-glow" cx="90" cy="35" r="18" fill="url(#camo-glow-s5)" opacity="0.5" />
     <path id="alma-gota-invertida" d="M 90 51 C 82 43 78 35 78 29 A 12 12 0 0 1 102 29 C 102 35 98 43 90 51 Z" fill="${config.patternUrl}" stroke="${config.stroke}" stroke-width="0.8" opacity="0.85" />
     <g id="alma-ojos-contenedor">
@@ -202,6 +232,41 @@ function getScene5StaticSvg(
     </g>
     <g id="alma-particulas-flotantes">
       ${particlesSvg}
+    </g>
+  </g>
+
+  <!-- 2. El Pingüino Protagonista (Parado a la izquierda, mirando a la derecha y hacia abajo a Camo) -->
+  <g id="protagonista-contenedor" transform="matrix(0.796426, 0, 0, 0.829579, 35.501, 22.127)">
+    <g id="protagonista-posicion" transform="matrix(0, 0.848747, -0.768697, 0, 35, 115)">
+      <g id="protagonista-respiracion">
+        <!-- Pata Superior -->
+        <path id="protagonista-pata-superior" d="M -32.417 31.796 L -25.744 26.644 L -25.774 33.746 L -32.417 31.796 Z" fill="#f59e0b" />
+        <!-- Cuerpo -->
+        <ellipse id="protagonista-cuerpo" cx="-47.91" cy="37.303" rx="20" ry="14" fill="#18181b" />
+        <!-- Vientre -->
+        <ellipse id="protagonista-vientre" cx="-49.91" cy="31.303" rx="14" ry="8" fill="#f4f4f5" />
+        <!-- Cabeza -->
+        <circle id="protagonista-cabeza" cx="-67.91" cy="33.303" r="10" fill="#18181b" />
+        <!-- Bufanda -->
+        <g id="protagonista-bufanda" transform="matrix(1, 0, 0, 1, -51.910336, 17.303471)">
+          <path id="protagonista-bufanda-cuello" d="M -14.315 26.443 C -12.315 20.443 -3.738 18.577 -6.624 13.624" stroke="#ef4444" stroke-width="2.2" fill="none" stroke-linecap="round" />
+          <path id="protagonista-bufanda-caida-roja" d="M -7.663 13.49 C -2.663 12.49 3 11 7 9 C 5 7 0.204 10.408 -6.796 12.408 L -7.663 13.49 Z" fill="#ef4444" />
+          <path id="protagonista-bufanda-caida-guinda" d="M -6.929 14.898 C -1.929 14.898 2 14 5 13 C 3 11 -0.337 13.357 -7.337 13.357 L -6.929 14.898 Z" fill="#b91c1c" />
+        </g>
+        <!-- Ojo del Protagonista buscando abajo-izquierda -->
+        <g id="protagonista-ojo">
+          <circle id="protagonista-ojo-borde" cx="-67.91" cy="33.303" r="2.2" fill="#f4f4f5" />
+          <circle id="protagonista-ojo-pupila" cx="-66.2" cy="31.8" r="1.019" fill="#000000" />
+        </g>
+        <!-- Pico -->
+        <polygon id="protagonista-pico" points="-70.91 26.303 -67.91 19.303 -64.91 26.303" fill="#f59e0b" />
+        <!-- Pata Inferior -->
+        <g id="protagonista-patas" transform="matrix(1, 0, 0, 1, -51.910336, 17.303471)">
+          <path id="protagonista-pata-inferior" d="M 26.663 20.735 L 26.851 27.446 L 19.486 24.256 L 26.663 20.735 Z" fill="#f59e0b" />
+        </g>
+        <!-- Aleta -->
+        <path id="protagonista-aleta" d="M -56.369 37.201 C -57.631 41.252 -39.926 36.511 -37.926 32.511" stroke-width="2.5" stroke-linecap="round" stroke="rgb(0, 0, 0)" fill="none" />
+      </g>
     </g>
   </g>
 </svg>`;
@@ -280,7 +345,7 @@ export default function Scene5PlaygroundPage() {
       {/* Glows de fondo */}
       <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none" />
-
+ 
       <div className="max-w-6xl w-full mx-auto flex-1 flex flex-col relative z-10">
         
         {/* Header */}

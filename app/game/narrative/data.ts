@@ -139,7 +139,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_2_join',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: 'Tal como pensaba, el hecho de tu llegada está cambiando algo. Acompáñame, sentir un #alma levemente despierta#.',
+    text: 'Tal como pensaba, el hecho de tu llegada está cambiando algo. Acompáñame, sentir un alma #levemente# despierta.',
     illustration: {
       position: 'center',
       aspectRatio: 'aspect-video',

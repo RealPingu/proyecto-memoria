@@ -5,6 +5,9 @@ import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NARRATIVE_NODES, DialogueNode } from './data';
 import SleepingPenguinLying from './illustrations/sleeping_penguin_lying';
+import Scene2Encounter from './illustrations/scene_2_encounter';
+import Scene3Questioning from './illustrations/scene_3_questioning';
+import Scene4Walking from './illustrations/scene_4_walking';
 
 // Tokenizador para dar formato especial a "" y #
 interface TextToken {
@@ -54,6 +57,7 @@ function parseDialogueText(text: string): TextToken[] {
 
   return tokens;
 }
+
 
 export default function NarrativeIntroPage() {
   const [currentNodeId, setCurrentNodeId] = useState('scene_1_init');
@@ -200,10 +204,15 @@ export default function NarrativeIntroPage() {
   const handleChoiceClick = (choice: { text: string; nextNodeId: string; isCorrect: boolean; explanation: string; id: string }) => {
     logInteraction(choice.id, choice.isCorrect, { text: choice.text });
     
-    // Almacenamos la explicación del patrón y el destino
-    setSelectedExplanationText(choice.explanation);
-    setNextAfterExplanation(choice.nextNodeId);
-    setShowExplanation(true);
+    if (choice.explanation && choice.explanation.trim() !== '') {
+      // Almacenamos la explicación del patrón y el destino
+      setSelectedExplanationText(choice.explanation);
+      setNextAfterExplanation(choice.nextNodeId);
+      setShowExplanation(true);
+    } else {
+      // Avanzar directamente sin popup explicativo
+      advanceNode(choice.nextNodeId);
+    }
   };
 
   const handleCloseExplanation = () => {
@@ -286,144 +295,19 @@ export default function NarrativeIntroPage() {
       return <SleepingPenguinLying />;
     }
 
-    if (currentNodeId.startsWith('scene_2')) {
-      // Escenas de encuentro con el subconsciente (Escena 2, respuestas y escena 3-unión)
-      return (
-        <svg viewBox="0 0 200 120" className="w-full h-full">
-          <defs>
-            {/* Filtro de resplandor para el ojo blanco */}
-            <filter id="glow-effect" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
-              <feMerge>
-                <feMergeNode in="blur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-            
-            <radialGradient id="limbo-blue" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#0f172a" stopOpacity="0.6" />
-              <stop offset="100%" stopColor="#09090b" stopOpacity="0.9" />
-            </radialGradient>
-          </defs>
-
-          {/* Fondo */}
-          <rect width="200" height="120" fill="url(#limbo-blue)" />
-          <line x1="10" y1="95" x2="190" y2="95" stroke="#1e293b" strokeWidth="0.5" />
-
-          {/* Pingüino (Mirando hacia la derecha) */}
-          <g transform="translate(55, 60)">
-            <ellipse cx="0" cy="30" rx="9" ry="1.5" fill="black" opacity="0.35" />
-            
-            {/* Cuerpo inclinado */}
-            <ellipse cx="0" cy="10" rx="10" ry="17" fill="#18181b" />
-            <ellipse cx="4" cy="11" rx="6" ry="12" fill="#f4f4f5" />
-            
-            {/* Aleta */}
-            <path d="M-8,5 C-11,8 -10,16 -8,18" stroke="#18181b" strokeWidth="2" strokeLinecap="round" fill="none" />
-            
-            {/* Cabeza */}
-            <circle cx="2" cy="-10" r="8" fill="#18181b" />
-            {/* Ojo asombrado */}
-            <circle cx="5" cy="-11" r="1.5" fill="#f4f4f5" />
-            <circle cx="5.5" cy="-11" r="0.75" fill="black" />
-            {/* Pico */}
-            <polygon points="9,-9 13,-8 9,-7" fill="#f59e0b" />
-          </g>
-
-          {/* Ojo Blanco (Subconsciente) - Flotando y Latente */}
-          <g transform="translate(145, 48)">
-            <motion.g
-              animate={{ 
-                y: [-3, 3, -3],
-                scale: [0.98, 1.02, 0.98]
-              }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-            >
-              {/* Sombra de suelo */}
-              <ellipse cx="0" cy="42" rx="15" ry="2.5" fill="#000000" opacity="0.4" />
-
-              {/* Halo de luz exterior */}
-              <circle cx="0" cy="0" r="22" fill="white" opacity="0.05" filter="url(#glow-effect)" />
-
-              {/* Globo Ocular */}
-              <circle cx="0" cy="0" r="16" fill="#f8fafc" stroke="#e2e8f0" strokeWidth="0.5" filter="url(#glow-effect)" />
-
-              {/* Pupila Animada (Simula movimiento de mirada atenta) */}
-              <motion.g
-                animate={{ 
-                  x: [-1.5, 1.5, -1.5],
-                  y: [-0.5, 0.5, -0.5]
-                }}
-                transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-              >
-                <circle cx="-3" cy="0" r="6" fill="#0f172a" />
-                {/* Reflejo de luz */}
-                <circle cx="-4.5" cy="-1.5" r="1.5" fill="white" />
-              </motion.g>
-            </motion.g>
-          </g>
-        </svg>
-      );
+    if (currentNodeId === 'scene_2_start') {
+      // Escena 2: Encuentro con el subconsciente
+      return <Scene2Encounter variantId={1} />;
     }
 
-    if (currentNodeId === 'scene_3_start') {
-      // Fin de la demo / Escena 3: Avanzando juntos hacia el resplandor
-      return (
-        <svg viewBox="0 0 200 120" className="w-full h-full">
-          <defs>
-            <radialGradient id="portal-light" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#10b981" stopOpacity="0.7" />
-              <stop offset="30%" stopColor="#064e3b" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#09090b" stopOpacity="0.9" />
-            </radialGradient>
-          </defs>
+    if (currentNodeId.startsWith('scene_2_ans')) {
+      // Escena 3: Diálogo interactivo
+      return <Scene3Questioning variantId={1} />;
+    }
 
-          {/* Fondo */}
-          <rect width="200" height="120" fill="#09090b" />
-          
-          {/* Gran resplandor de fondo (Portal) */}
-          <motion.circle 
-            animate={{ 
-              r: [25, 35, 25],
-              opacity: [0.6, 0.8, 0.6] 
-            }}
-            transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-            cx="100" 
-            cy="50" 
-            r="30" 
-            fill="url(#portal-light)" 
-          />
-
-          {/* Líneas de perspectiva en el suelo */}
-          <line x1="100" y1="50" x2="20" y2="120" stroke="#065f46" strokeWidth="0.25" opacity="0.3" />
-          <line x1="100" y1="50" x2="60" y2="120" stroke="#065f46" strokeWidth="0.25" opacity="0.3" />
-          <line x1="100" y1="50" x2="140" y2="120" stroke="#065f46" strokeWidth="0.25" opacity="0.3" />
-          <line x1="100" y1="50" x2="180" y2="120" stroke="#065f46" strokeWidth="0.25" opacity="0.3" />
-          <line x1="0" y1="95" x2="200" y2="95" stroke="#065f46" strokeWidth="0.5" opacity="0.4" />
-
-          {/* Pingüino de espaldas, más lejano */}
-          <g transform="translate(88, 70) scale(0.7)">
-            <ellipse cx="0" cy="30" rx="9" ry="1.5" fill="black" opacity="0.4" />
-            <ellipse cx="0" cy="10" rx="10" ry="17" fill="#18181b" />
-            {/* Aletas */}
-            <path d="M-11,8 C-13,11 -12,18 -10,20" stroke="#18181b" strokeWidth="2" strokeLinecap="round" fill="none" />
-            <path d="M11,8 C13,11 12,18 10,20" stroke="#18181b" strokeWidth="2" strokeLinecap="round" fill="none" />
-            <circle cx="0" cy="-10" r="8" fill="#18181b" />
-          </g>
-
-          {/* Ojo Blanco de espaldas/flotando al lado */}
-          <g transform="translate(114, 62) scale(0.6)">
-            <motion.g
-              animate={{ y: [-2, 2, -2] }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-            >
-              <ellipse cx="0" cy="42" rx="15" ry="2.5" fill="black" opacity="0.4" />
-              <circle cx="0" cy="0" r="16" fill="#f8fafc" opacity="0.9" />
-              <circle cx="0" cy="0" r="6" fill="#0f172a" opacity="0.8" />
-            </motion.g>
-          </g>
-        </svg>
-      );
+    if (currentNodeId === 'scene_2_join' || currentNodeId === 'scene_3_start') {
+      // Escena 4: Caminando (ojo deescalado arriba a la izquierda)
+      return <Scene4Walking variantId={1} />;
     }
 
     // SVG genérico por defecto
@@ -502,9 +386,9 @@ export default function NarrativeIntroPage() {
                           e.stopPropagation(); // Evitar que el clic en la opción active handleBoxClick
                           handleChoiceClick(choice);
                         }}
-                        className="w-full text-left py-2 px-3 border border-zinc-800/40 bg-zinc-950/40 hover:border-game-accent/50 hover:bg-game-surface/20 transition-all text-zinc-400 hover:text-game-accent font-mono text-[10px] uppercase tracking-widest cursor-pointer rounded-sm flex items-center space-x-2.5 group active:scale-[0.99] select-none"
+                        className="w-full text-left py-2 px-3 border border-zinc-800/40 bg-zinc-950/40 hover:border-red-500/40 hover:bg-red-950/10 transition-all text-red-400 hover:text-red-300 font-mono text-[10px] uppercase tracking-widest cursor-pointer rounded-sm flex items-center space-x-2.5 group active:scale-[0.99] select-none"
                       >
-                        <span className="text-game-accent/40 group-hover:text-game-accent transition-colors font-bold select-none">&gt;</span>
+                        <span className="text-white/40 group-hover:text-white/80 transition-colors font-bold select-none">&gt;</span>
                         <span className="leading-tight">{choice.text}</span>
                       </button>
                     ))}

@@ -342,10 +342,9 @@ export default function Scene4Walking({ variantId = 1 }: Scene4WalkingProps) {
             scale: [0.98, 1.02, 0.98]
           }}
           transition={{ 
-            repeat: Infinity,
-            d: { duration: 4.0, ease: "easeInOut" },
-            y: { duration: 3.1, ease: "easeInOut" },
-            scale: { duration: 3.1, ease: "easeInOut" }
+            d: { duration: 4.0, ease: "easeInOut", repeat: Infinity },
+            y: { duration: 3.1, ease: "easeInOut", repeat: Infinity },
+            scale: { duration: 3.1, ease: "easeInOut", repeat: Infinity }
           }}
           style={{ originX: "165px", originY: "90px" }}
         />

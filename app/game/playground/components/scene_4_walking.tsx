@@ -325,7 +325,7 @@ export default function Scene4Walking({ variantId = 1 }: Scene4WalkingProps) {
           transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
         />
 
-        {/* Gota Invertida principal del Alma con patrón militar dinámico */}
+        {/* Gota Invertida principal del Alma con patrón militar dinámico y morphing de la punta inferior */}
         <motion.path
           id="alma-gota-invertida"
           d="M 165 106 C 157 98 153 90 153 84 A 12 12 0 0 1 177 84 C 177 90 173 98 165 106 Z"
@@ -333,6 +333,13 @@ export default function Scene4Walking({ variantId = 1 }: Scene4WalkingProps) {
           stroke={config.stroke}
           strokeWidth="0.8"
           animate={{ 
+            d: [
+              "M 165 106 C 157 98 153 90 153 84 A 12 12 0 0 1 177 84 C 177 90 173 98 165 106 Z",
+              "M 161 106 C 157 98 153 90 153 84 A 12 12 0 0 1 177 84 C 177 90 173 98 161 106 Z",
+              "M 165 106 C 157 98 153 90 153 84 A 12 12 0 0 1 177 84 C 177 90 173 98 165 106 Z",
+              "M 169 106 C 157 98 153 90 153 84 A 12 12 0 0 1 177 84 C 177 90 173 98 169 106 Z",
+              "M 165 106 C 157 98 153 90 153 84 A 12 12 0 0 1 177 84 C 177 90 173 98 165 106 Z"
+            ],
             y: [-1.5, 1.5, -1.5],
             scale: [0.98, 1.02, 0.98]
           }}

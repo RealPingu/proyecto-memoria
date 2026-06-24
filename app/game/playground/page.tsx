@@ -6,6 +6,7 @@ import SleepingPenguinLying from './components/sleeping_penguin_lying';
 import Scene2Encounter from './components/scene_2_encounter';
 import Scene3Questioning from './components/scene_3_questioning';
 import Scene4Walking from './components/scene_4_walking';
+import Scene5Approaching from './components/scene_5_approaching';
 
 interface SceneItem {
   id: string;
@@ -78,6 +79,21 @@ export default function SceneMenuPage() {
       preview: (
         <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
           <Scene4Walking />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+        </div>
+      )
+    },
+    {
+      id: 'scene_5',
+      number: 5,
+      title: 'El Alma de Camo',
+      subtitle: 'Escena 5 — Diseñador de Camo',
+      description: 'El protagonista y Camo se aproximan al alma. Personaliza a Camo con camuflaje militar, casco, arnés y visor táctico.',
+      path: '/game/playground/scene/scene_5',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
+          <Scene5Approaching />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
         </div>
       )

@@ -1,4 +1,4 @@
-// app/game/narrative/intro/data.ts
+// app/game/narrative/data.ts
 
 export interface DialogueNode {
   id: string;
@@ -49,21 +49,23 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
       {
         id: 'c1',
         text: '¿Quién eres?',
-        nextNodeId: 'scene_2_ans_1',
+        nextNodeId: 'scene_2_ans_1_first',
         isCorrect: true,
-        explanation: 'Interrogas al subconsciente sobre su origen en este espacio liminal.'
+        explanation: ''
       },
       {
         id: 'c2',
         text: '¿Qué le pasó a este mundo?',
-        nextNodeId: 'scene_2_ans_2',
+        nextNodeId: 'scene_2_ans_2_first',
         isCorrect: true,
-        explanation: 'Indagas sobre la causa de la penumbra y los espíritus apagados.'
+        explanation: ''
       }
     ]
   },
-  'scene_2_ans_1': {
-    id: 'scene_2_ans_1',
+  
+  // CAMINO A: "¿Quién eres?" primero
+  'scene_2_ans_1_first': {
+    id: 'scene_2_ans_1_first',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
     text: 'No poseo un nombre, tampoco recuerdo el momento de mi creación, solo sé que existo en un lugar apartado del mundo, algunos me llaman el "subconsciente".',
@@ -73,10 +75,18 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
       color: 'from-blue-950/30 via-zinc-900/50 to-black border-blue-900/10 text-blue-300',
       label: 'Escena 2 - Respuesta 1: El ojo blanco pulsa suavemente de forma rítmica, denotando la naturaleza filosófica y atemporal de su propia existencia.'
     },
-    next: 'scene_2_join'
+    choices: [
+      {
+        id: 'c2_second',
+        text: '¿Qué le pasó a este mundo?',
+        nextNodeId: 'scene_2_ans_2_second',
+        isCorrect: true,
+        explanation: ''
+      }
+    ]
   },
-  'scene_2_ans_2': {
-    id: 'scene_2_ans_2',
+  'scene_2_ans_2_second': {
+    id: 'scene_2_ans_2_second',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
     text: 'Es una larga historia, en este mundo yacen los espíritus de la gente, muchos han perdido su "luz", han sido "persuadidos" y se encuentran "dormidos".',
@@ -88,6 +98,43 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     },
     next: 'scene_2_join'
   },
+
+  // CAMINO B: "¿Qué le pasó a este mundo?" primero
+  'scene_2_ans_2_first': {
+    id: 'scene_2_ans_2_first',
+    speaker: 'subconscious',
+    speakerLabel: 'Subconsciente',
+    text: 'Es una larga historia, en este mundo yacen los espíritus de la gente, muchos han perdido su "luz", han sido "persuadidos" y se encuentran "dormidos".',
+    illustration: {
+      position: 'right',
+      aspectRatio: 'aspect-video',
+      color: 'from-blue-950/20 via-zinc-900/40 to-black border-blue-900/10 text-blue-400/80',
+      label: 'Escena 2 - Respuesta 2: El ojo parpadea suavemente, mostrando resignación y melancolía al recordar a las almas caídas bajo el influjo de las interfaces oscuras.'
+    },
+    choices: [
+      {
+        id: 'c1_second',
+        text: '¿Quién eres?',
+        nextNodeId: 'scene_2_ans_1_second',
+        isCorrect: true,
+        explanation: ''
+      }
+    ]
+  },
+  'scene_2_ans_1_second': {
+    id: 'scene_2_ans_1_second',
+    speaker: 'subconscious',
+    speakerLabel: 'Subconsciente',
+    text: 'No poseo un nombre, tampoco recuerdo el momento de mi creación, solo sé que existo en un lugar apartado del mundo, algunos me llaman el "subconsciente".',
+    illustration: {
+      position: 'right',
+      aspectRatio: 'aspect-video',
+      color: 'from-blue-950/30 via-zinc-900/50 to-black border-blue-900/10 text-blue-300',
+      label: 'Escena 2 - Respuesta 1: El ojo blanco pulsa suavemente de forma rítmica, denotando la naturaleza filosófica y atemporal de su propia existencia.'
+    },
+    next: 'scene_2_join'
+  },
+
   'scene_2_join': {
     id: 'scene_2_join',
     speaker: 'subconscious',

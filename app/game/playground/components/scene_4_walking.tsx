@@ -391,8 +391,8 @@ export default function Scene4Walking({ variantId = 1 }: Scene4WalkingProps) {
             )}
             {variantId === 5 && (
               <g id="alma-ojos-v5">
-                <circle cx="161" cy="82.5" r="1.2" fill="#22d3ee" style={{ filter: "drop-shadow(0 0 1px #22d3ee)" }} id="ojo-izq-v5" />
-                <circle cx="169" cy="82.5" r="1.2" fill="#22d3ee" style={{ filter: "drop-shadow(0 0 1px #22d3ee)" }} id="ojo-der-v5" />
+                <path d="M 160 82 C 160.5 83.5 162.5 83.5 163 82" stroke="#ffffff" fill="none" strokeWidth="0.75" strokeLinecap="round" id="ojo-izq-v5" />
+                <path d="M 167 82 C 167.5 83.5 169.5 83.5 170 82" stroke="#ffffff" fill="none" strokeWidth="0.75" strokeLinecap="round" id="ojo-der-v5" />
               </g>
             )}
             {variantId === 6 && (

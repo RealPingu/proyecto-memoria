@@ -86,8 +86,8 @@ function getVariantStaticSvg(variantId: number): string {
         return `    <path d="M 159.5 82.5 H 163" stroke="#ffffff" stroke-width="0.65" stroke-linecap="round" id="ojo-izq" />
     <path d="M 167 82.5 H 170.5" stroke="#ffffff" stroke-width="0.65" stroke-linecap="round" id="ojo-der" />`;
       case 5:
-        return `    <circle cx="161" cy="82.5" r="1.2" fill="#22d3ee" id="ojo-izq" />
-    <circle cx="169" cy="82.5" r="1.2" fill="#22d3ee" id="ojo-der" />`;
+        return `    <path d="M 160 82 C 160.5 83.5 162.5 83.5 163 82" stroke="#ffffff" fill="none" stroke-width="0.75" stroke-linecap="round" id="ojo-izq" />
+    <path d="M 167 82 C 167.5 83.5 169.5 83.5 170 82" stroke="#ffffff" fill="none" stroke-width="0.75" stroke-linecap="round" id="ojo-der" />`;
       case 6:
         return `    <circle cx="161" cy="82.5" r="1.2" fill="#22d3ee" id="ojo-izq" />
     <circle cx="169" cy="82.5" r="1.2" fill="#22d3ee" id="ojo-der" />`;

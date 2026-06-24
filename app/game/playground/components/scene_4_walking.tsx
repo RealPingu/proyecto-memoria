@@ -2,18 +2,86 @@
 
 import { motion } from 'framer-motion';
 
-const stepsEasing = (t: number) => Math.floor(t * 4) / 4;
-
 interface Scene4WalkingProps {
   variantId?: number;
 }
 
+// Configuración de los Conceptos del Alma (v1 a v8)
+export const SOUL_CONFIGS: Record<number, {
+  name: string;
+  patternUrl: string;
+  stroke: string;
+  particleColors: string[];
+}> = {
+  1: {
+    name: 'Camo Estándar',
+    patternUrl: 'url(#camo-standard)',
+    stroke: '#7ba077',
+    particleColors: ['#7ba077', '#d8d8d0', '#5c4033']
+  },
+  2: {
+    name: 'Camo Bosque',
+    patternUrl: 'url(#camo-forest)',
+    stroke: '#556b2f',
+    particleColors: ['#556b2f', '#8b4513', '#2d3a1a']
+  },
+  3: {
+    name: 'Camo Desierto',
+    patternUrl: 'url(#camo-desert)',
+    stroke: '#cd853f',
+    particleColors: ['#c2b280', '#cd853f', '#8b5a2b']
+  },
+  4: {
+    name: 'Camo Ártico',
+    patternUrl: 'url(#camo-arctic)',
+    stroke: '#94a3b8',
+    particleColors: ['#ffffff', '#cbd5e1', '#64748b']
+  },
+  5: {
+    name: 'Camo Digital',
+    patternUrl: 'url(#camo-digital)',
+    stroke: '#7ba077',
+    particleColors: ['#7ba077', '#546554', '#2d3a2d']
+  },
+  6: {
+    name: 'Camo Nocturno',
+    patternUrl: 'url(#camo-night)',
+    stroke: '#312e81',
+    particleColors: ['#38bdf8', '#818cf8', '#1e293b']
+  },
+  7: {
+    name: 'Camo Urbano',
+    patternUrl: 'url(#camo-urban)',
+    stroke: '#94a3b8',
+    particleColors: ['#cbd5e1', '#94a3b8', '#1e293b']
+  },
+  8: {
+    name: 'Camo Dorado',
+    patternUrl: 'url(#camo-gold)',
+    stroke: '#eab308',
+    particleColors: ['#fef08a', '#fbbf24', '#ffffff']
+  }
+};
+
+// Coordenadas relativas y duraciones de las partículas alrededor del alma (cx: 165, cy: 90)
+export const PARTICLE_TEMPLATES = [
+  { id: 1, dx: -8, dy: 6, r: 1.2, duration: 3.2, delay: 0 },
+  { id: 2, dx: 8, dy: 10, r: 1.4, duration: 3.8, delay: 0.7 },
+  { id: 3, dx: -6, dy: -6, r: 0.9, duration: 2.6, delay: 1.4 },
+  { id: 4, dx: 6, dy: -4, r: 1.1, duration: 3.4, delay: 2.1 },
+  { id: 5, dx: 0, dy: 12, r: 1.3, duration: 4.2, delay: 0.4 },
+  { id: 6, dx: -11, dy: 0, r: 1.0, duration: 2.9, delay: 1.1 },
+];
+
 export default function Scene4Walking({ variantId = 1 }: Scene4WalkingProps) {
-  // Eye positioned and scaled using user matrix normalized to (0, 0)
+  // Matriz de transformación para el Ojo Subconsciente (fijo en parte izquierda superior)
   const transformAttr = "matrix(-0.794842, 0, 0, 0.845185, 50.107243, 37.822482)";
+  
+  // Obtener la configuración según la variante elegida
+  const config = SOUL_CONFIGS[variantId] || SOUL_CONFIGS[1];
 
   return (
-    <svg viewBox="0 0 200 120" className="w-full h-full">
+    <svg viewBox="0 0 200 120" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
       <defs>
         {/* Gradiente Ojo Blanco Metálico/Plata */}
         <radialGradient id="white-eye-grad" cx="50%" cy="50%" r="50%">
@@ -35,60 +103,91 @@ export default function Scene4Walking({ variantId = 1 }: Scene4WalkingProps) {
           <stop offset="100%" stopColor="#000000" stopOpacity="0" />
         </radialGradient>
 
-        {/* Patrón de camuflaje de Camo */}
-        <pattern id="camo-soul" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(25)">
-          {/* Base: Green-gray */}
-          <rect width="40" height="40" fill="#4f5d4e" />
-          
-          {/* Café/Marrón stripes */}
-          <motion.path 
-            d="M -10,5 C 5,12 15,2 25,10 C 35,18 42,6 55,12 L 55,22 C 40,16 35,26 22,18 C 10,10 -2,15 -10,12 Z" 
-            fill="#5c4033"
-            animate={{
-              x: [-2, 2, -2],
-              y: [-1, 1, -1]
-            }}
-            transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-          />
-          
-          {/* Blanco/Beige stripes */}
-          <motion.path 
-            d="M -10,25 C 2,28 12,20 24,32 C 34,40 40,28 55,30 L 55,38 C 42,35 34,45 22,38 C 12,30 2,36 -10,32 Z" 
-            fill="#d8d8d0"
-            animate={{
-              x: [2, -2, 2],
-              y: [1, -1, 1]
-            }}
-            transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-          />
+        {/* 1. Camuflaje Estándar */}
+        <pattern id="camo-standard" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(25)">
+          <rect width="40" height="40" fill="#4f5d4e" id="rect-bg-std" />
+          <path id="path-brown-std" d="M -10,5 C 5,12 15,2 25,10 C 35,18 42,6 55,12 L 55,22 C 40,16 35,26 22,18 C 10,10 -2,15 -10,12 Z" fill="#5c4033" />
+          <path id="path-cream-std" d="M -10,25 C 2,28 12,20 24,32 C 34,40 40,28 55,30 L 55,38 C 42,35 34,45 22,38 C 12,30 2,36 -10,32 Z" fill="#d8d8d0" />
+          <path id="path-green-std" d="M -10,-8 C 5,-2 15,-10 25,-4 C 35,2 42,-8 55,-4 L 55,4 C 40,-1 35,6 22,0 C 10,-6 -2,2 -10,-2 Z" fill="#7ba077" />
+        </pattern>
 
-          {/* Verde claro/Gris stripes */}
-          <motion.path 
-            d="M -10,-8 C 5,-2 15,-10 25,-4 C 35,2 42,-8 55,-4 L 55,4 C 40,-1 35,6 22,0 C 10,-6 -2,2 -10,-2 Z" 
-            fill="#7ba077"
-            animate={{
-              x: [-1.5, 1.5, -1.5],
-              y: [-1.5, 1.5, -1.5]
-            }}
-            transition={{ repeat: Infinity, duration: 7, ease: "easeInOut" }}
-          />
+        {/* 2. Camuflaje Bosque */}
+        <pattern id="camo-forest" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+          <rect width="40" height="40" fill="#2d3a1a" id="rect-bg-for" />
+          <path id="path-darkgreen-for" d="M -10,5 C 5,12 15,2 25,10 C 35,18 42,6 55,12 L 55,22 Z" fill="#1b2611" />
+          <path id="path-brown-for" d="M -10,25 C 2,28 12,20 24,32 L 55,30 L 55,38 Z" fill="#5c4033" />
+          <path id="path-green-for" d="M -10,-8 C 5,-2 15,-10 25,-4 L 55,-4 L 55,4 Z" fill="#556b2f" />
+        </pattern>
+
+        {/* 3. Camuflaje Desierto */}
+        <pattern id="camo-desert" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(15)">
+          <rect width="40" height="40" fill="#d2b48c" id="rect-bg-des" />
+          <path id="path-darkbrown-des" d="M -10,5 C 5,12 15,2 25,10 C 35,18 42,6 55,12 L 55,22 Z" fill="#8b5a2b" />
+          <path id="path-cream-des" d="M -10,25 C 2,28 12,20 24,32 L 55,30 L 55,38 Z" fill="#f4e0c4" />
+          <path id="path-tan-des" d="M -10,-8 C 5,-2 15,-10 25,-4 L 55,-4 L 55,4 Z" fill="#cd853f" />
+        </pattern>
+
+        {/* 4. Camuflaje Ártico */}
+        <pattern id="camo-arctic" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <rect width="40" height="40" fill="#e2e8f0" id="rect-bg-arc" />
+          <path id="path-gray-arc" d="M -10,5 C 5,12 15,2 25,10 L 55,12 L 55,22 Z" fill="#94a3b8" />
+          <path id="path-white-arc" d="M -10,25 C 2,28 12,20 24,32 L 55,30 L 55,38 Z" fill="#ffffff" />
+          <path id="path-slate-arc" d="M -10,-8 C 5,-2 15,-10 25,-4 L 55,-4 L 55,4 Z" fill="#475569" />
+        </pattern>
+
+        {/* 5. Camuflaje Digital */}
+        <pattern id="camo-digital" width="20" height="20" patternUnits="userSpaceOnUse">
+          <rect width="20" height="20" fill="#3f4e3f" id="rect-bg-dig" />
+          <rect x="0" y="0" width="8" height="6" fill="#2d3a2d" id="rect-dark-dig" />
+          <rect x="10" y="4" width="6" height="8" fill="#546554" id="rect-medium-dig" />
+          <rect x="2" y="10" width="8" height="6" fill="#7ba077" id="rect-light-dig" />
+          <rect x="12" y="12" width="6" height="6" fill="#202a20" id="rect-black-dig" />
+        </pattern>
+
+        {/* 6. Camuflaje Nocturno */}
+        <pattern id="camo-night" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(10)">
+          <rect width="40" height="40" fill="#0f172a" id="rect-bg-ngt" />
+          <path id="path-indigo-ngt" d="M -10,5 C 5,12 15,2 25,10 L 55,12 L 55,22 Z" fill="#1e1b4b" />
+          <path id="path-blue-ngt" d="M -10,25 C 2,28 12,20 24,32 L 55,30 L 55,38 Z" fill="#312e81" />
+          <path id="path-charcoal-ngt" d="M -10,-8 C 5,-2 15,-10 25,-4 L 55,-4 L 55,4 Z" fill="#1e293b" />
+        </pattern>
+
+        {/* 7. Camuflaje Urbano */}
+        <pattern id="camo-urban" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(30)">
+          <rect width="40" height="40" fill="#475569" id="rect-bg-urb" />
+          <path id="path-darkgray-urb" d="M -10,5 C 5,12 15,2 25,10 L 55,12 L 55,22 Z" fill="#1e293b" />
+          <path id="path-lightgray-urb" d="M -10,25 C 2,28 12,20 24,32 L 55,30 L 55,38 Z" fill="#cbd5e1" />
+          <path id="path-slate-urb" d="M -10,-8 C 5,-2 15,-10 25,-4 L 55,-4 L 55,4 Z" fill="#94a3b8" />
+        </pattern>
+
+        {/* 8. Camuflaje Dorado */}
+        <linearGradient id="gold-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#fef08a" />
+          <stop offset="50%" stopColor="#eab308" />
+          <stop offset="100%" stopColor="#ca8a04" />
+        </linearGradient>
+        <pattern id="camo-gold" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(25)">
+          <rect width="40" height="40" fill="url(#gold-grad-1)" id="rect-bg-gld" />
+          <path id="path-darkgold-gld" d="M -10,5 C 5,12 15,2 25,10 L 55,12 L 55,22 Z" fill="#a16207" opacity="0.6" />
+          <path id="path-lightgold-gld" d="M -10,25 C 2,28 12,20 24,32 L 55,30 L 55,38 Z" fill="#fef9c3" opacity="0.8" />
+          <path id="path-mediumgold-gld" d="M -10,-8 C 5,-2 15,-10 25,-4 L 55,-4 L 55,4 Z" fill="#854d0e" opacity="0.5" />
         </pattern>
       </defs>
 
-      {/* Total Black Background */}
-      <rect width="200" height="120" fill="#000000" />
+      {/* Fondo Negro Absoluto */}
+      <rect width="200" height="120" fill="#000000" id="fondo-escena" />
 
-      {/* 1. The Penguin (standing up on the left, scaled and positioned using user matrix) */}
+      {/* 1. El Pingüino Protagonista (de pie a la izquierda) */}
       <g id="pinguino-contenedor" transform="matrix(0, 0.848747, -0.768697, 0, 63.980534, 122.770161)">
         <motion.g
           id="pinguino-caminar-bamboleo"
           animate={{ 
-            x: [0, -0.8, 0], // Bobbing up and down (in rotated local space)
-            rotate: [-3.5, 3.5, -3.5] // Waddling sway back and forth
+            x: [0, -0.8, 0],
+            rotate: [-3.5, 3.5, -3.5]
           }}
           transition={{ repeat: Infinity, duration: 0.7, ease: "easeInOut" }}
         >
-          {/* Pata Superior (capa de fondo) - Walking swing in opposite phase */}
+          {/* Pata Superior */}
           <motion.path 
             id="pata-superior" 
             d="M -32.417 31.796 L -25.744 26.644 L -25.774 33.746 L -32.417 31.796 Z" 
@@ -111,12 +210,12 @@ export default function Scene4Walking({ variantId = 1 }: Scene4WalkingProps) {
           
           {/* Bufanda */}
           <g id="bufanda" transform="matrix(1, 0, 0, 1, -51.910336, 17.303471)">
-            <path id="bufanda-cuello" d="M -14.315 26.443 C -12.315 20.443 -3.738 18.577 -6.624 13.624" stroke="#ef4444" strokeWidth="2.2" fill="none" strokeLinecap="round" />
+            <path id="bufanda-cuello" d="M -14.315 26.443 C -12.315 20.443 -3.738 18.577 -6.624 13.624" stroke="#ef4444" strokeWidth="2.2" fill="none" stroke-linecap="round" />
             <path id="bufanda-caida-roja" d="M -7.663 13.49 C -2.663 12.49 3 11 7 9 C 5 7 0.204 10.408 -6.796 12.408 L -7.663 13.49 Z" fill="#ef4444" />
             <path id="bufanda-caida-guinda" d="M -6.929 14.898 C -1.929 14.898 2 14 5 13 C 3 11 -0.337 13.357 -7.337 13.357 L -6.929 14.898 Z" fill="#b91c1c" />
           </g>
           
-          {/* Eye (looking at eye subconscious - modified look coordinates by user) */}
+          {/* Ojo del Pingüino */}
           <g id="ojo">
             <circle id="ojo-borde" cx="-67.91" cy="33.303" r="2.2" fill="#f4f4f5" />
             <circle id="ojo-pupila" cx="-68.196" cy="31.871" r="1.019" fill="#000000" />
@@ -125,7 +224,7 @@ export default function Scene4Walking({ variantId = 1 }: Scene4WalkingProps) {
           {/* Pico */}
           <polygon id="pico" points="-70.91 26.303 -67.91 19.303 -64.91 26.303" fill="#f59e0b" />
           
-          {/* Pata Inferior - Walking swing */}
+          {/* Pata Inferior */}
           <g id="patas" transform="matrix(1, 0, 0, 1, -51.910336, 17.303471)">
             <motion.path 
               id="pata-inferior" 
@@ -144,291 +243,80 @@ export default function Scene4Walking({ variantId = 1 }: Scene4WalkingProps) {
         </motion.g>
       </g>
 
-      {/* 2. The Subconscious Eye (floating, mirrored and scaled using user matrix) */}
-      <g transform={transformAttr}>
+      {/* 2. El Ojo Subconsciente (Flotando fijo arriba a la izquierda. No varía con la selección) */}
+      <g transform={transformAttr} id="ojo-subconsciente-grupo">
         <motion.g
           id="ojo-subconsciente-entrada"
-          // Slow fade-in and scale entry animation (same as scene 2)
           initial={{ opacity: 0, scale: 0.6, y: -15 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 2.8, ease: "easeOut", delay: 0.4 }}
         >
-          {variantId === 1 && (
+          <motion.g
+            id="ojo-subconsciente-flotacion"
+            animate={{ 
+              y: [-3, 3, -3],
+              scale: [0.98, 1.02, 0.98]
+            }}
+            transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
+          >
+            {/* Ojo Glow */}
+            <circle 
+              id="ojo-glow" 
+              cx="1.961" 
+              cy="-10.68" 
+              r="18" 
+              fill="#ffffff" 
+              opacity="0.08" 
+              transform="matrix(1.726517, 0, 0, 1.260335, 10.344875, -0.379963)" 
+            />
+            {/* Ojo Esclera */}
+            <circle 
+              id="ojo-esclera" 
+              cx="3.705" 
+              cy="-5.231" 
+              r="10.733" 
+              fill="#f8fafc" 
+              strokeWidth="0.5" 
+              stroke="#e2e8f0" 
+              style={{ transformBox: "fill-box", transformOrigin: "50% 50%" }} 
+              transform="matrix(1.4985, -0.537148, 0.642825, 1.013572, 3.086092, -7.914055)" 
+            />
+            {/* Ojo Trazo Luz */}
+            <motion.path 
+              id="ojo-trazo-luz"
+              style={{ fill: "none", stroke: "rgb(255, 255, 255)" }} 
+              d="M -17.728 -18.374 C -19.172 -20.359 42.448 -40.704 45.523 -36.475 C 48.876 -32.004 13.029 7.732 11.259 5.372" 
+              animate={{ opacity: [0.7, 1, 0.7] }}
+              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+            />
+            {/* Pupila & Brillo agrupados para movimiento ocular */}
             <motion.g
-              id="ojo-subconsciente-flotacion"
+              id="ojo-pupila-grupo"
               animate={{ 
-                y: [-3, 3, -3],
-                scale: [0.98, 1.02, 0.98]
+                x: [-1.2, 1.2, -1.2],
+                y: [-0.6, 0.6, -0.6]
               }}
-              transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
+              transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
             >
-              {/* Ojo Glow */}
+              <circle id="ojo-pupila-centro" cx="-2.127" cy="-10.461" r="6.2" fill="#0f172a" />
               <circle 
-                id="ojo-glow" 
-                cx="1.961" 
-                cy="-10.68" 
-                r="18" 
+                id="ojo-pupila-brillo" 
+                cx="-4.8" 
+                cy="-1.8" 
+                r="1.5" 
                 fill="#ffffff" 
-                opacity="0.08" 
-                transform="matrix(1.726517, 0, 0, 1.260335, 10.344875, -0.379963)" 
+                transform="matrix(-1.397505, 0, 0, 1.944474, -10.963154, -5.601462)" 
               />
-              {/* Ojo Esclera */}
-              <circle 
-                id="ojo-esclera" 
-                cx="3.705" 
-                cy="-5.231" 
-                r="10.733" 
-                fill="#f8fafc" 
-                strokeWidth="0.5" 
-                stroke="#e2e8f0" 
-                style={{ transformBox: "fill-box", transformOrigin: "50% 50%" }} 
-                transform="matrix(1.4985, -0.537148, 0.642825, 1.013572, 3.086092, -7.914055)" 
-              />
-              {/* Ojo Trazo Luz */}
-              <motion.path 
-                id="ojo-trazo-luz"
-                style={{ fill: "none", stroke: "rgb(255, 255, 255)" }} 
-                d="M -17.728 -18.374 C -19.172 -20.359 42.448 -40.704 45.523 -36.475 C 48.876 -32.004 13.029 7.732 11.259 5.372" 
-                animate={{ opacity: [0.7, 1, 0.7] }}
-                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              />
-              {/* Pupila & Brillo agrupados para movimiento ocular */}
-              <motion.g
-                id="ojo-pupila-grupo"
-                animate={{ 
-                  x: [-1.2, 1.2, -1.2],
-                  y: [-0.6, 0.6, -0.6]
-                }}
-                transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-              >
-                <circle id="ojo-pupila-centro" cx="-2.127" cy="-10.461" r="6.2" fill="#0f172a" />
-                <circle 
-                  id="ojo-pupila-brillo" 
-                  cx="-4.8" 
-                  cy="-1.8" 
-                  r="1.5" 
-                  fill="#ffffff" 
-                  transform="matrix(-1.397505, 0, 0, 1.944474, -10.963154, -5.601462)" 
-                />
-              </motion.g>
             </motion.g>
-          )}
-
-          {variantId === 2 && (
-            <motion.g
-              id="ojo-subconsciente-flotacion"
-              animate={{ 
-                y: [-2.5, 2.5, -2.5],
-                scale: [0.99, 1.01, 0.99]
-              }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-            >
-              <circle id="ojo-glow-outer" cx="0" cy="0" r="24" fill="#ffffff" opacity="0.08" />
-              <path id="ojo-esclera" d="M -18 0 C -9 -10 9 -10 18 0 C 9 10 -9 10 -18 0 Z" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="0.6" />
-              <motion.g
-                id="ojo-pupila-movimiento"
-                animate={{ 
-                  rx: [1.2, 2.2, 1.2],
-                  ry: [7.2, 7.8, 7.2]
-                }}
-                transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
-              >
-                <ellipse id="ojo-pupila" cx="-2" cy="0" rx="1.8" ry="7.5" fill="#0f172a" />
-                <circle id="ojo-brillo" cx="-2.8" cy="-2" r="1" fill="#ffffff" opacity="0.9" />
-              </motion.g>
-            </motion.g>
-          )}
-
-          {variantId === 3 && (
-            <motion.g
-              id="ojo-subconsciente-flotacion"
-              animate={{ 
-                y: [-3, 3, -3],
-                rotate: [0, 10, -10, 0]
-              }}
-              transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-            >
-              <circle id="ojo-glow-outer" cx="0" cy="0" r="24" fill="#ffffff" opacity="0.08" />
-              <path id="ojo-esclera-anillo" d="M 0 -15 A 15 15 0 1 0 0 15 A 15 15 0 1 0 0 -15 Z M 0 -8 A 8 8 0 1 1 0 8 A 8 8 0 1 1 0 -8 Z" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="0.5" fillRule="evenodd" />
-              <motion.g
-                id="ojo-pupila-movimiento"
-                animate={{ 
-                  x: [-1.5, 1.5, -1.5],
-                  y: [-1, 1, -1] 
-                }}
-                transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
-              >
-                <circle id="ojo-pupila" cx="-1.5" cy="0" r="4.5" fill="#0f172a" />
-                <circle id="ojo-brillo" cx="-2.5" cy="-1" r="1" fill="#ffffff" />
-              </motion.g>
-            </motion.g>
-          )}
-
-          {variantId === 4 && (
-            <motion.g
-              id="ojo-subconsciente-flotacion"
-              animate={{ 
-                y: [-2, 2, -2]
-              }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-            >
-              <circle id="ojo-glow-outer" cx="0" cy="0" r="24" fill="#ffffff" opacity="0.08" />
-              <circle id="ojo-esclera-centro" cx="0" cy="0" r="8" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="0.5" />
-              <motion.g
-                id="ojo-pupila-movimiento"
-                animate={{ 
-                  x: [-0.8, 0.8, -0.8]
-                }}
-                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              >
-                <circle id="ojo-pupila" cx="-1.5" cy="0" r="3.5" fill="#0f172a" />
-                <circle id="ojo-brillo" cx="-2.5" cy="-0.8" r="0.8" fill="#ffffff" />
-              </motion.g>
-            </motion.g>
-          )}
-
-          {variantId === 5 && (
-            <motion.g
-              id="ojo-subconsciente-flotacion"
-              animate={{ 
-                y: [-3, 3, -3],
-                scale: [0.98, 1.02, 0.98]
-              }}
-              transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
-            >
-              <circle id="ojo-glow-outer" cx="0" cy="0" r="24" fill="#ffffff" opacity="0.08" />
-              <motion.path 
-                id="ojo-esclera-estrella" 
-                d="M 0 -16 L 4 -5 L 15 -4 L 7 3 L 10 14 L 0 8 L -10 14 L -7 3 L -15 -4 L -4 -5 Z" 
-                fill="#f8fafc" stroke="#cbd5e1" strokeWidth="0.6"
-                animate={{ rotate: [0, 10, -10, 0] }}
-                transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-              />
-              <motion.g
-                id="ojo-pupila-movimiento"
-                animate={{ 
-                  scale: [0.95, 1.05, 0.95]
-                }}
-                transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-              >
-                <circle id="ojo-pupila" cx="-2" cy="0" r="5" fill="#0f172a" />
-                <line id="ojo-cruz-h" x1="-3.5" y1="-1.5" x2="-0.5" y2="-1.5" stroke="#ffffff" strokeWidth="0.8" />
-                <line id="ojo-cruz-v" x1="-2" y1="-3" x2="-2" y2="0" stroke="#ffffff" strokeWidth="0.8" />
-              </motion.g>
-            </motion.g>
-          )}
-
-          {variantId === 6 && (
-            <motion.g
-              id="ojo-subconsciente-flotacion"
-              animate={{ 
-                y: [-2.5, 2.5, -2.5]
-              }}
-              transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-            >
-              <circle id="ojo-glow-outer" cx="0" cy="0" r="24" fill="#ffffff" opacity="0.08" />
-              <motion.g
-                id="ojo-parpadeo-movimiento"
-                animate={{ scaleY: [1, 1, 1, 0.1, 1, 1, 0.1, 1] }}
-                transition={{ repeat: Infinity, duration: 6, times: [0, 0.4, 0.45, 0.47, 0.5, 0.9, 0.93, 0.95] }}
-              >
-                <path id="ojo-parpado-superior" d="M -16 2 C -8 -11 8 -11 16 2" fill="none" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />
-                <path id="ojo-parpado-inferior" d="M -16 2 C -8 11 8 11 16 2" fill="none" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />
-                <path id="ojo-pupila" d="M -4 -3 C -1 -3 1 -1 1 2 C 1 5 -1 7 -4 7 C -2.5 5 -2 2 -4 -3 Z" fill="#0f172a" />
-              </motion.g>
-            </motion.g>
-          )}
-
-          {variantId === 7 && (
-            <motion.g
-              id="ojo-subconsciente-flotacion"
-              animate={{ 
-                y: [0, 3, 0, -3, 0]
-              }}
-              transition={{ repeat: Infinity, duration: 4, ease: stepsEasing }}
-            >
-              <circle id="ojo-glow-outer" cx="0" cy="0" r="24" fill="#ffffff" opacity="0.08" />
-              <path id="ojo-pixel-esclera" d="M -15 -3 L -12 -3 L -12 -6 L -6 -6 L -6 -9 L 6 -9 L 6 -6 L 12 -6 L 12 -3 L 15 -3 L 15 3 L 12 3 L 12 6 L 6 6 L 6 9 L -6 9 L -6 6 L -12 6 L -12 3 L -15 3 Z" fill="#ffffff" stroke="#cbd5e1" strokeWidth="1.5" />
-              <motion.g
-                id="ojo-pupila-movimiento"
-                animate={{ opacity: [0.85, 0.98, 0.85] }}
-                transition={{ repeat: Infinity, duration: 0.25, ease: "linear" }}
-              >
-                <rect id="ojo-pupila" x="-5" y="-4" width="6" height="8" fill="#0f172a" />
-                <rect id="ojo-brillo" x="-4" y="-2" width="2" height="2" fill="#ffffff" />
-              </motion.g>
-            </motion.g>
-          )}
-
-          {variantId === 8 && (
-            <motion.g
-              id="ojo-subconsciente-flotacion"
-              animate={{ 
-                y: [-3, 3, -3]
-              }}
-              transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
-            >
-              <circle id="ojo-glow-outer" cx="0" cy="0" r="26" fill="#ffffff" opacity="0.08" />
-              <circle id="ojo-esclera" cx="0" cy="0" r="11" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="0.5" />
-              <motion.g
-                id="ojo-pupila-movimiento"
-                animate={{ 
-                  x: [-1, 1, -1],
-                  y: [-0.5, 0.5, -0.5]
-                }}
-                transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-              >
-                <circle id="ojo-pupila" cx="-1.5" cy="0" r="4.2" fill="#0f172a" />
-                <circle id="ojo-brillo" cx="-2.5" cy="-1" r="1.2" fill="#ffffff" />
-              </motion.g>
-              <g id="ojo-anillos">
-                <motion.ellipse 
-                  id="ojo-anillo-1" cx="0" cy="0" rx="21" ry="5.5" 
-                  fill="none" stroke="#ffffff" strokeWidth="0.8" 
-                  transform="rotate(30)"
-                  animate={{ rotate: 360 }}
-                  transition={{ repeat: Infinity, duration: 16, ease: "linear" }}
-                />
-                <motion.ellipse 
-                  id="ojo-anillo-2" cx="0" cy="0" rx="21" ry="5.5" 
-                  fill="none" stroke="#ffffff" strokeWidth="0.8" 
-                  transform="rotate(-30)"
-                  animate={{ rotate: -360 }}
-                  transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-                />
-                <motion.ellipse 
-                  id="ojo-anillo-3" cx="0" cy="0" rx="23" ry="7" 
-                  fill="none" stroke="#ffffff" strokeWidth="0.5" 
-                  transform="rotate(90)"
-                  animate={{ rotate: 360 }}
-                  transition={{ repeat: Infinity, duration: 24, ease: "linear" }}
-                />
-                <motion.g
-                  id="ojo-anillos-orbitas-1"
-                  animate={{ rotate: -360 }}
-                  transition={{ repeat: Infinity, duration: 16, ease: "linear" }}
-                >
-                  <circle cx="-16.5" cy="-9.5" r="1.2" fill="#ffffff" />
-                  <circle cx="16.5" cy="9.5" r="1.2" fill="#ffffff" />
-                </motion.g>
-                <motion.g
-                  id="ojo-anillos-orbitas-2"
-                  animate={{ rotate: 360 }}
-                  transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-                >
-                  <circle cx="-10.5" cy="16.5" r="1.2" fill="#ffffff" />
-                  <circle cx="10.5" cy="-16.5" r="1.2" fill="#ffffff" />
-                </motion.g>
-              </g>
-            </motion.g>
-          )}
+          </motion.g>
         </motion.g>
       </g>
 
-      {/* 3. The Soul of Camo (pulsing, bottom-right, varying by variantId) */}
-      <g id="camo-alma-contenedor" transform="translate(0, 0)">
-        {/* Outer Glow */}
+      {/* 3. El Alma de Camo (Gota Invertida con Partículas Flotantes - en la derecha abajo) */}
+      <g id="camo-alma-contenedor">
+        {/* Glow de Fondo para el alma */}
         <motion.circle
+          id="alma-fondo-glow"
           cx="165"
           cy="90"
           r="22"
@@ -437,135 +325,48 @@ export default function Scene4Walking({ variantId = 1 }: Scene4WalkingProps) {
           transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
         />
 
-        {variantId === 1 && (
-          // Variant 1: Gota/Flama de Alma Espiritual (Ghost/Flame Soul)
-          <motion.path
-            id="alma-gota"
-            d="M 165 74 C 157 82 153 90 153 96 A 12 12 0 1 0 177 96 C 177 90 173 82 165 74 Z"
-            fill="url(#camo-soul)"
-            stroke="#7ba077"
-            strokeWidth="0.8"
-            animate={{ 
-              y: [-2, 2, -2],
-              scale: [0.97, 1.03, 0.97]
-            }}
-            transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-          />
-        )}
+        {/* Gota Invertida principal del Alma con patrón militar dinámico */}
+        <motion.path
+          id="alma-gota-invertida"
+          d="M 165 106 C 157 98 153 90 153 84 A 12 12 0 0 1 177 84 C 177 90 173 98 165 106 Z"
+          fill={config.patternUrl}
+          stroke={config.stroke}
+          strokeWidth="0.8"
+          animate={{ 
+            y: [-1.5, 1.5, -1.5],
+            scale: [0.98, 1.02, 0.98]
+          }}
+          transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
+          style={{ originX: "165px", originY: "90px" }}
+        />
 
-        {variantId === 2 && (
-          // Variant 2: Retícula de Francotirador (Sniper Crosshair)
-          <motion.g
-            id="alma-reticula"
-            animate={{ rotate: 360 }}
-            transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
-            style={{ originX: "165px", originY: "90px" }}
-          >
-            <circle cx="165" cy="90" r="11" stroke="url(#camo-soul)" strokeWidth="2.2" fill="none" />
-            <line x1="150" y1="90" x2="180" y2="90" stroke="#f4f4f5" strokeWidth="0.8" opacity="0.6" />
-            <line x1="165" y1="75" x2="165" y2="105" stroke="#f4f4f5" strokeWidth="0.8" opacity="0.6" />
-            <circle cx="165" cy="90" r="4.5" fill="url(#camo-soul)" stroke="#d8d8d0" strokeWidth="0.5" />
-          </motion.g>
-        )}
-
-        {variantId === 3 && (
-          // Variant 3: Escudo Militar (Military Shield)
-          <motion.path
-            id="alma-escudo"
-            d="M 155 78 L 175 78 L 175 90 C 175 98 165 104 165 104 C 165 104 155 98 155 90 Z"
-            fill="url(#camo-soul)"
-            stroke="#5c4033"
-            strokeWidth="1"
-            animate={{ 
-              opacity: [0.75, 1, 0.75],
-              scale: [0.98, 1.02, 0.98]
-            }}
-            transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
-          />
-        )}
-
-        {variantId === 4 && (
-          // Variant 4: Radar de Barrido (Radar/Pulse)
-          <g id="alma-radar">
-            <circle cx="165" cy="90" r="13" stroke="url(#camo-soul)" strokeWidth="1.5" fill="none" opacity="0.8" />
-            <circle cx="165" cy="90" r="7" stroke="url(#camo-soul)" strokeWidth="0.8" fill="none" strokeDasharray="2 2" opacity="0.5" />
-            <motion.line
-              x1="165"
-              y1="90"
-              x2="165"
-              y2="77"
-              stroke="#7ba077"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              style={{ originX: "165px", originY: "90px" }}
-              animate={{ rotate: 360 }}
-              transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
-            />
-            <circle cx="165" cy="90" r="2.5" fill="#f4f4f5" />
-          </g>
-        )}
-
-        {variantId === 5 && (
-          // Variant 5: Rombo Pixelado (Pixel Spark)
-          <motion.path
-            id="alma-rombo"
-            d="M 165 76 L 178 89 L 165 102 L 152 89 Z"
-            fill="url(#camo-soul)"
-            stroke="#d8d8d0"
-            strokeWidth="1"
-            animate={{ 
-              y: [-1, 1, -1],
-              opacity: [0.8, 1, 0.8]
-            }}
-            transition={{ repeat: Infinity, duration: 0.5, ease: stepsEasing }}
-          />
-        )}
-
-        {variantId === 6 && (
-          // Variant 6: Pluma/Espíritu de Ave (Bird Feather / Spirit)
-          <motion.path
-            id="alma-pluma"
-            d="M 165 74 C 160 80 156 88 158 98 C 162 98 165 92 168 95 C 172 88 170 80 165 74 Z"
-            fill="url(#camo-soul)"
-            stroke="#7ba077"
-            strokeWidth="1"
-            animate={{ 
-              rotate: [-5, 5, -5],
-              y: [-2, 2, -2]
-            }}
-            transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
-          />
-        )}
-
-        {variantId === 7 && (
-          // Variant 7: Proyectil/Bala Abstracto (Bullet Shell)
-          <motion.g
-            id="alma-bala"
-            animate={{ 
-              y: [-1.5, 1.5, -1.5]
-            }}
-            transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-          >
-            <path d="M 160 98 L 160 84 C 160 80 170 80 170 84 L 170 98 Z" fill="url(#camo-soul)" stroke="#5c4033" strokeWidth="0.8" />
-            <rect x="158" y="98" width="14" height="3" fill="#d8d8d0" rx="0.5" />
-          </motion.g>
-        )}
-
-        {variantId === 8 && (
-          // Variant 8: Estrella de 4 Puntas (Compass Star)
-          <motion.path
-            id="alma-estrella"
-            d="M 165 74 L 168 87 L 181 90 L 168 93 L 165 106 L 162 93 L 149 90 L 162 87 Z"
-            fill="url(#camo-soul)"
-            stroke="#d8d8d0"
-            strokeWidth="0.8"
-            animate={{ 
-              rotate: [0, 90, 180, 270, 360],
-              scale: [0.95, 1.05, 0.95]
-            }}
-            transition={{ repeat: Infinity, duration: 12, ease: "linear" }}
-          />
-        )}
+        {/* Partículas que flotan tenuemente alrededor de la gota */}
+        <g id="alma-particulas-flotantes">
+          {PARTICLE_TEMPLATES.map((p, idx) => {
+            const color = config.particleColors[idx % config.particleColors.length];
+            return (
+              <motion.circle
+                key={p.id}
+                id={`alma-particula-${p.id}`}
+                cx={165 + p.dx}
+                cy={90 + p.dy}
+                r={p.r}
+                fill={color}
+                animate={{
+                  y: [0, -20],
+                  x: [0, p.dx > 0 ? 2 : -2, 0],
+                  opacity: [0, 0.8, 0]
+                }}
+                transition={{
+                  repeat: Infinity,
+                  duration: p.duration,
+                  delay: p.delay,
+                  ease: "easeInOut"
+                }}
+              />
+            );
+          })}
+        </g>
       </g>
     </svg>
   );

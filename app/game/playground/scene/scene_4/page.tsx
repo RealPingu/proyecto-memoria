@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import Scene2Encounter from '../../components/scene_2_encounter';
 import Scene3Questioning from '../../components/scene_3_questioning';
-import Scene4Walking from '../../components/scene_4_walking';
+import Scene4Walking, { SOUL_CONFIGS, PARTICLE_TEMPLATES } from '../../components/scene_4_walking';
 import SleepingPenguinLying from '../../components/sleeping_penguin_lying';
 import { NARRATIVE_NODES } from '../../../narrative/data';
 
@@ -63,6 +63,13 @@ function parseDialogueText(text: string): TextToken[] {
 // Clean static SVG code for clipboard export (no animations, standard SVG tags)
 function getVariantStaticSvg(variantId: number): string {
   const transformMatrix = 'matrix(-0.794842, 0, 0, 0.845185, 50.107243, 37.822482)';
+  const config = SOUL_CONFIGS[variantId] || SOUL_CONFIGS[1];
+  
+  // Generar partículas estáticas
+  const staticParticlesSvg = PARTICLE_TEMPLATES.map((p, idx) => {
+    const color = config.particleColors[idx % config.particleColors.length];
+    return `  <circle id="alma-particula-estatica-${p.id}" cx="${165 + p.dx}" cy="${90 + p.dy - 6}" r="${p.r}" fill="${color}" opacity="0.65" />`;
+  }).join('\n');
 
   const baseStart = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="200px" height="120px">
   <defs>
@@ -78,12 +85,68 @@ function getVariantStaticSvg(variantId: number): string {
       <stop offset="60%" stopColor="#4f5d4e" stopOpacity="0.15" />
       <stop offset="100%" stopColor="#000000" stopOpacity="0" />
     </radialGradient>
-    <!-- Patrón de camuflaje de Camo -->
-    <pattern id="camo-soul" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(25)">
+
+    <!-- Patrones de camuflaje de Camo -->
+    <pattern id="camo-standard" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(25)">
       <rect width="40" height="40" fill="#4f5d4e" />
       <path d="M -10,5 C 5,12 15,2 25,10 C 35,18 42,6 55,12 L 55,22 C 40,16 35,26 22,18 C 10,10 -2,15 -10,12 Z" fill="#5c4033" />
       <path d="M -10,25 C 2,28 12,20 24,32 C 34,40 40,28 55,30 L 55,38 C 42,35 34,45 22,38 C 12,30 2,36 -10,32 Z" fill="#d8d8d0" />
       <path d="M -10,-8 C 5,-2 15,-10 25,-4 C 35,2 42,-8 55,-4 L 55,4 C 40,-1 35,6 22,0 C 10,-6 -2,2 -10,-2 Z" fill="#7ba077" />
+    </pattern>
+
+    <pattern id="camo-forest" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+      <rect width="40" height="40" fill="#2d3a1a" />
+      <path d="M -10,5 C 5,12 15,2 25,10 C 35,18 42,6 55,12 L 55,22 Z" fill="#1b2611" />
+      <path d="M -10,25 C 2,28 12,20 24,32 L 55,30 L 55,38 Z" fill="#5c4033" />
+      <path d="M -10,-8 C 5,-2 15,-10 25,-4 L 55,-4 L 55,4 Z" fill="#556b2f" />
+    </pattern>
+
+    <pattern id="camo-desert" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(15)">
+      <rect width="40" height="40" fill="#d2b48c" />
+      <path d="M -10,5 C 5,12 15,2 25,10 C 35,18 42,6 55,12 L 55,22 Z" fill="#8b5a2b" />
+      <path d="M -10,25 C 2,28 12,20 24,32 L 55,30 L 55,38 Z" fill="#f4e0c4" />
+      <path d="M -10,-8 C 5,-2 15,-10 25,-4 L 55,-4 L 55,4 Z" fill="#cd853f" />
+    </pattern>
+
+    <pattern id="camo-arctic" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="40" height="40" fill="#e2e8f0" />
+      <path d="M -10,5 C 5,12 15,2 25,10 L 55,12 L 55,22 Z" fill="#94a3b8" />
+      <path d="M -10,25 C 2,28 12,20 24,32 L 55,30 L 55,38 Z" fill="#ffffff" />
+      <path d="M -10,-8 C 5,-2 15,-10 25,-4 L 55,-4 L 55,4 Z" fill="#475569" />
+    </pattern>
+
+    <pattern id="camo-digital" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect width="20" height="20" fill="#3f4e3f" />
+      <rect x="0" y="0" width="8" height="6" fill="#2d3a2d" />
+      <rect x="10" y="4" width="6" height="8" fill="#546554" />
+      <rect x="2" y="10" width="8" height="6" fill="#7ba077" />
+      <rect x="12" y="12" width="6" height="6" fill="#202a20" />
+    </pattern>
+
+    <pattern id="camo-night" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(10)">
+      <rect width="40" height="40" fill="#0f172a" />
+      <path d="M -10,5 C 5,12 15,2 25,10 L 55,12 L 55,22 Z" fill="#1e1b4b" />
+      <path d="M -10,25 C 2,28 12,20 24,32 L 55,30 L 55,38 Z" fill="#312e81" />
+      <path d="M -10,-8 C 5,-2 15,-10 25,-4 L 55,-4 L 55,4 Z" fill="#1e293b" />
+    </pattern>
+
+    <pattern id="camo-urban" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(30)">
+      <rect width="40" height="40" fill="#475569" />
+      <path d="M -10,5 C 5,12 15,2 25,10 L 55,12 L 55,22 Z" fill="#1e293b" />
+      <path d="M -10,25 C 2,28 12,20 24,32 L 55,30 L 55,38 Z" fill="#cbd5e1" />
+      <path d="M -10,-8 C 5,-2 15,-10 25,-4 L 55,-4 L 55,4 Z" fill="#94a3b8" />
+    </pattern>
+
+    <linearGradient id="gold-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#fef08a" />
+      <stop offset="50%" stopColor="#eab308" />
+      <stop offset="100%" stopColor="#ca8a04" />
+    </linearGradient>
+    <pattern id="camo-gold" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(25)">
+      <rect width="40" height="40" fill="url(#gold-grad-1)" />
+      <path d="M -10,5 C 5,12 15,2 25,10 L 55,12 L 55,22 Z" fill="#a16207" opacity="0.6" />
+      <path d="M -10,25 C 2,28 12,20 24,32 L 55,30 L 55,38 Z" fill="#fef9c3" opacity="0.8" />
+      <path d="M -10,-8 C 5,-2 15,-10 25,-4 L 55,-4 L 55,4 Z" fill="#854d0e" opacity="0.5" />
     </pattern>
   </defs>
 
@@ -109,129 +172,23 @@ function getVariantStaticSvg(variantId: number): string {
     </g>
     <path id="aleta" d="M -56.369 37.201 C -57.631 41.252 -39.926 36.511 -37.926 32.511" stroke-width="2.5" stroke-linecap="round" stroke="rgb(0, 0, 0)" fill="none"></path>
   </g>
-  <!-- Ojo Subconsciente (Variante v\${variantId} - Posición izquierda superior) -->
-  <g transform="\${transformMatrix}">`;
+    <circle id="ojo-glow" cx="1.961" cy="-10.68" r="18" fill="#ffffff" opacity="0.08" transform="matrix(1.726517, 0, 0, 1.260335, 10.344875, -0.379963)"></circle>
+    <circle id="ojo-esclera" cx="3.705" cy="-5.231" r="10.733" fill="#f8fafc" stroke-width="0.5" stroke="#e2e8f0" style="transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(1.4985, -0.537148, 0.642825, 1.013572, 3.086092, -7.914055)"></circle>
+    <path id="ojo-trazo-luz" style="fill: none; stroke: rgb(255, 255, 255);" d="M -17.728 -18.374 C -19.172 -20.359 42.448 -40.704 45.523 -36.475 C 48.876 -32.004 13.029 7.732 11.259 5.372"></path>
+    <circle id="ojo-pupila-centro" cx="-2.127" cy="-10.461" r="6.2" fill="#0f172a"></circle>
+    <circle id="ojo-pupila-brillo" cx="-4.8" cy="-1.8" r="1.5" fill="#ffffff" transform="matrix(-1.397505, 0, 0, 1.944474, -10.963154, -5.601462)"></circle>
+  </g>
 
-  const eyeVariant = (id: number) => {
-    switch (id) {
-      case 2: // Pupila Felina
-        return `
-    <circle id="ojo-glow" cx="1.961" cy="-10.68" r="18" fill="#ffffff" opacity="0.08" transform="matrix(1.726517, 0, 0, 1.260335, 10.344875, -0.379963)"></circle>
-    <circle id="ojo-esclera" cx="3.705" cy="-5.231" r="10.733" fill="#f8fafc" stroke-width="0.5" stroke="#e2e8f0" style="transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(1.4985, -0.537148, 0.642825, 1.013572, 3.086092, -7.914055)"></circle>
-    <path id="ojo-trazo-luz" style="fill: none; stroke: rgb(255, 255, 255);" d="M -17.728 -18.374 C -19.172 -20.359 42.448 -40.704 45.523 -36.475 C 48.876 -32.004 13.029 7.732 11.259 5.372"></path>
-    <ellipse id="ojo-pupila-centro" cx="-2.127" cy="-10.461" rx="1.6" ry="6.2" fill="#0f172a"></ellipse>
-    <circle id="ojo-pupila-brillo" cx="-4.8" cy="-1.8" r="1.5" fill="#ffffff" transform="matrix(-1.397505, 0, 0, 1.944474, -10.963154, -5.601462)"></circle>`;
-      case 3: // Doble Trazo
-        return `
-    <circle id="ojo-glow" cx="1.961" cy="-10.68" r="18" fill="#ffffff" opacity="0.08" transform="matrix(1.726517, 0, 0, 1.260335, 10.344875, -0.379963)"></circle>
-    <circle id="ojo-esclera" cx="3.705" cy="-5.231" r="10.733" fill="#f8fafc" stroke-width="0.5" stroke="#e2e8f0" style="transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(1.4985, -0.537148, 0.642825, 1.013572, 3.086092, -7.914055)"></circle>
-    <path id="ojo-trazo-luz-1" style="fill: none; stroke: rgb(255, 255, 255);" d="M -17.728 -18.374 C -19.172 -20.359 42.448 -40.704 45.523 -36.475 C 48.876 -32.004 13.029 7.732 11.259 5.372"></path>
-    <path id="ojo-trazo-luz-2" style="fill: none; stroke: rgba(255, 255, 255, 0.5);" d="M -13.728 -14.374 C -15.172 -16.359 46.448 -36.704 41.523 -32.475 C 44.876 -28.004 9.029 11.732 7.259 9.372"></path>
-    <circle id="ojo-pupila-centro" cx="-2.127" cy="-10.461" r="6.2" fill="#0f172a"></circle>
-    <circle id="ojo-pupila-brillo" cx="-4.8" cy="-1.8" r="1.5" fill="#ffffff" transform="matrix(-1.397505, 0, 0, 1.944474, -10.963154, -5.601462)"></circle>`;
-      case 4: // Órbita Interna
-        return `
-    <circle id="ojo-glow" cx="1.961" cy="-10.68" r="18" fill="#ffffff" opacity="0.08" transform="matrix(1.726517, 0, 0, 1.260335, 10.344875, -0.379963)"></circle>
-    <circle id="ojo-esclera" cx="3.705" cy="-5.231" r="10.733" fill="#f8fafc" stroke-width="0.5" stroke="#e2e8f0" style="transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(1.4985, -0.537148, 0.642825, 1.013572, 3.086092, -7.914055)"></circle>
-    <circle id="ojo-anillo-concentrico" cx="3.705" cy="-5.231" r="8" fill="none" stroke="#e2e8f0" stroke-width="0.5" stroke-dasharray="3 2" transform="matrix(1.4985, -0.537148, 0.642825, 1.013572, 3.086092, -7.914055)"></circle>
-    <path id="ojo-trazo-luz" style="fill: none; stroke: rgb(255, 255, 255);" d="M -17.728 -18.374 C -19.172 -20.359 42.448 -40.704 45.523 -36.475 C 48.876 -32.004 13.029 7.732 11.259 5.372"></path>
-    <circle id="ojo-pupila-centro" cx="-2.127" cy="-10.461" r="6.2" fill="#0f172a"></circle>
-    <circle id="ojo-pupila-brillo" cx="-4.8" cy="-1.8" r="1.5" fill="#ffffff" transform="matrix(-1.397505, 0, 0, 1.944474, -10.963154, -5.601462)"></circle>`;
-      case 5: // Destellos
-        return `
-    <circle id="ojo-glow" cx="1.961" cy="-10.68" r="18" fill="#ffffff" opacity="0.08" transform="matrix(1.726517, 0, 0, 1.260335, 10.344875, -0.379963)"></circle>
-    <circle id="ojo-esclera" cx="3.705" cy="-5.231" r="10.733" fill="#f8fafc" stroke-width="0.5" stroke="#e2e8f0" style="transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(1.4985, -0.537148, 0.642825, 1.013572, 3.086092, -7.914055)"></circle>
-    <path id="ojo-trazo-luz" style="fill: none; stroke: rgb(255, 255, 255);" d="M -17.728 -18.374 C -19.172 -20.359 42.448 -40.704 45.523 -36.475 C 48.876 -32.004 13.029 7.732 11.259 5.372"></path>
-    <path id="ojo-estrella-1" d="M -15 -25 L -13 -25 M -14 -26 L -14 -24" stroke="#ffffff" stroke-width="0.8"></path>
-    <path id="ojo-estrella-2" d="M 32 -33 L 34 -33 M 33 -34 L 33 -32" stroke="#ffffff" stroke-width="0.8"></path>
-    <circle id="ojo-pupila-centro" cx="-2.127" cy="-10.461" r="6.2" fill="#0f172a"></circle>
-    <circle id="ojo-pupila-brillo" cx="-4.8" cy="-1.8" r="1.5" fill="#ffffff" transform="matrix(-1.397505, 0, 0, 1.944474, -10.963154, -5.601462)"></circle>`;
-      case 6: // Párpado Sesgado
-        return `
-    <circle id="ojo-glow" cx="1.961" cy="-10.68" r="18" fill="#ffffff" opacity="0.08" transform="matrix(1.726517, 0, 0, 1.260335, 10.344875, -0.379963)"></circle>
-    <circle id="ojo-esclera" cx="3.705" cy="-5.231" r="10.733" fill="#f8fafc" stroke-width="0.5" stroke="#e2e8f0" style="transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(1.4985, -0.537148, 0.642825, 1.013572, 3.086092, -7.914055)"></circle>
-    <path id="ojo-trazo-luz" style="fill: none; stroke: rgb(255, 255, 255);" d="M -17.728 -18.374 C -19.172 -20.359 42.448 -40.704 45.523 -36.475 C 48.876 -32.004 13.029 7.732 11.259 5.372"></path>
-    <path id="ojo-parpado-superior" d="M -15 -14 C 0 -22 25 -22 36 -14" fill="none" stroke="#e2e8f0" stroke-width="1.2" stroke-linecap="round"></path>
-    <path id="ojo-parpado-inferior" d="M -15 -14 C 0 -4 25 -4 36 -14" fill="none" stroke="#e2e8f0" stroke-width="1.2" stroke-linecap="round"></path>
-    <circle id="ojo-pupila-centro" cx="-2.127" cy="-10.461" r="6.2" fill="#0f172a"></circle>
-    <circle id="ojo-pupila-brillo" cx="-4.8" cy="-1.8" r="1.5" fill="#ffffff" transform="matrix(-1.397505, 0, 0, 1.944474, -10.963154, -5.601462)"></circle>`;
-      case 7: // Glitch Pixel
-        return `
-    <circle id="ojo-glow" cx="1.961" cy="-10.68" r="18" fill="#ffffff" opacity="0.08" transform="matrix(1.726517, 0, 0, 1.260335, 10.344875, -0.379963)"></circle>
-    <path id="ojo-esclera" d="M -10 -15 L -6 -15 L -6 -17 L 6 -17 L 6 -15 L 10 -15 L 10 -11 L 14 -11 L 14 -5 L 16 -5 L 16 5 L 14 5 L 14 11 L 10 11 L 10 15 L 6 15 L 6 17 L -6 17 L -6 15 L -10 15 L -10 11 L -14 11 L -14 5 L -16 5 L -16 -5 L -14 -5 L -14 -11 L -10 -11 Z" fill="#f8fafc" stroke-width="0.8" stroke="#cbd5e1"></path>
-    <path id="ojo-trazo-luz" d="M -16 -18 H -12 V -20 H 12 V -20 H 16" fill="none" stroke="#ffffff" stroke-width="1.5"></path>
-    <rect id="ojo-pupila-centro" x="-5" y="-13" width="7" height="7" fill="#0f172a"></rect>
-    <rect id="ojo-pupila-brillo" x="-4" y="-12" width="2" height="2" fill="#ffffff"></rect>`;
-      case 8: // Celestial Halo
-        return `
-    <circle id="ojo-glow" cx="1.961" cy="-10.68" r="18" fill="#ffffff" opacity="0.08" transform="matrix(1.726517, 0, 0, 1.260335, 10.344875, -0.379963)"></circle>
-    <circle id="ojo-esclera" cx="3.705" cy="-5.231" r="10.733" fill="#f8fafc" stroke-width="0.5" stroke="#e2e8f0" style="transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(1.4985, -0.537148, 0.642825, 1.013572, 3.086092, -7.914055)"></circle>
-    <path id="ojo-trazo-luz" style="fill: none; stroke: rgb(255, 255, 255);" d="M -17.728 -18.374 C -19.172 -20.359 42.448 -40.704 45.523 -36.475 C 48.876 -32.004 13.029 7.732 11.259 5.372"></path>
-    <ellipse id="ojo-anillo-celestial-1" cx="3.705" cy="-5.231" rx="20" ry="6" fill="none" stroke="#ffffff" stroke-width="0.6" transform="matrix(1.4985, -0.537148, 0.642825, 1.013572, 3.086092, -7.914055) rotate(35)"></ellipse>
-    <ellipse id="ojo-anillo-celestial-2" cx="3.705" cy="-5.231" rx="20" ry="6" fill="none" stroke="#ffffff" stroke-width="0.6" transform="matrix(1.4985, -0.537148, 0.642825, 1.013572, 3.086092, -7.914055) rotate(-35)"></ellipse>
-    <circle id="ojo-pupila-centro" cx="-2.127" cy="-10.461" r="6.2" fill="#0f172a"></circle>
-    <circle id="ojo-pupila-brillo" cx="-4.8" cy="-1.8" r="1.5" fill="#ffffff" transform="matrix(-1.397505, 0, 0, 1.944474, -10.963154, -5.601462)"></circle>`;
-      default: // Ojo Editado (Original)
-        return `
-    <circle id="ojo-glow" cx="1.961" cy="-10.68" r="18" fill="#ffffff" opacity="0.08" transform="matrix(1.726517, 0, 0, 1.260335, 10.344875, -0.379963)"></circle>
-    <circle id="ojo-esclera" cx="3.705" cy="-5.231" r="10.733" fill="#f8fafc" stroke-width="0.5" stroke="#e2e8f0" style="transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(1.4985, -0.537148, 0.642825, 1.013572, 3.086092, -7.914055)"></circle>
-    <path id="ojo-trazo-luz" style="fill: none; stroke: rgb(255, 255, 255);" d="M -17.728 -18.374 C -19.172 -20.359 42.448 -40.704 45.523 -36.475 C 48.876 -32.004 13.029 7.732 11.259 5.372"></path>
-    <circle id="ojo-pupila-centro" cx="-2.127" cy="-10.461" r="6.2" fill="#0f172a"></circle>
-    <circle id="ojo-pupila-brillo" cx="-4.8" cy="-1.8" r="1.5" fill="#ffffff" transform="matrix(-1.397505, 0, 0, 1.944474, -10.963154, -5.601462)"></circle>`;
-    }
-  };
-
-  const staticSoul = (id: number) => {
-    switch (id) {
-      case 1:
-        return `  <!-- Variant 1: Gota/Flama de Alma Espiritual -->
-  <path id="alma-gota" d="M 165 74 C 157 82 153 90 153 96 A 12 12 0 1 0 177 96 C 177 90 173 82 165 74 Z" fill="url(#camo-soul)" stroke="#7ba077" stroke-width="0.8" />`;
-      case 2:
-        return `  <!-- Variant 2: Retícula de Francotirador -->
-  <g id="alma-reticula" transform="rotate(15, 165, 90)">
-    <circle cx="165" cy="90" r="11" stroke="url(#camo-soul)" stroke-width="2.2" fill="none" />
-    <line x1="150" y1="90" x2="180" y2="90" stroke="#f4f4f5" stroke-width="0.8" opacity="0.6" />
-    <line x1="165" y1="75" x2="165" y2="105" stroke="#f4f4f5" stroke-width="0.8" opacity="0.6" />
-    <circle cx="165" cy="90" r="4.5" fill="url(#camo-soul)" stroke="#d8d8d0" stroke-width="0.5" />
-  </g>`;
-      case 3:
-        return `  <!-- Variant 3: Escudo Militar -->
-  <path id="alma-escudo" d="M 155 78 L 175 78 L 175 90 C 175 98 165 104 165 104 C 165 104 155 98 155 90 Z" fill="url(#camo-soul)" stroke="#5c4033" stroke-width="1" />`;
-      case 4:
-        return `  <!-- Variant 4: Radar de Barrido -->
-  <g id="alma-radar">
-    <circle cx="165" cy="90" r="13" stroke="url(#camo-soul)" stroke-width="1.5" fill="none" opacity="0.8" />
-    <circle cx="165" cy="90" r="7" stroke="url(#camo-soul)" stroke-width="0.8" fill="none" stroke-dasharray="2 2" opacity="0.5" />
-    <line x1="165" y1="90" x2="165" y2="77" stroke="#7ba077" stroke-width="1.5" stroke-linecap="round" transform="rotate(45, 165, 90)" />
-    <circle cx="165" cy="90" r="2.5" fill="#f4f4f5" />
-  </g>`;
-      case 5:
-        return `  <!-- Variant 5: Rombo Pixelado -->
-  <path id="alma-rombo" d="M 165 76 L 178 89 L 165 102 L 152 89 Z" fill="url(#camo-soul)" stroke="#d8d8d0" stroke-width="1" />`;
-      case 6:
-        return `  <!-- Variant 6: Pluma/Espíritu de Ave -->
-  <path id="alma-pluma" d="M 165 74 C 160 80 156 88 158 98 C 162 98 165 92 168 95 C 172 88 170 80 165 74 Z" fill="url(#camo-soul)" stroke="#7ba077" stroke-width="1" transform="rotate(-5, 165, 90)" />`;
-      case 7:
-        return `  <!-- Variant 7: Proyectil/Bala Abstracto -->
-  <g id="alma-bala">
-    <path d="M 160 98 L 160 84 C 160 80 170 80 170 84 L 170 98 Z" fill="url(#camo-soul)" stroke="#5c4033" stroke-width="0.8" />
-    <rect x="158" y="98" width="14" height="3" fill="#d8d8d0" rx="0.5" />
-  </g>`;
-      case 8:
-        return `  <!-- Variant 8: Estrella de 4 Puntas -->
-  <path id="alma-estrella" d="M 165 74 L 168 87 L 181 90 L 168 93 L 165 106 L 162 93 L 149 90 L 162 87 Z" fill="url(#camo-soul)" stroke="#d8d8d0" stroke-width="0.8" transform="rotate(15, 165, 90)" />`;
-      default:
-        return '';
-    }
-  };
-
-  const baseEnd = `\n  </g>
   <!-- Sombra/Glow del Alma de Camo (derecha abajo) -->
   <circle cx="165" cy="90" r="22" fill="url(#camo-glow)" opacity="0.8" />
-${staticSoul(variantId)}
+  
+  <!-- Gota Invertida (Alma de Camo) -->
+  <path id="alma-gota-invertida" d="M 165 106 C 157 98 153 90 153 84 A 12 12 0 0 1 177 84 C 177 90 173 98 165 106 Z" fill="${config.patternUrl}" stroke="${config.stroke}" stroke-width="0.8" />
+  <!-- Partículas de Alma Estáticas -->
+${staticParticlesSvg}
 </svg>`;
 
-  return `${baseStart}${eyeVariant(variantId)}${baseEnd}`;
+  return baseStart;
 }
 
 
@@ -443,7 +400,7 @@ export default function Scene4PlaygroundPage() {
             </span>
           </h1>
           <p className="text-[9px] text-zinc-500 uppercase tracking-widest">
-            Avanzando Juntos • Caminata & Ojo en la parte superior izquierda
+            Avanzando Juntos • Caminata, Ojo & Alma de Camo
           </p>
         </div>
         <div className="flex items-center space-x-3">
@@ -612,7 +569,7 @@ export default function Scene4PlaygroundPage() {
           <div className="border-b border-zinc-900/60 pb-2 flex justify-between items-center shrink-0">
             <div>
               <h2 className="text-[9px] font-mono uppercase tracking-widest text-zinc-400 font-bold">
-                Generaciones del Ojo
+                Conceptos del Alma
               </h2>
             </div>
             <span className="text-[8px] text-zinc-500 uppercase font-mono">

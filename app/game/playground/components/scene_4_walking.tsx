@@ -325,7 +325,7 @@ export default function Scene4Walking({ variantId = 1 }: Scene4WalkingProps) {
           transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
         />
 
-        {/* Gota Invertida principal del Alma con patrón militar dinámico y morphing de la punta inferior */}
+        {/* Gota Invertida principal del Alma con patrón militar dinámico, morphing fluido de balanceo (cuerpo y punta) */}
         <motion.path
           id="alma-gota-invertida"
           d="M 165 106 C 157 98 153 90 153 84 A 12 12 0 0 1 177 84 C 177 90 173 98 165 106 Z"
@@ -334,16 +334,19 @@ export default function Scene4Walking({ variantId = 1 }: Scene4WalkingProps) {
           strokeWidth="0.8"
           animate={{ 
             d: [
-              "M 165 106 C 157 98 153 90 153 84 A 12 12 0 0 1 177 84 C 177 90 173 98 165 106 Z",
-              "M 161 106 C 157 98 153 90 153 84 A 12 12 0 0 1 177 84 C 177 90 173 98 161 106 Z",
-              "M 165 106 C 157 98 153 90 153 84 A 12 12 0 0 1 177 84 C 177 90 173 98 165 106 Z",
-              "M 169 106 C 157 98 153 90 153 84 A 12 12 0 0 1 177 84 C 177 90 173 98 169 106 Z",
-              "M 165 106 C 157 98 153 90 153 84 A 12 12 0 0 1 177 84 C 177 90 173 98 165 106 Z"
+              "M 159 106 C 153 98 151 90 151 84 A 12 12 0 0 1 175 84 C 175 90 170 98 159 106 Z",
+              "M 171 106 C 160 98 155 90 155 84 A 12 12 0 0 1 179 84 C 179 90 177 98 171 106 Z",
+              "M 159 106 C 153 98 151 90 151 84 A 12 12 0 0 1 175 84 C 175 90 170 98 159 106 Z"
             ],
-            y: [-1.5, 1.5, -1.5],
+            y: [-1.2, 1.2, -1.2],
             scale: [0.98, 1.02, 0.98]
           }}
-          transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
+          transition={{ 
+            repeat: Infinity,
+            d: { duration: 4.0, ease: "easeInOut" },
+            y: { duration: 3.1, ease: "easeInOut" },
+            scale: { duration: 3.1, ease: "easeInOut" }
+          }}
           style={{ originX: "165px", originY: "90px" }}
         />
 

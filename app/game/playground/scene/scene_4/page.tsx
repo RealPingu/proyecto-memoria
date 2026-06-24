@@ -65,6 +65,28 @@ function getVariantStaticSvg(variantId: number): string {
   const transformMatrix = 'matrix(-0.794842, 0, 0, 0.845185, 50.107243, 37.822482)';
 
   const baseStart = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="200px" height="120px">
+  <defs>
+    <!-- Gradiente Ojo Blanco Metálico/Plata -->
+    <radialGradient id="white-eye-grad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stopColor="#ffffff" />
+      <stop offset="70%" stopColor="#f8fafc" />
+      <stop offset="100%" stopColor="#cbd5e1" />
+    </radialGradient>
+    <!-- Glow Radial para el alma de Camo -->
+    <radialGradient id="camo-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stopColor="#879f84" stopOpacity="0.4" />
+      <stop offset="60%" stopColor="#4f5d4e" stopOpacity="0.15" />
+      <stop offset="100%" stopColor="#000000" stopOpacity="0" />
+    </radialGradient>
+    <!-- Patrón de camuflaje de Camo -->
+    <pattern id="camo-soul" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(25)">
+      <rect width="40" height="40" fill="#4f5d4e" />
+      <path d="M -10,5 C 5,12 15,2 25,10 C 35,18 42,6 55,12 L 55,22 C 40,16 35,26 22,18 C 10,10 -2,15 -10,12 Z" fill="#5c4033" />
+      <path d="M -10,25 C 2,28 12,20 24,32 C 34,40 40,28 55,30 L 55,38 C 42,35 34,45 22,38 C 12,30 2,36 -10,32 Z" fill="#d8d8d0" />
+      <path d="M -10,-8 C 5,-2 15,-10 25,-4 C 35,2 42,-8 55,-4 L 55,4 C 40,-1 35,6 22,0 C 10,-6 -2,2 -10,-2 Z" fill="#7ba077" />
+    </pattern>
+  </defs>
+
   <rect width="200" height="120" fill="#000000" />
   <!-- Pinguino (Mirando a la izquierda - deescalado y posicionado según usuario) -->
   <g id="pinguino-contenedor" transform="matrix(0, 0.848747, -0.768697, 0, 63.980534, 122.770161)">
@@ -159,7 +181,56 @@ function getVariantStaticSvg(variantId: number): string {
     }
   };
 
-  const baseEnd = `\n  </g>\n</svg>`;
+  const staticSoul = (id: number) => {
+    switch (id) {
+      case 1:
+        return `  <!-- Variant 1: Gota/Flama de Alma Espiritual -->
+  <path id="alma-gota" d="M 165 74 C 157 82 153 90 153 96 A 12 12 0 1 0 177 96 C 177 90 173 82 165 74 Z" fill="url(#camo-soul)" stroke="#7ba077" stroke-width="0.8" />`;
+      case 2:
+        return `  <!-- Variant 2: Retícula de Francotirador -->
+  <g id="alma-reticula" transform="rotate(15, 165, 90)">
+    <circle cx="165" cy="90" r="11" stroke="url(#camo-soul)" stroke-width="2.2" fill="none" />
+    <line x1="150" y1="90" x2="180" y2="90" stroke="#f4f4f5" stroke-width="0.8" opacity="0.6" />
+    <line x1="165" y1="75" x2="165" y2="105" stroke="#f4f4f5" stroke-width="0.8" opacity="0.6" />
+    <circle cx="165" cy="90" r="4.5" fill="url(#camo-soul)" stroke="#d8d8d0" stroke-width="0.5" />
+  </g>`;
+      case 3:
+        return `  <!-- Variant 3: Escudo Militar -->
+  <path id="alma-escudo" d="M 155 78 L 175 78 L 175 90 C 175 98 165 104 165 104 C 165 104 155 98 155 90 Z" fill="url(#camo-soul)" stroke="#5c4033" stroke-width="1" />`;
+      case 4:
+        return `  <!-- Variant 4: Radar de Barrido -->
+  <g id="alma-radar">
+    <circle cx="165" cy="90" r="13" stroke="url(#camo-soul)" stroke-width="1.5" fill="none" opacity="0.8" />
+    <circle cx="165" cy="90" r="7" stroke="url(#camo-soul)" stroke-width="0.8" fill="none" stroke-dasharray="2 2" opacity="0.5" />
+    <line x1="165" y1="90" x2="165" y2="77" stroke="#7ba077" stroke-width="1.5" stroke-linecap="round" transform="rotate(45, 165, 90)" />
+    <circle cx="165" cy="90" r="2.5" fill="#f4f4f5" />
+  </g>`;
+      case 5:
+        return `  <!-- Variant 5: Rombo Pixelado -->
+  <path id="alma-rombo" d="M 165 76 L 178 89 L 165 102 L 152 89 Z" fill="url(#camo-soul)" stroke="#d8d8d0" stroke-width="1" />`;
+      case 6:
+        return `  <!-- Variant 6: Pluma/Espíritu de Ave -->
+  <path id="alma-pluma" d="M 165 74 C 160 80 156 88 158 98 C 162 98 165 92 168 95 C 172 88 170 80 165 74 Z" fill="url(#camo-soul)" stroke="#7ba077" stroke-width="1" transform="rotate(-5, 165, 90)" />`;
+      case 7:
+        return `  <!-- Variant 7: Proyectil/Bala Abstracto -->
+  <g id="alma-bala">
+    <path d="M 160 98 L 160 84 C 160 80 170 80 170 84 L 170 98 Z" fill="url(#camo-soul)" stroke="#5c4033" stroke-width="0.8" />
+    <rect x="158" y="98" width="14" height="3" fill="#d8d8d0" rx="0.5" />
+  </g>`;
+      case 8:
+        return `  <!-- Variant 8: Estrella de 4 Puntas -->
+  <path id="alma-estrella" d="M 165 74 L 168 87 L 181 90 L 168 93 L 165 106 L 162 93 L 149 90 L 162 87 Z" fill="url(#camo-soul)" stroke="#d8d8d0" stroke-width="0.8" transform="rotate(15, 165, 90)" />`;
+      default:
+        return '';
+    }
+  };
+
+  const baseEnd = `\n  </g>
+  <!-- Sombra/Glow del Alma de Camo (derecha abajo) -->
+  <circle cx="165" cy="90" r="22" fill="url(#camo-glow)" opacity="0.8" />
+${staticSoul(variantId)}
+</svg>`;
+
   return `${baseStart}${eyeVariant(variantId)}${baseEnd}`;
 }
 

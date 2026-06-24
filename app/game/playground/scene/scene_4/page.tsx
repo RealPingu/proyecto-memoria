@@ -163,15 +163,6 @@ function getVariantStaticSvg(variantId: number): string {
   return `${baseStart}${eyeVariant(variantId)}${baseEnd}`;
 }
 
-function renderChoiceText(text: string) {
-  const parts = text.split(/([¿?])/g);
-  return parts.map((part, index) => {
-    if (part === '¿' || part === '?') {
-      return <span key={index} className="text-white font-bold select-none">{part}</span>;
-    }
-    return <span key={index}>{part}</span>;
-  });
-}
 
 export default function Scene4PlaygroundPage() {
   const router = useRouter();
@@ -522,7 +513,7 @@ export default function Scene4PlaygroundPage() {
                             className="w-full text-left py-1.5 px-3 border border-zinc-900 bg-zinc-950/50 hover:border-red-500/40 hover:bg-red-950/10 transition-all text-red-400 hover:text-red-300 font-mono text-[9px] uppercase tracking-widest cursor-pointer rounded flex items-center space-x-2 active:scale-[0.99] select-none group"
                           >
                             <span className="text-white/40 group-hover:text-white/80 transition-colors font-bold select-none">&gt;</span>
-                            <span className="leading-tight">{renderChoiceText(choice.text)}</span>
+                            <span className="leading-tight">{choice.text}</span>
                           </button>
                         ))}
                       </div>

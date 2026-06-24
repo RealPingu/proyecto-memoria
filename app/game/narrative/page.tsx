@@ -307,7 +307,7 @@ export default function NarrativeIntroPage() {
 
     if (currentNodeId === 'scene_2_join' || currentNodeId === 'scene_3_start') {
       // Escena 4: Caminando (ojo deescalado arriba a la izquierda)
-      return <Scene4Walking variantId={1} />;
+      return <Scene4Walking variantId={5} />;
     }
 
     // SVG genérico por defecto

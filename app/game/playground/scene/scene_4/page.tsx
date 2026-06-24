@@ -68,35 +68,35 @@ function getVariantStaticSvg(variantId: number): string {
   // Generar partículas estáticas
   const staticParticlesSvg = PARTICLE_TEMPLATES.map((p, idx) => {
     const color = config.particleColors[idx % config.particleColors.length];
-    return `  <circle id="alma-particula-estatica-${p.id}" cx="${165 + p.dx}" cy="${90 + p.dy - 6}" r="${p.r * 0.8}" fill="${color}" opacity="0.45" />`;
+    return `  <circle id="alma-particula-estatica-${p.id}" cx="${165 + p.dx}" cy="${60 + p.dy - 6}" r="${p.r * 0.8}" fill="${color}" opacity="0.45" />`;
   }).join('\n');
 
   const staticEyes = (id: number) => {
     switch (id) {
       case 1:
-        return `    <path d="M 160 82 C 160.5 83.5 162.5 83.5 163 82" stroke="#ffffff" fill="none" stroke-width="0.75" stroke-linecap="round" id="ojo-izq" />
-    <path d="M 167 82 C 167.5 83.5 169.5 83.5 170 82" stroke="#ffffff" fill="none" stroke-width="0.75" stroke-linecap="round" id="ojo-der" />`;
+        return `    <path d="M 160 52 C 160.5 53.5 162.5 53.5 163 52" stroke="#ffffff" fill="none" stroke-width="0.75" stroke-linecap="round" id="ojo-izq" />
+    <path d="M 167 52 C 167.5 53.5 169.5 53.5 170 52" stroke="#ffffff" fill="none" stroke-width="0.75" stroke-linecap="round" id="ojo-der" />`;
       case 2:
-        return `    <path d="M 159.5 82.5 H 163" stroke="#e2e8f0" stroke-width="0.8" stroke-linecap="round" id="ojo-izq" />
-    <path d="M 167 82.5 H 170.5" stroke="#e2e8f0" stroke-width="0.8" stroke-linecap="round" id="ojo-der" />`;
+        return `    <path d="M 159.5 52.5 H 163" stroke="#e2e8f0" stroke-width="0.8" stroke-linecap="round" id="ojo-izq" />
+    <path d="M 167 52.5 H 170.5" stroke="#e2e8f0" stroke-width="0.8" stroke-linecap="round" id="ojo-der" />`;
       case 3:
-        return `    <path d="M 160 83.5 L 162.5 81.5" stroke="#e2e8f0" stroke-width="0.95" stroke-linecap="round" id="ojo-izq" />
-    <path d="M 167 81.5 L 169.5 83.5" stroke="#e2e8f0" stroke-width="0.95" stroke-linecap="round" id="ojo-der" />`;
+        return `    <path d="M 160 53.5 L 162.5 51.5" stroke="#e2e8f0" stroke-width="0.95" stroke-linecap="round" id="ojo-izq" />
+    <path d="M 167 51.5 L 169.5 53.5" stroke="#e2e8f0" stroke-width="0.95" stroke-linecap="round" id="ojo-der" />`;
       case 4:
-        return `    <path d="M 159.5 82.5 H 163" stroke="#ffffff" stroke-width="0.65" stroke-linecap="round" id="ojo-izq" />
-    <path d="M 167 82.5 H 170.5" stroke="#ffffff" stroke-width="0.65" stroke-linecap="round" id="ojo-der" />`;
+        return `    <path d="M 159.5 52.5 H 163" stroke="#ffffff" stroke-width="0.65" stroke-linecap="round" id="ojo-izq" />
+    <path d="M 167 52.5 H 170.5" stroke="#ffffff" stroke-width="0.65" stroke-linecap="round" id="ojo-der" />`;
       case 5:
-        return `    <path d="M 160 82 C 160.5 83.5 162.5 83.5 163 82" stroke="#ffffff" fill="none" stroke-width="0.75" stroke-linecap="round" id="ojo-izq" />
-    <path d="M 167 82 C 167.5 83.5 169.5 83.5 170 82" stroke="#ffffff" fill="none" stroke-width="0.75" stroke-linecap="round" id="ojo-der" />`;
+        return `    <path d="M 160 52 C 160.5 53.5 162.5 53.5 163 52" stroke="#ffffff" fill="none" stroke-width="0.75" stroke-linecap="round" id="ojo-izq" />
+    <path d="M 167 52 C 167.5 53.5 169.5 53.5 170 52" stroke="#ffffff" fill="none" stroke-width="0.75" stroke-linecap="round" id="ojo-der" />`;
       case 6:
-        return `    <circle cx="161" cy="82.5" r="1.2" fill="#22d3ee" id="ojo-izq" />
-    <circle cx="169" cy="82.5" r="1.2" fill="#22d3ee" id="ojo-der" />`;
+        return `    <circle cx="161" cy="52.5" r="1.2" fill="#22d3ee" id="ojo-izq" />
+    <circle cx="169" cy="52.5" r="1.2" fill="#22d3ee" id="ojo-der" />`;
       case 7:
-        return `    <path d="M 160 83 C 160.5 81.5 162.5 81.5 163 83" stroke="#cbd5e1" fill="none" stroke-width="0.75" stroke-linecap="round" id="ojo-izq" />
-    <path d="M 167 83 C 167.5 81.5 169.5 81.5 170 83" stroke="#cbd5e1" fill="none" stroke-width="0.75" stroke-linecap="round" id="ojo-der" />`;
+        return `    <path d="M 160 53 C 160.5 51.5 162.5 51.5 163 53" stroke="#cbd5e1" fill="none" stroke-width="0.75" stroke-linecap="round" id="ojo-izq" />
+    <path d="M 167 53 C 167.5 51.5 169.5 51.5 170 53" stroke="#cbd5e1" fill="none" stroke-width="0.75" stroke-linecap="round" id="ojo-der" />`;
       case 8:
-        return `    <path d="M 161 80.5 L 162 82.5 L 164 82.5 L 162 83.5 L 161 85.5 L 160 83.5 L 158 82.5 L 160 82.5 Z" fill="#fef08a" stroke="#fbbf24" stroke-width="0.4" id="ojo-izq" />
-    <path d="M 169 80.5 L 170 82.5 L 172 82.5 L 170 83.5 L 169 85.5 L 168 83.5 L 166 82.5 L 168 82.5 Z" fill="#fef08a" stroke="#fbbf24" stroke-width="0.4" id="ojo-der" />`;
+        return `    <path d="M 161 50.5 L 162 52.5 L 164 52.5 L 162 53.5 L 161 55.5 L 160 53.5 L 158 52.5 L 160 52.5 Z" fill="#fef08a" stroke="#fbbf24" stroke-width="0.4" id="ojo-izq" />
+    <path d="M 169 50.5 L 170 52.5 L 172 52.5 L 170 53.5 L 169 55.5 L 168 53.5 L 166 52.5 L 168 52.5 Z" fill="#fef08a" stroke="#fbbf24" stroke-width="0.4" id="ojo-der" />`;
       default:
         return '';
     }
@@ -212,11 +212,11 @@ function getVariantStaticSvg(variantId: number): string {
     <circle id="ojo-pupila-brillo" cx="-4.8" cy="-1.8" r="1.5" fill="#ffffff" transform="matrix(-1.397505, 0, 0, 1.944474, -10.963154, -5.601462)"></circle>
   </g>
 
-  <!-- Sombra/Glow del Alma de Camo (derecha abajo) con opacidad reducida -->
+  <!-- Sombra/Glow del Alma de Camo (derecha centro) con opacidad reducida -->
   <g id="camo-alma-contenedor" opacity="0.6">
-    <circle cx="165" cy="90" r="22" fill="url(#camo-glow)" opacity="0.8" />
+    <circle cx="165" cy="60" r="22" fill="url(#camo-glow)" opacity="0.8" />
     <!-- Gota Invertida (Alma de Camo) -->
-    <path id="alma-gota-invertida" d="M 165 106 C 157 98 153 90 153 84 A 12 12 0 0 1 177 84 C 177 90 173 98 165 106 Z" fill="${config.patternUrl}" stroke="${config.stroke}" stroke-width="0.8" />
+    <path id="alma-gota-invertida" d="M 165 76 C 157 68 153 60 153 54 A 12 12 0 0 1 177 54 C 177 60 173 68 165 76 Z" fill="${config.patternUrl}" stroke="${config.stroke}" stroke-width="0.8" />
     <!-- Ojos del Alma -->
   ${staticEyes(variantId)}
     <!-- Partículas de Alma Estáticas -->

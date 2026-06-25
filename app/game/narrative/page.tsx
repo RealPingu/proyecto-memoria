@@ -16,6 +16,7 @@ import Scene9CelularPagar from './illustrations/scene_9_celular_pagar';
 import Scene10CelularGrande from './illustrations/scene_10_celular_grande';
 import Scene11AletaPagar from './illustrations/scene_11_aleta_pagar';
 import Scene12Iglu from './illustrations/scene_12_iglu';
+import Scene13Anuncios from './illustrations/scene_13_anuncios';
 
 // Tokenizador para dar formato especial a "" y #
 interface TextToken {
@@ -372,6 +373,11 @@ export default function NarrativeIntroPage() {
     if (currentNodeId.startsWith('scene_12')) {
       // Escena 12: Camo viendo el iglú brillante en el celular
       return <Scene12Iglu />;
+    }
+
+    if (currentNodeId.startsWith('scene_13')) {
+      // Escena 13: Celular gigante con múltiples anuncios y popups
+      return <Scene13Anuncios />;
     }
 
     // SVG genérico por defecto

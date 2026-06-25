@@ -333,6 +333,45 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
       color: 'from-blue-950/30 via-zinc-900/50 to-black border-blue-900/20 text-blue-400',
       label: 'Escena 12: Camo con un celular gigante que despliega un iglú brillante caricaturesco.'
     },
+    next: 'scene_13_init_1'
+  },
+  'scene_13_init_1': {
+    id: 'scene_13_init_1',
+    speaker: 'narrator',
+    speakerLabel: 'Narrador',
+    text: '¡Camo entró rápidamente a la página!',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-cyan-950/30 via-zinc-900/50 to-black border-cyan-900/20 text-cyan-400',
+      label: 'Escena 13: La pantalla táctica gigante del celular inundada por pop-ups y anuncios persuasivos de compra compulsiva.'
+    },
+    next: 'scene_13_init_2'
+  },
+  'scene_13_init_2': {
+    id: 'scene_13_init_2',
+    speaker: 'narrator',
+    speakerLabel: 'Narrador',
+    text: '¡Lo primero que encontró fue una pantalla llena de botones y anuncios que decían "comprar ahora"!',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-cyan-950/30 via-zinc-900/50 to-black border-cyan-900/20 text-cyan-400',
+      label: 'Escena 13: La pantalla táctica gigante del celular inundada por pop-ups y anuncios persuasivos de compra compulsiva.'
+    },
+    next: 'scene_13_init_3'
+  },
+  'scene_13_init_3': {
+    id: 'scene_13_init_3',
+    speaker: 'subconscious',
+    speakerLabel: 'Subconsciente',
+    text: '¡Es el momento, toma las riendas y usa tu "conciencia" para ayudar a Camo! lucha contra el patron oscuro y toma las riendas de tus desiciones!',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-cyan-950/30 via-zinc-900/50 to-black border-cyan-900/20 text-cyan-400',
+      label: 'Escena 13: La pantalla táctica gigante del celular inundada por pop-ups y anuncios persuasivos de compra compulsiva.'
+    },
     next: 'scene_11_init'
   },
   'scene_11_init': {

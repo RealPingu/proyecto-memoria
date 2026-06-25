@@ -163,10 +163,33 @@ export default function Scene5Approaching({
           <path id="path-lightgold-gld" d="M -10,25 C 2,28 12,20 24,32 L 55,30 L 55,38 Z" fill="#fef9c3" opacity="0.8" />
           <path id="path-mediumgold-gld" d="M -10,-8 C 5,-2 15,-10 25,-4 L 55,-4 L 55,4 Z" fill="#854d0e" opacity="0.5" />
         </pattern>
+        {/* Very subtle blue radial gradient for dream atmosphere */}
+        <radialGradient id="limbo-blue-pulsing" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#1e3a8a" stopOpacity="0.3" />
+          <stop offset="60%" stopColor="#0f172a" stopOpacity="0.1" />
+          <stop offset="100%" stopColor="#09090b" stopOpacity="1" />
+        </radialGradient>
       </defs>
 
-      {/* Fondo Negro Absoluto */}
-      <rect width="200" height="120" fill="#000000" id="fondo-escena" />
+      {/* Dark background base */}
+      <rect width="200" height="120" fill="#09090b" id="fondo-escena" />
+
+      {/* Pulsing subtle blue glow behind the characters */}
+      <motion.circle
+        cx="100"
+        cy="60"
+        r="75"
+        fill="url(#limbo-blue-pulsing)"
+        animate={{
+          scale: [0.95, 1.1, 0.95],
+          opacity: [0.7, 0.95, 0.7]
+        }}
+        transition={{
+          repeat: Infinity,
+          duration: 5,
+          ease: "easeInOut"
+        }}
+      />
 
       {/* 1. El Ojo Subconsciente (Ojo Blanco flotando arriba a la izquierda, mirando a Camo) */}
       <g transform="matrix(-0.498268, 0, 0, 0.532384, 30.760, 49.912)" id="ojo-subconsciente-grupo">

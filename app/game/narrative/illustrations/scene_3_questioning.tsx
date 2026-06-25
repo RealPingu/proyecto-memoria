@@ -29,10 +29,33 @@ export default function Scene3Questioning({ variantId = 1 }: Scene3QuestioningPr
           <stop offset="50%" stopColor="#ffffff" stopOpacity={0.2} />
           <stop offset="100%" stopColor="#ffffff" stopOpacity={0} />
         </radialGradient>
+        {/* Very subtle blue radial gradient for dream atmosphere */}
+        <radialGradient id="limbo-blue-pulsing" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#1e3a8a" stopOpacity="0.3" />
+          <stop offset="60%" stopColor="#0f172a" stopOpacity="0.1" />
+          <stop offset="100%" stopColor="#09090b" stopOpacity="1" />
+        </radialGradient>
       </defs>
 
-      {/* Total Black Background */}
-      <rect width="200" height="120" fill="#000000" />
+      {/* Dark background base */}
+      <rect width="200" height="120" fill="#09090b" />
+
+      {/* Pulsing subtle blue glow behind the characters */}
+      <motion.circle
+        cx="100"
+        cy="60"
+        r="75"
+        fill="url(#limbo-blue-pulsing)"
+        animate={{
+          scale: [0.95, 1.1, 0.95],
+          opacity: [0.7, 0.95, 0.7]
+        }}
+        transition={{
+          repeat: Infinity,
+          duration: 5,
+          ease: "easeInOut"
+        }}
+      />
 
       {/* 1. The Penguin (statically stood up, positioned on the left) */}
       <g id="pinguino-contenedor" transform="translate(99.601913, 50.428756)">

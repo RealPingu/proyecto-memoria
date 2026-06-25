@@ -51,10 +51,33 @@ export default function Scene6Glow({
           <stop offset="50%" stopColor={glowConfig.colorMiddle} stopOpacity={0.65} />
           <stop offset="100%" stopColor={glowConfig.colorEnd} stopOpacity={0} />
         </radialGradient>
+        {/* Very subtle blue radial gradient for dream atmosphere */}
+        <radialGradient id="limbo-blue-pulsing" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#1e3a8a" stopOpacity="0.3" />
+          <stop offset="60%" stopColor="#0f172a" stopOpacity="0.1" />
+          <stop offset="100%" stopColor="#09090b" stopOpacity="1" />
+        </radialGradient>
       </defs>
 
-      {/* Fondo Negro Absoluto */}
-      <rect width="200" height="120" fill="#000000" x="0" y="0" id="fondo-escena" />
+      {/* Dark background base */}
+      <rect width="200" height="120" fill="#09090b" x="0" y="0" id="fondo-escena" />
+
+      {/* Pulsing subtle blue glow behind the characters */}
+      <motion.circle
+        cx="104"
+        cy="58"
+        r="75"
+        fill="url(#limbo-blue-pulsing)"
+        animate={{
+          scale: [0.95, 1.1, 0.95],
+          opacity: [0.7, 0.95, 0.7]
+        }}
+        transition={{
+          repeat: Infinity,
+          duration: 5,
+          ease: "easeInOut"
+        }}
+      />
 
       {/* 1. Protagonista mirando hacia abajo en el centro */}
       <g id="protagonista-contenedor" transform="matrix(0.796426, 0, 0, 0.829579, 101.277, 8.853)">

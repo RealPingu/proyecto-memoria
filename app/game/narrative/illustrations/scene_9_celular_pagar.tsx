@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 
 export default function Scene9CelularPagar() {
-  // Trajectory of money items flying from phone screen (approx x: 138, y: 45) to Camo's area (approx x: 32, y: 95)
+  // Trajectory of money items flying from Camo's area (approx x: 32, y: 95) to the phone screen (approx x: 138, y: 45)
   const moneyItems = Array.from({ length: 10 }).map((_, i) => {
     const isCoin = i % 2 === 0;
     const delay = i * 0.45;
@@ -144,7 +144,7 @@ export default function Scene9CelularPagar() {
       </g>
 
       {/* 6. Haz de luz proyectado desde el celular hacia Camo */}
-      <g id="brillo-proyeccion-grupo" transform="matrix(1.526425, 0, 0, 1.857937, -95.956218, -228.358634)">
+      <g id="brillo-proyeccion-grupo" transform="matrix(2.670315027236939, 0, 0, 1.917878031730652, -184.93488099977006, -238.60230203277754)">
         <motion.polygon 
           id="brillo-proyeccion" 
           points="121.805 131.076 128.666 170.055 78.101 170.895 77.786 169.791" 
@@ -247,16 +247,16 @@ export default function Scene9CelularPagar() {
         </motion.g>
       </g>
 
-      {/* 8. FLUJO DE DINERO FLOTANTE (Dólares pingüinales flotando del celular a Camo) */}
+      {/* 8. FLUJO DE DINERO FLOTANTE (Dólares pingüinales flotando de Camo al celular) */}
       <g id="dinero-flotante-grupo">
         {moneyItems.map((item) => (
           <motion.g
             key={item.id}
             id={item.isCoin ? `dolar-moneda-${item.id}` : `dolar-billete-${item.id}`}
-            initial={{ x: 138, y: 45, opacity: 0, scale: 0 }}
+            initial={{ x: 32, y: 92, opacity: 0, scale: 0 }}
             animate={{
-              x: [138, 90, 32],
-              y: [45, 62, 92],
+              x: [32, 90, 138],
+              y: [92, 62, 45],
               opacity: [0, 0.9, 0.9, 0],
               scale: [0, item.scale, item.scale, 0],
               rotate: [0, 180, 360]

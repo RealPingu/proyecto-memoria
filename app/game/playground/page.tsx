@@ -14,6 +14,7 @@ import Scene9CelularPagar from './components/scene_9_celular_pagar';
 import Scene10CelularGrande from './components/scene_10_celular_grande';
 import Scene11AletaPagar from './components/scene_11_aleta_pagar';
 import Scene12Iglu from './components/scene_12_iglu';
+import Scene13Anuncios from './components/scene_13_anuncios';
 
 interface SceneItem {
   id: string;
@@ -208,6 +209,21 @@ export default function SceneMenuPage() {
       preview: (
         <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
           <Scene12Iglu />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+        </div>
+      )
+    },
+    {
+      id: 'scene_13',
+      number: 13,
+      title: 'Los Anuncios Caóticos',
+      subtitle: 'Escena 13 — Camo y los Anuncios',
+      description: 'Muestra la pantalla táctica gigante del celular inundada por pop-ups y anuncios persuasivos de compra compulsiva.',
+      path: '/game/playground/scene/scene_13',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
+          <Scene13Anuncios />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
         </div>
       )

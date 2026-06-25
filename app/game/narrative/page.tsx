@@ -228,6 +228,8 @@ export default function NarrativeIntroPage() {
   // Parser dinámico para formatear "" y ## en React
   const renderDialogue = (tokens: TextToken[], visibleCount: number) => {
     let charsRemaining = visibleCount;
+    const isDarkPatternTheme = currentNodeId.startsWith('scene_8');
+
     return tokens.map((token, index) => {
       if (charsRemaining <= 0) return null;
       
@@ -243,7 +245,7 @@ export default function NarrativeIntroPage() {
           <span 
             key={index} 
             style={{
-              WebkitTextStroke: '0.8px #22d3ee',
+              WebkitTextStroke: isDarkPatternTheme ? '0.8px #22d3ee' : '0.8px #ffffff',
               display: 'inline-block'
             }}
             className="font-bold mx-1 select-none"
@@ -251,8 +253,16 @@ export default function NarrativeIntroPage() {
             {chars.map((char, charIdx) => (
               <motion.span 
                 key={charIdx} 
-                style={{ display: 'inline-block', whiteSpace: 'pre' }}
-                animate={{ 
+                style={isDarkPatternTheme ? {
+                  display: 'inline-block',
+                  whiteSpace: 'pre'
+                } : {
+                  display: 'inline-block',
+                  whiteSpace: 'pre',
+                  color: '#000000',
+                  textShadow: '0 0 3px #ffffff, 0 0 6px #ffffff, 0 0 1px #ffffff'
+                }}
+                animate={isDarkPatternTheme ? { 
                   y: [0, -3.5, 0],
                   color: ['#090d16', '#22d3ee', '#0891b2', '#090d16'],
                   textShadow: [
@@ -260,12 +270,14 @@ export default function NarrativeIntroPage() {
                     '0 0 8px #22d3ee, 0 0 15px #06b6d4, 0 0 2px #000',
                     '0 0 3px #06b6d4, 0 0 6px #0891b2, 0 0 1px #000'
                   ]
+                } : {
+                  y: [0, -3.5, 0]
                 }}
                 transition={{ 
                   repeat: Infinity, 
-                  duration: 2.8, 
+                  duration: isDarkPatternTheme ? 2.8 : 2.2, 
                   ease: "easeInOut",
-                  delay: charIdx * 0.14
+                  delay: charIdx * (isDarkPatternTheme ? 0.14 : 0.12)
                 }}
               >
                 {char}

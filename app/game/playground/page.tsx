@@ -7,6 +7,9 @@ import Scene2Encounter from './components/scene_2_encounter';
 import Scene3Questioning from './components/scene_3_questioning';
 import Scene4Walking from './components/scene_4_walking';
 import Scene5Approaching from './components/scene_5_approaching';
+import Scene6Glow from './components/scene_6_glow';
+import Scene7Sniper from './components/scene_7_sniper';
+import Scene8DarkPattern from './components/scene_8_dark_pattern';
 
 interface SceneItem {
   id: string;
@@ -94,6 +97,51 @@ export default function SceneMenuPage() {
       preview: (
         <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
           <Scene5Approaching />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+        </div>
+      )
+    },
+    {
+      id: 'scene_6',
+      number: 6,
+      title: 'El Despertar de Camo',
+      subtitle: 'Escena 6 — Resplandor en las Manos',
+      description: 'Camo despierta y mira hacia abajo sus aletas, las cuales emiten un resplandor mágico, mientras el Ojo Blanco lo observa desde arriba.',
+      path: '/game/playground/scene/scene_6',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
+          <Scene6Glow />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+        </div>
+      )
+    },
+    {
+      id: 'scene_7',
+      number: 7,
+      title: 'Camo el Francotirador',
+      subtitle: 'Escena 7 — El Pingüino Sigiloso',
+      description: 'Muestra a Camo posando con orgullo en su podio militar con su rifle de francotirador, simbolizando su rol previo a ser oscurecido.',
+      path: '/game/playground/scene/scene_7',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
+          <Scene7Sniper />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+        </div>
+      )
+    },
+    {
+      id: 'scene_8',
+      number: 8,
+      title: 'Camo y el Patrón Oscuro',
+      subtitle: 'Escena 8 — La Persuasión',
+      description: 'Camo cae víctima de los patrones oscuros y es consumido por la oscuridad, acechado por la columna flotante del Patrón.',
+      path: '/game/playground/scene/scene_8',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
+          <Scene8DarkPattern />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
         </div>
       )

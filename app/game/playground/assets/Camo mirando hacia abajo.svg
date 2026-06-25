@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="200 120 200 120" width="200px" height="120px">
+  <g id="protagonista-contenedor" transform="matrix(0.796426, 0, 0, 0.829579, 301.277226, 128.853365)" style="">
+    <g id="protagonista-posicion" transform="matrix(0, 0.848747, -0.768697, 0, 35, 115)">
+      <g id="protagonista-respiracion">
+        <g id="protagonista-patas" transform="matrix(1, 0, 0, 1, -51.910336, 17.303471)">
+          <path id="protagonista-pata-inferior" d="M 22.869 24.905 L 23.057 31.616 L 15.692 28.426 L 22.869 24.905 Z" fill="#f59e0b"/>
+        </g>
+        <g>
+          <path id="protagonista-pata-superior" d="M -35.622 35.869 L -29.033 32.462 L -29.063 39.564 L -35.622 35.869 Z" fill="#f59e0b"/>
+        </g>
+        <ellipse id="protagonista-cuerpo" cx="-52.831" cy="41.022" rx="20" ry="14" fill="#18181b"/>
+        <ellipse id="protagonista-vientre" cx="-54.21" cy="39.739" rx="14" ry="7.999" fill="#f4f4f5" style="transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(0.999912, -0.013232, 0.010004, 0.999955, -0.505833, 1.163667)"/>
+        <circle id="protagonista-cabeza" cx="-80.174" cy="41.967" r="10" fill="#18181b"/>
+        <g id="protagonista-bufanda" transform="matrix(1, 0, 0, 1, -51.910336, 17.303471)">
+          <path id="protagonista-bufanda-cuello" d="M -19.205 29.546 C -17.205 23.546 -17.229 23.62 -19.862 18.279" stroke="#ef4444" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          <path id="protagonista-bufanda-caida-roja" d="M -16.769 24.06 C -11.769 23.06 -14.875 24.867 -7.755 23.934 C -12.791 23.485 -10.167 20.493 -17.167 22.493 L -16.769 24.06 Z" fill="#ef4444"/>
+          <path id="protagonista-bufanda-caida-guinda" d="M -17.131 26.05 C -13.649 23.432 -11.491 26.897 -8.491 25.897 C -10.491 23.897 -12.226 24.897 -16.612 24.024 L -17.131 26.05 Z" fill="#b91c1c"/>
+        </g>
+        <g id="protagonista-ojo" transform="matrix(1, 0, 0, 1, -12.964486, 12.089528)">
+          <circle id="protagonista-ojo-borde" cx="-67.91" cy="33.303" r="2.2" fill="#f4f4f5"/>
+          <circle id="protagonista-ojo-pupila" cx="-66.903" cy="33.255" r="1.019" fill="#000000" style="transform-box: fill-box; transform-origin: 12.0579% 77.7689%;"/>
+        </g>
+        <polygon id="protagonista-pico" points="-78.432 41.582 -75.432 38.14 -75.384 44.735" fill="#f59e0b" style=""/>
+        <path id="protagonista-aleta" d="M -65.559 48.643 C -66.821 52.694 -40.685 47.857 -49.73 42.79" stroke-width="2.5" stroke-linecap="round" stroke="rgb(0, 0, 0)" fill="none"/>
+        <g id="group-1" transform="matrix(1, 0, 0, 1, -13.406372, 4.79269)">
+          <circle id="circle-1" cx="-67.91" cy="33.303" r="2.2" fill="#f4f4f5"/>
+          <circle id="circle-2" cx="-66.692" cy="33.174" r="1.019" fill="#000000"/>
+        </g>
+        <path id="path-1" d="M -66.114 33.119 C -67.376 29.926 -40.396 32.693 -50.116 38.658" stroke-width="2.5" stroke-linecap="round" stroke="rgb(0, 0, 0)" fill="none" style="stroke-width: 2.5;"/>
+      </g>
+    </g>
+  </g>
+</svg>

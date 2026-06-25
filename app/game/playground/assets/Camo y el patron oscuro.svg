@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 350" width="100%" height="100%">
+  <defs>
+    <pattern id="camo-digital" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect width="20" height="20" fill="#3f4e3f" id="rect-bg-dig"/>
+      <rect x="0" y="0" width="8" height="6" fill="#2d3a2d" id="rect-dark-dig"/>
+      <rect x="10" y="4" width="6" height="8" fill="#546554" id="rect-medium-dig"/>
+      <rect x="2" y="10" width="8" height="6" fill="#7ba077" id="rect-light-dig"/>
+      <rect x="12" y="12" width="6" height="6" fill="#202a20" id="rect-black-dig"/>
+    </pattern>
+    <linearGradient id="brillo-celular" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" stop-color="#38bdf8" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#bae6fd" stop-opacity="0.1"/>
+    </linearGradient>
+    <pattern id="teselacion" width="40" height="40" patternUnits="userSpaceOnUse">
+      <polygon points="0,0 20,10 20,30 0,20" fill="#111827" stroke="#020408" stroke-width="0.5"/>
+      <polygon points="20,10 40,0 40,20 20,30" fill="#1f2937" stroke="#020408" stroke-width="0.5"/>
+      <polygon points="0,20 20,30 20,40 0,40" fill="#0f172a" stroke="#020408" stroke-width="0.5"/>
+      <polygon points="20,30 40,20 40,40 20,40" fill="#1e1b4b" stroke="#020408" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <g transform="matrix(0.416908, 0, -0.265896, 0.415816, 393.614086, -17.966342)" style="">
+    <polygon points="130,360 100,120 300,120 270,360" fill="url(#teselacion)" stroke="#06b6d4" stroke-width="1.5"/>
+    <g transform="matrix(1, 0, 0, 1, -54.158613, 5.563326)">
+      <polygon points="200,160 225,180 200,200 175,180" fill="#22d3ee"/>
+      <line x1="188.179" y1="174.081" x2="200.433" y2="193.748" stroke="#020408" stroke-width="3" style=""/>
+    </g>
+  </g>
+  <g id="sillon-contenedor" transform="matrix(1, 0, 0, 1, 0, 2.133994)">
+    <rect x="60" y="80" width="380" height="130" rx="15" fill="#78350f" stroke="#451a03" stroke-width="2"/>
+    <rect x="50" y="180" width="400" height="70" rx="12" fill="#92400e" stroke="#451a03" stroke-width="2"/>
+    <line x1="250" y1="180" x2="250" y2="250" stroke="#451a03" stroke-width="1.5"/>
+    <rect x="20" y="150" width="60" height="100" rx="20" fill="#b45309" stroke="#451a03" stroke-width="2"/>
+    <rect x="420" y="150" width="60" height="100" rx="20" fill="#b45309" stroke="#451a03" stroke-width="2"/>
+    <rect x="40" y="250" width="25" height="15" fill="#1c1917"/>
+    <rect x="435" y="250" width="25" height="15" fill="#1c1917"/>
+  </g>
+  <g id="celular-táctico" transform="matrix(0.77943, 0, 0, 0.862829, 3.264157, -17.062647)" style="">
+    <polygon points="160,150 162,175 120,165 122,158" fill="url(#brillo-celular)"/>
+    <rect x="158" y="148" width="8" height="26" rx="1.5" fill="#18181b" stroke="#27272a" stroke-width="0.5" transform="rotate(-15, 160, 160)"/>
+    <rect x="159" y="150" width="4" height="22" rx="0.5" fill="#38bdf8" transform="rotate(-15, 160, 160)"/>
+  </g>
+  <g id="camo-flojo" transform="translate(10, -10)">
+    <path id="camo-pata-superior" d="M 130.444 194.395 L 150.444 184.395 L 148.444 199.395 L 130.444 194.395 Z" fill="#f59e0b" stroke="#d97706" stroke-width="0.5"/>
+    <ellipse id="camo-cuerpo" cx="118.065" cy="174.941" rx="32.959" ry="20.195" fill="url(#camo-digital)" stroke="#7ba077" stroke-width="0.5" style="" transform="matrix(0.964779, 0.26306, 0, 1.036506, -8.433431, -36.30004)"/>
+    <ellipse id="camo-vientre" cx="106.907" cy="174.248" rx="22.886" ry="13.458" fill="#d8d8d0" stroke="#000000" stroke-width="0.8" style="" transform="matrix(0.961297, 0.275515, 0, 1.040261, 5.282357, -40.190219)"/>
+    <circle id="camo-cabeza" cx="115" cy="165" r="18" fill="url(#camo-digital)" stroke="#7ba077" stroke-width="0.5" style="" transform="matrix(1.297488, 0, 0, 1.424591, -78.935854, -98.101832)"/>
+    <polygon id="camo-pico" points="84.066 141.103 93.12 145.741 82.255 148.832" fill="#f59e0b" stroke="#d97706" stroke-width="0.5" style=""/>
+    <g id="camo-patas-contenedor" transform="matrix(1, 0, 0, 1, -71.257288, -14.881023)">
+      <path id="camo-pata-inferior" d="M 195 210 L 215 212 L 208 222 Z" fill="#f59e0b" stroke="#d97706" stroke-width="0.5"/>
+    </g>
+    <g id="group-1" transform="matrix(0, 2.369476, -2.141482, 0, 150.247929, 290.859048)" style="">
+      <circle id="circle-1" cx="-67.91" cy="33.303" r="2.2" fill="#f4f4f5"/>
+      <circle id="circle-2" cx="-67.859" cy="32.19" r="1.019" fill="#000000"/>
+      <path id="path-1" d="M -69.893 30.003 C -71.83 29.334 -72.272 34.537 -71.043 36.562" stroke="#18181b" stroke-width="1.2" stroke-linecap="round" style="fill: none;"/>
+    </g>
+    <path id="camo-aleta" d="M 99.09 153.521 C 112.09 148.521 121.804 131.199 126.804 141.199" stroke-width="3" stroke-linecap="round" stroke="#1c1917" fill="none"/>
+    <path id="path-2" d="M 86.361 170.394 C 99.361 165.394 126.789 155.112 125.203 142.63" stroke-width="3" stroke-linecap="round" stroke="#1c1917" fill="none" style="stroke-width: 3;"/>
+  </g>
+  <g id="casco-grupo" transform="matrix(-1.601074, 0.745463, 0.679496, 1.459393, 472.639357, 138.422505)" style="transform-origin: -68.388px 28.512px;">
+    <path id="casco-cuerpo" d="M -58.2 33 C -58.472 18.27 -77.743 18.379 -77.6 33 C -77.585 34.5 -58.172 34.5 -58.2 33 Z" fill="url(#camo-digital)" stroke="#1b2611" stroke-width="0.5"/>
+    <path id="casco-banda" d="M -77.2 27.5 C -72 25 -64 25 -58.6 27.5" stroke="#1c1917" stroke-width="1.2" fill="none" opacity="0.8"/>
+  </g>
+</svg>

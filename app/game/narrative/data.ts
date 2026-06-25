@@ -22,6 +22,7 @@ export interface DialogueNode {
 }
 
 export const NARRATIVE_NODES: Record<string, DialogueNode> = {
+  // ESCENA 1: Inicio / Protagonista dormido
   'scene_1_init': {
     id: 'scene_1_init',
     speaker: 'system',
@@ -30,10 +31,12 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
       position: 'center',
       aspectRatio: 'aspect-video',
       color: 'from-zinc-950 via-zinc-900 to-black border-zinc-800/40 text-zinc-500',
-      label: 'Escena 1 Placeholder: La pantalla está en negro absoluto. Mediante un efecto vanish (desvanecimiento), comienza a delinearse el sprite del protagonista (un pingüino genérico).'
+      label: 'Escena 1: La pantalla está en negro absoluto. Mediante un efecto desvanecimiento, comienza a delinearse el protagonista acostado durmiendo.'
     },
     next: 'scene_2_start'
   },
+
+  // ESCENA 2: Encuentro con el Subconsciente
   'scene_2_start': {
     id: 'scene_2_start',
     speaker: 'subconscious',
@@ -43,29 +46,29 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
       position: 'right',
       aspectRatio: 'aspect-video',
       color: 'from-blue-950/40 via-zinc-900/60 to-black border-blue-900/20 text-blue-400',
-      label: 'Escena 2 Placeholder: El pingüino se detiene desorientado. A la derecha de la pantalla, un ojo blanco brillante (el Subconsciente) se materializa de entre las sombras para hablarle.'
+      label: 'Escena 2: El pingüino se detiene desorientado. A la derecha de la pantalla, un ojo blanco brillante (el Subconsciente) se materializa de entre las sombras para hablarle.'
     },
     choices: [
       {
         id: 'c1',
         text: '¿Quién eres?',
-        nextNodeId: 'scene_2_ans_1_first',
+        nextNodeId: 'scene_3_ans_1_first',
         isCorrect: true,
         explanation: ''
       },
       {
         id: 'c2',
         text: '¿Qué le pasó a este mundo?',
-        nextNodeId: 'scene_2_ans_2_first',
+        nextNodeId: 'scene_3_ans_2_first',
         isCorrect: true,
         explanation: ''
       }
     ]
   },
   
-  // CAMINO A: "¿Quién eres?" primero
-  'scene_2_ans_1_first': {
-    id: 'scene_2_ans_1_first',
+  // ESCENA 3: Cuestionamiento (Camino A: ¿Quién eres? primero)
+  'scene_3_ans_1_first': {
+    id: 'scene_3_ans_1_first',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
     text: 'No poseo un nombre, tampoco recuerdo el momento de mi creación, solo sé que existo en un lugar apartado del mundo, algunos me llaman el "subconsciente".',
@@ -73,20 +76,20 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
       position: 'right',
       aspectRatio: 'aspect-video',
       color: 'from-blue-950/30 via-zinc-900/50 to-black border-blue-900/10 text-blue-300',
-      label: 'Escena 2 - Respuesta 1: El ojo blanco pulsa suavemente de forma rítmica, denotando la naturaleza filosófica y atemporal de su propia existencia.'
+      label: 'Escena 3 - Respuesta 1: El ojo blanco pulsa suavemente de forma rítmica, de pie frente al protagonista.'
     },
     choices: [
       {
         id: 'c2_second',
         text: '¿Qué le pasó a este mundo?',
-        nextNodeId: 'scene_2_ans_2_second',
+        nextNodeId: 'scene_3_ans_2_second',
         isCorrect: true,
         explanation: ''
       }
     ]
   },
-  'scene_2_ans_2_second': {
-    id: 'scene_2_ans_2_second',
+  'scene_3_ans_2_second': {
+    id: 'scene_3_ans_2_second',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
     text: 'Es una larga historia, en este mundo yacen los espíritus de la gente, muchos han perdido su "luz", han sido "persuadidos" y se encuentran "dormidos".',
@@ -94,14 +97,14 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
       position: 'right',
       aspectRatio: 'aspect-video',
       color: 'from-blue-950/20 via-zinc-900/40 to-black border-blue-900/10 text-blue-400/80',
-      label: 'Escena 2 - Respuesta 2: El ojo parpadea suavemente, mostrando resignación y melancolía al recordar a las almas caídas bajo el influjo de las interfaces oscuras.'
+      label: 'Escena 3 - Respuesta 2: El ojo parpadea suavemente, mostrando melancolía al recordar a las almas caídas.'
     },
-    next: 'scene_2_join'
+    next: 'scene_4_walking_start'
   },
 
-  // CAMINO B: "¿Qué le pasó a este mundo?" primero
-  'scene_2_ans_2_first': {
-    id: 'scene_2_ans_2_first',
+  // ESCENA 3: Cuestionamiento (Camino B: ¿Qué le pasó a este mundo? primero)
+  'scene_3_ans_2_first': {
+    id: 'scene_3_ans_2_first',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
     text: 'Es una larga historia, en este mundo yacen los espíritus de la gente, muchos han perdido su "luz", han sido "persuadidos" y se encuentran "dormidos".',
@@ -109,20 +112,20 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
       position: 'right',
       aspectRatio: 'aspect-video',
       color: 'from-blue-950/20 via-zinc-900/40 to-black border-blue-900/10 text-blue-400/80',
-      label: 'Escena 2 - Respuesta 2: El ojo parpadea suavemente, mostrando resignación y melancolía al recordar a las almas caídas bajo el influjo de las interfaces oscuras.'
+      label: 'Escena 3 - Respuesta 2: El ojo parpadea suavemente, mostrando melancolía al recordar a las almas caídas.'
     },
     choices: [
       {
         id: 'c1_second',
         text: '¿Quién eres?',
-        nextNodeId: 'scene_2_ans_1_second',
+        nextNodeId: 'scene_3_ans_1_second',
         isCorrect: true,
         explanation: ''
       }
     ]
   },
-  'scene_2_ans_1_second': {
-    id: 'scene_2_ans_1_second',
+  'scene_3_ans_1_second': {
+    id: 'scene_3_ans_1_second',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
     text: 'No poseo un nombre, tampoco recuerdo el momento de mi creación, solo sé que existo en un lugar apartado del mundo, algunos me llaman el "subconsciente".',
@@ -130,33 +133,152 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
       position: 'right',
       aspectRatio: 'aspect-video',
       color: 'from-blue-950/30 via-zinc-900/50 to-black border-blue-900/10 text-blue-300',
-      label: 'Escena 2 - Respuesta 1: El ojo blanco pulsa suavemente de forma rítmica, denotando la naturaleza filosófica y atemporal de su propia existencia.'
+      label: 'Escena 3 - Respuesta 1: El ojo blanco pulsa suavemente de forma rítmica, de pie frente al protagonista.'
     },
-    next: 'scene_2_join'
+    next: 'scene_4_walking_start'
   },
 
-  'scene_2_join': {
-    id: 'scene_2_join',
+  // ESCENA 4: Caminando / Transición
+  'scene_4_walking_start': {
+    id: 'scene_4_walking_start',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: 'Tal como pensaba, el hecho de tu llegada está cambiando algo. Acompáñame, sentir un alma #levemente# despierta.',
+    text: 'Tal como pensaba, el hecho de tu llegada está cambiando algo. Acompáñame, siento un alma #levemente# despierta.',
     illustration: {
       position: 'center',
       aspectRatio: 'aspect-video',
       color: 'from-violet-950/40 via-zinc-900/60 to-black border-violet-900/20 text-violet-400',
-      label: 'Escena 3 Placeholder: El subconsciente comienza a moverse hacia el fondo de la pantalla. El pingüino protagonista se prepara para seguirlo. Se divisa un sutil resplandor en la distancia.'
+      label: 'Escena 4: El subconsciente comienza a moverse y el pingüino protagonista camina a su lado.'
     },
-    next: 'scene_3_start'
+    next: 'scene_4_walking_transition'
   },
-  'scene_3_start': {
-    id: 'scene_3_start',
+  'scene_4_walking_transition': {
+    id: 'scene_4_walking_transition',
     speaker: 'system',
-    text: 'Prólogo completado. Has establecido contacto con tu "subconsciente" y estás listo para adentrarte en la mente de Camo.',
+    text: 'Ambos caminan a través de la penumbra del subconsciente. Una sutil energía militar y un aura distorsionada se perciben adelante...',
     illustration: {
       position: 'center',
       aspectRatio: 'aspect-video',
-      color: 'from-emerald-950/30 via-zinc-900/50 to-black border-emerald-900/20 text-emerald-400',
-      label: 'Fin de la Demo de Narrativa: Aquí continuará la historia de Camo el Pingüino Francotirador y sus decisiones en la plataforma de compras.'
+      color: 'from-violet-950/20 via-zinc-900/40 to-black border-zinc-900/50 text-zinc-400',
+      label: 'Escena 4: La silueta de los personajes avanza a través del limbo en dirección al alma distorsionada.'
+    },
+    next: 'scene_5_dialogue_1'
+  },
+
+  // ESCENA 5: Acercándose al Alma (Camo durmiendo y alma militar flotando)
+  'scene_5_dialogue_1': {
+    id: 'scene_5_dialogue_1',
+    speaker: 'subconscious',
+    speakerLabel: 'Subconsciente',
+    text: 'Tal como tú antes de levantarte, esta alma se encuentra perdida, "oscurecida" y "persuadida".',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-emerald-950/20 via-zinc-900/40 to-black border-emerald-950/10 text-emerald-400',
+      label: 'Escena 5: El protagonista observa el alma oscurecida de Camo durmiendo. El ojo también lo examina.'
+    },
+    next: 'scene_5_dialogue_2'
+  },
+  'scene_5_dialogue_2': {
+    id: 'scene_5_dialogue_2',
+    speaker: 'subconscious',
+    speakerLabel: 'Subconsciente',
+    text: 'Todas las almas de este mundo son iguales, una vez que el "Patrón" las consume sin ellas ser "conscientes" de lo que les pasó.',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-emerald-950/20 via-zinc-900/40 to-black border-emerald-950/10 text-emerald-400',
+      label: 'Escena 5: El subconsciente explica cómo el Patrón consume a las almas indefensas.'
+    },
+    next: 'scene_6_dialogue_1'
+  },
+  'scene_6_dialogue_1': {
+    id: 'scene_6_dialogue_1',
+    speaker: 'subconscious',
+    speakerLabel: 'Subconsciente',
+    text: 'Mi poder como "subconsciente" es solo mirar, absorber pero nunca "intervenir", tomo y obtengo todo aquello que el espíritu "ignora".',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-cyan-950/30 via-zinc-900/50 to-black border-cyan-900/20 text-cyan-400',
+      label: 'Escena 6: El protagonista mira el resplandor en sus manos bajo la mirada del ojo.'
+    },
+    next: 'scene_6_dialogue_2'
+  },
+  'scene_6_dialogue_2': {
+    id: 'scene_6_dialogue_2',
+    speaker: 'subconscious',
+    speakerLabel: 'Subconsciente',
+    text: 'Pero tú eres diferente, puedo sentirlo, es como si pudieras "decidir" por tu cuenta, quizás..., los dos juntos podamos cambiar la historia de estos espíritus.',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-cyan-950/30 via-zinc-900/50 to-black border-cyan-900/20 text-cyan-400',
+      label: 'Escena 6: El subconsciente reconoce la singularidad del protagonista.'
+    },
+    next: 'scene_6_dialogue_3'
+  },
+  'scene_6_dialogue_3': {
+    id: 'scene_6_dialogue_3',
+    speaker: 'subconscious',
+    speakerLabel: 'Subconsciente',
+    text: 'Adentrémonos en la "historia" de este espíritu, vale la pena #intentarlo#.',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-cyan-950/30 via-zinc-900/50 to-black border-cyan-900/20 text-cyan-400',
+      label: 'Escena 6: El protagonista decide adentrarse en la mente de Camo.'
+    },
+    next: 'scene_7_init'
+  },
+  'scene_7_init': {
+    id: 'scene_7_init',
+    speaker: 'narrator',
+    speakerLabel: 'Narrador',
+    text: 'Su nombre era "Camo", el pingüino "sigiloso", dentro de la comarca "pingüinal", era conocido como el mejor francotirador.',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-emerald-950/20 via-zinc-900/40 to-black border-emerald-950/10 text-emerald-400',
+      label: 'Escena 7: Camo en su podio militar con su rifle de francotirador.'
+    },
+    next: 'scene_7_dialogue_2'
+  },
+  'scene_7_dialogue_2': {
+    id: 'scene_7_dialogue_2',
+    speaker: 'narrator',
+    speakerLabel: 'Narrador',
+    text: 'Camo vestía su camuflaje con orgullo, y todo el mundo lo conocía por su pericia en su rol...',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-emerald-950/20 via-zinc-900/40 to-black border-emerald-950/10 text-emerald-400',
+      label: 'Escena 7: Camo vistiendo su camuflaje con orgullo.'
+    },
+    next: 'scene_8_init'
+  },
+  'scene_8_init': {
+    id: 'scene_8_init',
+    speaker: 'narrator',
+    speakerLabel: 'Narrador',
+    text: 'Lamentablemente, como a muchos otros espíritus, este fue cegado por su ego... y fue víctima de los "patrones" los cuales lo llevaron a la "oscuridad"...',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-cyan-950/20 via-zinc-900/40 to-black border-cyan-950/10 text-cyan-400',
+      label: 'Escena 8: Camo durmiendo plácidamente acechado por el Patrón Oscuro.'
+    },
+    next: 'scene_8_end'
+  },
+  'scene_8_end': {
+    id: 'scene_8_end',
+    speaker: 'system',
+    text: 'Has conocido la caída de Camo. En el próximo capítulo, te adentrarás en su mente para liberarlo de las sombras...',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-cyan-950/30 via-zinc-900/50 to-black border-cyan-900/20 text-cyan-400',
+      label: 'Fin de la Demo de Narrativa.'
     }
   }
 };

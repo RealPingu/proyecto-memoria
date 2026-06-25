@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="200 120 200 120" width="200px" height="120px">
+  <defs>
+    <radialGradient id="white-eye-grad" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.7" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#cbd5e1"/>
+    </radialGradient>
+    <radialGradient id="camo-glow-s5" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#879f84" stop-opacity="0.4"/>
+      <stop offset="0.6" stop-color="#4f5d4e" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="camo-digital" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect width="20" height="20" fill="#3f4e3f"/>
+      <rect x="0" y="0" width="8" height="6" fill="#2d3a2d"/>
+      <rect x="10" y="4" width="6" height="8" fill="#546554"/>
+      <rect x="2" y="10" width="8" height="6" fill="#7ba077"/>
+      <rect x="12" y="12" width="6" height="6" fill="#202a20"/>
+    </pattern>
+  </defs>
+  <rect width="200" height="120" fill="#000000" x="200.293" y="119.639" style="stroke-width: 1;"/>
+  <g transform="matrix(-0.498268, 0, 0, 0.532384, 229.20795, 169.550998)" id="ojo-subconsciente-grupo" style="">
+    <g id="ojo-subconsciente-flotacion">
+      <circle id="ojo-glow" cx="1.961" cy="-10.68" r="18" fill="#ffffff" opacity="0.08" transform="matrix(1.726517, 0, 0, 1.260335, 10.344875, -0.379963)"/>
+      <circle id="ojo-esclera" cx="3.705" cy="-5.231" r="10.733" fill="url(#white-eye-grad)" stroke-width="0.5" stroke="#e2e8f0" style="transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(1.4985, -0.537148, 0.642825, 1.013572, 3.086092, -7.914055)"/>
+      <path id="ojo-trazo-luz" style="fill: none; stroke: rgb(255, 255, 255);" d="M -17.728 -18.374 C -19.172 -20.359 42.448 -40.704 45.523 -36.475 C 48.876 -32.004 13.029 7.732 11.259 5.372" opacity="0.8"/>
+      <g id="ojo-pupila-grupo">
+        <circle id="ojo-pupila-centro" cx="-4.5" cy="-8.0" r="6.2" fill="#0f172a"/>
+        <circle id="ojo-pupila-brillo" cx="-4.8" cy="-1.8" r="1.5" fill="#ffffff" transform="matrix(-1.397505, 0, 0, 1.944474, -13.336, -3.14)"/>
+      </g>
+    </g>
+  </g>
+  <g id="camo-durmiendo-cuerpo" style="filter: brightness(0.28) saturate(0.35); opacity: 0.65;" transform="matrix(0.746926, 0, 0, 0.755891, 267.356755, 135.98482)">
+    <g id="camo-contenedor" transform="">
+      <g id="camo-desplazamiento" transform="matrix(1, 0, 0, 1, 150, 65)">
+        <path id="camo-pata-superior" d="M -32.417 31.796 L -25.744 26.644 L -25.774 33.746 L -32.417 31.796 Z" fill="#f59e0b"/>
+        <ellipse id="camo-cuerpo" cx="-47.91" cy="37.303" rx="20" ry="9.723" fill="url(#camo-digital)" stroke="#7ba077" stroke-width="0.5"/>
+        <ellipse id="camo-vientre" cx="-46.144" cy="32.831" rx="10.495" ry="6.167" fill="#d8d8d0" stroke="#000000" stroke-width="0.8"/>
+        <circle id="camo-cabeza" cx="-68.842" cy="32.274" r="10" fill="url(#camo-digital)" stroke="#7ba077" stroke-width="0.5"/>
+        <g id="camo-ojo-durmiendo">
+          <path id="camo-ojo-cerrado" d="M -70.007 29.969 C -67.034 32.23 -70.421 35.983 -69.691 34.432" stroke="#18181b" stroke-width="0.8" fill="none" stroke-linecap="round"/>
+        </g>
+        <polygon id="camo-pico" points="-70.91 26.303 -65.879 20.483 -64.91 26.303" fill="#f59e0b"/>
+        <g id="camo-patas-contenedor" transform="matrix(1, 0, 0, 1, -51.910336, 17.303471)">
+          <path id="camo-pata-inferior" d="M 26.663 20.735 L 26.851 27.446 L 19.486 24.256 L 26.663 20.735 Z" fill="#f59e0b"/>
+        </g>
+        <path id="camo-aleta" d="M 128.233 -33.688 C 127.111 -38.136 113.93 -31.1 115.708 -26.708" stroke-width="2.5" stroke-linecap="round" stroke="rgb(0, 0, 0)" fill="none" style="transform-box: fill-box; transform-origin: -623.907% 433.118%;" transform="matrix(-1, 0, 0, -1, -0.00004, 0)"/>
+        <g id="camo-casco-grupo" transform="matrix(-0.56708, 0, 0, 0.811, -87.473, 7.057)">
+          <path id="camo-casco-correa" d="M -70.987 28.34 C -83.648 27.967 -66.868 31.439 -70.238 28.195" stroke="#1c1917" stroke-width="0.8" fill="none" style="transform-box: fill-box; transform-origin: 50% 50%;"/>
+          <path id="camo-casco-cuerpo" d="M -59.904 27.327 C -60.176 12.597 -79.447 12.706 -79.304 27.327 C -79.289 28.827 -59.876 28.827 -59.904 27.327 Z" fill="url(#camo-digital)" stroke="#1b2611" stroke-width="0.5"/>
+          <path id="camo-casco-banda" d="M -78.904 21.827 C -73.704 19.327 -65.704 19.327 -60.304 21.827" stroke="#1c1917" stroke-width="1.2" fill="none" opacity="0.8"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  <circle id="burbuja-sueno" cx="330.162" cy="197.673" r="3" fill="#38bdf8" fill-opacity="0.25" stroke="#0284c7" stroke-width="0.8" style="stroke-width: 0.8;"/>
+  <g id="sueno-zs" transform="matrix(1, 0, 0, 1, 326.246618, 201.587985)">
+    <text x="0" y="-8" fill="#a5f3fc" font-size="4" font-weight="bold" font-family="monospace" opacity="0.8" style="white-space: pre;">z</text>
+    <text x="3" y="-16" fill="#a5f3fc" font-size="5" font-weight="bold" font-family="monospace" opacity="0.6" style="white-space: pre;">z</text>
+    <text x="6" y="-24" fill="#a5f3fc" font-size="6.5" font-weight="bold" font-family="monospace" opacity="0.4" style="white-space: pre;">Z</text>
+  </g>
+  <g id="camo-alma-contenedor" transform="matrix(0.756577, 0, 0, 0.772114, 279.926671, 129.106585)" style="">
+    <circle id="alma-fondo-glow" cx="90" cy="35" r="18" fill="url(#camo-glow-s5)" opacity="0.5"/>
+    <path id="alma-gota-invertida" d="M 90 51 C 82 43 78 35 78 29 A 12 12 0 0 1 102 29 C 102 35 98 43 90 51 Z" fill="url(#camo-digital)" stroke="#7ba077" stroke-width="0.8" opacity="0.85"/>
+    <g id="alma-ojos-contenedor">
+      <path d="M 85 27 C 85.5 28.5 87.5 28.5 88 27" stroke="#ffffff" fill="none" stroke-width="0.75" stroke-linecap="round" id="ojo-izq-v5"/>
+      <path d="M 92 27 C 92.5 28.5 94.5 28.5 95 27" stroke="#ffffff" fill="none" stroke-width="0.75" stroke-linecap="round" id="ojo-der-v5"/>
+    </g>
+    <g id="alma-particulas-flotantes">
+      <circle cx="82" cy="41" r="0.96" fill="#7ba077" opacity="0.6"/>
+      <circle cx="98" cy="45" r="1.1199999999999999" fill="#546554" opacity="0.6"/>
+      <circle cx="84" cy="29" r="0.7200000000000001" fill="#2d3a2d" opacity="0.6"/>
+      <circle cx="96" cy="31" r="0.8800000000000001" fill="#7ba077" opacity="0.6"/>
+      <circle cx="90" cy="47" r="1.04" fill="#546554" opacity="0.6"/>
+      <circle cx="79" cy="35" r="0.8" fill="#2d3a2d" opacity="0.6"/>
+    </g>
+  </g>
+  <g id="protagonista-contenedor" transform="matrix(0.796426, 0, 0, 0.829579, 233.949314, 141.765581)" style="">
+    <g id="protagonista-posicion" transform="matrix(0, 0.848747, -0.768697, 0, 35, 115)">
+      <g id="protagonista-respiracion">
+        <path id="protagonista-pata-superior" d="M -32.417 31.796 L -25.744 26.644 L -25.774 33.746 L -32.417 31.796 Z" fill="#f59e0b"/>
+        <ellipse id="protagonista-cuerpo" cx="-47.91" cy="37.303" rx="20" ry="14" fill="#18181b"/>
+        <ellipse id="protagonista-vientre" cx="-49.91" cy="31.303" rx="14" ry="8" fill="#f4f4f5"/>
+        <circle id="protagonista-cabeza" cx="-67.91" cy="33.303" r="10" fill="#18181b"/>
+        <g id="protagonista-bufanda" transform="matrix(1, 0, 0, 1, -51.910336, 17.303471)">
+          <path id="protagonista-bufanda-cuello" d="M -14.315 26.443 C -12.315 20.443 -3.738 18.577 -6.624 13.624" stroke="#ef4444" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          <path id="protagonista-bufanda-caida-roja" d="M -7.663 13.49 C -2.663 12.49 3 11 7 9 C 5 7 0.204 10.408 -6.796 12.408 L -7.663 13.49 Z" fill="#ef4444"/>
+          <path id="protagonista-bufanda-caida-guinda" d="M -6.929 14.898 C -1.929 14.898 2 14 5 13 C 3 11 -0.337 13.357 -7.337 13.357 L -6.929 14.898 Z" fill="#b91c1c"/>
+        </g>
+        <g id="protagonista-ojo">
+          <circle id="protagonista-ojo-borde" cx="-67.91" cy="33.303" r="2.2" fill="#f4f4f5"/>
+          <circle id="protagonista-ojo-pupila" cx="-66.2" cy="31.8" r="1.019" fill="#000000"/>
+        </g>
+        <polygon id="protagonista-pico" points="-70.91 26.303 -67.91 19.303 -64.91 26.303" fill="#f59e0b"/>
+        <g id="protagonista-patas" transform="matrix(1, 0, 0, 1, -51.910336, 17.303471)">
+          <path id="protagonista-pata-inferior" d="M 26.663 20.735 L 26.851 27.446 L 19.486 24.256 L 26.663 20.735 Z" fill="#f59e0b"/>
+        </g>
+        <path id="protagonista-aleta" d="M -56.369 37.201 C -57.631 41.252 -39.926 36.511 -37.926 32.511" stroke-width="2.5" stroke-linecap="round" stroke="rgb(0, 0, 0)" fill="none"/>
+      </g>
+    </g>
+  </g>
+</svg>

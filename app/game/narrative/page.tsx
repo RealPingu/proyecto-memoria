@@ -8,6 +8,11 @@ import SleepingPenguinLying from './illustrations/sleeping_penguin_lying';
 import Scene2Encounter from './illustrations/scene_2_encounter';
 import Scene3Questioning from './illustrations/scene_3_questioning';
 import Scene4Walking from './illustrations/scene_4_walking';
+import Scene5Approaching from './illustrations/scene_5_approaching';
+import Scene6ReferencePricing from './illustrations/scene_6_reference_pricing';
+import Scene6Glow from './illustrations/scene_6_glow';
+import Scene7Sniper from './illustrations/scene_7_sniper';
+import Scene8DarkPattern from './illustrations/scene_8_dark_pattern';
 
 // Tokenizador para dar formato especial a "" y #
 interface TextToken {
@@ -300,14 +305,34 @@ export default function NarrativeIntroPage() {
       return <Scene2Encounter variantId={1} />;
     }
 
-    if (currentNodeId.startsWith('scene_2_ans')) {
+    if (currentNodeId.startsWith('scene_3_ans')) {
       // Escena 3: Diálogo interactivo
       return <Scene3Questioning variantId={1} />;
     }
 
-    if (currentNodeId === 'scene_2_join' || currentNodeId === 'scene_3_start') {
+    if (currentNodeId.startsWith('scene_4_walking')) {
       // Escena 4: Caminando (ojo deescalado arriba a la izquierda)
       return <Scene4Walking variantId={5} />;
+    }
+
+    if (currentNodeId.startsWith('scene_5_dialogue') || currentNodeId === 'scene_5_end') {
+      // Escena 5: Acercándose al alma oscurecida de Camo
+      return <Scene5Approaching camoVariantId={5} showHelmet={true} eyeStyle="sleeping" facing="right" />;
+    }
+
+    if (currentNodeId.startsWith('scene_6_dialogue')) {
+      // Escena 6: El protagonista mira el resplandor en sus manos bajo la mirada del ojo
+      return <Scene6Glow />;
+    }
+
+    if (currentNodeId.startsWith('scene_7')) {
+      // Escena 7: Camo el Francotirador en su podio militar
+      return <Scene7Sniper />;
+    }
+
+    if (currentNodeId.startsWith('scene_8') || currentNodeId === 'scene_8_end') {
+      // Escena 8: Camo durmiendo plácidamente y el Patrón Oscuro
+      return <Scene8DarkPattern />;
     }
 
     // SVG genérico por defecto

@@ -9,7 +9,6 @@ import Scene2Encounter from './illustrations/scene_2_encounter';
 import Scene3Questioning from './illustrations/scene_3_questioning';
 import Scene4Walking from './illustrations/scene_4_walking';
 import Scene5Approaching from './illustrations/scene_5_approaching';
-import Scene6ReferencePricing from './illustrations/scene_6_reference_pricing';
 import Scene6Glow from './illustrations/scene_6_glow';
 import Scene7Sniper from './illustrations/scene_7_sniper';
 import Scene8DarkPattern from './illustrations/scene_8_dark_pattern';

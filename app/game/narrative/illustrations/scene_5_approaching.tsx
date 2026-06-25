@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import CamoPenguin from '../../playground/components/camo_penguin';
+import CamoPenguin from './camo_penguin';
 import { SOUL_CONFIGS, PARTICLE_TEMPLATES } from './scene_4_walking';
 
 interface Scene5ApproachingProps {

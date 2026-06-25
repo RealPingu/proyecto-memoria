@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import SleepingPenguinLying from '../../components/sleeping_penguin_lying';
+import Scene1Sleeping from '../../components/scene_1_sleeping';
 
 // Clean static SVG code for clipboard export (no animations, standard SVG tags)
 function getVariantStaticSvg(variantId: number): string {
@@ -260,7 +260,7 @@ export default function SimplePlaygroundPage() {
           {/* Symmetrical 16:9 Illustration Box (Centered vertically, fills container width) */}
           <div className="flex-1 flex items-center justify-center py-4 min-h-0 overflow-hidden">
             <div className="relative w-full aspect-video rounded border border-zinc-900/60 overflow-hidden bg-black shadow-2xl">
-              <SleepingPenguinLying />
+              <Scene1Sleeping />
             </div>
           </div>
 

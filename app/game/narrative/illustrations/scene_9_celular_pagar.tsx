@@ -71,13 +71,12 @@ export default function Scene9CelularPagar() {
         </g>
       </g>
 
-      {/* 2. Sillón de Camo */}
       <g id="sillon-contenedor" transform="matrix(0.114551, 0, 0, 0.130749, 5.932414, 76.120112)">
         <rect x="60" y="80" width="380" height="130" rx="15" fill="#78350f" stroke="#451a03" strokeWidth="2"/>
-        <rect x="50" y="180" width="400" height="70" rx="12" fill="#92400e" stroke="#451a03" stroke-width="2"/>
+        <rect x="50" y="180" width="400" height="70" rx="12" fill="#92400e" stroke="#451a03" strokeWidth="2"/>
         <line x1="250" y1="180" x2="250" y2="250" stroke="#451a03" strokeWidth="1.5"/>
-        <rect x="20" y="150" width="60" height="100" rx="20" fill="#b45309" stroke="#451a03" stroke-width="2"/>
-        <rect x="420" y="150" width="60" height="100" rx="20" fill="#b45309" stroke="#451a03" stroke-width="2"/>
+        <rect x="20" y="150" width="60" height="100" rx="20" fill="#b45309" stroke="#451a03" strokeWidth="2"/>
+        <rect x="420" y="150" width="60" height="100" rx="20" fill="#b45309" stroke="#451a03" strokeWidth="2"/>
         <rect x="40" y="250" width="25" height="15" fill="#1c1917"/>
         <rect x="435" y="250" width="25" height="15" fill="#1c1917"/>
       </g>
@@ -231,17 +230,16 @@ export default function Scene9CelularPagar() {
             </g>
           </g>
 
-          {/* Footer de Checkout */}
           <g id="checkout-footer" transform="translate(92, 430)">
             <rect width="316" height="128" rx="42.157" fill="#ffffff" ry="42.157"/>
-            <line x1="20" y1="0" x2="296" y2="0" stroke="#f1f5f9" stroke-width="2"/>
+            <line x1="20" y1="0" x2="296" y2="0" stroke="#f1f5f9" strokeWidth="2"/>
             <rect x="24" y="20" width="80" height="10" rx="2" fill="#94a3b8"/>
-            <text x="292" y="30" fontFamily="sans-serif" fontSize="20" fontWeight="bold" fill="#0f172a" text-anchor="end">$49.99</text>
+            <text x="292" y="30" fontFamily="sans-serif" fontSize="20" fontWeight="bold" fill="#0f172a" textAnchor="end">$49.99</text>
             
             {/* Botón de Compra Flapping */}
             <g id="boton-simple-aletea" transform="translate(20, 50)">
               <rect width="272" height="50" rx="12" fill="#22c55e"/>
-              <text x="136" y="31" fontFamily="sans-serif" fontSize="16" fontWeight="900" fill="#ffffff" text-anchor="middle" letterSpacing="1">ALETEA PARA PAGAR !!!</text>
+              <text x="136" y="31" fontFamily="sans-serif" fontSize="16" fontWeight="900" fill="#ffffff" textAnchor="middle" letterSpacing="1">ALETEA PARA PAGAR !!!</text>
             </g>
           </g>
         </motion.g>

@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import SleepingPenguinLying from './components/sleeping_penguin_lying';
+import Scene1Sleeping from './components/scene_1_sleeping';
 import Scene2Encounter from './components/scene_2_encounter';
 import Scene3Questioning from './components/scene_3_questioning';
 import Scene4Walking from './components/scene_4_walking';
@@ -39,7 +39,7 @@ export default function SceneMenuPage() {
       available: true,
       preview: (
         <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
-          <SleepingPenguinLying />
+          <Scene1Sleeping />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
         </div>
       )

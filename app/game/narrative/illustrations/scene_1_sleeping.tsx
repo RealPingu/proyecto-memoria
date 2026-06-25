@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 
-export default function SleepingPenguinLying() {
+export default function Scene1Sleeping() {
   const renderZs = (xOffset = -67.91, yOffset = 19.303, delayStep = 0, color = "#ef4444") => (
     <g id="sueno-zs" transform={`translate(${xOffset}, ${yOffset})`}>
       <motion.text
@@ -61,34 +61,8 @@ export default function SleepingPenguinLying() {
 
   return (
     <svg viewBox="0 0 200 120" className="w-full h-full">
-      <defs>
-        {/* Very subtle blue radial gradient for dream atmosphere */}
-        <radialGradient id="limbo-blue-pulsing" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#1e3a8a" stopOpacity="0.3" />
-          <stop offset="60%" stopColor="#0f172a" stopOpacity="0.1" />
-          <stop offset="100%" stopColor="#09090b" stopOpacity="1" />
-        </radialGradient>
-      </defs>
-
       {/* Dark background base */}
-      <rect width="200" height="120" fill="#09090b" />
-
-      {/* Pulsing subtle blue glow behind the penguin */}
-      <motion.circle
-        cx="90"
-        cy="70"
-        r="75"
-        fill="url(#limbo-blue-pulsing)"
-        animate={{
-          scale: [0.95, 1.1, 0.95],
-          opacity: [0.7, 0.95, 0.7]
-        }}
-        transition={{
-          repeat: Infinity,
-          duration: 5,
-          ease: "easeInOut"
-        }}
-      />
+      <rect width="200" height="120" fill="#000000" />
 
       {/* Penguin group */}
       <g id="pinguino-contenedor" transform="matrix(1, 0, 0, 1, 99.815317, 50.407472)">

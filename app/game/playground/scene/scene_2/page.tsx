@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import Scene2Encounter from '../../components/scene_2_encounter';
 import Scene3Questioning from '../../components/scene_3_questioning';
-import SleepingPenguinLying from '../../components/sleeping_penguin_lying';
+import Scene1Sleeping from '../../components/scene_1_sleeping';
 import { NARRATIVE_NODES } from '../../../narrative/data';
 
 const stepsEasing = (t: number) => Math.floor(t * 4) / 4;
@@ -367,7 +367,7 @@ export default function Scene2PlaygroundPage() {
   // Render correct illustration inside the simulator
   const renderSimulatorIllustration = () => {
     if (currentNodeId === 'scene_1_init') {
-      return <SleepingPenguinLying />;
+      return <Scene1Sleeping />;
     }
 
     if (currentNodeId === 'scene_2_start') {

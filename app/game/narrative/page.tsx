@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NARRATIVE_NODES, DialogueNode } from './data';
-import SleepingPenguinLying from './illustrations/sleeping_penguin_lying';
+import Scene1Sleeping from './illustrations/scene_1_sleeping';
 import Scene2Encounter from './illustrations/scene_2_encounter';
 import Scene3Questioning from './illustrations/scene_3_questioning';
 import Scene4Walking from './illustrations/scene_4_walking';
@@ -315,8 +315,8 @@ export default function NarrativeIntroPage() {
   // Determinar qué ilustración SVG renderizar
   const renderIllustrationSVG = () => {
     if (currentNodeId === 'scene_1_init') {
-      // Escena 1: El pingüino acostado durmiendo (SleepingPenguinLying)
-      return <SleepingPenguinLying />;
+      // Escena 1: El pingüino acostado durmiendo (Scene1Sleeping)
+      return <Scene1Sleeping />;
     }
 
     if (currentNodeId === 'scene_2_start') {

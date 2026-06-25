@@ -92,7 +92,7 @@ export async function POST(request: Request) {
 
 import { motion } from 'framer-motion';
 
-export default function SleepingPenguinLying() {
+export default function Scene1Sleeping() {
   const renderZs = (xOffset = -67.91, yOffset = 19.303, delayStep = 0, color = "#ef4444") => (
     <g id="sueno-zs" transform={\`translate(\${xOffset}, \${yOffset})\`}>
       <motion.text
@@ -170,7 +170,7 @@ export default function SleepingPenguinLying() {
     const dirPath = path.join(process.cwd(), 'app', 'game', 'playground', 'components');
     await fs.mkdir(dirPath, { recursive: true });
     
-    const filePath = path.join(dirPath, 'sleeping_penguin_lying.tsx');
+    const filePath = path.join(dirPath, 'scene_1_sleeping.tsx');
     await fs.writeFile(filePath, componentCode, 'utf-8');
 
     return NextResponse.json({ success: true, message: 'Asset guardado con éxito.' });

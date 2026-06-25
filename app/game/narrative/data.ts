@@ -372,7 +372,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
       color: 'from-cyan-950/30 via-zinc-900/50 to-black border-cyan-900/20 text-cyan-400',
       label: 'Escena 13: La pantalla táctica gigante del celular inundada por pop-ups y anuncios persuasivos de compra compulsiva.'
     },
-    next: 'scene_11_end'
+    next: 'scene_14_init'
   },
   'scene_11_init': {
     id: 'scene_11_init',
@@ -387,10 +387,135 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     },
     next: 'scene_13_init_1'
   },
+  'scene_14_init': {
+    id: 'scene_14_init',
+    speaker: 'subconscious',
+    speakerLabel: 'Subconsciente',
+    text: '¡Camo se está enfrentando directamente al Patrón Oscuro! Él está intentando aplicar "Anuncios Disfrazados" para manipularlo. ¡Debemos tomar la decisión correcta!',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-cyan-950/30 via-zinc-900/50 to-black border-cyan-900/20 text-cyan-400',
+      label: 'Escena 14: Camo peleando con el Patrón Oscuro en un choque de energías.'
+    },
+    next: 'scene_14_choice'
+  },
+  'scene_14_choice': {
+    id: 'scene_14_choice',
+    speaker: 'system',
+    text: '¿Cómo debe actuar Camo ante la avalancha de anuncios disguised ads del Patrón Oscuro?',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-cyan-950/30 via-zinc-900/50 to-black border-cyan-900/20 text-cyan-400',
+      label: 'Escena 14: La batalla mental entre Camo y el Patrón Oscuro, esperando tu decisión.'
+    },
+    choices: [
+      {
+        id: 'camo_c1',
+        text: 'Tomas desesperadamente el celular y presionas "todos los botones", pensando solo en ti y en tu iglú.',
+        nextNodeId: 'scene_14_resultado_1',
+        isCorrect: false,
+        explanation: ''
+      },
+      {
+        id: 'camo_c2',
+        text: 'Respiras, te calmas, notas la inconsistencia visual de los anuncios y buscas el botón legítimo.',
+        nextNodeId: 'scene_14_resultado_2',
+        isCorrect: true,
+        explanation: ''
+      },
+      {
+        id: 'camo_c3',
+        text: 'Te calmas, regresas y buscas la vivienda en otros portales estándar de reputación confiable.',
+        nextNodeId: 'scene_14_resultado_3',
+        isCorrect: true,
+        explanation: ''
+      }
+    ]
+  },
+  'scene_14_resultado_1': {
+    id: 'scene_14_resultado_1',
+    speaker: 'narrator',
+    speakerLabel: 'Narrador',
+    text: 'Luego de presionar todos los anuncios de las páginas, ¡se abren múltiples ventanas y se descargan múltiples archivos!, pero en su apuro Camo ignora todo esto y prosigue por una página externa...\n\n¡Has caído en el patrón oscuro!',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-red-950/30 via-zinc-900/50 to-black border-red-900/20 text-red-400',
+      label: 'Resultado 1: Camo asustado frente a un celular lleno de pop-ups y descargas maliciosas.'
+    },
+    next: 'scene_14_explicacion_1'
+  },
+  'scene_14_explicacion_1': {
+    id: 'scene_14_explicacion_1',
+    speaker: 'narrator',
+    speakerLabel: 'Explicación del Patrón',
+    text: 'El Patrón Oscuro del enemigo utilizó Sneaking (Sigilo) en combinación con Bait and Switch (Señuelo y Cambio) para ejecutar la técnica de Disguised Ads (Anuncios Disfrazados).\n\nEsto consiste en diseñar y maquillar anuncios de modo que parezcan elementos legítimos de la interfaz (botones de descarga, flechas de continuar, etc.). Los usuarios pulsan en ellos asumiendo que es una interacción válida del sitio, cayendo en descargas de software no deseado o redirecciones maliciosas.',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-red-950/30 via-zinc-900/50 to-black border-red-900/20 text-red-400',
+      label: 'Explicación 1: Patrón alegre celebrando al haber engañado a Camo.'
+    },
+    next: 'scene_14_choice'
+  },
+  'scene_14_resultado_2': {
+    id: 'scene_14_resultado_2',
+    speaker: 'narrator',
+    speakerLabel: 'Narrador',
+    text: 'Avanzas exitosamente al siguiente paso de compra, pero te queda una pequeña desconfianza de la plataforma, la cual tenía un exceso de anuncios.\n\n¡Has evitado el patrón oscuro!',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-emerald-950/30 via-zinc-900/50 to-black border-emerald-900/20 text-emerald-400',
+      label: 'Resultado 2: Camo concentrado encontrando el botón de reserva real entre anuncios atenuados.'
+    },
+    next: 'scene_14_explicacion_2'
+  },
+  'scene_14_explicacion_2': {
+    id: 'scene_14_explicacion_2',
+    speaker: 'narrator',
+    speakerLabel: 'Explicación del Patrón',
+    text: '¡Muy bien! Lograste superar el patrón de Disguised Ads (Anuncios Disfrazados). Al fijarte con atención, notaste la inconsistencia visual de los anuncios encubiertos. En la web, un diseño fuera de tema o inconsistente suele delatar fuentes patrocinadas o anuncios disfrazados. Detenerse y examinar la coherencia del diseño es una defensa fundamental.',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-emerald-950/30 via-zinc-900/50 to-black border-emerald-900/20 text-emerald-400',
+      label: 'Explicación 2: Patrón derrotado con el núcleo apagado tras identificar la trampa.'
+    },
+    next: 'scene_11_end'
+  },
+  'scene_14_resultado_3': {
+    id: 'scene_14_resultado_3',
+    speaker: 'narrator',
+    speakerLabel: 'Narrador',
+    text: 'Luego de revisar cuidadosamente otras páginas y experiencias de usuarios confiables, te enteras que el estándar es usar "Polo Iglús", vas y buscas el mismo iglú en esta página segura.\n\n¡Has evitado el patrón oscuro!',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-emerald-950/30 via-zinc-900/50 to-black border-emerald-900/20 text-emerald-400',
+      label: 'Resultado 3: Camo celebrando con su iglú verificado y seguro.'
+    },
+    next: 'scene_14_explicacion_3'
+  },
+  'scene_14_explicacion_3': {
+    id: 'scene_14_explicacion_3',
+    speaker: 'narrator',
+    speakerLabel: 'Explicación del Patrón',
+    text: '¡Excelente decisión estratégica! Evitaste el patrón de Disguised Ads (Anuncios Disfrazados) al no interactuar con el sitio sospechoso y buscar información externa. Consultar comunidades, foros de confianza y recurrir a los portales de mercado líderes te protege de topar con interfaces tramposas que abusan de publicidad.',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-emerald-950/30 via-zinc-900/50 to-black border-emerald-900/20 text-emerald-400',
+      label: 'Explicación 3: Patrón derrotado con el núcleo apagado.'
+    },
+    next: 'scene_11_end'
+  },
   'scene_11_end': {
     id: 'scene_11_end',
     speaker: 'system',
-    text: 'Has conocido la caída de Camo. En el próximo capítulo, te adentrarás en su mente para liberarlo de las sombras...',
+    text: 'Has ayudado a Camo en su batalla mental. En el próximo capítulo, te adentrarás en la mente de otros espíritus para liberarlos de las sombras...',
     illustration: {
       position: 'center',
       aspectRatio: 'aspect-video',

@@ -17,6 +17,12 @@ import Scene10CelularGrande from './illustrations/scene_10_celular_grande';
 import Scene11AletaPagar from './illustrations/scene_11_aleta_pagar';
 import Scene12Iglu from './illustrations/scene_12_iglu';
 import Scene13Anuncios from './illustrations/scene_13_anuncios';
+import Scene14Batalla from '../playground/components/scene_14_batalla';
+import Scene14Resultado1 from '../playground/components/scene_14_resultado_1';
+import Scene14Resultado2 from '../playground/components/scene_14_resultado_2';
+import Scene14Resultado3 from '../playground/components/scene_14_resultado_3';
+import ExplicacionPatronAlegre from '../playground/components/explicacion_patron_alegre';
+import ExplicacionPatronDerrotado from '../playground/components/explicacion_patron_derrotado';
 
 // Tokenizador para dar formato especial a "" y #
 interface TextToken {
@@ -378,6 +384,41 @@ export default function NarrativeIntroPage() {
     if (currentNodeId.startsWith('scene_13')) {
       // Escena 13: Celular gigante con múltiples anuncios y popups
       return <Scene13Anuncios />;
+    }
+
+    if (currentNodeId === 'scene_14_init' || currentNodeId === 'scene_14_choice') {
+      // Escena 14: La Batalla Mental
+      return <Scene14Batalla />;
+    }
+
+    if (currentNodeId === 'scene_14_resultado_1') {
+      // Resultado 1: Solo Camo impactado por los popups
+      return <Scene14Resultado1 />;
+    }
+
+    if (currentNodeId === 'scene_14_explicacion_1') {
+      // Explicación 1: Patrón Oscuro alegre centrado
+      return <ExplicacionPatronAlegre isCentered={true} />;
+    }
+
+    if (currentNodeId === 'scene_14_resultado_2') {
+      // Resultado 2: Solo Camo zen buscando el botón real
+      return <Scene14Resultado2 />;
+    }
+
+    if (currentNodeId === 'scene_14_explicacion_2') {
+      // Explicación 2: Patrón Oscuro derrotado centrado
+      return <ExplicacionPatronDerrotado isCentered={true} />;
+    }
+
+    if (currentNodeId === 'scene_14_resultado_3') {
+      // Resultado 3: Solo Camo feliz con su compra en Polo Iglús
+      return <Scene14Resultado3 />;
+    }
+
+    if (currentNodeId === 'scene_14_explicacion_3') {
+      // Explicación 3: Patrón Oscuro derrotado centrado
+      return <ExplicacionPatronDerrotado isCentered={true} />;
     }
 
     // SVG genérico por defecto

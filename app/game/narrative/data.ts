@@ -333,7 +333,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
       color: 'from-blue-950/30 via-zinc-900/50 to-black border-blue-900/20 text-blue-400',
       label: 'Escena 12: Camo con un celular gigante que despliega un iglú brillante caricaturesco.'
     },
-    next: 'scene_13_init_1'
+    next: 'scene_11_init'
   },
   'scene_13_init_1': {
     id: 'scene_13_init_1',
@@ -372,7 +372,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
       color: 'from-cyan-950/30 via-zinc-900/50 to-black border-cyan-900/20 text-cyan-400',
       label: 'Escena 13: La pantalla táctica gigante del celular inundada por pop-ups y anuncios persuasivos de compra compulsiva.'
     },
-    next: 'scene_11_init'
+    next: 'scene_11_end'
   },
   'scene_11_init': {
     id: 'scene_11_init',
@@ -385,7 +385,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
       color: 'from-red-950/25 via-zinc-900/50 to-black border-red-900/10 text-red-400',
       label: 'Escena 11: Aleta de pingüino presionando el botón Pagar repetidamente.'
     },
-    next: 'scene_11_end'
+    next: 'scene_13_init_1'
   },
   'scene_11_end': {
     id: 'scene_11_end',

@@ -243,9 +243,7 @@ export default function NarrativeIntroPage() {
           <span 
             key={index} 
             style={{
-              color: '#000000',
-              WebkitTextStroke: '0.8px #ffffff',
-              textShadow: '0 0 3px #ffffff, 0 0 6px #ffffff, 0 0 1px #ffffff',
+              WebkitTextStroke: '0.8px #22d3ee',
               display: 'inline-block'
             }}
             className="font-bold mx-1 select-none"
@@ -255,13 +253,19 @@ export default function NarrativeIntroPage() {
                 key={charIdx} 
                 style={{ display: 'inline-block', whiteSpace: 'pre' }}
                 animate={{ 
-                  y: [0, -3.5, 0]
+                  y: [0, -3.5, 0],
+                  color: ['#090d16', '#22d3ee', '#0891b2', '#090d16'],
+                  textShadow: [
+                    '0 0 3px #06b6d4, 0 0 6px #0891b2, 0 0 1px #000',
+                    '0 0 8px #22d3ee, 0 0 15px #06b6d4, 0 0 2px #000',
+                    '0 0 3px #06b6d4, 0 0 6px #0891b2, 0 0 1px #000'
+                  ]
                 }}
                 transition={{ 
                   repeat: Infinity, 
-                  duration: 2.2, 
+                  duration: 2.8, 
                   ease: "easeInOut",
-                  delay: charIdx * 0.12
+                  delay: charIdx * 0.14
                 }}
               >
                 {char}

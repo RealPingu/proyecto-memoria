@@ -13,6 +13,7 @@ import Scene8DarkPattern from './components/scene_8_dark_pattern';
 import Scene9CelularPagar from './components/scene_9_celular_pagar';
 import Scene10CelularGrande from './components/scene_10_celular_grande';
 import Scene11AletaPagar from './components/scene_11_aleta_pagar';
+import Scene12Iglu from './components/scene_12_iglu';
 
 interface SceneItem {
   id: string;
@@ -192,6 +193,21 @@ export default function SceneMenuPage() {
       preview: (
         <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
           <Scene11AletaPagar />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+        </div>
+      )
+    },
+    {
+      id: 'scene_12',
+      number: 12,
+      title: 'El Iglú de Ensueño',
+      subtitle: 'Escena 12 — Camo viendo el Iglú',
+      description: 'Muestra a Camo relajado en el sillón visualizando el Iglú Mediterráneo brillante en la pantalla táctica ampliada.',
+      path: '/game/playground/scene/scene_12',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
+          <Scene12Iglu />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
         </div>
       )

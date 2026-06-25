@@ -294,6 +294,45 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
       color: 'from-emerald-950/20 via-zinc-900/40 to-black border-emerald-950/10 text-emerald-400',
       label: 'Escena 10: Catálogo del celular en grande para ver detalladamente la interfaz.'
     },
+    next: 'scene_12_init_1'
+  },
+  'scene_12_init_1': {
+    id: 'scene_12_init_1',
+    speaker: 'narrator',
+    speakerLabel: 'Narrador',
+    text: 'Como cualquier otro día Camo se encontraba "surfeando" páginas de compra en su celular...',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-blue-950/30 via-zinc-900/50 to-black border-blue-900/20 text-blue-400',
+      label: 'Escena 12: Camo con un celular gigante que despliega un iglú brillante caricaturesco.'
+    },
+    next: 'scene_12_init_2'
+  },
+  'scene_12_init_2': {
+    id: 'scene_12_init_2',
+    speaker: 'narrator',
+    speakerLabel: 'Narrador',
+    text: 'Todo iba normal hasta que en la página de bienes raíces "Pinguilario inmobiliario", Camo vio el iglú de sus sueños.',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-blue-950/30 via-zinc-900/50 to-black border-blue-900/20 text-blue-400',
+      label: 'Escena 12: Camo con un celular gigante que despliega un iglú brillante caricaturesco.'
+    },
+    next: 'scene_12_init_3'
+  },
+  'scene_12_init_3': {
+    id: 'scene_12_init_3',
+    speaker: 'narrator',
+    speakerLabel: 'Narrador',
+    text: 'Esto ocasionó un sentimiento "impulsivo", y Camo "decidió" obtenerlo a toda costa...',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-blue-950/30 via-zinc-900/50 to-black border-blue-900/20 text-blue-400',
+      label: 'Escena 12: Camo con un celular gigante que despliega un iglú brillante caricaturesco.'
+    },
     next: 'scene_11_init'
   },
   'scene_11_init': {

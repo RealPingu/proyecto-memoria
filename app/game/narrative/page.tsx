@@ -15,6 +15,7 @@ import Scene8DarkPattern from './illustrations/scene_8_dark_pattern';
 import Scene9CelularPagar from './illustrations/scene_9_celular_pagar';
 import Scene10CelularGrande from './illustrations/scene_10_celular_grande';
 import Scene11AletaPagar from './illustrations/scene_11_aleta_pagar';
+import Scene12Iglu from './illustrations/scene_12_iglu';
 
 // Tokenizador para dar formato especial a "" y #
 interface TextToken {
@@ -366,6 +367,11 @@ export default function NarrativeIntroPage() {
     if (currentNodeId.startsWith('scene_11')) {
       // Escena 11: Aleta de pingüino slameando el botón Pagar repetidamente
       return <Scene11AletaPagar />;
+    }
+
+    if (currentNodeId.startsWith('scene_12')) {
+      // Escena 12: Camo viendo el iglú brillante en el celular
+      return <Scene12Iglu />;
     }
 
     // SVG genérico por defecto

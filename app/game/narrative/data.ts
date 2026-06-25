@@ -268,10 +268,49 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
       color: 'from-cyan-950/20 via-zinc-900/40 to-black border-cyan-950/10 text-cyan-400',
       label: 'Escena 8: Camo durmiendo plácidamente acechado por el Patrón Oscuro.'
     },
-    next: 'scene_8_end'
+    next: 'scene_9_init'
   },
-  'scene_8_end': {
-    id: 'scene_8_end',
+  'scene_9_init': {
+    id: 'scene_9_init',
+    speaker: 'narrator',
+    speakerLabel: 'Narrador',
+    text: 'Con su experiencia y competencia, Camo fue remunerado con grandes cantidades de "Dólares pingüinales$".',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-emerald-950/20 via-zinc-900/40 to-black border-emerald-950/10 text-emerald-400',
+      label: 'Escena 9: Camo durmiendo plácidamente acechado por el teléfono y rodeado de dinero.'
+    },
+    next: 'scene_10_init'
+  },
+  'scene_10_init': {
+    id: 'scene_10_init',
+    speaker: 'narrator',
+    speakerLabel: 'Narrador',
+    text: 'Uno de sus mayores pasatiempos era recorrer y revisar páginas "comerciales" de productos en su celular, pero como "Camo" ya no se encontraba en el campo de batalla, este perdía su rigurosidad y al no sentirse amenazado por enemigos, este se dejaba llevar...',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-emerald-950/20 via-zinc-900/40 to-black border-emerald-950/10 text-emerald-400',
+      label: 'Escena 10: Catálogo del celular en grande para ver detalladamente la interfaz.'
+    },
+    next: 'scene_11_init'
+  },
+  'scene_11_init': {
+    id: 'scene_11_init',
+    speaker: 'subconscious',
+    speakerLabel: 'Subconsciente',
+    text: 'A este paso la historia de Camo tendrá un trágico final, ayúdame "[nombre del jugador]", yo solo puedo narrar y absorber, pero "TÚ" puedes hacer la diferencia, ayuda a Camo a tomar la decisión correcta, tu "conciencia" frente a los "patrones oscuros" puede #ayudarlo#.',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-red-950/25 via-zinc-900/50 to-black border-red-900/10 text-red-400',
+      label: 'Escena 11: Aleta de pingüino presionando el botón Pagar repetidamente.'
+    },
+    next: 'scene_11_end'
+  },
+  'scene_11_end': {
+    id: 'scene_11_end',
     speaker: 'system',
     text: 'Has conocido la caída de Camo. En el próximo capítulo, te adentrarás en su mente para liberarlo de las sombras...',
     illustration: {

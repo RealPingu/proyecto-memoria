@@ -13,6 +13,9 @@ import Scene6ReferencePricing from './illustrations/scene_6_reference_pricing';
 import Scene6Glow from './illustrations/scene_6_glow';
 import Scene7Sniper from './illustrations/scene_7_sniper';
 import Scene8DarkPattern from './illustrations/scene_8_dark_pattern';
+import Scene9CelularPagar from './illustrations/scene_9_celular_pagar';
+import Scene10CelularGrande from './illustrations/scene_10_celular_grande';
+import Scene11AletaPagar from './illustrations/scene_11_aleta_pagar';
 
 // Tokenizador para dar formato especial a "" y #
 interface TextToken {
@@ -349,6 +352,21 @@ export default function NarrativeIntroPage() {
     if (currentNodeId.startsWith('scene_8') || currentNodeId === 'scene_8_end') {
       // Escena 8: Camo durmiendo plácidamente y el Patrón Oscuro
       return <Scene8DarkPattern />;
+    }
+
+    if (currentNodeId.startsWith('scene_9')) {
+      // Escena 9: Camo durmiendo plácidamente acechado por el teléfono y rodeado de dinero
+      return <Scene9CelularPagar />;
+    }
+
+    if (currentNodeId.startsWith('scene_10')) {
+      // Escena 10: Catálogo del celular en grande
+      return <Scene10CelularGrande />;
+    }
+
+    if (currentNodeId.startsWith('scene_11')) {
+      // Escena 11: Aleta de pingüino slameando el botón Pagar repetidamente
+      return <Scene11AletaPagar />;
     }
 
     // SVG genérico por defecto

@@ -3,62 +3,6 @@
 import { motion } from 'framer-motion';
 
 export default function Scene8DarkPattern() {
-  // Renderizar Zzzs flotantes sobre la cabeza de Camo
-  const renderZs = (xOffset = 110, yOffset = 150, delayStep = 0) => (
-    <g id="sueno-zs" transform={`translate(${xOffset}, ${yOffset})`}>
-      <motion.text
-        id="z-pequena"
-        x="0" y="0"
-        fill="#a5f3fc"
-        fontSize="6"
-        fontWeight="bold"
-        fontFamily="monospace"
-        animate={{ 
-          opacity: [0, 0.9, 0], 
-          y: [-2, -25], 
-          x: [0, 3, -3, 0],
-          scale: [0.7, 1.2]
-        }}
-        transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut", delay: delayStep }}
-      >
-        z
-      </motion.text>
-      <motion.text
-        id="z-mediana"
-        x="5" y="-5"
-        fill="#a5f3fc"
-        fontSize="8"
-        fontWeight="bold"
-        fontFamily="monospace"
-        animate={{ 
-          opacity: [0, 0.8, 0], 
-          y: [-5, -40], 
-          x: [0, -4, 4, 0],
-          scale: [0.8, 1.3]
-        }}
-        transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut", delay: delayStep + 1.1 }}
-      >
-        z
-      </motion.text>
-      <motion.text
-        id="z-grande"
-        x="10" y="-10"
-        fill="#a5f3fc"
-        fontSize="11"
-        fontWeight="bold"
-        fontFamily="monospace"
-        animate={{ 
-          opacity: [0, 0.7, 0], 
-          y: [-8, -55], 
-          x: [0, 5, -5, 0],
-          scale: [0.9, 1.4]
-        }}
-        transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut", delay: delayStep + 2.2 }}
-      >
-        Z
-      </motion.text>
-    </g>
-  );
 
   return (
     <svg viewBox="0 0 500 350" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -205,9 +149,6 @@ export default function Scene8DarkPattern() {
           <path id="camo-aleta-der" d="M 86.361 170.394 C 99.361 165.394 126.789 155.112 125.203 142.63" strokeWidth="3" strokeLinecap="round" stroke="#1c1917" fill="none"/>
         </motion.g>
       </g>
-
-      {/* Zzzs de sueño flotando sobre la cabeza de Camo (localizada aproximadamente en X=135, Y=145) */}
-      {renderZs(120, 135, 0)}
 
       {/* 5. Casco Militar de Camo tirado descuidadamente a un lado en el suelo */}
       <g id="casco-grupo" transform="matrix(-1.601074, 0.745463, 0.679496, 1.459393, 472.639357, 138.422505)" style={{ transformOrigin: "-68.388px 28.512px" }}>

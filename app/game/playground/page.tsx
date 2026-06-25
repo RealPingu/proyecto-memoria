@@ -10,6 +10,9 @@ import Scene5Approaching from './components/scene_5_approaching';
 import Scene6Glow from './components/scene_6_glow';
 import Scene7Sniper from './components/scene_7_sniper';
 import Scene8DarkPattern from './components/scene_8_dark_pattern';
+import Scene9CelularPagar from './components/scene_9_celular_pagar';
+import Scene10CelularGrande from './components/scene_10_celular_grande';
+import Scene11AletaPagar from './components/scene_11_aleta_pagar';
 
 interface SceneItem {
   id: string;
@@ -142,6 +145,53 @@ export default function SceneMenuPage() {
       preview: (
         <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
           <Scene8DarkPattern />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+        </div>
+      )
+    },
+    {
+      id: 'scene_9',
+      number: 9,
+      title: 'El Letargo Comercial',
+      subtitle: 'Escena 9 — Celular y Pago',
+      description: 'Muestra a Camo navegando por páginas comerciales en su celular e hipnotizado por la facilidad de compra, rodeado de Dólares pingüinales.',
+      path: '/game/playground/scene/scene_9',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
+          <Scene9CelularPagar />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+        </div>
+      )
+    },
+    {
+      id: 'scene_10',
+      number: 10,
+      title: 'Interfaz Ampliada',
+      subtitle: 'Escena 10 — Celular en Grande',
+      description: 'Muestra la interfaz del celular en grande para detallar las páginas comerciales del catálogo e-commerce.',
+      path: '/game/playground/scene/scene_10',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80 flex items-center justify-center p-2">
+          <div className="w-[85px] h-[100px]">
+            <Scene10CelularGrande />
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+        </div>
+      )
+    },
+    {
+      id: 'scene_11',
+      number: 11,
+      title: 'Aleteo de Pago',
+      subtitle: 'Escena 11 — Aleta Presionando Pagar',
+      description: 'Muestra primer plano de la aleta de pingüino slameando el botón de Pagar repetidamente.',
+      path: '/game/playground/scene/scene_11',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
+          <Scene11AletaPagar />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
         </div>
       )

@@ -15,6 +15,7 @@ import Scene10CelularGrande from './components/scene_10_celular_grande';
 import Scene11AletaPagar from './components/scene_11_aleta_pagar';
 import Scene12Iglu from './components/scene_12_iglu';
 import Scene13Anuncios from './components/scene_13_anuncios';
+import Scene14Batalla from './components/scene_14_batalla';
 
 interface SceneItem {
   id: string;
@@ -224,6 +225,21 @@ export default function SceneMenuPage() {
       preview: (
         <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
           <Scene13Anuncios />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+        </div>
+      )
+    },
+    {
+      id: 'scene_14',
+      number: 14,
+      title: 'La Batalla Mental',
+      subtitle: 'Escena 14 — Árbol de Decisión',
+      description: 'Interactúa con la confrontación mental entre Camo y el Patrón Oscuro para tomar la decisión correcta.',
+      path: '/game/playground/scene/scene_14',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
+          <Scene14Batalla />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
         </div>
       )

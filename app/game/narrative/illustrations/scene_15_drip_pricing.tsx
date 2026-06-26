@@ -126,9 +126,21 @@ export default function Scene15DripPricing() {
         <path id="casco-banda" d="M -77.2 27.5 C -72 25 -64 25 -58.6 27.5" stroke="#1c1917" strokeWidth="1.2" fill="none" opacity="0.8"/>
       </g>
 
-      {/* Cuadro de diálogo del SVG */}
-      <g id="group-2" transform="matrix(1.222219, 0, 0, 1.521058, -72.293215, -170.787526)">
-        <polygon points="121.805 131.076 128.666 170.055 78.101 170.895 77.786 169.791" fill="url(#gradient-1-15)"/>
+      {/* Luz que sale de la pantalla (proyección expandida animada) */}
+      <g id="brillo-proyeccion-grupo-15" transform="matrix(2.670315027236939, 0, 0, 1.917878031730652, -184.93488099977006, -238.60230203277754)">
+        <motion.polygon 
+          id="brillo-proyeccion-15" 
+          points="121.805 131.076 128.666 170.055 78.101 170.895 77.786 169.791" 
+          fill="url(#gradient-1-15)"
+          animate={{
+            opacity: [0.4, 0.8, 0.4]
+          }}
+          transition={{
+            repeat: Infinity,
+            duration: 3,
+            ease: "easeInOut"
+          }}
+        />
       </g>
 
       {/* Celular grande con pantalla de checkout (Centro-Derecha) */}

@@ -11,11 +11,11 @@ export default function Scene19CelularReference() {
       id="svg-escena-19"
     >
       <defs>
-        {/* Gradiente de fondo: azul/índigo frío */}
-        <radialGradient id="bg-checkout-19" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#0ea5e9" stopOpacity="0.18" id="stop-bg-1-19"/>
-          <stop offset="60%" stopColor="#1e1b4b" stopOpacity="0.12" id="stop-bg-2-19"/>
-          <stop offset="100%" stopColor="#030712" stopOpacity="1" id="stop-bg-3-19"/>
+        {/* Gradiente de fondo caótico cian/índigo (Temática del Patrón Oscuro) */}
+        <radialGradient id="colored-bg-grad-chaotic" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.25"/>
+          <stop offset="60%" stopColor="#1e1b4b" stopOpacity="0.15"/>
+          <stop offset="100%" stopColor="#080711" stopOpacity="1"/>
         </radialGradient>
 
         <linearGradient id="grad-btn-premium-19" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -29,14 +29,24 @@ export default function Scene19CelularReference() {
         </linearGradient>
       </defs>
 
-      {/* Fondo */}
-      <rect width="200" height="120" fill="url(#bg-checkout-19)" id="bg-rect-19"/>
-      <motion.rect
-        width="200" height="120"
-        fill="url(#bg-checkout-19)"
-        animate={{ opacity: [0.6, 1, 0.6] }}
-        transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-        id="bg-brillo-pulsante-19"
+      {/* Fondo degradado caótico */}
+      <rect width="200" height="120" fill="url(#colored-bg-grad-chaotic)" x="0" y="0" id="fondo-escena" />
+
+      {/* Latido fucsia de fondo */}
+      <motion.circle
+        cx="100"
+        cy="60"
+        r="80"
+        fill="url(#colored-bg-grad-chaotic)"
+        animate={{
+          scale: [0.9, 1.1, 0.9],
+          opacity: [0.6, 1, 0.6]
+        }}
+        transition={{
+          repeat: Infinity,
+          duration: 4,
+          ease: "easeInOut"
+        }}
       />
 
       {/* Celular gigante centrado */}

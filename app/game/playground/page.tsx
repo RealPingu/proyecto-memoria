@@ -16,6 +16,9 @@ import Scene11AletaPagar from './components/scene_11_aleta_pagar';
 import Scene12Iglu from './components/scene_12_iglu';
 import Scene13Anuncios from './components/scene_13_anuncios';
 import Scene14Batalla from './components/scene_14_batalla';
+import Scene15DripPricing from './components/scene_15_drip_pricing';
+import Scene16CelularCheckout from './components/scene_16_celular_checkout';
+import Scene17Batalla from './components/scene_17_batalla';
 
 interface SceneItem {
   id: string;
@@ -240,6 +243,51 @@ export default function SceneMenuPage() {
       preview: (
         <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
           <Scene14Batalla />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+        </div>
+      )
+    },
+    {
+      id: 'scene_15',
+      number: 15,
+      title: 'Camo y el Drip Pricing',
+      subtitle: 'Escena 15 — Introducción',
+      description: 'Camo descansa en su sillón mientras el Patrón Oscuro oculta un cobro mensual en su celular.',
+      path: '/game/playground/scene/scene_15',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
+          <Scene15DripPricing />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+        </div>
+      )
+    },
+    {
+      id: 'scene_16',
+      number: 16,
+      title: 'El Proceso de Compra',
+      subtitle: 'Escena 16 — Zoom del Celular',
+      description: 'El celular de Camo en primer plano revela el seguro anti-bomba atómica pre-marcado entre los pasos del checkout.',
+      path: '/game/playground/scene/scene_16',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
+          <Scene16CelularCheckout />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+        </div>
+      )
+    },
+    {
+      id: 'scene_17',
+      number: 17,
+      title: 'La Batalla — Drip Pricing',
+      subtitle: 'Escena 17 — Árbol de Decisión',
+      description: 'Ayuda a Camo a detectar el cobro mensual oculto. El Patrón Oscuro porta en su mano el celular trampa.',
+      path: '/game/playground/scene/scene_17',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
+          <Scene17Batalla />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
         </div>
       )

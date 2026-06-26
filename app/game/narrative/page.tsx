@@ -23,6 +23,9 @@ import Scene14Resultado2 from '../playground/components/scene_14_resultado_2';
 import Scene14Resultado3 from '../playground/components/scene_14_resultado_3';
 import ExplicacionPatronAlegre from '../playground/components/explicacion_patron_alegre';
 import ExplicacionPatronDerrotado from '../playground/components/explicacion_patron_derrotado';
+import Scene15DripPricing from './illustrations/scene_15_drip_pricing';
+import Scene16CelularCheckout from '../playground/components/scene_16_celular_checkout';
+import Scene17Batalla from '../playground/components/scene_17_batalla';
 
 // Tokenizador para dar formato especial a "" y #
 interface TextToken {
@@ -419,6 +422,42 @@ export default function NarrativeIntroPage() {
     if (currentNodeId === 'scene_14_explicacion_3') {
       // Explicación 3: Patrón Oscuro derrotado centrado
       return <ExplicacionPatronDerrotado isCentered={true} />;
+    }
+
+    // Escena 15: Camo en sillón — sólo el primer nodo de introducción
+    if (currentNodeId === 'scene_15_init_1') {
+      return <Scene15DripPricing />;
+    }
+
+    // Escena 16: Celular grande (zoom del checkout) — nodos 2 a 4b
+    if (
+      currentNodeId === 'scene_15_init_2' ||
+      currentNodeId === 'scene_15_init_3' ||
+      currentNodeId === 'scene_15_init_4' ||
+      currentNodeId === 'scene_15_init_4b'
+    ) {
+      return <Scene16CelularCheckout />;
+    }
+
+    // Escena 17: Batalla con opciones
+    if (currentNodeId === 'scene_15_choice') {
+      return <Scene17Batalla />;
+    }
+
+    if (currentNodeId === 'scene_15_resultado_1') {
+      return <Scene16CelularCheckout />;
+    }
+
+    if (currentNodeId === 'scene_15_explicacion_1') {
+      return <ExplicacionPatronDerrotado isCentered={true} />;
+    }
+
+    if (currentNodeId === 'scene_15_resultado_2') {
+      return <Scene16CelularCheckout />;
+    }
+
+    if (currentNodeId === 'scene_15_explicacion_2') {
+      return <ExplicacionPatronAlegre isCentered={true} />;
     }
 
     // SVG genérico por defecto

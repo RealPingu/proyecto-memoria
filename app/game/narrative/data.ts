@@ -484,7 +484,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
       color: 'from-emerald-950/30 via-zinc-900/50 to-black border-emerald-900/20 text-emerald-400',
       label: 'Explicación 2: Patrón derrotado con el núcleo apagado tras identificar la trampa.'
     },
-    next: 'scene_11_end'
+    next: 'scene_15_init_1'
   },
   'scene_14_resultado_3': {
     id: 'scene_14_resultado_3',
@@ -510,7 +510,151 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
       color: 'from-emerald-950/30 via-zinc-900/50 to-black border-emerald-900/20 text-emerald-400',
       label: 'Explicación 3: Patrón derrotado con el núcleo apagado.'
     },
+    next: 'scene_15_init_1'
+  },
+  // ─── Escena 15: Drip Pricing ────────────────────────────────────────────
+  'scene_15_init_1': {
+    id: 'scene_15_init_1',
+    speaker: 'subconscious',
+    speakerLabel: 'Subconsciente',
+    text: 'Una vez dentro del proceso de compra, Camo se enfrenta a la tediosa tarea de confirmar todos los pasos para completar la compra...',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-sky-950/30 via-zinc-900/50 to-black border-sky-900/20 text-sky-400',
+      label: 'Escena 15: Camo en el sillón revisando el proceso de compra en su celular.'
+    },
+    next: 'scene_15_init_2'
+  },
+  'scene_15_init_2': {
+    id: 'scene_15_init_2',
+    speaker: 'subconscious',
+    speakerLabel: 'Subconsciente',
+    text: 'De otras experiencias Camo sabe que la mayoría de páginas tienen el mismo proceso de compra, por lo que se prepara para repetir lo que está acostumbrado a hacer...',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-sky-950/30 via-zinc-900/50 to-black border-sky-900/20 text-sky-400',
+      label: 'Escena 15: Camo confiado, listo para presionar siguiente sin leer.'
+    },
+    next: 'scene_15_init_3'
+  },
+  'scene_15_init_3': {
+    id: 'scene_15_init_3',
+    speaker: 'subconscious',
+    speakerLabel: 'Subconsciente',
+    text: 'Así es, presionar siguiente "sin leer" ni una "aleta de pingüino"...',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-sky-950/30 via-zinc-900/50 to-black border-sky-900/20 text-sky-400',
+      label: 'Escena 15: Camo presionando siguiente repetidamente sin mirar la pantalla.'
+    },
+    next: 'scene_15_init_4'
+  },
+  'scene_15_init_4': {
+    id: 'scene_15_init_4',
+    speaker: 'subconscious',
+    speakerLabel: 'Subconsciente',
+    text: 'Sin saberlo, dentro de estos numerosos pasos, Camo no solo estaba pagando la totalidad de su iglú de ensueño, sino también un seguro opcional para cubrirlo en caso de que su iglú se viera afectado por "Bombas atómicas" enviadas por los pingüinos del "Polo Norte"...',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-sky-950/30 via-zinc-900/50 to-black border-sky-900/20 text-sky-400',
+      label: 'Escena 15: Pantalla del celular mostrando el seguro Anti-Bombardeo atómico en letra pequeña.'
+    },
+    next: 'scene_15_init_4b'
+  },
+  'scene_15_init_4b': {
+    id: 'scene_15_init_4b',
+    speaker: 'system',
+    text: '¡NO HAY PINGÜINOS EN EL POLO NORTE! Así es... un cobro mensual, sin este saberlo...',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-sky-950/30 via-zinc-900/50 to-black border-sky-900/20 text-sky-400',
+      label: 'Escena 15: Revelación dramática - No hay pingüinos en el Polo Norte.'
+    },
+    next: 'scene_15_choice'
+  },
+  'scene_15_choice': {
+    id: 'scene_15_choice',
+    speaker: 'system',
+    text: '¡Camo está por caer en otro "patrón oscuro", extiéndele una mano! ¡Es tu momento de ayudarlo!',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-sky-950/30 via-zinc-900/50 to-black border-sky-900/20 text-sky-400',
+      label: 'Escena 15: Camo ante la decisión de leer o presionar siguiente.'
+    },
+    choices: [
+      {
+        id: 'drip_c1',
+        text: 'Recuerdas tus enseñanzas militares y, al haber ya evadido el primer "patrón oscuro", entras en un estado de alerta y "lees atentamente" cada paso y término antes de proceder al siguiente.',
+        nextNodeId: 'scene_15_resultado_1',
+        isCorrect: true,
+        explanation: ''
+      },
+      {
+        id: 'drip_c2',
+        text: 'Ya confiado de haber superado la barrera de anuncios exitosamente, no piensas y presionas rápidamente el "llamativo" botón de siguiente.',
+        nextNodeId: 'scene_15_resultado_2',
+        isCorrect: false,
+        explanation: ''
+      }
+    ]
+  },
+  'scene_15_resultado_1': {
+    id: 'scene_15_resultado_1',
+    speaker: 'narrator',
+    speakerLabel: 'Narrador',
+    text: 'Pasas atentamente por cada paso, te das cuenta de que el seguro de bombas atómicas es totalmente innecesario y que tendrías que pagar una "pingüinada" cada mes. Profundamente, Camo también piensa que podría dispararle a la bomba antes de que cayera... Sin duda Camo confía "excesivamente" en su habilidad... Camo decide optar por salir del seguro y sigue al final de la compra.\n\n¡Has evitado el patrón oscuro!',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-emerald-950/30 via-zinc-900/50 to-black border-emerald-900/20 text-emerald-400',
+      label: 'Resultado 15-1: Camo con lupa, desmarcando el seguro innecesario.'
+    },
+    next: 'scene_15_explicacion_1'
+  },
+  'scene_15_explicacion_1': {
+    id: 'scene_15_explicacion_1',
+    speaker: 'narrator',
+    speakerLabel: 'Explicación del Patrón',
+    text: '¡Bien hecho! Lograste detectar el patrón de Drip Pricing (Precios por Goteo). El Patrón Oscuro utilizó Sneaking junto a Hiding Information para revelar un cargo adicional en una etapa tardía del proceso, apostando a que el esfuerzo ya invertido te haría ignorarlo. Leer con atención cada paso, incluso cuando parece rutinario, es la defensa más efectiva.',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-emerald-950/30 via-zinc-900/50 to-black border-emerald-900/20 text-emerald-400',
+      label: 'Explicación 15-1: Patrón derrotado con el núcleo apagado.'
+    },
     next: 'scene_11_end'
+  },
+  'scene_15_resultado_2': {
+    id: 'scene_15_resultado_2',
+    speaker: 'narrator',
+    speakerLabel: 'Narrador',
+    text: 'Te apresuras y completas la compra con todos los "seguros" intermediarios. No te ves afectado por la decisión inmediatamente y en el fondo pagar una mensualidad sin ser "consciente" de ello no es relevante para Camo económicamente... pero no puedes dejar de sentir que están usando tu apuro y sentimiento para quitarte tu autonomía... tu alma se apaga nuevamente.\n\n¡Has caído en el patrón oscuro!',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-red-950/30 via-zinc-900/50 to-black border-red-900/20 text-red-400',
+      label: 'Resultado 15-2: Camo asustado con el cobro mensual inesperado.'
+    },
+    next: 'scene_15_explicacion_2'
+  },
+  'scene_15_explicacion_2': {
+    id: 'scene_15_explicacion_2',
+    speaker: 'narrator',
+    speakerLabel: 'Explicación del Patrón',
+    text: 'El Patrón Oscuro aplicó Drip Pricing (Precios por Goteo) con éxito. A través de Sneaking y Hiding Information, agregó un cargo mensual oculto en un paso tardío del proceso de compra. Contaba con que el apuro y el esfuerzo invertido te llevarían a ignorarlo. El patrón explota la inercia: cuando ya dedicaste tiempo a algo, tu mente tiende a no querer perder ese esfuerzo.',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-red-950/30 via-zinc-900/50 to-black border-red-900/20 text-red-400',
+      label: 'Explicación 15-2: Patrón alegre celebrando el cobro mensual aceptado.'
+    },
+    next: 'scene_15_choice'
   },
   'scene_11_end': {
     id: 'scene_11_end',

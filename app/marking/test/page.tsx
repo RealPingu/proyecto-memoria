@@ -116,7 +116,7 @@ function MarkingTestContent() {
             setCurrentStep(prev => prev + 1);
             setMode('context');
         } else {
-            router.push(isPostTest ? '/game/results' : '/game/narrative/instructions');
+            router.push(isPostTest ? '/credits' : '/game/narrative/instructions');
         }
     };
 

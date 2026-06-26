@@ -897,7 +897,8 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
       aspectRatio: 'aspect-video',
       color: 'from-cyan-950/30 via-zinc-900/50 to-black border-cyan-900/20 text-cyan-400',
       label: 'Fin de la Demo de Narrativa.'
-    }
+    },
+    next: 'post-test-intro'
   }
 
 };

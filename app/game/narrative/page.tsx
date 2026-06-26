@@ -195,6 +195,10 @@ export default function NarrativeIntroPage() {
 
   // Función para avanzar de nodo (actualizando el historial interno)
   const advanceNode = (nextId: string) => {
+    if (nextId === 'post-test-intro') {
+      router.push('/marking/post-intro');
+      return;
+    }
     if (NARRATIVE_NODES[nextId]) {
       setHistory(prev => [...prev, currentNodeId]);
       setCurrentNodeId(nextId);

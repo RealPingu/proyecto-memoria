@@ -19,6 +19,9 @@ import Scene14Batalla from './components/scene_14_batalla';
 import Scene15DripPricing from './components/scene_15_drip_pricing';
 import Scene16CelularCheckout from './components/scene_16_celular_checkout';
 import Scene17Batalla from './components/scene_17_batalla';
+import Scene18ReferencePricing from './components/scene_18_reference_pricing';
+import Scene19CelularReference from './components/scene_19_celular_reference';
+import Scene20Batalla from './components/scene_20_batalla';
 
 interface SceneItem {
   id: string;
@@ -291,7 +294,53 @@ export default function SceneMenuPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
         </div>
       )
+    },
+    {
+      id: 'scene_18',
+      number: 18,
+      title: 'Camo y el Reference Pricing',
+      subtitle: 'Escena 18 — Introducción',
+      description: 'Camo descansa en su sillón mientras el Patrón Oscuro se esconde y presenta precios de referencia anclados en su celular.',
+      path: '/game/playground/scene/scene_18',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
+          <Scene18ReferencePricing />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+        </div>
+      )
+    },
+    {
+      id: 'scene_19',
+      number: 19,
+      title: 'Selección de Plan',
+      subtitle: 'Escena 19 — Celular en Grande',
+      description: 'Detalle en pantalla completa de los planes financieros con la tasa de interés nominal y efectiva.',
+      path: '/game/playground/scene/scene_19',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
+          <Scene19CelularReference />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+        </div>
+      )
+    },
+    {
+      id: 'scene_20',
+      number: 20,
+      title: 'La Batalla — Reference Pricing',
+      subtitle: 'Escena 20 — Árbol de Decisión',
+      description: 'Ayuda a Camo a elegir el plan correcto evaluando la TEA real. El Patrón Oscuro porta el celular con planes anclados.',
+      path: '/game/playground/scene/scene_20',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
+          <Scene20Batalla />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+        </div>
+      )
     }
+
   ];
 
   return (

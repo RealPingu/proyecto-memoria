@@ -26,6 +26,9 @@ import ExplicacionPatronDerrotado from '../playground/components/explicacion_pat
 import Scene15DripPricing from './illustrations/scene_15_drip_pricing';
 import Scene16CelularCheckout from '../playground/components/scene_16_celular_checkout';
 import Scene17Batalla from '../playground/components/scene_17_batalla';
+import Scene18ReferencePricing from '../playground/components/scene_18_reference_pricing';
+import Scene19CelularReference from '../playground/components/scene_19_celular_reference';
+import Scene20Batalla from '../playground/components/scene_20_batalla';
 
 // Tokenizador para dar formato especial a "" y #
 interface TextToken {
@@ -459,6 +462,43 @@ export default function NarrativeIntroPage() {
     if (currentNodeId === 'scene_15_explicacion_2') {
       return <ExplicacionPatronAlegre isCentered={true} />;
     }
+
+    // Escena 18: Camo en sillón — sólo el primer nodo de introducción (Reference Pricing)
+    if (currentNodeId === 'scene_18_init_1') {
+      return <Scene18ReferencePricing />;
+    }
+
+    // Escena 19: Celular grande (zoom de planes) — nodos 2 a 4b
+    if (
+      currentNodeId === 'scene_18_init_2' ||
+      currentNodeId === 'scene_18_init_3' ||
+      currentNodeId === 'scene_18_init_4' ||
+      currentNodeId === 'scene_18_init_4b'
+    ) {
+      return <Scene19CelularReference />;
+    }
+
+    // Escena 20: Batalla con opciones
+    if (currentNodeId === 'scene_18_choice') {
+      return <Scene20Batalla />;
+    }
+
+    if (currentNodeId === 'scene_18_resultado_1') {
+      return <Scene19CelularReference />;
+    }
+
+    if (currentNodeId === 'scene_18_explicacion_1') {
+      return <ExplicacionPatronDerrotado isCentered={true} />;
+    }
+
+    if (currentNodeId === 'scene_18_resultado_2') {
+      return <Scene19CelularReference />;
+    }
+
+    if (currentNodeId === 'scene_18_explicacion_2') {
+      return <ExplicacionPatronAlegre isCentered={true} />;
+    }
+
 
     // SVG genérico por defecto
     return (

@@ -628,7 +628,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
       color: 'from-emerald-950/30 via-zinc-900/50 to-black border-emerald-900/20 text-emerald-400',
       label: 'Explicación 15-1: Patrón derrotado con el núcleo apagado.'
     },
-    next: 'scene_11_end'
+    next: 'scene_18_init_1'
   },
   'scene_15_resultado_2': {
     id: 'scene_15_resultado_2',
@@ -656,7 +656,146 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     },
     next: 'scene_15_choice'
   },
+  // ─── Escena 18: Reference Pricing ───────────────────────────────────────
+  'scene_18_init_1': {
+    id: 'scene_18_init_1',
+    speaker: 'subconscious',
+    speakerLabel: 'Subconsciente',
+    text: 'Al evadir el cobro de seguros ocultos, Camo continúa hacia el siguiente y último paso de la transacción: seleccionar un método de financiación para su iglú...',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-sky-950/30 via-zinc-900/50 to-black border-sky-900/20 text-sky-400',
+      label: 'Escena 18: Camo en el sillón revisando las opciones de pago en su celular.'
+    },
+    next: 'scene_18_init_2'
+  },
+  'scene_18_init_2': {
+    id: 'scene_18_init_2',
+    speaker: 'subconscious',
+    speakerLabel: 'Subconsciente',
+    text: 'La interfaz presenta tres planes de pago. Uno de ellos está resaltado con bordes brillantes y un cartel de "más popular" en un llamativo color verde...',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-sky-950/30 via-zinc-900/50 to-black border-sky-900/20 text-sky-400',
+      label: 'Escena 18: Interfaz de selección de plan destacando la opción premium en verde.'
+    },
+    next: 'scene_18_init_3'
+  },
+  'scene_18_init_3': {
+    id: 'scene_18_init_3',
+    speaker: 'subconscious',
+    speakerLabel: 'Subconsciente',
+    text: 'Este Plan Premium promete una tasa del "3.5% TNA", que parece ridículamente más baja que la del Plan Estándar de "8.9% TNA". Camo siente la inercia de seleccionar el botón verde inmediatamente...',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-sky-950/30 via-zinc-900/50 to-black border-sky-900/20 text-sky-400',
+      label: 'Escena 18: Camo tentado a hacer clic en el botón premium de tasa nominal baja.'
+    },
+    next: 'scene_18_init_4'
+  },
+  'scene_18_init_4': {
+    id: 'scene_18_init_4',
+    speaker: 'subconscious',
+    speakerLabel: 'Subconsciente',
+    text: 'Sin embargo, no advierte que el plazo de pago del Plan Premium es de "240 meses" (20 años) y que su tasa efectiva anual real es de "45.2% TEA", mientras que el Plan Estándar es de solo "36 meses" con "9.5% TEA"...',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-sky-950/30 via-zinc-900/50 to-black border-sky-900/20 text-sky-400',
+      label: 'Escena 18: Comparativa de plazos y tasas efectivas reales ocultas en la interfaz.'
+    },
+    next: 'scene_18_init_4b'
+  },
+  'scene_18_init_4b': {
+    id: 'scene_18_init_4b',
+    speaker: 'system',
+    text: 'El sistema usa una tasa nominal anual sumamente baja como "ancla de referencia", y añade un tercer plan sumamente malo para guiar la decisión de Camo...',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-sky-950/30 via-zinc-900/50 to-black border-sky-900/20 text-sky-400',
+      label: 'Escena 18: El efecto de precios de referencia manipulando la percepción de conveniencia.'
+    },
+    next: 'scene_18_choice'
+  },
+  'scene_18_choice': {
+    id: 'scene_18_choice',
+    speaker: 'system',
+    text: '¡Camo está a punto de firmar un financiamiento abusivo de 20 años! ¡Ayúdalo a evaluar el costo financiero real y elegir correctamente!',
+    choices: [
+      {
+        id: 'ref_c1',
+        text: 'Camo no se deja deslumbrar por el color verde ni las etiquetas llamativas. Analiza las tasas TEA (Tasa Efectiva Anual) y los plazos, y selecciona el Plan Estándar con 9.5% TEA a 36 meses.',
+        nextNodeId: 'scene_18_resultado_1',
+        isCorrect: true,
+        explanation: ''
+      },
+      {
+        id: 'ref_c2',
+        text: 'Camo se deja llevar por el sesgo de anclaje de precios de referencia. Se apresura a elegir el Plan Premium atraído por el gancho del 3.5% TNA, sin leer que pagará durante 240 meses a una TEA del 45.2%.',
+        nextNodeId: 'scene_18_resultado_2',
+        isCorrect: false,
+        explanation: ''
+      }
+    ]
+  },
+  'scene_18_resultado_1': {
+    id: 'scene_18_resultado_1',
+    speaker: 'narrator',
+    speakerLabel: 'Narrador',
+    text: 'Camo detecta que el "Plan Premium" tiene una tasa anual efectiva real gigante (TEA 45.2%) y un plazo larguísimo de 20 años que lo atará indefinidamente. Identifica que el Plan Normal es solo un señuelo malo para empujarlo al Premium. Camo decide seleccionar el Plan Estándar de 36 meses y 9.5% TEA, pagando mucho menos al final.\n\n¡Has evitado el patrón oscuro!',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-emerald-950/30 via-zinc-900/50 to-black border-emerald-900/20 text-emerald-400',
+      label: 'Resultado 18-1: Camo seleccionando con éxito el Plan Estándar justo.'
+    },
+    next: 'scene_18_explicacion_1'
+  },
+  'scene_18_explicacion_1': {
+    id: 'scene_18_explicacion_1',
+    speaker: 'narrator',
+    speakerLabel: 'Explicación del Patrón',
+    text: '¡Excelente decisión! Lograste detectar el patrón de Reference Pricing (Precios de Referencia). A través de Sneaking e Hiding Information, el Patrón Oscuro utilizó el anclaje cognitivo con tasas nominales bajas para distraer sobre el costo efectivo total. Evaluar siempre el costo financiero total y el plazo es la mejor protección.',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-emerald-950/30 via-zinc-900/50 to-black border-emerald-900/20 text-emerald-400',
+      label: 'Explicación 18-1: Patrón derrotado con el núcleo apagado.'
+    },
+    next: 'scene_11_end'
+  },
+  'scene_18_resultado_2': {
+    id: 'scene_18_resultado_2',
+    speaker: 'narrator',
+    speakerLabel: 'Narrador',
+    text: 'Camo elige el Plan Premium deslumbrado por la tasa nominal del 3.5% TNA. No advierte que el plazo de 240 meses y la TEA del 45.2% implican un costo financiero total enorme. Ha aceptado una deuda abusiva por una ilusión de descuento promovida por un plan de referencia verde e imponente.\n\n¡Has caído en el patrón oscuro!',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-red-950/30 via-zinc-900/50 to-black border-red-900/20 text-red-400',
+      label: 'Resultado 18-2: Camo lamentando el financiamiento a 20 años.'
+    },
+    next: 'scene_18_explicacion_2'
+  },
+  'scene_18_explicacion_2': {
+    id: 'scene_18_explicacion_2',
+    speaker: 'narrator',
+    speakerLabel: 'Explicación del Patrón',
+    text: 'El Patrón Oscuro aplicó Reference Pricing (Precios de Referencia) con éxito. A través de Sneaking y Hiding Information, se ancló el cerebro en la tasa nominal baja para distraer sobre el verdadero costo (TEA) y plazo. El patrón se aprovecha de la comparación sesgada frente a una opción señuelo muy mala.',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-red-950/30 via-zinc-900/50 to-black border-red-900/20 text-red-400',
+      label: 'Explicación 18-2: Patrón alegre celebrando la firma del contrato abusivo.'
+    },
+    next: 'scene_18_choice'
+  },
   'scene_11_end': {
+
     id: 'scene_11_end',
     speaker: 'system',
     text: 'Has ayudado a Camo en su batalla mental. En el próximo capítulo, te adentrarás en la mente de otros espíritus para liberarlos de las sombras...',

@@ -29,6 +29,9 @@ import Scene17Batalla from '../playground/components/scene_17_batalla';
 import Scene18ReferencePricing from '../playground/components/scene_18_reference_pricing';
 import Scene19CelularReference from '../playground/components/scene_19_celular_reference';
 import Scene20Batalla from '../playground/components/scene_20_batalla';
+import Scene21CamoRevivido from '../playground/components/scene_21_camo_revivido';
+import Scene22PatronHostil from '../playground/components/scene_22_patron_hostil';
+import Scene23DesenlaceFinal from '../playground/components/scene_23_desenlace_final';
 
 // Tokenizador para dar formato especial a "" y #
 interface TextToken {
@@ -498,6 +501,27 @@ export default function NarrativeIntroPage() {
     if (currentNodeId === 'scene_18_explicacion_2') {
       return <ExplicacionPatronAlegre isCentered={true} />;
     }
+
+    // Escena 21: Fusión de alma y Camo revivido
+    if (currentNodeId === 'scene_21_init_1' || currentNodeId === 'scene_21_init_2') {
+      return <Scene21CamoRevivido />;
+    }
+
+    // Escena 22: Confrontación con el Patrón Oscuro furioso
+    if (currentNodeId === 'scene_22_init_1' || currentNodeId === 'scene_22_init_2') {
+      return <Scene22PatronHostil />;
+    }
+
+    // Escena 23: Huida y Reflexión final
+    if (
+      currentNodeId === 'scene_23_init_1' ||
+      currentNodeId === 'scene_23_init_2' ||
+      currentNodeId === 'scene_23_init_3' ||
+      currentNodeId === 'scene_11_end'
+    ) {
+      return <Scene23DesenlaceFinal />;
+    }
+
 
 
     // SVG genérico por defecto

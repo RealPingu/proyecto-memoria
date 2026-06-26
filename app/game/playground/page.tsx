@@ -22,6 +22,9 @@ import Scene17Batalla from './components/scene_17_batalla';
 import Scene18ReferencePricing from './components/scene_18_reference_pricing';
 import Scene19CelularReference from './components/scene_19_celular_reference';
 import Scene20Batalla from './components/scene_20_batalla';
+import Scene21CamoRevivido from './components/scene_21_camo_revivido';
+import Scene22PatronHostil from './components/scene_22_patron_hostil';
+import Scene23DesenlaceFinal from './components/scene_23_desenlace_final';
 
 interface SceneItem {
   id: string;
@@ -339,7 +342,53 @@ export default function SceneMenuPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
         </div>
       )
+    },
+    {
+      id: 'scene_21',
+      number: 21,
+      title: 'El Retorno del Alma',
+      subtitle: 'Escena 21 — Fusión y Liberación',
+      description: 'Camo es liberado del patrón de Reference Pricing. Su alma entra en él y recupera todo su color.',
+      path: '/game/playground/scene/scene_21',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
+          <Scene21CamoRevivido />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+        </div>
+      )
+    },
+    {
+      id: 'scene_22',
+      number: 22,
+      title: 'La Furia del Patrón',
+      subtitle: 'Escena 22 — Confrontación',
+      description: 'El Patrón Oscuro reacciona furioso y amenaza al Subconsciente por arrebatarle el control del pingüino.',
+      path: '/game/playground/scene/scene_22',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
+          <Scene22PatronHostil />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+        </div>
+      )
+    },
+    {
+      id: 'scene_23',
+      number: 23,
+      title: 'Fuga y Reflexión',
+      subtitle: 'Escena 23 — Cierre de Demo',
+      description: 'El Patrón Oscuro huye al infinito. El Protagonista y el Ojo contemplan el firmamento estrellado.',
+      path: '/game/playground/scene/scene_23',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
+          <Scene23DesenlaceFinal />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+        </div>
+      )
     }
+
 
   ];
 

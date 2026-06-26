@@ -766,7 +766,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
       color: 'from-emerald-950/30 via-zinc-900/50 to-black border-emerald-900/20 text-emerald-400',
       label: 'Explicación 18-1: Patrón derrotado con el núcleo apagado.'
     },
-    next: 'scene_11_end'
+    next: 'scene_21_init_1'
   },
   'scene_18_resultado_2': {
     id: 'scene_18_resultado_2',
@@ -794,11 +794,104 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     },
     next: 'scene_18_choice'
   },
+  // ─── Escena 21: Camo Revivido ───────────────────────────────────────────
+  'scene_21_init_1': {
+    id: 'scene_21_init_1',
+    speaker: 'camo',
+    speakerLabel: 'Camo',
+    text: '¡Muchas gracias, camarada! De verdad... al ayudarme a evadir esas trampas financieras con "tasas de referencia" engañosas, evitaste que comprometiera mi salario y mi libertad por los próximos 20 años.',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-emerald-950/30 via-zinc-900/50 to-black border-emerald-900/20 text-emerald-400',
+      label: 'Escena 21: Camo de pie agradeciendo alegremente al protagonista.'
+    },
+    next: 'scene_21_init_2'
+  },
+  'scene_21_init_2': {
+    id: 'scene_21_init_2',
+    speaker: 'camo',
+    speakerLabel: 'Camo',
+    text: 'Me has enseñado a ver más allá de los colores llamativos y los descuentos nominales falsos. ¡Ahora entiendo cómo operan estas interfaces oscuras y sus oscuros planes!',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-emerald-950/30 via-zinc-900/50 to-black border-emerald-900/20 text-emerald-400',
+      label: 'Escena 21: Camo conversando con entusiasmo con el protagonista.'
+    },
+    next: 'scene_22_init_1'
+  },
+  // ─── Escena 22: Furia del Patrón ────────────────────────────────────────
+  'scene_22_init_1': {
+    id: 'scene_22_init_1',
+    speaker: 'system',
+    speakerLabel: 'Patrón Oscuro',
+    text: '¡Malditos intrusos! ¿Cómo se atreven a entrometerse en mis dominios y desbaratar mis planes de conversión comercial?',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-red-950/30 via-zinc-900/50 to-black border-red-900/20 text-red-400',
+      label: 'Escena 22: El Patrón Oscuro retorciéndose con furia inestable en rojo y púrpura.'
+    },
+    next: 'scene_22_init_2'
+  },
+  'scene_22_init_2': {
+    id: 'scene_22_init_2',
+    speaker: 'system',
+    speakerLabel: 'Patrón Oscuro',
+    text: '¡Y tú, Ojo Blanco, quédate quieto y no intervengas! No permitiré que arruines mi sagrada misión de engañar a los pingüinos y arrebatarles su "poder de decisión y voluntad"...',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-red-950/30 via-zinc-900/50 to-black border-red-900/20 text-red-400',
+      label: 'Escena 22: El Patrón Oscuro lanzando destellos hostiles hacia el Ojo Blanco.'
+    },
+    next: 'scene_23_init_1'
+  },
+  // ─── Escena 23: Huida y Reflexión Final ─────────────────────────────────
+  'scene_23_init_1': {
+    id: 'scene_23_init_1',
+    speaker: 'narrator',
+    speakerLabel: 'Narrador',
+    text: 'El Patrón Oscuro, incapaz de resistir la fuerza de la verdad revelada, comienza a perder estabilidad y huye, disipándose en las profundidades del subconsciente...',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-cyan-950/30 via-zinc-900/50 to-black border-cyan-900/20 text-cyan-400',
+      label: 'Escena 23: El Patrón Oscuro encogiéndose y huyendo al infinito.'
+    },
+    next: 'scene_23_init_2'
+  },
+  'scene_23_init_2': {
+    id: 'scene_23_init_2',
+    speaker: 'subconscious',
+    speakerLabel: 'Subconsciente',
+    text: 'Hemos logrado salvar al primer espíritu de pingüino, liberándolo de las cadenas de la manipulación de interfaces...',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-cyan-950/30 via-zinc-900/50 to-black border-cyan-900/20 text-cyan-400',
+      label: 'Escena 23: El protagonista y el Ojo contemplando un cielo estrellado y pacífico.'
+    },
+    next: 'scene_23_init_3'
+  },
+  'scene_23_init_3': {
+    id: 'scene_23_init_3',
+    speaker: 'subconscious',
+    speakerLabel: 'Subconsciente',
+    text: 'Pero esto es solo el comienzo de nuestra travesía en la red. Aún quedan muchas más almas que necesitan ser rescatadas y aprender a defender su autonomía en el ciberespacio...',
+    illustration: {
+      position: 'center',
+      aspectRatio: 'aspect-video',
+      color: 'from-cyan-950/30 via-zinc-900/50 to-black border-cyan-900/20 text-cyan-400',
+      label: 'Escena 23: El protagonista y el Ojo contemplando un cielo estrellado y pacífico.'
+    },
+    next: 'scene_11_end'
+  },
   'scene_11_end': {
-
     id: 'scene_11_end',
     speaker: 'system',
-    text: 'Has ayudado a Camo en su batalla mental. En el próximo capítulo, te adentrarás en la mente de otros espíritus para liberarlos de las sombras...',
+    text: '¡Felicitaciones! Has completado con éxito la demo de Antipatrón. Muchas gracias por jugar y aprender a identificar y combatir las trampas del diseño de interfaces. ¡Hasta la próxima aventura!',
     illustration: {
       position: 'center',
       aspectRatio: 'aspect-video',
@@ -806,4 +899,5 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
       label: 'Fin de la Demo de Narrativa.'
     }
   }
+
 };

@@ -6,11 +6,11 @@ export default function Scene16CelularCheckout() {
   return (
     <svg viewBox="0 0 200 120" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        {/* Gradiente de fondo: azul/índigo frío — sensación burocrática */}
-        <radialGradient id="bg-checkout-15" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#0ea5e9" stopOpacity="0.18"/>
-          <stop offset="60%" stopColor="#1e1b4b" stopOpacity="0.12"/>
-          <stop offset="100%" stopColor="#030712" stopOpacity="1"/>
+        {/* Gradiente de fondo caótico cian/índigo (Temática del Patrón Oscuro) */}
+        <radialGradient id="colored-bg-grad-chaotic" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.25"/>
+          <stop offset="60%" stopColor="#1e1b4b" stopOpacity="0.15"/>
+          <stop offset="100%" stopColor="#080711" stopOpacity="1"/>
         </radialGradient>
 
         {/* Gradiente botón "Siguiente" */}
@@ -26,13 +26,24 @@ export default function Scene16CelularCheckout() {
         </linearGradient>
       </defs>
 
-      {/* Fondo */}
-      <rect width="200" height="120" fill="url(#bg-checkout-15)"/>
-      <motion.rect
-        width="200" height="120"
-        fill="url(#bg-checkout-15)"
-        animate={{ opacity: [0.6, 1, 0.6] }}
-        transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+      {/* Fondo degradado caótico */}
+      <rect width="200" height="120" fill="url(#colored-bg-grad-chaotic)" x="0" y="0" id="fondo-escena" />
+
+      {/* Latido fucsia de fondo */}
+      <motion.circle
+        cx="100"
+        cy="60"
+        r="80"
+        fill="url(#colored-bg-grad-chaotic)"
+        animate={{
+          scale: [0.9, 1.1, 0.9],
+          opacity: [0.6, 1, 0.6]
+        }}
+        transition={{
+          repeat: Infinity,
+          duration: 4,
+          ease: "easeInOut"
+        }}
       />
 
       {/* Celular gigante centrado — misma estructura que Escena 13 */}
@@ -143,20 +154,6 @@ export default function Scene16CelularCheckout() {
         </g>
       </g>
 
-      {/* Dedo de Camo deslizándose (aleta) — entra desde abajo y pasa el seguro */}
-      <motion.g
-        id="dedo-camo-15"
-        initial={{ x: 160, y: 100 }}
-        animate={{
-          y: [100, 60, 50, 40, 80, 100],
-          x: [160, 158, 157, 157, 158, 160]
-        }}
-        transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
-      >
-        {/* Aleta/pata de pingüino */}
-        <ellipse cx="0" cy="0" rx="5" ry="3.5" fill="#f59e0b" opacity="0.85"/>
-        <ellipse cx="0" cy="-1" rx="3.5" ry="2" fill="#fbbf24"/>
-      </motion.g>
 
     </svg>
   );

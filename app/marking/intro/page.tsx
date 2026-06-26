@@ -66,7 +66,7 @@ export default function MarkingIntroPage() {
 
                 <footer className="shrink-0 pt-4 pb-2 md:pb-10">
                     <div className="flex flex-col md:flex-row w-full max-w-lg mx-auto gap-3 md:gap-4">
-                        <Link href="/game/marking/test" className="flex-1 h-12 bg-game-accent text-game-bg font-bold uppercase tracking-widest text-xs flex items-center justify-center shadow-lg active:scale-95 transition-all">
+                        <Link href="/marking/test" className="flex-1 h-12 bg-game-accent text-game-bg font-bold uppercase tracking-widest text-xs flex items-center justify-center shadow-lg active:scale-95 transition-all">
                             Comprender y Avanzar
                         </Link>
                         <Link href="/survey" className="flex-1 h-12 border border-zinc-700 text-game-muted font-bold uppercase tracking-widest text-xs flex items-center justify-center hover:bg-game-surface hover:text-game-accent transition-all active:scale-95">

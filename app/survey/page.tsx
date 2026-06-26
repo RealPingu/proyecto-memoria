@@ -110,14 +110,14 @@ export default function SurveyPage() {
             });
 
             if (response.ok) {
-                router.push('/game/marking/intro');
+                router.push('/marking/intro');
             } else {
                 throw new Error("Error en el servidor");
             }
         } catch (error) {
             console.error("Error:", error);
             alert("No pudimos guardar tus respuestas, pero puedes continuar.");
-            router.push('/game/marking/intro'); // Navegamos de todas formas para no bloquear al usuario
+            router.push('/marking/intro'); // Navegamos de todas formas para no bloquear al usuario
         } finally {
             setIsSubmitting(false);
         }

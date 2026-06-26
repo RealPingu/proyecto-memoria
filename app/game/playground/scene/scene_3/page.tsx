@@ -273,7 +273,7 @@ export default function Scene3PlaygroundPage() {
     }
   };
 
-  const handleChoiceClick = (choice: { nextNodeId: string; explanation: string }) => {
+  const handleChoiceClick = (choice: { nextNodeId: string; explanation?: string }) => {
     if (choice.explanation) {
       alert(`Popup Explicativo:\n\n${choice.explanation}`);
       advanceNode(choice.nextNodeId);

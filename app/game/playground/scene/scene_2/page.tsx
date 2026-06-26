@@ -276,7 +276,7 @@ export default function Scene2PlaygroundPage() {
     }
   };
 
-  const handleChoiceClick = (choice: { nextNodeId: string; explanation: string }) => {
+  const handleChoiceClick = (choice: { nextNodeId: string; explanation?: string }) => {
     // If there is an explanation (popup), we can show a mock alert or navigate.
     // The user requested that empty explanations (which these choices have) transition DIRECTLY without a popup:
     if (choice.explanation) {

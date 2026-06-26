@@ -17,21 +17,21 @@ import Scene10CelularGrande from './illustrations/scene_10_celular_grande';
 import Scene11AletaPagar from './illustrations/scene_11_aleta_pagar';
 import Scene12Iglu from './illustrations/scene_12_iglu';
 import Scene13Anuncios from './illustrations/scene_13_anuncios';
-import Scene14Batalla from '../playground/components/scene_14_batalla';
-import Scene14Resultado1 from '../playground/components/scene_14_resultado_1';
-import Scene14Resultado2 from '../playground/components/scene_14_resultado_2';
-import Scene14Resultado3 from '../playground/components/scene_14_resultado_3';
-import ExplicacionPatronAlegre from '../playground/components/explicacion_patron_alegre';
-import ExplicacionPatronDerrotado from '../playground/components/explicacion_patron_derrotado';
+import Scene14Batalla from './illustrations/scene_14_batalla';
+import Scene14Resultado1 from './illustrations/scene_14_resultado_1';
+import Scene14Resultado2 from './illustrations/scene_14_resultado_2';
+import Scene14Resultado3 from './illustrations/scene_14_resultado_3';
+import ExplicacionPatronAlegre from './illustrations/explicacion_patron_alegre';
+import ExplicacionPatronDerrotado from './illustrations/explicacion_patron_derrotado';
 import Scene15DripPricing from './illustrations/scene_15_drip_pricing';
-import Scene16CelularCheckout from '../playground/components/scene_16_celular_checkout';
-import Scene17Batalla from '../playground/components/scene_17_batalla';
-import Scene18ReferencePricing from '../playground/components/scene_18_reference_pricing';
-import Scene19CelularReference from '../playground/components/scene_19_celular_reference';
-import Scene20Batalla from '../playground/components/scene_20_batalla';
-import Scene21CamoRevivido from '../playground/components/scene_21_camo_revivido';
-import Scene22PatronHostil from '../playground/components/scene_22_patron_hostil';
-import Scene23DesenlaceFinal from '../playground/components/scene_23_desenlace_final';
+import Scene16CelularCheckout from './illustrations/scene_16_celular_checkout';
+import Scene17Batalla from './illustrations/scene_17_batalla';
+import Scene18ReferencePricing from './illustrations/scene_18_reference_pricing';
+import Scene19CelularReference from './illustrations/scene_19_celular_reference';
+import Scene20Batalla from './illustrations/scene_20_batalla';
+import Scene21CamoRevivido from './illustrations/scene_21_camo_revivido';
+import Scene22PatronHostil from './illustrations/scene_22_patron_hostil';
+import Scene23DesenlaceFinal from './illustrations/scene_23_desenlace_final';
 
 // Tokenizador para dar formato especial a "" y #
 interface TextToken {
@@ -88,9 +88,6 @@ export default function NarrativeIntroPage() {
   const [visibleCharCount, setVisibleCharCount] = useState(0);
   const [isTyping, setIsTyping] = useState(false);
   const [nickname, setNickname] = useState('Jugador');
-  const [showExplanation, setShowExplanation] = useState(false);
-  const [selectedExplanationText, setSelectedExplanationText] = useState('');
-  const [nextAfterExplanation, setNextAfterExplanation] = useState('');
   
   // Historial interno para el botón Atrás en la narrativa
   const [history, setHistory] = useState<string[]>([]);
@@ -229,23 +226,9 @@ export default function NarrativeIntroPage() {
   };
 
   // Manejo de decisiones (Fase de elección de la Novela Visual)
-  const handleChoiceClick = (choice: { text: string; nextNodeId: string; isCorrect: boolean; explanation: string; id: string }) => {
+  const handleChoiceClick = (choice: { text: string; nextNodeId: string; isCorrect: boolean; id: string }) => {
     logInteraction(choice.id, choice.isCorrect, { text: choice.text });
-    
-    if (choice.explanation && choice.explanation.trim() !== '') {
-      // Almacenamos la explicación del patrón y el destino
-      setSelectedExplanationText(choice.explanation);
-      setNextAfterExplanation(choice.nextNodeId);
-      setShowExplanation(true);
-    } else {
-      // Avanzar directamente sin popup explicativo
-      advanceNode(choice.nextNodeId);
-    }
-  };
-
-  const handleCloseExplanation = () => {
-    setShowExplanation(false);
-    advanceNode(nextAfterExplanation);
+    advanceNode(choice.nextNodeId);
   };
 
   // Parser dinámico para formatear "" y ## en React
@@ -630,43 +613,7 @@ export default function NarrativeIntroPage() {
 
       </div>
 
-      {/* POPUP DE EXPLICACIÓN META-NARRATIVA */}
-      <AnimatePresence>
-        {showExplanation && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute inset-0 z-50 flex items-center justify-center bg-game-bg/95 backdrop-blur-sm p-4"
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-game-surface border border-game-muted/20 p-5 md:p-6 w-[95%] max-w-sm space-y-5 text-center shadow-2xl rounded-sm"
-            >
-              <div className="w-10 h-10 mx-auto rounded-full bg-game-accent/10 border border-game-accent/20 flex items-center justify-center">
-                <span className="text-game-accent text-sm font-bold">ℹ</span>
-              </div>
-              
-              <h2 className="text-xs md:text-sm font-bold text-game-accent uppercase tracking-wider">
-                Explicación del Proceso
-              </h2>
-              
-              <p className="text-[10px] md:text-xs text-game-muted leading-relaxed font-mono text-left max-h-[40vh] overflow-y-auto custom-scrollbar">
-                {selectedExplanationText}
-              </p>
-              
-              <button 
-                onClick={handleCloseExplanation} 
-                className="h-10 md:h-11 w-full bg-game-accent text-game-bg font-bold uppercase text-[10px] tracking-widest hover:bg-game-text transition-all active:scale-95 cursor-pointer"
-              >
-                Continuar Historia
-              </button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* El POPUP DE EXPLICACIÓN META-NARRATIVA ha sido removido y deprecado */}
 
     </div>
   );

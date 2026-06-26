@@ -799,7 +799,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_21_init_1',
     speaker: 'camo',
     speakerLabel: 'Camo',
-    text: '¡Muchas gracias, camarada! De verdad... al ayudarme a evadir esas trampas financieras con "tasas de referencia" engañosas, evitaste que comprometiera mi salario y mi libertad por los próximos 20 años.',
+    text: '¡Muchas gracias, camarada! De verdad... al ayudarme a evadir las garras del Patrón Oscuro y sus engañosos patrones de diseño, salvaste mi subconsciente y evitaste que comprometiera mi salario y mi libertad por los próximos 20 años.',
     illustration: {
       position: 'center',
       aspectRatio: 'aspect-video',

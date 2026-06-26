@@ -138,7 +138,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_5_dialogue_1',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: 'Tal como tú antes de levantarte, esta alma se encuentra perdida, "oscurecida" y "persuadida"...\nNo parece querer hacerlo de todas formas...',
+    text: 'Tal como tú antes de levantarte, esta alma se encuentra perdida, "oscurecida" y "persuadida"...\nA diferencia tuya, no parece querer levantarse solo...',
     illustration: {
       label: 'Escena 5: El protagonista observa el alma oscurecida de Camo durmiendo. El ojo también lo examina.'
     },

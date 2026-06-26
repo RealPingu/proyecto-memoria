@@ -438,7 +438,7 @@ export default function NarrativeIntroPage() {
     }
 
     if (currentNodeId === 'scene_15_resultado_1') {
-      return <Scene16CelularCheckout />;
+      return <Scene14Resultado2 />;
     }
 
     if (currentNodeId === 'scene_15_explicacion_1') {
@@ -446,7 +446,7 @@ export default function NarrativeIntroPage() {
     }
 
     if (currentNodeId === 'scene_15_resultado_2') {
-      return <Scene16CelularCheckout />;
+      return <Scene14Resultado1 />;
     }
 
     if (currentNodeId === 'scene_15_explicacion_2') {
@@ -474,7 +474,7 @@ export default function NarrativeIntroPage() {
     }
 
     if (currentNodeId === 'scene_18_resultado_1') {
-      return <Scene19CelularReference />;
+      return <Scene14Resultado2 />;
     }
 
     if (currentNodeId === 'scene_18_explicacion_1') {
@@ -482,7 +482,7 @@ export default function NarrativeIntroPage() {
     }
 
     if (currentNodeId === 'scene_18_resultado_2') {
-      return <Scene19CelularReference />;
+      return <Scene14Resultado1 />;
     }
 
     if (currentNodeId === 'scene_18_explicacion_2') {

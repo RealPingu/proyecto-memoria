@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Scene16CelularCheckout from '../../../components/scene_16_celular_checkout';
+import Scene14Resultado1 from '../../../components/scene_14_resultado_1';
 
 export default function Scene17Resultado2Page() {
   const router = useRouter();
@@ -15,7 +15,7 @@ export default function Scene17Resultado2Page() {
 
   const handleCopyToClipboard = () => {
     try {
-      const element = <Scene16CelularCheckout />;
+      const element = <Scene14Resultado1 />;
       const html = renderToStaticMarkup(element);
       const match = html.match(/<svg[\s\S]*<\/svg>/);
       const svgCode = match ? match[0] : html;
@@ -69,7 +69,7 @@ export default function Scene17Resultado2Page() {
           <div className="lg:col-span-5 flex flex-col gap-4">
             <div className="flex-1 min-h-[250px] bg-zinc-950/80 border border-zinc-900 rounded-lg p-6 flex items-center justify-center relative overflow-hidden backdrop-blur-sm shadow-2xl">
               <div className="w-full aspect-video">
-                <Scene16CelularCheckout />
+                <Scene14Resultado1 />
               </div>
               <div className="absolute top-4 left-4 bg-red-950/50 border border-red-800/80 px-2 py-1 rounded text-[10px] font-mono text-red-400 select-none font-bold">
                 ESTADO: ERROR DE DECISIÓN

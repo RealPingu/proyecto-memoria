@@ -92,6 +92,7 @@ export default function NarrativeIntroPage() {
   
   // Nodos de diálogo ya visitados por el usuario
   const [visitedNodes, setVisitedNodes] = useState<string[]>(['scene_1_init']);
+  const [showMenu, setShowMenu] = useState(false);
   
   const typingTimer = useRef<NodeJS.Timeout | null>(null);
   const router = useRouter();
@@ -709,35 +710,63 @@ export default function NarrativeIntroPage() {
       <div className="flex flex-col h-full max-w-lg w-full mx-auto justify-between py-2 md:py-4 relative">
 
         {/* 1. HEADER (shrink-0) - Botón Atrás y Selector de Escenas */}
-        <header className="grid grid-cols-3 items-center shrink-0 pb-3 border-b border-zinc-900/60 w-full gap-2 relative z-20">
+        <header className="grid grid-cols-[1fr_2fr_1fr] items-center shrink-0 pb-3 border-b border-zinc-900/60 w-full gap-1.5 relative z-20">
           {/* Columna izquierda: Atrás */}
           <div className="flex justify-start">
             <button
               onClick={handleBack}
-              className="text-[9px] border border-zinc-800 text-game-muted hover:border-zinc-500 hover:text-game-accent transition-all px-3 py-1 font-bold uppercase tracking-wider rounded-sm active:scale-95 cursor-pointer whitespace-nowrap"
+              className="text-[9px] border border-zinc-800 text-game-muted hover:border-zinc-500 hover:text-game-accent transition-all px-2 py-1 font-bold uppercase tracking-wider rounded-sm active:scale-95 cursor-pointer whitespace-nowrap max-w-[65px] truncate"
             >
               Atrás
             </button>
           </div>
 
-          {/* Columna central: Selector de progreso */}
-          <div className="flex justify-center w-full">
-            <select
-              value={currentNodeId}
-              onChange={(e) => jumpToNode(e.target.value)}
-              className="bg-zinc-950 border border-zinc-800 text-zinc-300 text-[9px] font-medium py-1 px-2 rounded hover:border-zinc-700 outline-none cursor-pointer w-full max-w-[130px] sm:max-w-[180px] truncate text-center"
-            >
-              {visitedNodes.map((nodeId) => (
-                <option key={nodeId} value={nodeId}>
-                  {getNodeLabel(nodeId)}
-                </option>
-              ))}
-            </select>
-          </div>
+          {/* Columna central: Espacio vacío */}
+          <div className="flex justify-center w-full"></div>
 
-          {/* Columna derecha: Espaciador vacío */}
-          <div className="flex justify-end"></div>
+          {/* Columna derecha: Selector de progreso (tres barras pequeñas) */}
+          <div className="flex justify-end items-center">
+            <button
+              onClick={() => setShowMenu(true)}
+              title="Historial de navegación"
+              className="flex flex-col justify-between w-4 h-3 cursor-pointer py-[2px] text-zinc-500 hover:text-game-accent transition-colors active:scale-95"
+            >
+              <span className="w-full h-[1.5px] bg-current rounded-sm"></span>
+              <span className="w-full h-[1.5px] bg-current rounded-sm"></span>
+              <span className="w-full h-[1.5px] bg-current rounded-sm"></span>
+            </button>
+          </div>
         </header>
+        {/* MENÚ FLOTANTE DE SELECCIÓN DE PROGRESO */}
+        {showMenu && (
+          <div className="absolute inset-0 bg-[#0c0d14]/95 border border-[#272a3d]/80 rounded-md z-30 flex flex-col p-4">
+            <div className="flex justify-between items-center pb-2 border-b border-[#272a3d]/40 mb-3">
+              <span className="text-[10px] uppercase font-bold tracking-wider text-game-accent">Historial de Diálogos</span>
+              <button onClick={() => setShowMenu(false)} className="text-zinc-500 hover:text-white font-bold text-xs cursor-pointer">✕</button>
+            </div>
+            <div className="flex-1 overflow-y-auto custom-scrollbar space-y-1 pr-1">
+              {visitedNodes.map((nodeId) => {
+                const isCurrent = nodeId === currentNodeId;
+                return (
+                  <button
+                    key={nodeId}
+                    onClick={() => {
+                      jumpToNode(nodeId);
+                      setShowMenu(false);
+                    }}
+                    className={`w-full text-left py-1.5 px-2 rounded text-[10px] font-medium transition-all ${
+                      isCurrent 
+                        ? 'bg-game-accent/20 text-game-accent border border-game-accent/30 font-bold' 
+                        : 'bg-zinc-950/40 border border-zinc-900/20 text-zinc-400 hover:bg-zinc-900/60 hover:text-white cursor-pointer'
+                    }`}
+                  >
+                    {getNodeLabel(nodeId)}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
         {/* 2. MAIN AREA (Ilustración Fija y Diálogo con scroll interno independiente) */}
         <main className="flex-1 flex flex-col min-h-0 justify-between py-3 space-y-4 overflow-hidden">
           

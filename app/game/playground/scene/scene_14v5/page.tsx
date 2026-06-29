@@ -232,7 +232,6 @@ export default function Scene14v5PlaygroundRedesignPage() {
                 <div className="leading-tight">
                   <h4 className="text-[8px] font-black uppercase text-sky-800 tracking-wider">Pinguilario S.A.</h4>
                   <span className="text-[10px] font-black text-zinc-950 truncate block">Super Polo Iglú Premium</span>
-                  <span className="text-[8px] font-mono text-zinc-500 font-bold block mt-0.5">Precio total: 120.000 $P</span>
                 </div>
                 
                 {/* Botón de Reserva simple y temático */}
@@ -261,16 +260,17 @@ export default function Scene14v5PlaygroundRedesignPage() {
                 <span className="text-[8px] font-black underline">PARTICIPAR</span>
               </div>
 
-              {/* Ad 5.2: Chat de ayuda falso */}
+              {/* Ad 5.2: Ruleta de premios engañosa */}
               <div 
-                onClick={() => handleIncorrectClick('Chat asistente trampa')}
+                onClick={() => handleIncorrectClick('Ruleta de premios engañosa')}
                 className="bg-cyan-400 hover:bg-cyan-300 text-black border-2 border-black p-2 rounded-lg flex flex-col justify-between text-left cursor-pointer shadow-[2px_2px_0px_rgba(0,0,0,1)] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all rotate-[-1deg] h-[96px]"
               >
                 <div className="flex flex-col">
-                  <span className="text-[7px] font-black tracking-widest uppercase bg-black text-white px-1 py-0.2 rounded w-max">CHAT SOPORTE</span>
-                  <p className="text-[8px] font-bold leading-tight mt-1">Conectar con asesor para reservar.</p>
+                  <span className="text-[7px] font-black tracking-widest uppercase bg-black text-white px-1 py-0.2 rounded w-max">¡FELICIDADES!</span>
+                  <span className="text-[9px] font-black mt-0.5 uppercase leading-tight">VISITANTE 1,000,000</span>
+                  <p className="text-[7px] font-bold leading-tight mt-0.5">¡Reclama tu iglú gratis ahora mismo!</p>
                 </div>
-                <span className="text-[8.5px] font-black underline">CONECTAR</span>
+                <span className="text-[8px] font-black underline">GIRAR RULETA</span>
               </div>
 
             </div>

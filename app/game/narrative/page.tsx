@@ -32,6 +32,7 @@ import Scene20Batalla from './illustrations/scene_20_batalla';
 import Scene21CamoRevivido from './illustrations/scene_21_camo_revivido';
 import Battle1MockupDirectRender from './components/battle_1_mockup_render';
 import Battle2DripPricingRender from './components/battle_2_drip_pricing_render';
+import Battle3ReferencePricingRender from './components/battle_3_reference_pricing_render';
 import Scene22PatronHostil from './illustrations/scene_22_patron_hostil';
 import Scene23DesenlaceFinal from './illustrations/scene_23_desenlace_final';
 
@@ -115,6 +116,12 @@ export default function NarrativeIntroPage() {
           setHistory(['scene_1_init', 'scene_15_init_1', 'scene_15_init_2', 'scene_15_init_3', 'scene_15_init_4', 'scene_15_init_4b', 'scene_15_choice', 'scene_15_resultado_1']);
         } else if (nodeParam === 'scene_15_explicacion_2') {
           setHistory(['scene_1_init', 'scene_15_init_1', 'scene_15_init_2', 'scene_15_init_3', 'scene_15_init_4', 'scene_15_init_4b', 'scene_15_choice', 'scene_15_resultado_2']);
+        } else if (nodeParam.startsWith('scene_18_resultado_') || nodeParam === 'scene_18_choice') {
+          setHistory(['scene_1_init', 'scene_18_init_1', 'scene_18_init_2', 'scene_18_init_3', 'scene_18_init_4', 'scene_18_init_4b']);
+        } else if (nodeParam === 'scene_18_explicacion_1') {
+          setHistory(['scene_1_init', 'scene_18_init_1', 'scene_18_init_2', 'scene_18_init_3', 'scene_18_init_4', 'scene_18_init_4b', 'scene_18_choice', 'scene_18_resultado_1']);
+        } else if (nodeParam === 'scene_18_explicacion_2') {
+          setHistory(['scene_1_init', 'scene_18_init_1', 'scene_18_init_2', 'scene_18_init_3', 'scene_18_init_4', 'scene_18_init_4b', 'scene_18_choice', 'scene_18_resultado_2']);
         }
 
         // Limpiar los parámetros de búsqueda en la URL para evitar recargas accidentales
@@ -590,6 +597,23 @@ export default function NarrativeIntroPage() {
         onIncorrect={() => {
           setHistory(prev => [...prev, 'scene_15_choice']);
           setCurrentNodeId('scene_15_resultado_2');
+        }}
+        onBack={handleBack}
+      />
+    );
+  }
+
+  // Integración directa del minijuego de precios de referencia en el flujo de la misma ruta
+  if (currentNodeId === 'scene_18_choice') {
+    return (
+      <Battle3ReferencePricingRender
+        onCorrect={() => {
+          setHistory(prev => [...prev, 'scene_18_choice']);
+          setCurrentNodeId('scene_18_resultado_1');
+        }}
+        onIncorrect={() => {
+          setHistory(prev => [...prev, 'scene_18_choice']);
+          setCurrentNodeId('scene_18_resultado_2');
         }}
         onBack={handleBack}
       />

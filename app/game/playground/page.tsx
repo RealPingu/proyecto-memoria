@@ -387,6 +387,23 @@ export default function SceneMenuPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
         </div>
       )
+    },
+    {
+      id: 'scene_text_effects',
+      number: 24,
+      title: 'Efectos de Texto',
+      subtitle: 'Laboratorio de Animaciones',
+      description: 'Diferentes estilos de renderizado y animación secuencial, cromática y de rebote para enriquecer los diálogos de la novela visual.',
+      path: '/game/playground/scene/scene_text_effects',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80 flex flex-col items-center justify-center p-4">
+          <span className="text-[10px] font-mono text-purple-400 uppercase tracking-widest block mb-1">TEXT EFFECT LAB</span>
+          <div className="text-[10px] font-bold text-white px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 shadow">
+            [ A Animación A ]
+          </div>
+        </div>
+      )
     }
 
 

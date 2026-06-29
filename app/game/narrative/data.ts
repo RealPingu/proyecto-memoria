@@ -22,6 +22,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
   'scene_1_init': {
     id: 'scene_1_init',
     speaker: 'system',
+    speakerLabel: 'Narrador',
     text: 'Tu espíritu se encuentra desorientado, hay una "oscuridad" absoluta. No te queda más opción que #levantarte#.',
     illustration: {
       label: 'Escena 1: La pantalla está en negro absoluto. Mediante un efecto desvanecimiento, comienza a delinearse el protagonista acostado durmiendo.'
@@ -126,6 +127,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
   'scene_4_walking_transition': {
     id: 'scene_4_walking_transition',
     speaker: 'system',
+    speakerLabel: 'Narrador',
     text: 'Ambos caminan a través de la oscuridad. Una sutil energía entusiasta y militar y un aura distorsionada se perciben adelante...',
     illustration: {
       label: 'Escena 4: La silueta de los personajes avanza a través del limbo en dirección al alma distorsionada.'
@@ -317,6 +319,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
   'scene_14_choice': {
     id: 'scene_14_choice',
     speaker: 'system',
+    speakerLabel: 'Narrador',
     text: '¿Cómo debe actuar Camo ante la avalancha de "Anuncios Disfrazados" del Patrón Oscuro?',
     illustration: {
       label: 'Escena 14: La batalla mental entre Camo y el Patrón Oscuro, esperando tu decisión.'
@@ -446,6 +449,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
   'scene_15_init_4b': {
     id: 'scene_15_init_4b',
     speaker: 'system',
+    speakerLabel: 'Narrador',
     text: '¡NO HAY PINGÜINOS EN EL POLO NORTE! \nAsí es... un cobro mensual... Para ser un francotirador renombrado, Camo no esperaba mucho al navegar por internet...',
     illustration: {
       label: 'Escena 15: Revelación dramática - No hay pingüinos en el Polo Norte.'
@@ -455,6 +459,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
   'scene_15_choice': {
     id: 'scene_15_choice',
     speaker: 'system',
+    speakerLabel: 'Narrador',
     text: '¡Camo está por caer en otro "patrón oscuro", extiéndele una mano! ¡Es tu momento de ayudarlo!',
     illustration: {
       label: 'Escena 15: Camo ante la decisión de leer o presionar siguiente.'
@@ -558,6 +563,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
   'scene_18_init_4b': {
     id: 'scene_18_init_4b',
     speaker: 'system',
+    speakerLabel: 'Narrador',
     text: 'El sistema destaca una tasa de interés menor como "ancla de referencia" visual para atraer su atención, y coloca opciones peores al lado para empujarlo a elegir el plan más costoso pensando que es una gran oferta.',
     illustration: {
       label: 'Escena 18: El efecto de precios de referencia manipulando la percepción de conveniencia.'
@@ -567,6 +573,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
   'scene_18_choice': {
     id: 'scene_18_choice',
     speaker: 'system',
+    speakerLabel: 'Narrador',
     text: '¡Camo está a punto de firmar un financiamiento abusivo de 20 años! ¡Ayúdalo a evaluar el costo financiero real y elegir correctamente!',
     illustration: {
       label: 'Escena 18: La batalla mental entre Camo y el Patrón Oscuro, esperando tu decisión.'
@@ -702,6 +709,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
   'scene_11_end': {
     id: 'scene_11_end',
     speaker: 'system',
+    speakerLabel: 'Narrador',
     text: '¡Felicitaciones! Has completado con éxito la demo de Antipatrón. Muchas gracias por jugar y aprender a identificar y combatir las trampas del diseño de interfaces.',
     illustration: {
       label: 'Fin de la Demo de Narrativa.'

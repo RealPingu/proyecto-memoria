@@ -30,9 +30,10 @@ export default function Scene8DarkPattern() {
           <polygon points="20,30 40,20 40,40 20,40" fill="#1e1b4b" stroke="#020408" strokeWidth="0.5"/>
         </pattern>
 
-        {/* Gradiente de fondo con un solo resplandor cyan detrás del patrón oscuro personaje */}
-        <radialGradient id="colored-bg-grad" cx="80%" cy="30%" r="60%">
-          <stop offset="0%" stopColor="#0891b2" stopOpacity="0.25"/> {/* Cyan tenue */}
+        {/* Gradiente de fondo con un solo resplandor verde militar muy tenue detrás del patrón oscuro personaje */}
+        <radialGradient id="colored-bg-grad" cx="50%" cy="50%" r="65%">
+          <stop offset="0%" stopColor="#14532d" stopOpacity="0.35"/>
+          <stop offset="60%" stopColor="#052e16" stopOpacity="0.1"/>
           <stop offset="100%" stopColor="#000000" stopOpacity="1"/>
         </radialGradient>
 

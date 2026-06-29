@@ -26,9 +26,20 @@ function getScene8StaticSvg(): string {
       <polygon points="0,20 20,30 20,40 0,40" fill="#0f172a" stroke="#020408" stroke-width="0.5"/>
       <polygon points="20,30 40,20 40,40 20,40" fill="#1e1b4b" stroke="#020408" stroke-width="0.5"/>
     </pattern>
+    <radialGradient id="colored-bg-grad" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#14532d" stop-opacity="0.35"/>
+      <stop offset="60%" stop-color="#052e16" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="diamond-glow-grad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#06b6d4" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0891b2" stop-opacity="0"/>
+    </radialGradient>
   </defs>
-  <rect width="100%" height="100%" fill="#000000" />
+  <rect width="100%" height="100%" fill="url(#colored-bg-grad)" />
   <g transform="matrix(0.416908, 0, -0.265896, 0.415816, 393.614086, -17.966342)">
+    <circle cx="200" cy="180" r="80" fill="url(#diamond-glow-grad)" opacity="0.6"/>
     <polygon points="130,360 100,120 300,120 270,360" fill="url(#teselacion)" stroke="#06b6d4" stroke-width="1.5"/>
     <g transform="matrix(1, 0, 0, 1, -54.158613, 5.563326)">
       <polygon points="200,160 225,180 200,200 175,180" fill="#22d3ee"/>

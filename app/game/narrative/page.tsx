@@ -33,52 +33,38 @@ import Scene21CamoRevivido from './illustrations/scene_21_camo_revivido';
 import Scene22PatronHostil from './illustrations/scene_22_patron_hostil';
 import Scene23DesenlaceFinal from './illustrations/scene_23_desenlace_final';
 
-// Tokenizador para dar formato especial a "" y #
+// Tokenizador para dar formato especial a etiquetas y marcadores
 interface TextToken {
-  type: 'text' | 'highlight' | 'action';
+  type: 'text' | 'highlight' | 'action' | 'wave' | 'shake' | 'tremble' | 'rainbow' | 'breathe' | 'glitch' | 'neon';
   content: string;
 }
 
+import {
+  WaveFloatingText,
+  RainbowShimmer,
+  BattleImpactShake,
+  HoloDigitalGlitch,
+  FearTremble,
+  PulseBreathe,
+  SparklingGlow,
+  HighlightText
+} from './components/dialogue_effects';
+
 function parseDialogueText(text: string): TextToken[] {
   const tokens: TextToken[] = [];
-  let currentIndex = 0;
+  // Regex para buscar únicamente etiquetas XML
+  const regex = /<(wave|shake|tremble|rainbow|breathe|glitch|neon|highlight|action)>([\s\S]*?)<\/\1>|([^<>]+)/g;
+  let match;
 
-  while (currentIndex < text.length) {
-    const nextQuote = text.indexOf('"', currentIndex);
-    const nextHash = text.indexOf('#', currentIndex);
-
-    if (nextQuote === -1 && nextHash === -1) {
-      tokens.push({ type: 'text', content: text.substring(currentIndex) });
-      break;
-    }
-
-    if (nextQuote !== -1 && (nextHash === -1 || nextQuote < nextHash)) {
-      if (nextQuote > currentIndex) {
-        tokens.push({ type: 'text', content: text.substring(currentIndex, nextQuote) });
-      }
-      const closeQuote = text.indexOf('"', nextQuote + 1);
-      if (closeQuote !== -1) {
-        tokens.push({ type: 'highlight', content: text.substring(nextQuote + 1, closeQuote) });
-        currentIndex = closeQuote + 1;
-      } else {
-        tokens.push({ type: 'text', content: text.substring(nextQuote) });
-        break;
-      }
-    } else {
-      if (nextHash > currentIndex) {
-        tokens.push({ type: 'text', content: text.substring(currentIndex, nextHash) });
-      }
-      const closeHash = text.indexOf('#', nextHash + 1);
-      if (closeHash !== -1) {
-        tokens.push({ type: 'action', content: text.substring(nextHash + 1, closeHash) });
-        currentIndex = closeHash + 1;
-      } else {
-        tokens.push({ type: 'text', content: text.substring(nextHash) });
-        break;
-      }
+  while ((match = regex.exec(text)) !== null) {
+    if (match[1]) {
+      // Es una etiqueta (ej: <wave>...</wave>)
+      tokens.push({ type: match[1] as any, content: match[2] });
+    } else if (match[3]) {
+      // Texto normal fuera de etiquetas
+      tokens.push({ type: 'text', content: match[3] });
     }
   }
-
   return tokens;
 }
 
@@ -244,53 +230,12 @@ export default function NarrativeIntroPage() {
       charsRemaining -= tokenLength;
       
       const visibleContent = token.content.substring(0, visibleLength);
-
+      
       if (token.type === 'highlight') {
-        const chars = Array.from(visibleContent.toUpperCase());
-        return (
-          <span 
-            key={index} 
-            style={{
-              WebkitTextStroke: isDarkPatternTheme ? '0.8px #22d3ee' : '0.8px #ffffff',
-              display: 'inline-block'
-            }}
-            className="font-bold mx-1 select-none"
-          >
-            {chars.map((char, charIdx) => (
-              <motion.span 
-                key={charIdx} 
-                style={isDarkPatternTheme ? {
-                  display: 'inline-block',
-                  whiteSpace: 'pre'
-                } : {
-                  display: 'inline-block',
-                  whiteSpace: 'pre',
-                  color: '#000000',
-                  textShadow: '0 0 3px #ffffff, 0 0 6px #ffffff, 0 0 1px #ffffff'
-                }}
-                animate={isDarkPatternTheme ? { 
-                  y: [0, -3.5, 0],
-                  color: ['#090d16', '#22d3ee', '#0891b2', '#090d16'],
-                  textShadow: [
-                    '0 0 3px #06b6d4, 0 0 6px #0891b2, 0 0 1px #000',
-                    '0 0 8px #22d3ee, 0 0 15px #06b6d4, 0 0 2px #000',
-                    '0 0 3px #06b6d4, 0 0 6px #0891b2, 0 0 1px #000'
-                  ]
-                } : {
-                  y: [0, -3.5, 0]
-                }}
-                transition={{ 
-                  repeat: Infinity, 
-                  duration: isDarkPatternTheme ? 2.8 : 2.2, 
-                  ease: "easeInOut",
-                  delay: charIdx * (isDarkPatternTheme ? 0.14 : 0.12)
-                }}
-              >
-                {char}
-              </motion.span>
-            ))}
-          </span>
-        );
+        if (visibleLength < tokenLength) {
+          return <span key={index} className="font-bold mx-1 select-none text-zinc-300">{visibleContent.toUpperCase()}</span>;
+        }
+        return <HighlightText key={index} text={token.content} isDarkPatternTheme={isDarkPatternTheme} />;
       } else if (token.type === 'action') {
         if (visibleLength < tokenLength) {
           return <span key={index}>{visibleContent}</span>;
@@ -307,6 +252,41 @@ export default function NarrativeIntroPage() {
             {visibleContent}
           </button>
         );
+      } else if (token.type === 'wave') {
+        if (visibleLength < tokenLength) {
+          return <span key={index} className="text-sky-400/80 italic">{visibleContent}</span>;
+        }
+        return <WaveFloatingText key={index} text={token.content} />;
+      } else if (token.type === 'shake') {
+        if (visibleLength < tokenLength) {
+          return <span key={index} className="text-red-400 font-bold font-mono">{visibleContent}</span>;
+        }
+        return <BattleImpactShake key={index} text={token.content} />;
+      } else if (token.type === 'tremble') {
+        if (visibleLength < tokenLength) {
+          return <span key={index} className="text-purple-300/80 italic">{visibleContent}</span>;
+        }
+        return <FearTremble key={index} text={token.content} />;
+      } else if (token.type === 'rainbow') {
+        if (visibleLength < tokenLength) {
+          return <span key={index} className="text-zinc-400 font-medium">{visibleContent}</span>;
+        }
+        return <RainbowShimmer key={index} text={token.content} />;
+      } else if (token.type === 'breathe') {
+        if (visibleLength < tokenLength) {
+          return <span key={index} className="text-zinc-300/80 italic">{visibleContent}</span>;
+        }
+        return <PulseBreathe key={index} text={token.content} />;
+      } else if (token.type === 'glitch') {
+        if (visibleLength < tokenLength) {
+          return <span key={index} className="text-lime-400/80 font-mono">{visibleContent}</span>;
+        }
+        return <HoloDigitalGlitch key={index} text={token.content} />;
+      } else if (token.type === 'neon') {
+        if (visibleLength < tokenLength) {
+          return <span key={index} className="text-zinc-200/80">{visibleContent}</span>;
+        }
+        return <SparklingGlow key={index} text={token.content} />;
       } else {
         return <span key={index}>{visibleContent}</span>;
       }

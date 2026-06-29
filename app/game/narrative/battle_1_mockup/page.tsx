@@ -77,41 +77,41 @@ export default function Battle1MockupPage() {
   };
 
   return (
-    <div className="h-[100dvh] w-full bg-[#05050a] text-zinc-200 flex items-center justify-center p-0 sm:p-4 font-sans overflow-hidden relative">
-      {/* Luces de fondo decorativas (Solo en desktop) */}
-      <div className="absolute top-1/4 left-1/4 w-[350px] h-[350px] bg-red-500/5 rounded-full blur-[100px] pointer-events-none sm:block hidden" />
-      <div className="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none sm:block hidden" />
+    <div className="h-[100dvh] w-full bg-[#030712] text-zinc-100 flex items-center justify-center p-0 sm:p-4 font-sans overflow-hidden relative">
+      {/* Luces de fondo decorativas de tono ártico */}
+      <div className="absolute top-1/4 left-1/4 w-[350px] h-[350px] bg-sky-500/5 rounded-full blur-[100px] pointer-events-none sm:block hidden" />
+      <div className="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none sm:block hidden" />
 
       {/* ==========================================
           MARCO DEL TELÉFONO DE CAMO (MOBILE-FIRST)
           ========================================== */}
-      <div className="relative w-full h-[100dvh] sm:h-[640px] sm:max-w-[360px] bg-zinc-950 border-0 sm:border-[6px] sm:border-zinc-800 sm:rounded-[36px] shadow-2xl flex flex-col overflow-hidden shrink-0">
+      <div className="relative w-full h-[100dvh] sm:h-[640px] sm:max-w-[360px] bg-sky-950 border-0 sm:border-[6px] sm:border-sky-900 sm:rounded-[36px] shadow-2xl flex flex-col overflow-hidden shrink-0">
         
         {/* Notch / Cámara del teléfono (Solo desktop) */}
-        <div className="absolute top-2 left-1/2 -translate-x-1/2 w-32 h-4.5 bg-zinc-800 rounded-full z-30 sm:flex hidden items-center justify-center">
-          <div className="w-2.5 h-2.5 bg-black rounded-full ml-12 border border-zinc-900" />
+        <div className="absolute top-2 left-1/2 -translate-x-1/2 w-32 h-4.5 bg-sky-900 rounded-full z-30 sm:flex hidden items-center justify-center">
+          <div className="w-2.5 h-2.5 bg-black rounded-full ml-12 border border-sky-950" />
         </div>
 
         {/* Barra de Estado del Sistema (Solo desktop) */}
-        <div className="h-9 bg-zinc-900/90 flex justify-between items-center px-6 text-[10px] font-mono text-zinc-400 select-none shrink-0 pt-2 z-20 border-b border-zinc-800 sm:flex hidden">
+        <div className="h-9 bg-sky-950 flex justify-between items-center px-6 text-[10px] font-mono text-sky-200 select-none shrink-0 pt-2 z-20 border-b border-sky-900/60 sm:flex hidden">
           <span>09:41 AM</span>
           <div className="flex items-center gap-1.5">
-            <svg className="w-3.5 h-3.5 fill-current text-zinc-400" viewBox="0 0 24 24">
+            <svg className="w-3.5 h-3.5 fill-current text-sky-300" viewBox="0 0 24 24">
               <path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L17.61 4.97C16.07 3.74 14.12 3 12 3zm7.61 5.39L6.39 19.61C7.93 20.84 9.88 21.6 12 21.6c4.97 0 9-4.03 9-9 0-2.12-.74-4.07-1.97-5.61z" />
             </svg>
-            <div className="w-5 h-2.5 border border-zinc-500 rounded-sm p-0.5 flex items-center">
-              <div className="w-3.5 h-full bg-zinc-400 rounded-2xs" />
+            <div className="w-5 h-2.5 border border-sky-500 rounded-sm p-0.5 flex items-center">
+              <div className="w-3.5 h-full bg-sky-400 rounded-2xs" />
             </div>
           </div>
         </div>
 
-        {/* Barra de Navegación del Navegador (Simulada) */}
-        <div className="bg-zinc-900 px-3 py-2 border-b border-zinc-800 flex flex-col gap-1.5 shrink-0 z-20 pt-3 sm:pt-2">
-          <div className="flex items-center gap-2">
+        {/* Barra de Navegación del Navegador (Simulada, solucionado el desborde con min-w-0 y shrink-0) */}
+        <div className="bg-sky-900 px-3 py-2 border-b border-sky-800 flex flex-col gap-1.5 shrink-0 z-20 pt-3 sm:pt-2">
+          <div className="flex items-center gap-2 min-w-0 w-full">
             {/* Botón Atrás (Opción 3) */}
             <button 
               onClick={handleExitClick}
-              className="p-1.5 text-zinc-400 hover:text-white transition rounded active:bg-zinc-800"
+              className="p-1.5 text-sky-200 hover:text-white transition rounded active:bg-sky-800 shrink-0"
               title="Volver y buscar en otra página de confianza"
             >
               <svg className="w-4 h-4 stroke-current" viewBox="0 0 24 24" fill="none" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -121,35 +121,35 @@ export default function Battle1MockupPage() {
             </button>
             
             {/* Input URL */}
-            <div className="flex-1 bg-zinc-950 border border-zinc-800 rounded-full px-3.5 py-1 text-[10px] font-mono text-zinc-400 flex items-center justify-between select-none">
-              <span className="truncate text-zinc-400">pinguilario-inmobiliario.com/listing/super-igloo</span>
+            <div className="flex-1 min-w-0 bg-sky-950 border border-sky-800 rounded-full px-3.5 py-1 text-[10px] font-mono text-sky-300 flex items-center justify-between select-none">
+              <span className="truncate text-sky-300 block w-full">pinguilario-inmobiliario.com/listing/super-igloo</span>
             </div>
           </div>
         </div>
 
         {/* ==========================================
-            ÁREA DE CONTENIDO WEB AUTOCONTENIDO (MOCKUP WEB)
+            ÁREA DE CONTENIDO WEB - PALETA POLAR CELESTE/AZUL
             ========================================== */}
-        <div className="flex-1 bg-[#12131e] overflow-y-auto custom-scrollbar p-4 flex flex-col gap-4 relative select-none">
+        <div className="flex-1 bg-[#e0f2fe] overflow-y-auto custom-scrollbar p-4 flex flex-col gap-4 relative select-none">
           
-          {/* Alerta de urgencia falsa (Estilo caricaturesco plano) */}
-          <div className="bg-red-500 text-black border-2 border-black p-3 rounded-lg text-[10px] leading-relaxed font-bold shadow-[2px_2px_0px_rgba(0,0,0,1)]">
+          {/* Alerta de urgencia falsa (Estilo caricaturesco polar) */}
+          <div className="bg-red-500 text-white border-2 border-black p-3 rounded-lg text-[10px] leading-relaxed font-bold shadow-[2px_2px_0px_rgba(0,0,0,1)]">
             ALERTA: PRECIO EXCLUSIVO POR TIEMPO LIMITADO. Quedan solo 2 iglus disponibles en este sector.
           </div>
 
           {/* Galería de Fotos del Iglú */}
-          <div className="relative w-full aspect-video bg-sky-950 border-2 border-black rounded-lg overflow-hidden group shadow-[2px_2px_0px_rgba(0,0,0,1)]">
+          <div className="relative w-full aspect-video bg-sky-900 border-2 border-black rounded-lg overflow-hidden group shadow-[2px_2px_0px_rgba(0,0,0,1)]">
             <svg viewBox="0 0 100 60" className="w-full h-full p-2">
               <circle cx="10" cy="10" r="0.4" fill="#fff" opacity="0.8" />
               <circle cx="85" cy="15" r="0.5" fill="#fff" opacity="0.6" />
-              <rect x="0" y="45" width="100" height="15" fill="#1e293b" />
-              <path d="M 25,45 A 20,20 0 0,1 65,45 Z" fill="#e2e8f0" stroke="#000" strokeWidth="1.2" />
-              <path d="M 30,35 Q 45,38 60,35 M 35,27 Q 45,30 55,27" stroke="#94a3b8" strokeWidth="0.8" fill="none" />
+              <rect x="0" y="45" width="100" height="15" fill="#0c4a6e" />
+              <path d="M 25,45 A 20,20 0 0,1 65,45 Z" fill="#f0f9ff" stroke="#000" strokeWidth="1.2" />
+              <path d="M 30,35 Q 45,38 60,35 M 35,27 Q 45,30 55,27" stroke="#0284c7" strokeWidth="0.8" fill="none" />
               <path d="M 40,45 A 8,8 0 0,1 50,45 Z" fill="#0f172a" stroke="#000" strokeWidth="1.2" />
               <circle cx="80" cy="18" r="4.5" fill="#fef08a" stroke="#000" strokeWidth="1" />
             </svg>
 
-            {/* Banner publicitario DISFRAZADO (Estilo plano y caricaturesco) */}
+            {/* Banner publicitario DISFRAZADO (Celeste/Amarillo llamativo) */}
             <button 
               onClick={() => handleIncorrectClick('Planos de descarga')}
               className="absolute top-2 right-2 bg-yellow-400 hover:bg-yellow-300 text-black text-[9px] font-black px-2 py-1 border-2 border-black rounded shadow-[2px_2px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all"
@@ -161,22 +161,22 @@ export default function Battle1MockupPage() {
           {/* Información del Listado */}
           <div className="space-y-1">
             <div className="flex justify-between items-start">
-              <h2 className="text-sm font-black text-white tracking-wide uppercase">
+              <h2 className="text-sm font-black text-sky-950 tracking-wide uppercase">
                 Super Polo Iglu Premium
               </h2>
-              <span className="text-emerald-400 font-mono font-black text-sm">
+              <span className="text-sky-700 font-mono font-black text-sm">
                 120.000 $P
               </span>
             </div>
-            <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">
+            <p className="text-[10px] text-sky-600 font-bold uppercase tracking-wider">
               Sector Glacial 4 - Frente Mar de Ross
             </p>
           </div>
 
-          {/* TRAMPA 1: Banner estilo paso siguiente (Caricaturesco y colorido) */}
+          {/* TRAMPA 1: Banner estilo paso siguiente (Celeste vibrante) */}
           <div 
             onClick={() => handleIncorrectClick('Contrato ejecutable')}
-            className="border-2 border-black bg-emerald-500 text-black p-3 rounded-lg flex items-center justify-between cursor-pointer hover:bg-emerald-400 transition shadow-[3px_3px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+            className="border-2 border-black bg-cyan-400 text-black p-3 rounded-lg flex items-center justify-between cursor-pointer hover:bg-cyan-300 transition shadow-[3px_3px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
           >
             <div className="text-left space-y-0.5">
               <div className="text-[10px] font-black uppercase">RESERVAR ESTE IGLU AHORA</div>
@@ -188,17 +188,17 @@ export default function Battle1MockupPage() {
           </div>
 
           {/* Detalles Técnicos */}
-          <div className="bg-[#1b1c2b] border-2 border-black rounded-lg p-3 text-[10px] space-y-2 leading-relaxed text-zinc-300 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
-            <div className="grid grid-cols-2 gap-2 border-b border-black pb-2 font-bold uppercase text-[9px]">
-              <div className="text-sky-300">Area: 85 metros</div>
-              <div className="text-purple-300">Aislamiento: Glacial A+</div>
+          <div className="bg-sky-100 border-2 border-black rounded-lg p-3 text-[10px] space-y-2 leading-relaxed text-sky-950 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
+            <div className="grid grid-cols-2 gap-2 border-b border-sky-200 pb-2 font-bold uppercase text-[9px]">
+              <div className="text-sky-700">Area: 85 metros</div>
+              <div className="text-sky-800">Aislamiento: Glacial A+</div>
             </div>
-            <p className="text-zinc-400">
+            <p className="text-sky-900">
               Iglú premium construido enteramente con bloques de hielo compactado mediante presión térmica. Incluye chimenea de ventilación central y área integrada para almacenamiento de pescado.
             </p>
           </div>
 
-          {/* TRAMPA 2: Botón de Compra Directo Engañoso (Caricaturesco, sin emojis) */}
+          {/* TRAMPA 2: Botón de Compra Directo Engañoso (Naranja contrastante) */}
           <button
             onClick={() => handleIncorrectClick('Compra directa descuento')}
             className="w-full bg-orange-500 hover:bg-orange-400 text-black font-black py-3.5 px-4 border-2 border-black rounded-lg text-xs tracking-wider shadow-[3px_3px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all uppercase text-center"
@@ -206,11 +206,11 @@ export default function Battle1MockupPage() {
             COMPRAR AHORA CON 80% DE DESCUENTO
           </button>
 
-          {/* Enlace secundario (Opción 3) */}
+          {/* Enlace de escape (Opción 3) */}
           <div className="text-center py-1">
             <button 
               onClick={handleExitClick}
-              className="text-[10px] text-zinc-500 hover:text-red-400 font-bold transition underline decoration-2"
+              className="text-[10px] text-sky-700 hover:text-sky-900 font-bold transition underline decoration-2"
             >
               Buscar este listado en portales seguros y confiables
             </button>
@@ -219,15 +219,15 @@ export default function Battle1MockupPage() {
           {/* ==========================================
               BOTÓN LEGÍTIMO ESCONDIDO (Opción 2)
               ========================================== */}
-          <div className="mt-auto pt-4 border-t-2 border-black flex justify-between items-center gap-3">
+          <div className="mt-auto pt-4 border-t-2 border-sky-300 flex justify-between items-center gap-3">
             <div className="flex flex-col">
-              <span className="text-[8px] uppercase tracking-wider text-zinc-500 font-bold">Reserva Oficial</span>
-              <span className="text-[10px] text-zinc-300 font-mono font-bold">Pinguilario S.A.</span>
+              <span className="text-[8px] uppercase tracking-wider text-sky-600 font-bold">Reserva Oficial</span>
+              <span className="text-[10px] text-sky-900 font-mono font-bold">Pinguilario S.A.</span>
             </div>
-            {/* Botón correcto: simple, sobrio, grisáceo plano */}
+            {/* Botón correcto: simple, sobrio, grisáceo/azul oscuro plano */}
             <button
               onClick={handleCorrectClick}
-              className="bg-zinc-800 border-2 border-black hover:bg-zinc-700 text-zinc-200 font-black py-2.5 px-4 rounded-lg text-[10px] tracking-wide shadow-[2px_2px_0px_rgba(0,0,0,1)] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all uppercase"
+              className="bg-sky-800 border-2 border-black hover:bg-sky-700 text-zinc-100 font-black py-2.5 px-4 rounded-lg text-[10px] tracking-wide shadow-[2px_2px_0px_rgba(0,0,0,1)] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all uppercase"
             >
               Proceder a la reserva estandar
             </button>
@@ -236,8 +236,8 @@ export default function Battle1MockupPage() {
         </div>
 
         {/* Botón Home físico del teléfono (Solo desktop) */}
-        <div className="h-5 bg-zinc-900 sm:flex hidden items-center justify-center shrink-0 border-t border-zinc-800">
-          <div className="w-24 h-1 bg-zinc-700 rounded-full" />
+        <div className="h-5 bg-sky-950 sm:flex hidden items-center justify-center shrink-0 border-t border-sky-900">
+          <div className="w-24 h-1 bg-sky-800 rounded-full" />
         </div>
 
       </div>

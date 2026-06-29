@@ -3,23 +3,28 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import Scene14Batalla from '../illustrations/scene_14_batalla';
+import { FearTremble } from '../components/dialogue_effects';
 
 export default function Battle1MockupPage() {
   const router = useRouter();
+  
+  // Estados para simulación de caos de anuncios y hackeo
   const [clickedAd, setClickedAd] = useState<string | null>(null);
   const [hackedProgress, setHackedProgress] = useState(0);
   const [popups, setPopups] = useState<{ id: number; x: number; y: number; title: string }[]>([]);
+  const [showFakePopup, setShowFakePopup] = useState(true);
 
-  // Efecto de descarga caótica si cae en un banner engañoso (Opción 1)
+  // Manejo de opción incorrecta (Opción 1 y anuncios falsos)
   useEffect(() => {
     if (!clickedAd) return;
 
     const popupList = [
-      { title: 'ALERTA DE DESCARGA: CleanPingu.exe iniciado', x: 10, y: 15 },
-      { title: 'PROPUESTA COMERCIAL: Crédito inmediato solicitado', x: 45, y: 30 },
-      { title: 'DESCARGA COMPLETA: Planos_Iglu_Gratis.exe', x: 20, y: 60 },
-      { title: 'ALERTA DE SISTEMA: Ejecutando scripts desconocidos', x: 50, y: 70 },
-      { title: 'SUSCRIPCIÓN ACTIVA: Servicio Premium Glacial contratado', x: 5, y: 45 }
+      { title: 'ALERTA DE DESCARGA: CleanPingu.exe iniciado', x: 15, y: 20 },
+      { title: 'PROPUESTA COMERCIAL: Crédito inmediato solicitado', x: 45, y: 35 },
+      { title: 'DESCARGA COMPLETA: Planos_Iglu_Gratis.exe', x: 20, y: 65 },
+      { title: 'ALERTA DE SISTEMA: Ejecutando scripts desconocidos', x: 55, y: 75 },
+      { title: 'SUSCRIPCIÓN ACTIVA: Servicio Premium Glacial contratado', x: 10, y: 50 }
     ];
 
     let currentPopupIndex = 0;
@@ -79,167 +84,189 @@ export default function Battle1MockupPage() {
   };
 
   return (
-    <div className="h-[100dvh] w-full bg-[#030712] text-[#1D1B20] flex items-center justify-center p-0 sm:p-4 font-sans overflow-hidden relative">
-      {/* Luces de fondo decorativas de tono ártico */}
-      <div className="absolute top-1/4 left-1/4 w-[350px] h-[350px] bg-sky-500/5 rounded-full blur-[100px] pointer-events-none sm:block hidden" />
-      <div className="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none sm:block hidden" />
+    <div className="flex flex-col h-screen w-full bg-game-bg text-game-text p-4 md:p-6 overflow-hidden items-center justify-center font-sans relative">
+      
+      {/* Contenedor adaptado a la Consistencia de Escenas (Layout Sándwich) */}
+      <div className="flex flex-col h-full max-w-lg w-full mx-auto justify-between py-2 md:py-4 relative z-10">
 
-      {/* ==========================================
-          MARCO DEL TELÉFONO DE CAMO (MOBILE-FIRST)
-          ========================================== */}
-      <div className="relative w-full h-[100dvh] sm:h-[640px] sm:max-w-[360px] bg-sky-950 border-0 sm:border-[6px] sm:border-sky-900 sm:rounded-[36px] shadow-2xl flex flex-col overflow-hidden shrink-0">
-        
-        {/* Notch / Cámara del teléfono (Solo desktop) */}
-        <div className="absolute top-2 left-1/2 -translate-x-1/2 w-32 h-4.5 bg-sky-900 rounded-full z-30 sm:flex hidden items-center justify-center">
-          <div className="w-2.5 h-2.5 bg-black rounded-full ml-12 border border-sky-950" />
-        </div>
-
-        {/* Barra de Estado del Sistema (Solo desktop) */}
-        <div className="h-9 bg-sky-950 flex justify-between items-center px-6 text-[10px] font-mono text-sky-200 select-none shrink-0 pt-2 z-20 border-b border-sky-900/60 sm:flex hidden">
-          <span>09:41 AM</span>
-          <div className="flex items-center gap-1.5">
-            <svg className="w-3.5 h-3.5 fill-current text-sky-300" viewBox="0 0 24 24">
-              <path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L17.61 4.97C16.07 3.74 14.12 3 12 3zm7.61 5.39L6.39 19.61C7.93 20.84 9.88 21.6 12 21.6c4.97 0 9-4.03 9-9 0-2.12-.74-4.07-1.97-5.61z" />
-            </svg>
-            <div className="w-5 h-2.5 border border-sky-500 rounded-sm p-0.5 flex items-center">
-              <div className="w-3.5 h-full bg-sky-400 rounded-2xs" />
-            </div>
-          </div>
-        </div>
-
-        {/* Barra de Navegación del Navegador */}
-        <div className="bg-sky-900 px-3 py-2 border-b border-sky-800 flex flex-col gap-1.5 shrink-0 z-20 pt-3 sm:pt-2">
-          <div className="flex items-center gap-2 min-w-0 w-full">
-            {/* Botón Atrás (Opción 3) */}
-            <button 
-              onClick={handleExitClick}
-              className="p-1.5 text-sky-200 hover:text-white transition rounded active:bg-sky-800 shrink-0"
-              title="Volver y buscar en otra página de confianza"
-            >
-              <svg className="w-4 h-4 stroke-current" viewBox="0 0 24 24" fill="none" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="19" y1="12" x2="5" y2="12" />
-                <polyline points="12 19 5 12 12 5" />
-              </svg>
-            </button>
-            
-            {/* Input URL */}
-            <div className="flex-1 min-w-0 bg-sky-950 border border-sky-800 rounded-full px-3.5 py-1 text-[10px] font-mono text-sky-300 flex items-center justify-between select-none">
-              <span className="truncate text-sky-300 block w-full">pinguilario-inmobiliario.com/listing/super-igloo</span>
-            </div>
-          </div>
-        </div>
-
-        {/* ==========================================
-            ÁREA DE CONTENIDO WEB - PALETA POLAR CELESTE/AZUL
-            ========================================== */}
-        <div className="flex-1 bg-[#e0f2fe] overflow-y-auto custom-scrollbar p-4 flex flex-col gap-4 relative select-none">
-          
-          {/* Alerta de urgencia falsa */}
-          <div className="bg-red-500 text-white border-2 border-black p-3 rounded-lg text-[10px] leading-relaxed font-bold shadow-[2px_2px_0px_rgba(0,0,0,1)]">
-            ALERTA: PRECIO EXCLUSIVO POR TIEMPO LIMITADO. Quedan solo 2 iglus disponibles en este sector.
-          </div>
-
-          {/* Galería de Fotos del Iglú */}
-          <div className="relative w-full aspect-video bg-sky-900 border-2 border-black rounded-lg overflow-hidden group shadow-[2px_2px_0px_rgba(0,0,0,1)]">
-            <svg viewBox="0 0 100 60" className="w-full h-full p-2">
-              <circle cx="10" cy="10" r="0.4" fill="#fff" opacity="0.8" />
-              <circle cx="85" cy="15" r="0.5" fill="#fff" opacity="0.6" />
-              <rect x="0" y="45" width="100" height="15" fill="#0c4a6e" />
-              <path d="M 25,45 A 20,20 0 0,1 65,45 Z" fill="#f0f9ff" stroke="#000" strokeWidth="1.2" />
-              <path d="M 30,35 Q 45,38 60,35 M 35,27 Q 45,30 55,27" stroke="#0284c7" strokeWidth="0.8" fill="none" />
-              <path d="M 40,45 A 8,8 0 0,1 50,45 Z" fill="#0f172a" stroke="#000" strokeWidth="1.2" />
-              <circle cx="80" cy="18" r="4.5" fill="#fef08a" stroke="#000" strokeWidth="1" />
-            </svg>
-
-            {/* Banner publicitario DISFRAZADO */}
-            <button 
-              onClick={() => handleIncorrectClick('Planos de descarga')}
-              className="absolute top-2 right-2 bg-yellow-400 hover:bg-yellow-300 text-black text-[9px] font-black px-2 py-1 border-2 border-black rounded shadow-[2px_2px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all"
-            >
-              DESCARGAR PLANOS EN PDF
-            </button>
-          </div>
-
-          {/* Información del Listado */}
-          <div className="space-y-1">
-            <div className="flex justify-between items-start">
-              <h2 className="text-sm font-black text-sky-950 tracking-wide uppercase">
-                Super Polo Iglu Premium
-              </h2>
-              <span className="text-sky-700 font-mono font-black text-sm">
-                120.000 $P
-              </span>
-            </div>
-            <p className="text-[10px] text-sky-600 font-bold uppercase tracking-wider">
-              Sector Glacial 4 - Frente Mar de Ross
-            </p>
-          </div>
-
-          {/* TRAMPA 1: Banner estilo paso siguiente */}
-          <div 
-            onClick={() => handleIncorrectClick('Contrato ejecutable')}
-            className="border-2 border-black bg-cyan-400 text-black p-3 rounded-lg flex items-center justify-between cursor-pointer hover:bg-cyan-300 transition shadow-[3px_3px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
-          >
-            <div className="text-left space-y-0.5">
-              <div className="text-[10px] font-black uppercase">RESERVAR ESTE IGLU AHORA</div>
-              <div className="text-[8px] font-mono font-bold opacity-80">descargar_contrato_iglu_gratis.exe</div>
-            </div>
-            <div className="bg-black text-white text-[9px] font-black px-3 py-1 border border-black rounded uppercase">
-              ENTRAR
-            </div>
-          </div>
-
-          {/* Detalles Técnicos */}
-          <div className="bg-sky-100 border-2 border-black rounded-lg p-3 text-[10px] space-y-2 leading-relaxed text-sky-950 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
-            <div className="grid grid-cols-2 gap-2 border-b border-sky-200 pb-2 font-bold uppercase text-[9px]">
-              <div className="text-sky-700">Area: 85 metros</div>
-              <div className="text-sky-800">Aislamiento: Glacial A+</div>
-            </div>
-            <p className="text-sky-900">
-              Iglú premium construido enteramente con bloques de hielo compactado mediante presión térmica. Incluye chimenea de ventilación central y área integrada para almacenamiento de pescado.
-            </p>
-          </div>
-
-          {/* TRAMPA 2: Botón de Compra Directo Engañoso */}
+        {/* 1. HEADER (shrink-0) - Botón Atrás y Opción 3 arriba a la derecha */}
+        <header className="flex justify-between items-center shrink-0 pb-3 border-b border-zinc-900/60">
           <button
-            onClick={() => handleIncorrectClick('Compra directa descuento')}
-            className="w-full bg-orange-500 hover:bg-orange-400 text-black font-black py-3.5 px-4 border-2 border-black rounded-lg text-xs tracking-wider shadow-[3px_3px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all uppercase text-center"
+            onClick={() => router.push('/game/narrative?node=scene_14_init')}
+            className="text-[9px] border border-zinc-800 text-game-muted hover:border-zinc-500 hover:text-game-accent transition-all px-3 py-1 font-bold uppercase tracking-wider rounded-sm active:scale-95 cursor-pointer"
           >
-            COMPRAR AHORA CON 80% DE DESCUENTO
+            Atrás
           </button>
+          
+          <button
+            onClick={handleExitClick}
+            className="text-[9px] border border-zinc-800 text-game-muted hover:border-zinc-500 hover:text-game-accent transition-all px-3 py-1 font-bold uppercase tracking-wider rounded-sm active:scale-95 cursor-pointer"
+          >
+            Buscar en otras páginas
+          </button>
+        </header>
 
-          {/* Enlace de escape */}
-          <div className="text-center py-1">
-            <button 
-              onClick={handleExitClick}
-              className="text-[10px] text-sky-700 hover:text-sky-900 font-bold transition underline decoration-2"
-            >
-              Buscar este listado en portales seguros y confiables
-            </button>
-          </div>
-
-          {/* ==========================================
-              BOTÓN LEGÍTIMO ESCONDIDO (Opción 2)
-              ========================================== */}
-          <div className="mt-auto pt-4 border-t-2 border-sky-300 flex justify-between items-center gap-3">
-            <div className="flex flex-col">
-              <span className="text-[8px] uppercase tracking-wider text-sky-600 font-bold">Reserva Oficial</span>
-              <span className="text-[10px] text-sky-900 font-mono font-bold">Pinguilario S.A.</span>
+        {/* 2. MAIN AREA (Ilustración Fija y Diálogo) */}
+        <main className="flex-1 flex flex-col min-h-0 justify-between py-3 space-y-4 overflow-hidden">
+          
+          {/* Ilustración Fija (Renderizado de SVG Puro Animado) */}
+          <div className="relative w-full aspect-video flex items-center justify-center shrink-0 max-h-[30vh]">
+            <div className="w-full h-full border border-game-muted/15 rounded-md overflow-hidden bg-black shadow-2xl relative">
+              <Scene14Batalla />
             </div>
-            <button
-              onClick={handleCorrectClick}
-              className="bg-sky-800 border-2 border-black hover:bg-sky-700 text-zinc-100 font-black py-2.5 px-4 rounded-lg text-[10px] tracking-wide shadow-[2px_2px_0px_rgba(0,0,0,1)] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all uppercase"
-            >
-              Proceder a la reserva estandar
-            </button>
           </div>
 
-        </div>
+          {/* Nombre del Hablante con efecto Tremble Fear usando la paleta del Patrón Oscuro (Cyan) */}
+          <div className="shrink-0 flex items-center justify-start pl-1">
+            <FearTremble text="EL PATRÓN OSCURO (SNEAKING)" color="#06b6d4" />
+          </div>
 
-        {/* Botón Home físico del teléfono (Solo desktop) */}
-        <div className="h-5 bg-sky-950 sm:flex hidden items-center justify-center shrink-0 border-t border-sky-900">
-          <div className="w-24 h-1 bg-sky-800 rounded-full" />
-        </div>
+          {/* =======================================================
+              CAJA DE DIÁLOGO HACKEADA / SECCIONADA / SCROLL LARGO
+              ======================================================= */}
+          <div className="flex-1 min-h-0 w-full bg-[#131520]/80 border border-[#272a3d]/80 rounded-md flex flex-col justify-start relative select-none overflow-y-auto custom-scrollbar p-4 gap-4 bg-[radial-gradient(#1e2235_1px,transparent_1px)] [background-size:16px_16px]">
+            
+            {/* SECCIÓN 1: Narrativa */}
+            <div 
+              style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }}
+              className="text-zinc-300 text-xs md:text-sm leading-relaxed italic pr-4 border-b border-[#272a3d]/40 pb-3 shrink-0"
+            >
+              "Has caído en mi portal, Camo. Tu desesperación te ciega. Mira qué fácil es reservar este iglú mediterráneo... Sólo tienes que seguir los pasos del asistente."
+            </div>
+
+            {/* SECCIÓN 2: Grid Asimétrico de Anuncios Pequeños (Incorrecto / Trampa) */}
+            <div className="grid grid-cols-2 gap-3 shrink-0">
+              
+              {/* Ad 2.1: Banner parpadeante promocional */}
+              <div 
+                onClick={() => handleIncorrectClick('Banner Oferta Directa')}
+                className="bg-yellow-400 hover:bg-yellow-300 text-black border-2 border-black p-2 rounded-lg flex flex-col text-left cursor-pointer shadow-[2px_2px_0px_rgba(0,0,0,1)] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all rotate-[-1.5deg] justify-between h-[96px]"
+              >
+                <div className="flex flex-col">
+                  <span className="text-[7px] font-black tracking-widest uppercase bg-black text-white px-1 py-0.2 rounded w-max">PROMO</span>
+                  <span className="text-[9px] font-black mt-1 uppercase leading-tight">90% DESCUENTO INMEDIATO</span>
+                </div>
+                <span className="text-[9px] font-black underline">CLICK AQUÍ</span>
+              </div>
+
+              {/* Ad 2.2: Fake Popup de Sistema */}
+              <AnimatePresence>
+                {showFakePopup && (
+                  <motion.div 
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    className="bg-[#22c55e] text-black border-2 border-black p-2 rounded-lg relative shadow-[2px_2px_0px_rgba(0,0,0,1)] flex flex-col text-left rotate-[1deg] justify-between h-[96px]"
+                  >
+                    {/* Botón de cierre FALSO 'X' */}
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleIncorrectClick('Botón cerrar popup falso');
+                      }}
+                      className="absolute top-1 right-1 bg-red-500 hover:bg-red-400 text-black border border-black w-3.5 h-3.5 flex items-center justify-center text-[7px] font-black rounded-sm"
+                    >
+                      ✕
+                    </button>
+                    <div className="text-[7px] font-black uppercase text-green-950">SYSTEM ALERT</div>
+                    <p className="text-[8px] font-bold leading-tight pr-3 mt-0.5">Actualización de seguridad requerida.</p>
+                    <button 
+                      onClick={() => handleIncorrectClick('Descarga de actualización de seguridad')}
+                      className="bg-black hover:bg-zinc-900 text-white text-[8px] font-black px-1.5 py-0.5 border border-black rounded self-start active:translate-x-[0.5px] active:translate-y-[0.5px]"
+                    >
+                      ACTUALIZAR
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+            </div>
+
+            {/* SECCIÓN 3: Botón de Descarga de Ancho Completo (Incorrecto) */}
+            <div className="shrink-0 pt-1">
+              <button
+                onClick={() => handleIncorrectClick('Botón descarga contrato exe')}
+                className="w-full bg-red-600 hover:bg-red-500 text-white font-black py-3 px-4 border-2 border-black rounded-lg text-xs tracking-wider shadow-[3px_3px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all uppercase flex flex-col items-center justify-center leading-none gap-1 rotate-[-0.5deg]"
+              >
+                <span>DESCARGAR ASISTENTE DE RESERVA DIRECTO</span>
+                <span className="text-[7px] font-mono opacity-80 uppercase tracking-widest mt-1">reserva_express_setup.exe (4.8MB)</span>
+              </button>
+            </div>
+
+            {/* =======================================================
+                SECCIÓN 4: CARD OFICIAL DE LA WEB (Correcto) - OCULTO EN EL SCROLL
+                ======================================================= */}
+            <div className="bg-[#e0f2fe] border-2 border-black p-3 md:p-4 rounded-lg flex flex-col sm:flex-row gap-3 text-black shadow-[3px_3px_0px_rgba(0,0,0,1)] items-center text-center sm:text-left shrink-0">
+              
+              {/* Dibujo Vectorial del Iglú (IDÉNTICO A LA ESCENA 12) - Centrado en el div */}
+              <svg viewBox="15 75 190 155" className="w-20 h-16 sm:w-24 sm:h-20 shrink-0 border border-black/10 bg-sky-900/10 rounded mx-auto sm:mx-0">
+                {/* Sombra base */}
+                <ellipse cx="110" cy="210" rx="110" ry="20" fill="#cbd5e1" opacity="0.5"/>
+                
+                {/* Paredes del Iglú */}
+                <path d="M 20 190 L 60 110 L 110 80 L 110 220 L 50 220 Z" fill="#38bdf8" stroke="#0284c7" strokeWidth="2"/>
+                <path d="M 110 80 L 160 110 L 200 190 L 170 220 L 110 220 Z" fill="#e0f2fe" stroke="#0284c7" strokeWidth="2"/>
+                
+                {/* Líneas isométricas de los bloques */}
+                <line x1="60" y1="110" x2="110" y2="140" stroke="#0284c7" strokeWidth="2"/>
+                <line x1="160" y1="110" x2="110" y2="140" stroke="#0284c7" strokeWidth="2"/>
+                <line x1="110" y1="140" x2="110" y2="220" stroke="#0284c7" strokeWidth="2"/>
+                <line x1="38" y1="145" x2="80" y2="175" stroke="#0284c7" strokeWidth="2"/>
+                <line x1="182" y1="145" x2="138" y2="175" stroke="#0284c7" strokeWidth="2"/>
+                
+                {/* Entrada del Iglú */}
+                <path d="M 75 220 L 75 170 L 110 150 L 145 170 L 145 220 Z" fill="#0369a1" stroke="#0284c7" strokeWidth="2"/>
+                <path d="M 85 220 L 85 180 L 110 165 L 135 180 L 135 220 Z" fill="#0f172a"/>
+              </svg>
+
+              {/* Información y Botón de Reserva (100% Mobile Responsive) */}
+              <div className="flex-1 flex flex-col justify-between min-w-0 w-full">
+                <div className="leading-tight">
+                  <h4 className="text-[8px] font-black uppercase text-sky-800 tracking-wider">Pinguilario S.A.</h4>
+                  <span className="text-[10px] font-black text-zinc-950 truncate block">Super Polo Iglú Premium</span>
+                </div>
+                
+                {/* Botón de Reserva simple y temático */}
+                <button
+                  onClick={handleCorrectClick}
+                  className="w-full bg-sky-800 border-2 border-black hover:bg-sky-700 text-white font-black py-2 px-3 rounded text-[9px] uppercase tracking-wide shadow-[1.5px_1.5px_0px_rgba(0,0,0,1)] active:translate-x-[0.5px] active:translate-y-[0.5px] active:shadow-none transition-all mt-2 text-center"
+                >
+                  Proceder a la Reserva Estándar
+                </button>
+              </div>
+
+            </div>
+
+            {/* SECCIÓN 5: Grid de Anuncios Inferiores (Incorrecto / Trampa) */}
+            <div className="grid grid-cols-2 gap-3 shrink-0 pt-1">
+              
+              {/* Ad 5.1: Sorteo de Iglú con dibujo falso */}
+              <div 
+                onClick={() => handleIncorrectClick('Ad Sorteo Iglú')}
+                className="bg-orange-500 hover:bg-orange-400 text-black border-2 border-black p-2 rounded-lg flex flex-col justify-between text-left cursor-pointer shadow-[2px_2px_0px_rgba(0,0,0,1)] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all rotate-[1.5deg] h-[96px]"
+              >
+                <div className="flex flex-col leading-tight">
+                  <span className="text-[7px] font-black uppercase bg-black text-white px-1 py-0.2 rounded w-max">SORTEO</span>
+                  <span className="text-[8.5px] font-black mt-1 uppercase leading-tight">GANAR UN IGLÚ TOTALMENTE GRATIS</span>
+                </div>
+                <span className="text-[8px] font-black underline">PARTICIPAR</span>
+              </div>
+
+              {/* Ad 5.2: Ruleta de premios engañosa */}
+              <div 
+                onClick={() => handleIncorrectClick('Ruleta de premios engañosa')}
+                className="bg-cyan-400 hover:bg-cyan-300 text-black border-2 border-black p-2 rounded-lg flex flex-col justify-between text-left cursor-pointer shadow-[2px_2px_0px_rgba(0,0,0,1)] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all rotate-[-1deg] h-[96px]"
+              >
+                <div className="flex flex-col">
+                  <span className="text-[7px] font-black tracking-widest uppercase bg-black text-white px-1 py-0.2 rounded w-max">¡FELICIDADES!</span>
+                  <span className="text-[9px] font-black mt-0.5 uppercase leading-tight">VISITANTE 1,000,000</span>
+                  <p className="text-[7px] font-bold leading-tight mt-0.5">¡Reclama tu iglú gratis ahora mismo!</p>
+                </div>
+                <span className="text-[8px] font-black underline">GIRAR RULETA</span>
+              </div>
+
+            </div>
+
+          </div>
+        </main>
 
       </div>
 

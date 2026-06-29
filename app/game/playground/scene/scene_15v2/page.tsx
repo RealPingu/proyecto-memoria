@@ -75,8 +75,16 @@ export default function Scene15v2PlaygroundPage() {
               ======================================================= */}
           <div className="flex-1 min-h-0 w-full bg-[#131520]/80 border border-[#272a3d]/80 rounded-md flex flex-col justify-between relative select-none p-4 bg-[radial-gradient(#1e2235_1px,transparent_1px)] [background-size:16px_16px]">
             
+            {/* SECCIÓN 1: Narrativa / Texto Introductorio del Patrón Oscuro */}
+            <div 
+              style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }}
+              className="text-zinc-300 text-xs md:text-sm leading-relaxed italic pr-4 border-b border-[#272a3d]/40 pb-3 shrink-0"
+            >
+              "¡Jajaja! Estás a un paso de completar tu compra, Camo. ¿Quién tiene tiempo para leer todo ese aburrido texto legal? Solo presiona continuar... no te preocupes por los pequeños detalles de la factura..."
+            </div>
+
             {/* Contenedor del paso actual */}
-            <div className="flex-1 flex flex-col justify-start overflow-y-auto custom-scrollbar pr-1">
+            <div className="flex-1 min-h-0 flex flex-col justify-start overflow-y-auto custom-scrollbar pr-1 mt-3">
               
               {step === 1 && (
                 <div className="flex flex-col gap-3">

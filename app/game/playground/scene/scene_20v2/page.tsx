@@ -157,20 +157,20 @@ export default function Scene20v2PlaygroundPage() {
             </div>
 
             {/* SECCIÓN 2: Carrusel Rotable */}
-            <div className="flex-1 flex items-center justify-between gap-2 py-2">
+            <div className="flex-1 flex items-center justify-between gap-1 py-1">
               
               {/* Flecha Izquierda */}
               <button 
                 onClick={handlePrev}
-                className="w-8 h-8 rounded-full border border-zinc-800 hover:border-zinc-500 bg-zinc-950/60 hover:bg-zinc-900 text-zinc-400 hover:text-white flex items-center justify-center shrink-0 active:scale-90 transition-all cursor-pointer shadow-md"
+                className="w-6 h-6 rounded-full border border-zinc-800 hover:border-zinc-500 bg-zinc-950/60 hover:bg-zinc-900 text-zinc-400 hover:text-white flex items-center justify-center shrink-0 active:scale-90 transition-all cursor-pointer shadow-md"
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                   <path d="M15 18l-6-6 6-6" />
                 </svg>
               </button>
 
               {/* Contenedor de la Tarjeta Activa */}
-              <div className="flex-1 min-h-[170px] flex items-center justify-center relative overflow-hidden px-1">
+              <div className="flex-1 min-h-[190px] flex items-center justify-center relative overflow-hidden px-1">
                 <AnimatePresence mode="wait" custom={direction}>
                   <motion.div
                     key={activeIndex}
@@ -179,23 +179,25 @@ export default function Scene20v2PlaygroundPage() {
                     initial="enter"
                     animate="center"
                     exit="exit"
-                    transition={{ duration: 0.25 }}
-                    className={`w-full max-w-[240px] rounded-lg border p-4 flex flex-col justify-between ${plans[activeIndex].borderColor} ${plans[activeIndex].bgColor} shadow-lg backdrop-blur-sm relative`}
+                    transition={{ duration: 0.22 }}
+                    className={`w-full max-w-[280px] rounded-lg border p-4 flex flex-col gap-2 ${plans[activeIndex].borderColor} ${plans[activeIndex].bgColor} shadow-lg backdrop-blur-sm relative`}
                   >
-                    {/* Badge */}
+                    {/* Badge (Inline) */}
                     {plans[activeIndex].badge && (
-                      <span className={`absolute -top-2 left-1/2 -translate-x-1/2 px-2 py-0.5 text-[7px] font-black rounded uppercase tracking-wider text-center block ${
-                        plans[activeIndex].badgeType === 'recommend'
-                          ? 'bg-emerald-500 text-black animate-pulse'
-                          : 'bg-zinc-800 text-zinc-400'
-                      }`}>
-                        {plans[activeIndex].badge}
-                      </span>
+                      <div className="flex justify-center -mt-1">
+                        <span className={`px-2 py-0.5 text-[6.5px] font-black rounded uppercase tracking-wider text-center block ${
+                          plans[activeIndex].badgeType === 'recommend'
+                            ? 'bg-emerald-500 text-black animate-pulse'
+                            : 'bg-zinc-800 text-zinc-400'
+                        }`}>
+                          {plans[activeIndex].badge}
+                        </span>
+                      </div>
                     )}
 
                     {/* Contenido de la Tarjeta */}
-                    <div className="space-y-1.5 text-center mt-1">
-                      <h4 className="text-zinc-400 text-[8px] font-mono uppercase tracking-widest">
+                    <div className="space-y-0.5 text-center">
+                      <h4 className="text-zinc-500 text-[8px] font-mono uppercase tracking-widest">
                         Financiación Disponible
                       </h4>
                       <h3 className="text-white text-[11px] font-black uppercase">
@@ -204,14 +206,14 @@ export default function Scene20v2PlaygroundPage() {
                     </div>
 
                     {/* Tasa Destacada */}
-                    <div className="my-2.5 text-center">
+                    <div className="text-center py-1">
                       <span 
                         style={{ color: plans[activeIndex].themeColor }}
-                        className="text-2xl font-black tracking-tight block"
+                        className="text-2xl font-black tracking-tight block leading-none"
                       >
                         {plans[activeIndex].highlightRate}
                       </span>
-                      <span className="text-[7.5px] text-zinc-500 block uppercase tracking-wider">
+                      <span className="text-[7.5px] text-zinc-500 block uppercase tracking-wider mt-0.5 leading-none">
                         {plans[activeIndex].highlightLabel}
                       </span>
                     </div>
@@ -226,7 +228,7 @@ export default function Scene20v2PlaygroundPage() {
                         <span className="text-zinc-500">Costo Final Total:</span>
                         <span className="font-bold text-zinc-300">{plans[activeIndex].totalCost}</span>
                       </div>
-                      <div className="flex justify-between text-[7px] text-[#334155] border-t border-zinc-950/20 pt-1 font-mono">
+                      <div className="flex justify-between text-[7.5px] text-[#334155] border-t border-[#272a3d]/20 pt-1 font-mono">
                         <span>Tasa Real (TEA):</span>
                         <span>{plans[activeIndex].realRate}</span>
                       </div>
@@ -238,9 +240,9 @@ export default function Scene20v2PlaygroundPage() {
               {/* Flecha Derecha */}
               <button 
                 onClick={handleNext}
-                className="w-8 h-8 rounded-full border border-zinc-800 hover:border-zinc-500 bg-zinc-950/60 hover:bg-zinc-900 text-zinc-400 hover:text-white flex items-center justify-center shrink-0 active:scale-90 transition-all cursor-pointer shadow-md"
+                className="w-6 h-6 rounded-full border border-zinc-800 hover:border-zinc-500 bg-zinc-950/60 hover:bg-zinc-900 text-zinc-400 hover:text-white flex items-center justify-center shrink-0 active:scale-90 transition-all cursor-pointer shadow-md"
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                   <path d="M9 18l6-6-6-6" />
                 </svg>
               </button>

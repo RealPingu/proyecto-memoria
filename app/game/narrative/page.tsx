@@ -90,6 +90,26 @@ export default function NarrativeIntroPage() {
   const router = useRouter();
   const currentNode = NARRATIVE_NODES[currentNodeId] || NARRATIVE_NODES['scene_1_init'];
 
+  // Leer nodo desde los parámetros de búsqueda de la URL (para retornar desde el minijuego de anuncios disfrazados)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const searchParams = new URLSearchParams(window.location.search);
+      const nodeParam = searchParams.get('node');
+      if (nodeParam && NARRATIVE_NODES[nodeParam]) {
+        setCurrentNodeId(nodeParam);
+        // Limpiar los parámetros de búsqueda en la URL para evitar recargas accidentales
+        window.history.replaceState({}, '', window.location.pathname);
+      }
+    }
+  }, []);
+
+  // Redirección automática al minijuego de anuncios disfrazados si llegamos a la decisión de la batalla 1
+  useEffect(() => {
+    if (currentNodeId === 'scene_14_choice') {
+      router.push('/game/narrative/battle_1_mockup');
+    }
+  }, [currentNodeId, router]);
+
   // Obtener nickname desde localstorage/API
   useEffect(() => {
     const id = localStorage.getItem('antipatron_player_id');

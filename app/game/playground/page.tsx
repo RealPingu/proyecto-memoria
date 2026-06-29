@@ -254,6 +254,21 @@ export default function SceneMenuPage() {
       )
     },
     {
+      id: 'scene_14v2',
+      number: 14.2,
+      title: 'La Batalla Mental v2 (Mockup)',
+      subtitle: 'Escena 14 v2 — Mockup Móvil',
+      description: 'Prueba la alternativa de batalla interactiva de Camo con el teléfono móvil simulado y anuncios disguised.',
+      path: '/game/playground/scene/scene_14v2',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80 flex items-center justify-center">
+          <span className="text-[10px] font-mono text-cyan-400">📲 INTERFAZ MÓVIL v2</span>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+        </div>
+      )
+    },
+    {
       id: 'scene_15',
       number: 15,
       title: 'Camo y el Drip Pricing',

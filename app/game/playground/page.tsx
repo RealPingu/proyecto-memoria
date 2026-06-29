@@ -314,6 +314,22 @@ export default function SceneMenuPage() {
       )
     },
     {
+      id: 'scene_15v2',
+      number: 15,
+      title: 'Camo y el Drip Pricing (Interactiva)',
+      subtitle: 'Escena 15 v2 — Checkout por Pasos',
+      description: 'Interactúa con el asistente de checkout y descubre las casillas de Drip Pricing camufladas en gris.',
+      path: '/game/playground/scene/scene_15v2',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
+          <Scene15DripPricing />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute top-1 right-1 bg-sky-500/85 text-[7px] text-white px-1 font-bold rounded uppercase">Interactiva</div>
+        </div>
+      )
+    },
+    {
       id: 'scene_16',
       number: 16,
       title: 'El Proceso de Compra',

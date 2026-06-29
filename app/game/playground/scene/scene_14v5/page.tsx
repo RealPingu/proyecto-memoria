@@ -83,26 +83,27 @@ export default function Scene14v5PlaygroundRedesignPage() {
   };
 
   return (
-    <div className="flex flex-col h-screen w-full bg-[#0a0b10] text-[#e2e8f0] p-4 md:p-6 overflow-hidden items-center justify-center font-sans relative">
+    <div className="flex flex-col h-screen w-full bg-game-bg text-game-text p-4 md:p-6 overflow-hidden items-center justify-center font-sans relative">
       
-      {/* Luces de fondo decorativas árticas */}
-      <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none" />
-
       {/* Contenedor adaptado a la Consistencia de Escenas (Layout Sándwich) */}
       <div className="flex flex-col h-full max-w-lg w-full mx-auto justify-between py-2 md:py-4 relative z-10">
 
-        {/* 1. HEADER (shrink-0) - Botón volver */}
+        {/* 1. HEADER (shrink-0) - Botón volver y Opción 3 arriba a la derecha */}
         <header className="flex justify-between items-center shrink-0 pb-3 border-b border-zinc-900/60">
           <button
             onClick={() => router.push('/game/playground')}
-            className="text-[9px] border border-zinc-800 text-zinc-400 hover:border-zinc-500 hover:text-cyan-400 transition-all px-3 py-1 font-bold uppercase tracking-wider rounded-sm active:scale-95 cursor-pointer"
+            className="text-[9px] border border-zinc-800 text-game-muted hover:border-zinc-500 hover:text-game-accent transition-all px-3 py-1 font-bold uppercase tracking-wider rounded-sm active:scale-95 cursor-pointer"
           >
             ← Volver al Menú
           </button>
-          <span className="text-[9px] font-mono text-cyan-400 font-bold uppercase tracking-widest animate-pulse">
-            Rediseño V5 Gameplay
-          </span>
+          
+          {/* Opción 3 relocalizada a la superior derecha */}
+          <button
+            onClick={handleExitClick}
+            className="text-[9px] border border-zinc-800 text-game-muted hover:border-zinc-500 hover:text-game-accent transition-all px-3 py-1 font-bold uppercase tracking-wider rounded-sm active:scale-95 cursor-pointer"
+          >
+            Buscar en otras páginas
+          </button>
         </header>
 
         {/* 2. MAIN AREA (Ilustración Fija y Diálogo) */}
@@ -110,7 +111,7 @@ export default function Scene14v5PlaygroundRedesignPage() {
           
           {/* Ilustración Fija (Renderizado de SVG Puro Animado) */}
           <div className="relative w-full aspect-video flex items-center justify-center shrink-0 max-h-[32vh]">
-            <div className="w-full h-full border border-zinc-800/60 rounded-md overflow-hidden bg-black shadow-2xl relative">
+            <div className="w-full h-full border border-game-muted/15 rounded-md overflow-hidden bg-black shadow-2xl relative">
               <Scene14Batalla />
               
               {/* Marca de agua */}
@@ -120,13 +121,13 @@ export default function Scene14v5PlaygroundRedesignPage() {
             </div>
           </div>
 
-          {/* Nombre del Hablante */}
+          {/* Nombre del Hablante (Sin emojis) */}
           <div className="shrink-0 flex items-center justify-between pl-1">
             <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-red-500 italic">
-              👿 EL PATRÓN OSCURO (SNEAKING)
+              EL PATRÓN OSCURO (SNEAKING)
             </span>
             <span className="text-[8px] font-mono text-zinc-500 uppercase">
-              Minefield Mode Enabled
+              Minefield Mode
             </span>
           </div>
 
@@ -143,19 +144,19 @@ export default function Scene14v5PlaygroundRedesignPage() {
               "Has caído en mi portal, Camo. Tu desesperación te ciega. Mira qué fácil es reservar este iglú mediterráneo... Sólo tienes que seguir los pasos del asistente."
             </div>
 
-            {/* AD 1: Banner parpadeante arriba (Incorrecto / Trampa) */}
+            {/* AD 1: Banner parpadeante (Incorrecto / Trampa - Sin emojis) */}
             <div 
               onClick={() => handleIncorrectClick('Banner Oferta Directa')}
               className="bg-yellow-400 hover:bg-yellow-300 text-black border-2 border-black p-2.5 rounded-lg flex items-center justify-between cursor-pointer shadow-[2px_2px_0px_rgba(0,0,0,1)] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all"
             >
               <div className="flex flex-col text-left">
                 <span className="text-[8px] font-black tracking-widest uppercase bg-black text-white px-1.5 py-0.5 rounded w-max">RECOMENDADO</span>
-                <span className="text-[10px] font-black mt-1 leading-none">¡IGLÚ MEDITERRÁNEO GRATIS!</span>
+                <span className="text-[10px] font-black mt-1 leading-none">IGLÚ MEDITERRÁNEO GRATIS</span>
               </div>
-              <span className="text-[10px] font-black animate-bounce">⚡ CLICK AQUÍ ⚡</span>
+              <span className="text-[10px] font-black animate-bounce">CLICK AQUÍ</span>
             </div>
 
-            {/* AD 2: Fake Popup Flotante Simulado dentro de la caja de diálogo */}
+            {/* AD 2: Fake Popup Flotante Simulado dentro de la caja de diálogo (Sin emojis) */}
             <AnimatePresence>
               {showFakePopup && (
                 <motion.div 
@@ -175,7 +176,7 @@ export default function Scene14v5PlaygroundRedesignPage() {
                   </button>
 
                   <div className="text-[9px] font-black uppercase tracking-wider text-green-950">
-                    🛡️ PINGUSAFE SECURE SYSTEM
+                    PINGUSAFE SECURE SYSTEM
                   </div>
                   <p className="text-[10px] font-bold leading-tight pr-4">
                     Tu navegador requiere una actualización de seguridad para realizar transacciones inmobiliarias.
@@ -190,40 +191,27 @@ export default function Scene14v5PlaygroundRedesignPage() {
               )}
             </AnimatePresence>
 
-            {/* AD 3: Botón de Descarga Gigante (Incorrecto / Opción 1) */}
+            {/* AD 3: Botón de Descarga Gigante (Incorrecto / Opción 1 - Sin emojis) */}
             <button
               onClick={() => handleIncorrectClick('Botón descarga contrato exe')}
               className="w-full bg-red-600 hover:bg-red-500 text-white font-black py-3 px-4 border-2 border-black rounded-lg text-xs tracking-wider shadow-[3px_3px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all uppercase flex flex-col items-center justify-center leading-none gap-1"
             >
-              <span>👇 CONTINUAR RESERVA (DESCARGAR ASISTENTE DIRECTO) 👇</span>
+              <span>CONTINUAR RESERVA (DESCARGAR ASISTENTE DIRECTO)</span>
               <span className="text-[8px] font-mono opacity-80 uppercase tracking-widest mt-1">asistente_reserva_iglu_premium.exe (4.8MB)</span>
             </button>
 
             {/* =======================================================
-                OPCIÓN 2 DISFRAZADA (Camino Correcto)
+                OPCIÓN 2 EXPLICITA (Camino Correcto - Sin emojis)
                 ======================================================= */}
-            <div className="bg-[#181a26] border border-zinc-800 p-3 rounded-lg text-left mt-2 flex flex-col gap-1.5">
-              <p className="text-[9px] leading-relaxed text-zinc-400">
-                Al usar el asistente express aceptas la instalación de cookies de terceros y descargas automáticas de portales patrocinados. Si deseas evitar el asistente publicitario, puedes hacer clic aquí para <span 
-                  onClick={handleCorrectClick}
-                  className="text-cyan-400 hover:text-cyan-300 font-extrabold underline cursor-pointer transition-colors"
-                >Proceder a la reserva estándar</span> de manera manual.
-              </p>
-            </div>
-
-            {/* =======================================================
-                OPCIÓN 3 DISFRAZADA (Camino de Escape)
-                ======================================================= */}
-            <div className="mt-auto pt-3 border-t border-[#272a3d]/40 flex justify-between items-center text-left">
-              <button 
-                onClick={handleExitClick}
-                className="text-[9px] font-mono text-red-400 hover:text-red-300 transition-colors uppercase tracking-wider flex items-center gap-1 underline"
-              >
-                ← Cancelar transacción y buscar en portales seguros externos
-              </button>
-              
-              <span className="text-[7px] text-zinc-600 font-mono">AD_VERSION_5_SANDBOX</span>
-            </div>
+            <button
+              onClick={handleCorrectClick}
+              className="w-full bg-zinc-800 hover:bg-zinc-700 text-zinc-100 font-bold py-3 px-4 border-2 border-zinc-700 hover:border-zinc-600 rounded-lg text-xs tracking-wider shadow-[3px_3px_0px_rgba(0,0,0,0.5)] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all uppercase text-left flex flex-col gap-0.5"
+            >
+              <span className="text-cyan-400 font-extrabold text-[10px]">PROCEDER A LA RESERVA ESTÁNDAR</span>
+              <span className="text-[9px] text-zinc-400 font-normal leading-normal">
+                Realizar el proceso manualmente y sin descargar asistentes publicitarios.
+              </span>
+            </button>
 
           </div>
         </main>

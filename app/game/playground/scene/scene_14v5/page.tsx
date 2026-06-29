@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import Scene14Batalla from '../../components/scene_14_batalla';
+import { FearTremble } from '../../../narrative/components/dialogue_effects';
 
 export default function Scene14v5PlaygroundRedesignPage() {
   const router = useRouter();
@@ -88,16 +89,15 @@ export default function Scene14v5PlaygroundRedesignPage() {
       {/* Contenedor adaptado a la Consistencia de Escenas (Layout Sándwich) */}
       <div className="flex flex-col h-full max-w-lg w-full mx-auto justify-between py-2 md:py-4 relative z-10">
 
-        {/* 1. HEADER (shrink-0) - Botón volver y Opción 3 arriba a la derecha */}
+        {/* 1. HEADER (shrink-0) - Botón Atrás y Opción 3 arriba a la derecha */}
         <header className="flex justify-between items-center shrink-0 pb-3 border-b border-zinc-900/60">
           <button
             onClick={() => router.push('/game/playground')}
             className="text-[9px] border border-zinc-800 text-game-muted hover:border-zinc-500 hover:text-game-accent transition-all px-3 py-1 font-bold uppercase tracking-wider rounded-sm active:scale-95 cursor-pointer"
           >
-            ← Volver al Menú
+            Atrás
           </button>
           
-          {/* Opción 3 relocalizada a la superior derecha */}
           <button
             onClick={handleExitClick}
             className="text-[9px] border border-zinc-800 text-game-muted hover:border-zinc-500 hover:text-game-accent transition-all px-3 py-1 font-bold uppercase tracking-wider rounded-sm active:scale-95 cursor-pointer"
@@ -113,22 +113,12 @@ export default function Scene14v5PlaygroundRedesignPage() {
           <div className="relative w-full aspect-video flex items-center justify-center shrink-0 max-h-[30vh]">
             <div className="w-full h-full border border-game-muted/15 rounded-md overflow-hidden bg-black shadow-2xl relative">
               <Scene14Batalla />
-              
-              {/* Marca de agua */}
-              <div className="absolute top-2 right-2 bg-black/60 border border-zinc-800/80 px-2 py-0.5 rounded text-[8px] font-mono text-zinc-500">
-                SCENE_14_ILLUSTRATION
-              </div>
             </div>
           </div>
 
-          {/* Nombre del Hablante */}
-          <div className="shrink-0 flex items-center justify-between pl-1">
-            <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-red-500 italic">
-              EL PATRÓN OSCURO (SNEAKING)
-            </span>
-            <span className="text-[8px] font-mono text-zinc-500 uppercase">
-              Minefield Mode
-            </span>
+          {/* Nombre del Hablante con efecto Tremble Fear usando la paleta del Patrón Oscuro (Cyan) */}
+          <div className="shrink-0 flex items-center justify-start pl-1">
+            <FearTremble text="EL PATRÓN OSCURO (SNEAKING)" color="#06b6d4" />
           </div>
 
           {/* =======================================================
@@ -204,10 +194,10 @@ export default function Scene14v5PlaygroundRedesignPage() {
             {/* =======================================================
                 SECCIÓN 4: CARD OFICIAL DE LA WEB (Correcto) - OCULTO EN EL SCROLL
                 ======================================================= */}
-            <div className="bg-[#e0f2fe] border-2 border-black p-3 md:p-4 rounded-lg flex flex-col sm:flex-row gap-3 text-black shadow-[3px_3px_0px_rgba(0,0,0,1)] text-left shrink-0">
+            <div className="bg-[#e0f2fe] border-2 border-black p-3 md:p-4 rounded-lg flex flex-col sm:flex-row gap-3 text-black shadow-[3px_3px_0px_rgba(0,0,0,1)] items-center text-center sm:text-left shrink-0">
               
-              {/* Dibujo Vectorial del Iglú (IDÉNTICO A LA ESCENA 12) */}
-              <svg viewBox="15 75 190 155" className="w-20 h-16 sm:w-24 sm:h-20 shrink-0 border border-black/10 bg-sky-900/10 rounded">
+              {/* Dibujo Vectorial del Iglú (IDÉNTICO A LA ESCENA 12) - Centrado en el div */}
+              <svg viewBox="15 75 190 155" className="w-20 h-16 sm:w-24 sm:h-20 shrink-0 border border-black/10 bg-sky-900/10 rounded mx-auto sm:mx-0">
                 {/* Sombra base */}
                 <ellipse cx="110" cy="210" rx="110" ry="20" fill="#cbd5e1" opacity="0.5"/>
                 
@@ -228,7 +218,7 @@ export default function Scene14v5PlaygroundRedesignPage() {
               </svg>
 
               {/* Información y Botón de Reserva (100% Mobile Responsive) */}
-              <div className="flex-1 flex flex-col justify-between min-w-0">
+              <div className="flex-1 flex flex-col justify-between min-w-0 w-full">
                 <div className="leading-tight">
                   <h4 className="text-[8px] font-black uppercase text-sky-800 tracking-wider">Pinguilario S.A.</h4>
                   <span className="text-[10px] font-black text-zinc-950 truncate block">Super Polo Iglú Premium</span>

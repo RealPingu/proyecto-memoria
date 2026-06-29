@@ -118,7 +118,7 @@ export default function Scene14v5PlaygroundRedesignPage() {
 
           {/* Nombre del Hablante con efecto Tremble Fear usando la paleta del Patrón Oscuro (Cyan) */}
           <div className="shrink-0 flex items-center justify-start pl-1">
-            <FearTremble text="EL PATRÓN OSCURO (SNEAKING)" color="#06b6d4" />
+            <FearTremble text="EL PATRÓN OSCURO (ANUNCIOS DISFRAZADOS)" color="#06b6d4" />
           </div>
 
           {/* =======================================================

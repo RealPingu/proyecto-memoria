@@ -118,7 +118,7 @@ export default function Battle1MockupDirectRender({ onCorrect, onIncorrect, onEx
 
           {/* Nombre del Hablante consistente en tamaño y efectos con el resto de la narrativa */}
           <div className="shrink-0 flex items-center justify-start pl-1 text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-game-accent italic block">
-            <FearTremble text="EL PATRÓN OSCURO (SNEAKING)" color="#06b6d4" />
+            <FearTremble text="EL PATRÓN OSCURO (ANUNCIOS DISFRAZADOS)" color="#06b6d4" />
           </div>
 
           {/* =======================================================

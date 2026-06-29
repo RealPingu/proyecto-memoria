@@ -89,30 +89,36 @@ export default function Scene22PatronHostil() {
         </motion.g>
       </g>
  
-      {/* Protagonista (Pingüino) - Mirando al enemigo (Movido a la derecha x=65) */}
-      <g id="protagonista-contenedor-22" transform="matrix(0.75, 0, 0, 0.75, 65, 25)">
-        <motion.g
-          animate={{ x: [0, 0.5, 0], y: [0, -0.5, 0] }}
-          transition={{ repeat: Infinity, duration: 3 }}
-          id="protagonista-cuerpo-movimiento-22"
+      {/* Protagonista (Pingüino) - Mirando al enemigo */}
+      <motion.g
+        id="protagonista-animacion-contenedor-22"
+        animate={{ x: [0, 0.5, 0], y: [0, -0.5, 0] }}
+        transition={{ repeat: Infinity, duration: 3 }}
+      >
+        <g
+          id="pinguino-contenedor"
+          transform="matrix(0, 0.68277, -0.715834, 0, 88.300479, 104.089099)"
         >
-          <ellipse cx="-45" cy="52" rx="16" ry="3.5" fill="#000000" opacity="0.3" id="p-sombra-22"/>
-          <g transform="matrix(0, 0.848747, -0.768697, 0, 35, 115)" id="p-rotado-22">
-            <ellipse cx="-47.91" cy="37.303" rx="20" ry="14" fill="#18181b" id="p-cuerpo-22"/>
-            <ellipse cx="-49.91" cy="31.303" rx="14" ry="8" fill="#f4f4f5" id="p-vientre-22"/>
-            <circle cx="-67.91" cy="33.303" r="10" fill="#18181b" id="p-cabeza-22"/>
-            <g id="p-bufanda-22" transform="matrix(1, 0, 0, 1, -51.91, 17.3)">
-              <path d="M -14.3 26.4 C -12.3 20.4 -3.7 18.5 -6.6 13.6" stroke="#ef4444" strokeWidth="2.2" fill="none" strokeLinecap="round" id="p-buf-c-22"/>
-              <path d="M -7.6 13.4 C -2.6 12.4 3 11 7 9 C 5 7 0.2 10.4 -6.7 12.4 Z" fill="#ef4444" id="p-buf-cr-22"/>
-            </g>
-            <circle cx="-67.91" cy="33.303" r="2.2" fill="#f4f4f5" id="p-ojo-b-22"/>
-            <circle cx="-68.1" cy="31.8" r="1" fill="#000000" id="p-ojo-p-22"/>
-            <polygon points="-70.9 26.3 -67.9 19.3 -64.9 26.3" fill="#f59e0b" id="p-pico-22"/>
-            <path d="M -32.4 31.7 L -25.7 26.6 L -25.7 33.7 Z" fill="#f59e0b" id="p-pata-sup-22"/>
-            <path d="M -56.3 37.2 C -56 42 -40 37 -56.6 14.8" strokeWidth="2.5" strokeLinecap="round" stroke="#000000" fill="none" id="p-aleta-22"/>
+          <path id="pata-superior" d="M -32.417 31.796 L -25.744 26.644 L -25.774 33.746 L -32.417 31.796 Z" fill="#f59e0b"/>
+          <ellipse id="cuerpo" cx="-47.91" cy="37.303" rx="20" ry="14" fill="#18181b"/>
+          <ellipse id="vientre" cx="-49.91" cy="31.303" rx="14" ry="8" fill="#f4f4f5"/>
+          <circle id="cabeza" cx="-67.91" cy="33.303" r="10" fill="#18181b"/>
+          <g id="bufanda" transform="matrix(1, 0, 0, 1, -51.910336, 17.303471)">
+            <path id="bufanda-cuello" d="M -14.315 26.443 C -12.315 20.443 -3.738 18.577 -6.624 13.624" stroke="#ef4444" strokeWidth="2.2" fill="none" strokeLinecap="round"/>
+            <path id="bufanda-caida-roja" d="M -7.663 13.49 C -2.663 12.49 3 11 7 9 C 5 7 0.204 10.408 -6.796 12.408 L -7.663 13.49 Z" fill="#ef4444"/>
+            <path id="bufanda-caida-guinda" d="M -6.929 14.898 C -1.929 14.898 2 14 5 13 C 3 11 -0.337 13.357 -7.337 13.357 L -6.929 14.898 Z" fill="#b91c1c"/>
           </g>
-        </motion.g>
-      </g>
+          <g id="ojo">
+            <circle id="ojo-borde" cx="-67.91" cy="33.303" r="2.2" fill="#f4f4f5"/>
+            <circle id="ojo-pupila" cx="-68.454" cy="32.397" r="1.019" fill="#000000"/>
+          </g>
+          <polygon id="pico" points="-70.91 26.303 -67.91 19.303 -64.91 26.303" fill="#f59e0b"/>
+          <g id="patas" transform="matrix(1, 0, 0, 1, -51.910336, 17.303471)">
+            <path id="pata-inferior" d="M 26.663 20.735 L 26.851 27.446 L 19.486 24.256 L 26.663 20.735 Z" fill="#f59e0b"/>
+          </g>
+          <path id="aleta" d="M -56.369 37.201 C -57.631 41.252 -39.926 36.511 -37.926 32.511" strokeWidth="2.5" strokeLinecap="round" stroke="rgb(0, 0, 0)" fill="none"/>
+        </g>
+      </motion.g>
 
       {/* PATRÓN OSCURO: Personaje Hostil/Furioso */}
       <motion.g

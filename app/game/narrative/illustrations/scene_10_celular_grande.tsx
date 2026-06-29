@@ -3,19 +3,19 @@
 import { motion } from 'framer-motion';
 
 export default function Scene10CelularGrande() {
-  // Rain of money items inside/outside the screen
+  // Rain of money items spanning the entire 200px width of the screen
   const moneyItems = Array.from({ length: 18 }).map((_, i) => {
     const isCoin = i % 2 === 0;
-    const startX = (i * 25) % 460 + 20;
+    const startX = (i * 30) % 220 - 10;
     const duration = 3.5 + (i % 4) * 0.9;
     const delay = -(i * 0.35);
-    const scale = 0.5 + (i % 4) * 0.08;
+    const scale = 0.2 + (i % 4) * 0.05;
     const rotation = (i * 60) % 360;
     return { id: i, isCoin, startX, duration, delay, scale, rotation };
   });
 
   return (
-    <svg viewBox="-10.3677 20 430.3677 590.9726" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 200 120" className="w-full h-full select-none" xmlns="http://www.w3.org/2000/svg" id="svg-escena-10">
       <defs>
         {/* Patrón digital militar de Camo */}
         <pattern id="camo-digital" width="20" height="20" patternUnits="userSpaceOnUse">
@@ -57,49 +57,49 @@ export default function Scene10CelularGrande() {
       </defs>
 
       {/* Fondo de la escena */}
-      <rect width="100%" height="100%" fill="#090d16" id="fondo-escena"/>
+      <rect width="200" height="120" fill="#090d16" id="fondo-escena"/>
 
-      {/* Outer transform group as in user's SVG */}
-      <g transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, -5.684341886080802e-14)">
-        {/* Lluvia de Dólares pingüinales cayendo */}
-        <g id="lluvia-dinero-container">
-          {moneyItems.map((item) => (
-            <motion.g
-              key={item.id}
-              id={item.isCoin ? `moneda-${item.id}` : `billete-${item.id}`}
-              initial={{ x: item.startX, y: -40, rotate: item.rotation, scale: item.scale, opacity: 0 }}
-              animate={{
-                y: [-40, 640],
-                x: [item.startX, item.startX + ((item.id % 2 === 0) ? 20 : -20), item.startX],
-                rotate: [item.rotation, item.rotation + 360],
-                opacity: [0, 0.85, 0.85, 0]
-              }}
-              transition={{
-                repeat: Infinity,
-                duration: item.duration,
-                delay: item.delay,
-                ease: "linear"
-              }}
-            >
-              {item.isCoin ? (
-                <g>
-                  <circle cx="0" cy="0" r="14" fill="url(#oro-grad)" stroke="#ca8a04" strokeWidth="1" />
-                  <circle cx="0" cy="0" r="10.5" fill="none" stroke="#fef08a" strokeWidth="0.75" />
-                  <text x="0" y="4.5" fontFamily="monospace" fontSize="13" fontWeight="900" fill="#854d0e" textAnchor="middle">$</text>
-                </g>
-              ) : (
-                <g>
-                  <rect x="-20" y="-12" width="40" height="24" rx="3" fill="#22c55e" stroke="#15803d" strokeWidth="1" />
-                  <rect x="-16" y="-9" width="32" height="18" rx="2" fill="none" stroke="#4ade80" strokeWidth="0.75" opacity="0.6" />
-                  <circle cx="0" cy="0" r="6" fill="#16a34a" />
-                  <text x="0" y="4" fontFamily="monospace" fontSize="11" fontWeight="900" fill="#ffffff" textAnchor="middle">$</text>
-                </g>
-              )}
-            </motion.g>
-          ))}
-        </g>
+      {/* Lluvia de Dólares pingüinales cayendo a nivel raíz */}
+      <g id="lluvia-dinero-container">
+        {moneyItems.map((item) => (
+          <motion.g
+            key={item.id}
+            id={item.isCoin ? `moneda-${item.id}` : `billete-${item.id}`}
+            initial={{ x: item.startX, y: -20, rotate: item.rotation, scale: item.scale, opacity: 0 }}
+            animate={{
+              y: [-20, 140],
+              x: [item.startX, item.startX + ((item.id % 2 === 0) ? 10 : -10), item.startX],
+              rotate: [item.rotation, item.rotation + 360],
+              opacity: [0, 0.85, 0.85, 0]
+            }}
+            transition={{
+              repeat: Infinity,
+              duration: item.duration,
+              delay: item.delay,
+              ease: "linear"
+            }}
+          >
+            {item.isCoin ? (
+              <g>
+                <circle cx="0" cy="0" r="14" fill="url(#oro-grad)" stroke="#ca8a04" strokeWidth="1" />
+                <circle cx="0" cy="0" r="10.5" fill="none" stroke="#fef08a" strokeWidth="0.75" />
+                <text x="0" y="4.5" fontFamily="monospace" fontSize="13" fontWeight="900" fill="#854d0e" textAnchor="middle">$</text>
+              </g>
+            ) : (
+              <g>
+                <rect x="-20" y="-12" width="40" height="24" rx="3" fill="#22c55e" stroke="#15803d" strokeWidth="1" />
+                <rect x="-16" y="-9" width="32" height="18" rx="2" fill="none" stroke="#4ade80" strokeWidth="0.75" opacity="0.6" />
+                <circle cx="0" cy="0" r="6" fill="#16a34a" />
+                <text x="0" y="4" fontFamily="monospace" fontSize="11" fontWeight="900" fill="#ffffff" textAnchor="middle">$</text>
+              </g>
+            )}
+          </motion.g>
+        ))}
+      </g>
 
-        {/* EL CELULAR EN GRANDE (Flotando suavemente en el centro) */}
+      {/* Grupo de escala y centrado para el celular y Camo */}
+      <g transform="matrix(0.20, 0, 0, 0.20, 59.07, -3)">
+        {/* EL CELULAR EN GRANDE */}
         <motion.g 
           id="dispositivo-completo"
           animate={{
@@ -178,7 +178,7 @@ export default function Scene10CelularGrande() {
             <rect width="316" height="128" fill="#ffffff"/>
             <line x1="20" y1="0" x2="296" y2="0" stroke="#f1f5f9" strokeWidth="2"/>
             <text x="24" y="27" fontFamily="sans-serif" fontSize="12" fontWeight="bold" fill="#64748b" style={{ whiteSpace: 'pre' }}>TOTAL PINGÜICARRO</text>
-            <text x="292" y="30" fontFamily="sans-serif" fontSize="22" fontWeight="900" fill="#0f172a" text-anchor="end" style={{ whiteSpace: 'pre' }}>$49.99</text>
+            <text x="292" y="30" fontFamily="sans-serif" fontSize="22" fontWeight="900" fill="#0f172a" textAnchor="end" style={{ whiteSpace: 'pre' }}>$49.99</text>
 
             {/* Botón Aletea Para Pagar */}
             <g id="boton-compra-grupo" transform="translate(20, 50)">
@@ -213,10 +213,10 @@ export default function Scene10CelularGrande() {
           </g>
         </motion.g>
 
-        {/* CAMO PINGÜINO PEAKING (Pequeño y asomándose en el frente inferior izquierdo, hipnotizado por el celular) */}
+        {/* CAMO PINGÜINO PEAKING */}
         <g id="camo-peaking" transform="matrix(1, 0, 0, 1, -10, 430.000013)">
-          <ellipse id="cuerpo" cx="30" cy="120" rx="31.521" ry="53.016" fill="url(#camo-digital)" stroke="#4f5d4e" strokeWidth="0.8" transform="matrix(0.965926, -0.258819, 0.258819, 0.965926, -16.235235, 13.458265)" style={{}}/>
-          <ellipse id="vientre" cx="48" cy="120" rx="22.406" ry="34.493" fill="#d8d8d0" stroke="#1e293b" strokeWidth="1" transform="matrix(0.965926, -0.258819, 0.258819, 0.965926, -22.361808, 18.437919)" style={{}}/>
+          <ellipse id="cuerpo" cx="30" cy="120" rx="31.521" ry="53.016" fill="url(#camo-digital)" stroke="#4f5d4e" strokeWidth="0.8" transform="matrix(0.965926, -0.258819, 0.258819, 0.965926, -16.235235, 13.458265)"/>
+          <ellipse id="vientre" cx="48" cy="120" rx="22.406" ry="34.493" fill="#d8d8d0" stroke="#1e293b" strokeWidth="1" transform="matrix(0.965926, -0.258819, 0.258819, 0.965926, -22.361808, 18.437919)"/>
           <circle id="cabeza" cx="62" cy="55" r="34" fill="url(#camo-digital)" stroke="#4f5d4e" strokeWidth="0.8"/>
           <g id="ojo-grupo">
             <circle id="ojo" cx="74" cy="48" r="9" fill="#ffffff" stroke="#0f172a" strokeWidth="1.2"/>

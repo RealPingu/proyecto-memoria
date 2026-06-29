@@ -4,6 +4,17 @@ import { NARRATIVE_NODES } from '../data';
  * Genera una etiqueta legible para el selector de progreso basándose en el nodo narrativo
  */
 export const getNodeLabel = (nodeId: string): string => {
+  // Sobrescribir el texto y speaker para las escenas de batalla interactiva del Patrón Oscuro
+  if (nodeId === 'scene_14_choice') {
+    return '[Patrón Oscuro] "Has caído en mi portal, Camo..."';
+  }
+  if (nodeId === 'scene_15_choice') {
+    return '[Patrón Oscuro] "¡Jajaja! ¿Creías que el iglú..."';
+  }
+  if (nodeId === 'scene_18_choice') {
+    return '[Patrón Oscuro] "¡Vaya, vaya! Parece que necesitas..."';
+  }
+
   const node = NARRATIVE_NODES[nodeId];
   if (!node) return nodeId;
 

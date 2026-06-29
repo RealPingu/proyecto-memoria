@@ -102,19 +102,23 @@ export default function Battle1MockupDirectRender({
       >
 
         {/* 1. HEADER (shrink-0) - Botón Atrás y Opción 3 arriba a la derecha */}
-        <header className="flex justify-between items-center shrink-0 pb-3 border-b border-zinc-900/60 gap-2 flex-wrap">
-          <button
-            onClick={onBack}
-            className="text-[9px] border border-zinc-800 text-game-muted hover:border-zinc-500 hover:text-game-accent transition-all px-3 py-1 font-bold uppercase tracking-wider rounded-sm active:scale-95 cursor-pointer"
-          >
-            Atrás
-          </button>
-          
-          <div className="flex items-center gap-1.5 ml-auto flex-wrap justify-end">
+        <header className="grid grid-cols-3 items-center shrink-0 pb-3 border-b border-zinc-900/60 w-full gap-2 relative z-20">
+          {/* Columna izquierda: Atrás */}
+          <div className="flex justify-start">
+            <button
+              onClick={onBack}
+              className="text-[9px] border border-zinc-800 text-game-muted hover:border-zinc-500 hover:text-game-accent transition-all px-3 py-1 font-bold uppercase tracking-wider rounded-sm active:scale-95 cursor-pointer whitespace-nowrap"
+            >
+              Atrás
+            </button>
+          </div>
+
+          {/* Columna central: Selector de progreso */}
+          <div className="flex justify-center w-full">
             <select
               value={currentNodeId}
               onChange={(e) => jumpToNode(e.target.value)}
-              className="bg-zinc-950 border border-zinc-800 text-zinc-300 text-[9px] font-medium py-1 px-2 rounded hover:border-zinc-700 outline-none cursor-pointer max-w-[130px] sm:max-w-[170px] truncate"
+              className="bg-zinc-950 border border-zinc-800 text-zinc-300 text-[9px] font-medium py-1 px-2 rounded hover:border-zinc-700 outline-none cursor-pointer w-full max-w-[130px] sm:max-w-[180px] truncate text-center"
             >
               {visitedNodes.map((nodeId) => (
                 <option key={nodeId} value={nodeId}>
@@ -122,16 +126,18 @@ export default function Battle1MockupDirectRender({
                 </option>
               ))}
             </select>
+          </div>
 
+          {/* Columna derecha: Acción específica de la escena */}
+          <div className="flex justify-end">
             <button
               onClick={onExit}
-              className="text-[9px] border border-zinc-800 text-game-muted hover:border-zinc-500 hover:text-game-accent transition-all px-3 py-1 font-bold uppercase tracking-wider rounded-sm active:scale-95 cursor-pointer"
+              className="text-[9px] border border-zinc-800 text-game-muted hover:border-zinc-500 hover:text-game-accent transition-all px-3 py-1 font-bold uppercase tracking-wider rounded-sm active:scale-95 cursor-pointer whitespace-nowrap"
             >
               Buscar en otras páginas
             </button>
           </div>
         </header>
-
         {/* 2. MAIN AREA (Ilustración Fija y Diálogo) */}
         <main className="flex-1 flex flex-col min-h-0 justify-between py-3 space-y-4 overflow-hidden">
           

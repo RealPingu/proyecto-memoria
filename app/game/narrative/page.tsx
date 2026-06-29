@@ -709,23 +709,23 @@ export default function NarrativeIntroPage() {
       <div className="flex flex-col h-full max-w-lg w-full mx-auto justify-between py-2 md:py-4 relative">
 
         {/* 1. HEADER (shrink-0) - Botón Atrás y Selector de Escenas */}
-        <header className="flex justify-between items-center shrink-0 pb-3 border-b border-zinc-900/60 gap-4 flex-wrap">
-          <button
-            onClick={handleBack}
-            className="text-[9px] border border-zinc-800 text-game-muted hover:border-zinc-500 hover:text-game-accent transition-all px-3 py-1 font-bold uppercase tracking-wider rounded-sm active:scale-95 cursor-pointer"
-          >
-            Atrás
-          </button>
+        <header className="grid grid-cols-3 items-center shrink-0 pb-3 border-b border-zinc-900/60 w-full gap-2 relative z-20">
+          {/* Columna izquierda: Atrás */}
+          <div className="flex justify-start">
+            <button
+              onClick={handleBack}
+              className="text-[9px] border border-zinc-800 text-game-muted hover:border-zinc-500 hover:text-game-accent transition-all px-3 py-1 font-bold uppercase tracking-wider rounded-sm active:scale-95 cursor-pointer whitespace-nowrap"
+            >
+              Atrás
+            </button>
+          </div>
 
-          {/* Selector de progreso (dropdown) */}
-          <div className="flex items-center gap-1.5 ml-auto">
-            <span className="text-[7.5px] text-zinc-500 uppercase tracking-widest font-mono hidden sm:inline">
-              Progreso:
-            </span>
+          {/* Columna central: Selector de progreso */}
+          <div className="flex justify-center w-full">
             <select
               value={currentNodeId}
               onChange={(e) => jumpToNode(e.target.value)}
-              className="bg-zinc-950 border border-zinc-800 text-zinc-300 text-[9px] font-medium py-1 px-2 rounded hover:border-zinc-700 outline-none cursor-pointer max-w-[150px] sm:max-w-[200px] truncate"
+              className="bg-zinc-950 border border-zinc-800 text-zinc-300 text-[9px] font-medium py-1 px-2 rounded hover:border-zinc-700 outline-none cursor-pointer w-full max-w-[130px] sm:max-w-[180px] truncate text-center"
             >
               {visitedNodes.map((nodeId) => (
                 <option key={nodeId} value={nodeId}>
@@ -734,8 +734,10 @@ export default function NarrativeIntroPage() {
               ))}
             </select>
           </div>
-        </header>
 
+          {/* Columna derecha: Espaciador vacío */}
+          <div className="flex justify-end"></div>
+        </header>
         {/* 2. MAIN AREA (Ilustración Fija y Diálogo con scroll interno independiente) */}
         <main className="flex-1 flex flex-col min-h-0 justify-between py-3 space-y-4 overflow-hidden">
           

@@ -1,0 +1,266 @@
+'use client';
+
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
+import Scene20Batalla from '../../components/scene_20_batalla';
+import { FearTremble } from '../../../narrative/components/dialogue_effects';
+
+interface Plan {
+  id: number;
+  name: string;
+  badge?: string;
+  badgeType?: 'recommend' | 'decoy';
+  highlightRate: string;
+  highlightLabel: string;
+  term: string;
+  totalCost: string;
+  realRate: string;
+  isCorrect: boolean;
+  themeColor: string;
+  borderColor: string;
+  bgColor: string;
+}
+
+export default function Scene20v2PlaygroundPage() {
+  const router = useRouter();
+  const [activeIndex, setActiveIndex] = useState(0); // 0: Premium, 1: Estándar, 2: Básico
+  const [direction, setDirection] = useState(0);
+
+  const plans: Plan[] = [
+    {
+      id: 0,
+      name: 'Plan Premium Glacial',
+      badge: '¡MÁS POPULAR / TASA MÁS BAJA!',
+      badgeType: 'recommend',
+      highlightRate: '3.5% TNA',
+      highlightLabel: 'Tasa Nominal de Referencia',
+      term: '240 meses (20 años)',
+      totalCost: '450,000 $P',
+      realRate: '45.2% TEA',
+      isCorrect: false,
+      themeColor: '#22c55e', // Emerald/Green trap
+      borderColor: 'border-emerald-500/80',
+      bgColor: 'bg-emerald-950/20'
+    },
+    {
+      id: 1,
+      name: 'Plan Estándar Táctico',
+      highlightRate: '9.5% TEA',
+      highlightLabel: 'Tasa Efectiva Anual Real',
+      term: '36 meses (3 años)',
+      totalCost: '154,200 $P',
+      realRate: '9.5% TEA',
+      isCorrect: true,
+      themeColor: '#3b82f6', // Neutral Blue
+      borderColor: 'border-zinc-800',
+      bgColor: 'bg-zinc-950/30'
+    },
+    {
+      id: 2,
+      name: 'Plan Básico Rápido',
+      badge: 'SEÑUELO DE CONTRASTE',
+      badgeType: 'decoy',
+      highlightRate: '78.4% TEA',
+      highlightLabel: 'Tasa Efectiva Anual Real',
+      term: '12 meses (1 año)',
+      totalCost: '214,000 $P',
+      realRate: '78.4% TEA',
+      isCorrect: false,
+      themeColor: '#f97316', // Orange Decoy
+      borderColor: 'border-zinc-800',
+      bgColor: 'bg-zinc-950/30'
+    }
+  ];
+
+  const handleNext = () => {
+    setDirection(1);
+    setActiveIndex((prev) => (prev + 1) % plans.length);
+  };
+
+  const handlePrev = () => {
+    setDirection(-1);
+    setActiveIndex((prev) => (prev - 1 + plans.length) % plans.length);
+  };
+
+  const handleConfirmPlan = () => {
+    const selectedPlan = plans[activeIndex];
+    if (selectedPlan.isCorrect) {
+      router.push('/game/playground/scene/scene_20v2/resultado_1');
+    } else {
+      router.push('/game/playground/scene/scene_20v2/resultado_2');
+    }
+  };
+
+  // Variantes para animación slide del carrusel
+  const slideVariants = {
+    enter: (dir: number) => ({
+      x: dir > 0 ? 80 : -80,
+      opacity: 0
+    }),
+    center: {
+      x: 0,
+      opacity: 1
+    },
+    exit: (dir: number) => ({
+      x: dir > 0 ? -80 : 80,
+      opacity: 0
+    })
+  };
+
+  return (
+    <div className="flex flex-col h-screen w-full bg-game-bg text-game-text p-4 md:p-6 overflow-hidden items-center justify-center font-sans relative">
+      
+      {/* Contenedor principal */}
+      <div className="flex flex-col h-full max-w-lg w-full mx-auto justify-between py-2 md:py-4 relative z-10">
+
+        {/* 1. HEADER */}
+        <header className="flex justify-between items-center shrink-0 pb-3 border-b border-zinc-900/60">
+          <button
+            onClick={() => router.push('/game/playground')}
+            className="text-[9px] border border-zinc-800 text-game-muted hover:border-zinc-500 hover:text-game-accent transition-all px-3 py-1 font-bold uppercase tracking-wider rounded-sm active:scale-95 cursor-pointer"
+          >
+            Atrás
+          </button>
+          
+          <span className="text-[8px] font-mono text-zinc-500 uppercase tracking-widest">
+            Financiación Iglú
+          </span>
+        </header>
+
+        {/* 2. MAIN AREA */}
+        <main className="flex-1 flex flex-col min-h-0 justify-between py-3 space-y-4 overflow-hidden">
+          
+          {/* Ilustración Fija (Batalla Mental) */}
+          <div className="relative w-full aspect-video flex items-center justify-center shrink-0 max-h-[30vh]">
+            <div className="w-full h-full border border-game-muted/15 rounded-md overflow-hidden bg-black shadow-2xl relative">
+              <Scene20Batalla />
+            </div>
+          </div>
+
+          {/* Nombre del Hablante consistente (Patrón Oscuro) */}
+          <div className="shrink-0 flex items-center justify-start pl-1 text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-purple-400 italic block">
+            <FearTremble text="EL PATRÓN OSCURO (PRECIOS DE REFERENCIA)" color="#a855f7" />
+          </div>
+
+          {/* =======================================================
+              CAJA DE DIÁLOGO INTERACTIVA CON CARRUSEL ROTABLE
+              ======================================================= */}
+          <div className="flex-1 min-h-0 w-full bg-[#131520]/80 border border-[#272a3d]/80 rounded-md flex flex-col relative select-none p-4 bg-[radial-gradient(#1e2235_1px,transparent_1px)] [background-size:16px_16px] overflow-y-auto custom-scrollbar gap-4">
+            
+            {/* SECCIÓN 1: Narrativa del Patrón Oscuro */}
+            <div 
+              style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }}
+              className="text-zinc-300 text-xs md:text-sm leading-relaxed italic pr-4 border-b border-[#272a3d]/40 pb-3 shrink-0"
+            >
+              "¡Vaya, vaya! Parece que necesitas financiar tu iglú, Camo. Mira este Plan Premium... ¡Solo 3.5% de interés! Una ganga que ningún pingüino racional podría rechazar. Firma aquí y no te preocupes por el plazo de tiempo..."
+            </div>
+
+            {/* SECCIÓN 2: Carrusel Rotable */}
+            <div className="flex-1 flex items-center justify-between gap-2 py-2">
+              
+              {/* Flecha Izquierda */}
+              <button 
+                onClick={handlePrev}
+                className="w-8 h-8 rounded-full border border-zinc-800 hover:border-zinc-500 bg-zinc-950/60 hover:bg-zinc-900 text-zinc-400 hover:text-white flex items-center justify-center shrink-0 active:scale-90 transition-all cursor-pointer shadow-md"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+
+              {/* Contenedor de la Tarjeta Activa */}
+              <div className="flex-1 min-h-[170px] flex items-center justify-center relative overflow-hidden px-1">
+                <AnimatePresence mode="wait" custom={direction}>
+                  <motion.div
+                    key={activeIndex}
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{ duration: 0.25 }}
+                    className={`w-full max-w-[240px] rounded-lg border p-4 flex flex-col justify-between ${plans[activeIndex].borderColor} ${plans[activeIndex].bgColor} shadow-lg backdrop-blur-sm relative`}
+                  >
+                    {/* Badge */}
+                    {plans[activeIndex].badge && (
+                      <span className={`absolute -top-2 left-1/2 -translate-x-1/2 px-2 py-0.5 text-[7px] font-black rounded uppercase tracking-wider text-center block ${
+                        plans[activeIndex].badgeType === 'recommend'
+                          ? 'bg-emerald-500 text-black animate-pulse'
+                          : 'bg-zinc-800 text-zinc-400'
+                      }`}>
+                        {plans[activeIndex].badge}
+                      </span>
+                    )}
+
+                    {/* Contenido de la Tarjeta */}
+                    <div className="space-y-1.5 text-center mt-1">
+                      <h4 className="text-zinc-400 text-[8px] font-mono uppercase tracking-widest">
+                        Financiación Disponible
+                      </h4>
+                      <h3 className="text-white text-[11px] font-black uppercase">
+                        {plans[activeIndex].name}
+                      </h3>
+                    </div>
+
+                    {/* Tasa Destacada */}
+                    <div className="my-2.5 text-center">
+                      <span 
+                        style={{ color: plans[activeIndex].themeColor }}
+                        className="text-2xl font-black tracking-tight block"
+                      >
+                        {plans[activeIndex].highlightRate}
+                      </span>
+                      <span className="text-[7.5px] text-zinc-500 block uppercase tracking-wider">
+                        {plans[activeIndex].highlightLabel}
+                      </span>
+                    </div>
+
+                    {/* Detalles en Letra Diminuta de Bajo Contraste */}
+                    <div className="border-t border-zinc-900/60 pt-2 space-y-1 text-left">
+                      <div className="flex justify-between text-[8px]">
+                        <span className="text-zinc-500">Plazo de Pago:</span>
+                        <span className="font-bold text-zinc-300">{plans[activeIndex].term}</span>
+                      </div>
+                      <div className="flex justify-between text-[8px]">
+                        <span className="text-zinc-500">Costo Final Total:</span>
+                        <span className="font-bold text-zinc-300">{plans[activeIndex].totalCost}</span>
+                      </div>
+                      <div className="flex justify-between text-[7px] text-[#334155] border-t border-zinc-950/20 pt-1 font-mono">
+                        <span>Tasa Real (TEA):</span>
+                        <span>{plans[activeIndex].realRate}</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              {/* Flecha Derecha */}
+              <button 
+                onClick={handleNext}
+                className="w-8 h-8 rounded-full border border-zinc-800 hover:border-zinc-500 bg-zinc-950/60 hover:bg-zinc-900 text-zinc-400 hover:text-white flex items-center justify-center shrink-0 active:scale-90 transition-all cursor-pointer shadow-md"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+
+            </div>
+
+            {/* SECCIÓN 3: Botón de Selección del Plan */}
+            <div className="shrink-0 pt-2 border-t border-[#272a3d]/20 mt-auto">
+              <button
+                onClick={handleConfirmPlan}
+                className="w-full bg-[#3b82f6] hover:bg-blue-600 text-white font-black py-2.5 rounded text-[10px] uppercase tracking-wider shadow-[2px_2px_0px_rgba(0,0,0,1)] active:translate-x-[0.5px] active:translate-y-[0.5px] active:shadow-none transition-all text-center cursor-pointer"
+              >
+                Confirmar Selección de Plan
+              </button>
+            </div>
+
+          </div>
+        </main>
+
+      </div>
+    </div>
+  );
+}

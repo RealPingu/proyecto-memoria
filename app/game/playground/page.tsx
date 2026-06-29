@@ -405,6 +405,22 @@ export default function SceneMenuPage() {
       )
     },
     {
+      id: 'scene_20v2',
+      number: 20,
+      title: 'La Batalla — Reference Pricing (Interactiva)',
+      subtitle: 'Escena 20 v2 — Carrusel Rotable',
+      description: 'Interactúa con el carrusel de planes rotables en la caja de diálogo para evadir la trampa de Reference Pricing.',
+      path: '/game/playground/scene/scene_20v2',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80">
+          <Scene20Batalla />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute top-1 right-1 bg-sky-500/85 text-[7px] text-white px-1 font-bold rounded uppercase">Interactiva</div>
+        </div>
+      )
+    },
+    {
       id: 'scene_21',
       number: 21,
       title: 'El Retorno del Alma',

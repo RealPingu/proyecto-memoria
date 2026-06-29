@@ -76,6 +76,9 @@ export default function Scene2Encounter({ variantId = 1 }: Scene2EncounterProps)
                 animate={{ x: [0, -0.4, 0] }}
                 transition={{ repeat: Infinity, duration: 3.2, ease: "easeInOut" }}
               >
+                {/* Sombra proyectada */}
+                <ellipse id="sombra-pinguino" cx="-25" cy="38" rx="3.5" ry="16" fill="#000000" opacity="0.3" />
+
                 {/* Pata Superior (capa de fondo) */}
                 <path id="pata-superior" d="M -32.417 31.796 L -25.744 26.644 L -25.774 33.746 L -32.417 31.796 Z" fill="#f59e0b" />
 

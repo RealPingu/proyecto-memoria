@@ -99,6 +99,9 @@ export default function Scene22PatronHostil() {
           id="pinguino-contenedor"
           transform="matrix(0, 0.68277, -0.715834, 0, 88.300479, 104.089099)"
         >
+          {/* Sombra proyectada */}
+          <ellipse id="sombra-pinguino" cx="-25" cy="38" rx="3.5" ry="16" fill="#000000" opacity="0.3" />
+
           <path id="pata-superior" d="M -32.417 31.796 L -25.744 26.644 L -25.774 33.746 L -32.417 31.796 Z" fill="#f59e0b"/>
           <ellipse id="cuerpo" cx="-47.91" cy="37.303" rx="20" ry="14" fill="#18181b"/>
           <ellipse id="vientre" cx="-49.91" cy="31.303" rx="14" ry="8" fill="#f4f4f5"/>

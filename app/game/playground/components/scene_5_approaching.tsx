@@ -430,6 +430,9 @@ export default function Scene5Approaching({
             }}
             transition={{ repeat: Infinity, duration: 3.2, ease: "easeInOut" }}
           >
+            {/* Sombra proyectada */}
+            <ellipse id="sombra-pinguino" cx="-25" cy="38" rx="3.5" ry="16" fill="#000000" opacity="0.3" />
+
             {/* Pata Superior */}
             <path 
               id="protagonista-pata-superior" 

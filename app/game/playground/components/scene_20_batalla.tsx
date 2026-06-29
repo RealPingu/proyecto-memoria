@@ -182,7 +182,7 @@ export default function Scene20Batalla() {
         <g id="pinguino-contenedor" transform="matrix(0, 0.848747, -0.768697, 0, 76.463808, 104.227954)">
           
           {/* Sombra proyectada */}
-          <ellipse id="sombra-pinguino" cx="-45" cy="52" rx="16" ry="3.5" fill="#000000" opacity="0.3" />
+          <ellipse id="sombra-pinguino" cx="-25" cy="38" rx="3.5" ry="16" fill="#000000" opacity="0.3" />
 
           {/* Cola */}
           <path id="cola" d="M -57.788 25.808 C -59.05 29.859 -48.36 18.879 -54.154 6.059" strokeWidth="2.5" strokeLinecap="round" stroke="#000000" fill="none"/>

@@ -90,6 +90,9 @@ export default function Scene6Glow({
             }}
             transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
           >
+            {/* Sombra proyectada */}
+            <ellipse id="sombra-pinguino" cx="-25" cy="38" rx="3.5" ry="16" fill="#000000" opacity="0.3" />
+
             {/* Patas del Protagonista */}
             <g id="protagonista-patas" transform="matrix(1, 0, 0, 1, -51.910336, 17.303471)">
               <path id="protagonista-pata-inferior" d="M 22.869 24.905 L 23.057 31.616 L 15.692 28.426 L 22.869 24.905 Z" fill="#f59e0b"/>

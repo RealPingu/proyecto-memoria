@@ -90,6 +90,9 @@ export default function Scene6Glow({
             }}
             transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
           >
+            {/* Sombra proyectada */}
+            <ellipse id="sombra-pinguino" cx="-25" cy="38" rx="3.5" ry="16" fill="#000000" opacity="0.3" />
+
             {/* Patas del Protagonista */}
             <g id="protagonista-patas" transform="matrix(1, 0, 0, 1, -51.910336, 17.303471)">
               <path id="protagonista-pata-inferior" d="M 22.869 24.905 L 23.057 31.616 L 15.692 28.426 L 22.869 24.905 Z" fill="#f59e0b"/>
@@ -97,7 +100,7 @@ export default function Scene6Glow({
             <g id="protagonista-patas-superior">
               <path id="protagonista-pata-superior" d="M -35.622 35.869 L -29.033 32.462 L -29.063 39.564 L -35.622 35.869 Z" fill="#f59e0b"/>
             </g>
- 
+
             {/* Cuerpo del Protagonista (Gris oscuro con vientre blanco) */}
             <ellipse id="protagonista-cuerpo" cx="-52.831" cy="41.022" rx="20" ry="14" fill="#18181b" />
             <ellipse id="protagonista-vientre" cx="-54.21" cy="39.739" rx="14" ry="7.999" fill="#f4f4f5" style={{ transformBox: "fill-box", transformOrigin: "50% 50%" }} transform="matrix(0.999912, -0.013232, 0.010004, 0.999955, -0.505833, 1.163667)"/>
@@ -112,7 +115,7 @@ export default function Scene6Glow({
               <path id="protagonista-bufanda-caida-guinda" d="M -17.131 26.05 C -13.649 23.432 -11.491 26.897 -8.491 25.897 C -10.491 23.897 -12.226 24.897 -16.612 24.024 L -17.131 26.05 Z" fill="#b91c1c"/>
             </g>
 
-            {/* Ojos del Protagonista mirando hacia abajo */}
+            {/* Ojos del Protagonista mirando hacia abajo con sutil micro-parpadeo/jitter */}
             <g id="protagonista-ojo-izquierdo" transform="matrix(1, 0, 0, 1, -12.964486, 12.089528)">
               <circle id="protagonista-ojo-izq-borde" cx="-67.91" cy="33.303" r="2.2" fill="#f4f4f5"/>
               <motion.circle 
@@ -221,6 +224,7 @@ export default function Scene6Glow({
         ))}
       </g>
 
+      {/* 3. El Ojo Subconsciente observando al Protagonista desde arriba */}
       {/* 3. El Ojo Subconsciente observando al Protagonista desde arriba */}
       <g 
         id="ojo-subconsciente-grupo" 

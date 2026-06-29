@@ -25,13 +25,15 @@ export default function Battle1MockupPage() {
     let currentPopupIndex = 0;
     const interval = setInterval(() => {
       if (currentPopupIndex < popupList.length) {
+        const item = popupList[currentPopupIndex];
+        const index = currentPopupIndex;
         setPopups(prev => [
           ...prev,
           {
-            id: currentPopupIndex,
-            title: popupList[currentPopupIndex].title,
-            x: popupList[currentPopupIndex].x,
-            y: popupList[currentPopupIndex].y
+            id: index,
+            title: item.title,
+            x: item.x,
+            y: item.y
           }
         ]);
         currentPopupIndex++;

@@ -8,10 +8,10 @@ import { motion } from 'framer-motion';
 // ==========================================
 
 // 1. Wave Floating (Onda marina)
-export function WaveFloatingText({ text }: { text: string }) {
+export function WaveFloatingText({ text, color }: { text: string; color?: string }) {
   const letters = Array.from(text);
   return (
-    <span className="leading-relaxed tracking-wide select-none inline-block text-sky-400">
+    <span className="leading-relaxed tracking-wide select-none inline-block" style={{ color: color || '#38bdf8' }}>
       {letters.map((c, i) => c === ' ' ? <span key={i}>&nbsp;</span> : (
         <motion.span key={i} className="inline-block" animate={{ y: [-1.5, 1.5, -1.5] }} transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut", delay: i * 0.04 }}>
           {c}
@@ -22,48 +22,68 @@ export function WaveFloatingText({ text }: { text: string }) {
 }
 
 // 2. Rainbow Shimmer
-export function RainbowShimmer({ text }: { text: string }) {
+export function RainbowShimmer({ text, color }: { text: string; color?: string }) {
   const words = text.split(' ');
   return (
     <span className="inline-flex flex-wrap gap-x-1 font-medium">
       {words.map((w, i) => {
         const special = w.includes('Oscuro') || w.includes('Trampa') || w.includes('"') || w.startsWith('#');
         return special ? (
-          <motion.span key={i} className="font-black bg-gradient-to-r from-red-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent inline-block" style={{ backgroundSize: '200% 200%' }} animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }} transition={{ repeat: Infinity, duration: 4, ease: "linear" }}>
+          <motion.span 
+            key={i} 
+            className="font-black bg-gradient-to-r inline-block text-transparent bg-clip-text" 
+            style={{ 
+              backgroundImage: color ? `linear-gradient(to right, ${color}, ${color})` : 'linear-gradient(to right, #ef4444, #a855f7, #6366f1)',
+              backgroundSize: '200% 200%' 
+            }} 
+            animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }} 
+            transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
+          >
             {w.replace(/#/g, '')}
           </motion.span>
-        ) : <span key={i} className="text-zinc-400">{w.replace(/#/g, '')}</span>;
+        ) : <span key={i} className="text-zinc-400" style={{ color }}>{w.replace(/#/g, '')}</span>;
       })}
     </span>
   );
 }
 
 // 3. Action Jitter Shake (Temblor errático)
-export function BattleImpactShake({ text }: { text: string }) {
+export function BattleImpactShake({ text, color }: { text: string; color?: string }) {
   const words = text.split(' ');
   return (
     <span className="inline-flex flex-wrap gap-x-1 font-bold font-mono">
       {words.map((w, i) => {
         const impact = w.startsWith('¡') || w.endsWith('!') || w.includes('Camo') || w.includes('Pagar');
         return impact ? (
-          <motion.span key={i} className="text-red-500 uppercase tracking-wider drop-shadow-[0_0_8px_rgba(239,68,68,0.4)] bg-red-950/20 px-1 border border-red-500/20 rounded-sm inline-block animate-pulse" animate={{ x: [0, -1.2, 1.2, -1.2, 0], y: [0, 1.2, -1.2, 1.2, 0], rotate: [0, 1, -1, 1, 0] }} transition={{ repeat: Infinity, duration: 0.2 }}>
+          <motion.span 
+            key={i} 
+            className="uppercase tracking-wider px-1 border rounded-sm inline-block animate-pulse" 
+            style={{ 
+              color: color || '#ef4444', 
+              borderColor: color ? `${color}40` : 'rgba(239, 68, 68, 0.2)', 
+              backgroundColor: color ? `${color}15` : 'rgba(239, 68, 68, 0.1)',
+              textShadow: color ? `0 0 8px ${color}` : '0 0 8px rgba(239, 68, 68, 0.4)'
+            }} 
+            animate={{ x: [0, -1.2, 1.2, -1.2, 0], y: [0, 1.2, -1.2, 1.2, 0], rotate: [0, 1, -1, 1, 0] }} 
+            transition={{ repeat: Infinity, duration: 0.2 }}
+          >
             {w.replace(/#/g, '')}
           </motion.span>
-        ) : <span key={i} className="text-zinc-100 uppercase tracking-wide">{w.replace(/#/g, '')}</span>;
+        ) : <span key={i} className="uppercase tracking-wide" style={{ color: color || '#f4f4f5' }}>{w.replace(/#/g, '')}</span>;
       })}
     </span>
   );
 }
 
 // 4. Holo Glitch Flicker
-export function HoloDigitalGlitch({ text }: { text: string }) {
+export function HoloDigitalGlitch({ text, color }: { text: string; color?: string }) {
   const letters = Array.from(text);
   return (
-    <span className="leading-relaxed tracking-wider select-none font-mono text-xs text-lime-400 inline-block">
+    <span className="leading-relaxed tracking-wider select-none font-mono text-xs inline-block" style={{ color: color || '#84cc16' }}>
       {letters.map((c, i) => {
         const sp = c === '1' || c === '0' || c === '%' || c === '$' || c === '"';
         return (
-          <motion.span key={i} className={`inline-block ${sp ? 'text-amber-400 font-black' : ''}`} animate={sp ? { opacity: [1, 0.2, 1, 0.7, 1], skewX: [0, 18, -18, 0] } : { opacity: [1, 0.9, 1] }} transition={{ repeat: Infinity, duration: 3.5, ease: "linear", delay: i * 0.05 }}>
+          <motion.span key={i} className={`inline-block ${sp ? 'text-amber-400 font-black' : ''}`} animate={sp ? { opacity: [1, 0.2, 1, 0.7, 1], skewX: [0, 18, -18, 0] } : { opacity: [1, 0.9, 1] }} transition={{ repeat: Infinity, duration: 3.5, ease: "linear", delay: i * 0.05 }} style={sp && color ? { color } : undefined}>
             {c}
           </motion.span>
         );
@@ -73,10 +93,10 @@ export function HoloDigitalGlitch({ text }: { text: string }) {
 }
 
 // 5. Fear Tremble (Pánico / Nervioso)
-export function FearTremble({ text }: { text: string }) {
+export function FearTremble({ text, color }: { text: string; color?: string }) {
   const letters = Array.from(text);
   return (
-    <span className="leading-relaxed select-none font-medium italic text-purple-300 inline-block">
+    <span className="leading-relaxed select-none font-medium italic inline-block" style={{ color: color || '#d8b4fe' }}>
       {letters.map((c, i) => c === ' ' ? <span key={i}>&nbsp;</span> : (
         <motion.span key={i} className="inline-block" animate={{ x: [0, -0.6, 0.6, -0.4, 0], y: [0, 0.4, -0.4, 0.4, 0] }} transition={{ repeat: Infinity, duration: 0.16, ease: "linear", delay: (i % 6) * 0.02 }}>
           {c}
@@ -87,14 +107,14 @@ export function FearTremble({ text }: { text: string }) {
 }
 
 // 6. Pulse Breathe (Monólogo introspectivo)
-export function PulseBreathe({ text }: { text: string }) {
+export function PulseBreathe({ text, color }: { text: string; color?: string }) {
   const words = text.split(' ');
   return (
     <span className="inline-flex flex-wrap gap-x-1 font-medium text-zinc-300">
       {words.map((w, i) => {
         const spec = w.startsWith('#') || w.includes('"');
         return (
-          <motion.span key={i} className={`inline-block ${spec ? 'text-amber-400 font-bold' : ''}`} animate={{ scale: [1, 1.06, 1], opacity: [0.85, 1, 0.85] }} transition={{ repeat: Infinity, duration: 2.6, ease: "easeInOut", delay: i * 0.12 }}>
+          <motion.span key={i} className={`inline-block ${spec ? 'text-amber-400 font-bold' : ''}`} animate={{ scale: [1, 1.06, 1], opacity: [0.85, 1, 0.85] }} transition={{ repeat: Infinity, duration: 2.6, ease: "easeInOut", delay: i * 0.12 }} style={spec && color ? { color } : (color ? { color } : undefined)}>
             {w.replace(/#/g, '')}
           </motion.span>
         );
@@ -104,14 +124,14 @@ export function PulseBreathe({ text }: { text: string }) {
 }
 
 // 7. Sparkling Glow (Destellos neón)
-export function SparklingGlow({ text }: { text: string }) {
+export function SparklingGlow({ text, color }: { text: string; color?: string }) {
   const words = text.split(' ');
   return (
     <span className="inline-flex flex-wrap gap-x-1 font-medium text-zinc-200">
       {words.map((w, i) => {
         const spec = w.startsWith('#') || w.includes('"');
         return (
-          <motion.span key={i} className={`inline-block px-1 rounded-sm ${spec ? 'text-yellow-300 font-bold bg-yellow-950/20 border border-yellow-500/20' : 'text-zinc-200'}`} animate={spec ? { textShadow: ["0 0 3px rgba(234,179,8,0.2)", "0 0 10px rgba(234,179,8,0.6)", "0 0 3px rgba(234,179,8,0.2)"], opacity: [0.9, 1, 0.9] } : { textShadow: ["0 0 0px rgba(255,255,255,0)", "0 0 4px rgba(255,255,255,0.25)", "0 0 0px rgba(255,255,255,0)"] }} transition={{ repeat: Infinity, duration: 1.6 + (i % 3) * 0.3, ease: "easeInOut" }}>
+          <motion.span key={i} className={`inline-block px-1 rounded-sm ${spec ? 'text-yellow-300 font-bold bg-yellow-950/20 border border-yellow-500/20' : 'text-zinc-200'}`} animate={spec ? { textShadow: ["0 0 3px rgba(234,179,8,0.2)", "0 0 10px rgba(234,179,8,0.6)", "0 0 3px rgba(234,179,8,0.2)"], opacity: [0.9, 1, 0.9] } : { textShadow: ["0 0 0px rgba(255,255,255,0)", "0 0 4px rgba(255,255,255,0.25)", "0 0 0px rgba(255,255,255,0)"] }} transition={{ repeat: Infinity, duration: 1.6 + (i % 3) * 0.3, ease: "easeInOut" }} style={spec && color ? { color, borderColor: `${color}40` } : (color ? { color } : undefined)}>
             {w.replace(/#/g, '')}
           </motion.span>
         );
@@ -121,12 +141,12 @@ export function SparklingGlow({ text }: { text: string }) {
 }
 
 // 8. HighlightText (Legacy quote style wave)
-export function HighlightText({ text, isDarkPatternTheme }: { text: string; isDarkPatternTheme: boolean }) {
+export function HighlightText({ text, isDarkPatternTheme, color }: { text: string; isDarkPatternTheme: boolean; color?: string }) {
   const chars = Array.from(text.toUpperCase());
   return (
     <span 
       style={{
-        WebkitTextStroke: isDarkPatternTheme ? '0.8px #22d3ee' : '0.8px #ffffff',
+        WebkitTextStroke: color ? `0.8px ${color}` : (isDarkPatternTheme ? '0.8px #22d3ee' : '0.8px #ffffff'),
         display: 'inline-block'
       }}
       className="font-bold mx-1 select-none"
@@ -134,7 +154,12 @@ export function HighlightText({ text, isDarkPatternTheme }: { text: string; isDa
       {chars.map((char, charIdx) => (
         <motion.span 
           key={charIdx} 
-          style={isDarkPatternTheme ? {
+          style={color ? {
+            display: 'inline-block',
+            whiteSpace: 'pre',
+            color: '#000000',
+            textShadow: `0 0 3px ${color}, 0 0 6px ${color}, 0 0 1px ${color}`
+          } : (isDarkPatternTheme ? {
             display: 'inline-block',
             whiteSpace: 'pre'
           } : {
@@ -142,8 +167,10 @@ export function HighlightText({ text, isDarkPatternTheme }: { text: string; isDa
             whiteSpace: 'pre',
             color: '#000000',
             textShadow: '0 0 3px #ffffff, 0 0 6px #ffffff, 0 0 1px #ffffff'
-          }}
-          animate={isDarkPatternTheme ? { 
+          })}
+          animate={color ? {
+            y: [0, -3.5, 0]
+          } : (isDarkPatternTheme ? { 
             y: [0, -3.5, 0],
             color: ['#090d16', '#22d3ee', '#0891b2', '#090d16'],
             textShadow: [
@@ -153,7 +180,7 @@ export function HighlightText({ text, isDarkPatternTheme }: { text: string; isDa
             ]
           } : {
             y: [0, -3.5, 0]
-          }}
+          })}
           transition={{ 
             repeat: Infinity, 
             duration: isDarkPatternTheme ? 2.8 : 2.2, 
@@ -162,6 +189,98 @@ export function HighlightText({ text, isDarkPatternTheme }: { text: string; isDa
           }}
         >
           {char}
+        </motion.span>
+      ))}
+    </span>
+  );
+}
+
+// 9. Sneaky Stealth (Puntillas de ladrón)
+export function SneakyStealthText({ text, color }: { text: string; color?: string }) {
+  const letters = Array.from(text);
+  return (
+    <span className="leading-relaxed tracking-wide select-none inline-block font-mono text-xs" style={{ color: color || '#7ba077' }}>
+      {letters.map((c, i) => {
+        if (c === ' ') return <span key={i}>&nbsp;</span>;
+        
+        // Alternar izquierdo/derecho (pares e impares) como pies reales en marcha
+        const isLeftFoot = i % 2 === 0;
+        const delay = isLeftFoot ? 0 : 0.8; // Para un ciclo de 1.6s
+        
+        return (
+          <motion.span 
+            key={i} 
+            className="inline-block origin-bottom font-bold" 
+            animate={{ 
+              y: [0, -8, 0, 0, 0, 0],
+              scaleY: [1, 1.25, 1, 1, 1, 1],
+              scaleX: [1, 0.8, 1, 1, 1, 1],
+              rotate: isLeftFoot ? [0, 8, 0, 0, 0, 0] : [0, -8, 0, 0, 0, 0]
+            }} 
+            transition={{ 
+              repeat: Infinity, 
+              duration: 1.6, 
+              ease: "easeInOut", 
+              delay: delay 
+            }}
+          >
+            {c}
+          </motion.span>
+        );
+      })}
+    </span>
+  );
+}
+
+// 10. Spooky Ghost (Flotación fantasmal)
+export function SpookyGhostText({ text, color }: { text: string; color?: string }) {
+  const letters = Array.from(text);
+  return (
+    <span className="leading-relaxed select-none font-medium italic inline-block font-mono" style={{ color: color || '#c084fc' }}>
+      {letters.map((c, i) => c === ' ' ? <span key={i}>&nbsp;</span> : (
+        <motion.span 
+          key={i} 
+          className="inline-block" 
+          animate={{ 
+            y: [0, -3.5, 0],
+            opacity: [0.55, 1, 0.55],
+            skewY: [0, 2, -2, 0]
+          }} 
+          transition={{ 
+            repeat: Infinity, 
+            duration: 6.4, 
+            ease: "easeInOut", 
+            delay: i * 0.30 
+          }}
+        >
+          {c}
+        </motion.span>
+      ))}
+    </span>
+  );
+}
+
+// 11. Frenetic Heartbeat (Pulsaciones rápidas)
+export function FreneticHeartbeatText({ text, color }: { text: string; color?: string }) {
+  const words = text.split(' ');
+  return (
+    <span className="inline-flex flex-wrap gap-x-1 font-bold">
+      {words.map((w, i) => (
+        <motion.span 
+          key={i} 
+          className="inline-block" 
+          style={{ color: color || '#f43f5e' }}
+          animate={{ 
+            scale: [1, 1.25, 0.95, 1.25, 1]
+          }} 
+          transition={{ 
+            repeat: Infinity, 
+            duration: 2.2, 
+            ease: "easeInOut", 
+            delay: i * 0.2 
+          }}
+        >
+          {w}
         </motion.span>
       ))}
     </span>

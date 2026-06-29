@@ -23,7 +23,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_1_init',
     speaker: 'system',
     speakerLabel: 'Narrador',
-    text: 'Tu espíritu se encuentra <tremble>desorientado</tremble>, hay una <highlight>oscuridad</highlight> absoluta. No te queda más opción que <action>levantarte</action>.',
+    text: `Tu espíritu se encuentra <spooky>desorientado</spooky>, hay una <highlight>oscuridad</highlight> absoluta. No te queda más opción que <action>levantarte</action>.`,
     illustration: {
       label: 'Escena 1: La pantalla está en negro absoluto. Mediante un efecto desvanecimiento, comienza a delinearse el protagonista acostado durmiendo.'
     },
@@ -35,7 +35,10 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_2_start',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: 'Hey pequeño pingüino...\nes raro ver espíritus <highlight>conscientes</highlight> como tú estos días...\nla mayoría de ustedes se encuentran apagados por una <glitch>"oscuridad" absoluta</glitch>...\nel hecho de que estés aquí puede ser una señal.',
+    text: `Hey pequeño pingüino...
+Es raro ver espíritus <heartbeat>conscientes</heartbeat> como tú estos días...
+La mayoría de ustedes se encuentran apagados por una <highlight>oscuridad</highlight>...
+El hecho de que estés aquí puede ser una señal.`,
     illustration: {
       label: 'Escena 2: El pingüino se detiene desorientado. A la derecha de la pantalla, un ojo blanco brillante (el Subconsciente) se materializa de entre las sombras para hablarle.'
     },
@@ -60,7 +63,11 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_3_ans_1_first',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: 'No poseo un nombre...\ntampoco recuerdo el momento de mi creación...\nsolo sé que existo en un lugar apartado del mundo...\napartado de la razón...\nalgunos me llaman el <highlight>subconsciente</highlight>.',
+    text: `No poseo un nombre...
+Tampoco recuerdo el momento de mi creación...
+Solo sé que existo en un lugar <wave>apartado del mundo</wave>...
+Apartado de la razón...
+Algunos me llaman el <wave>subconsciente</wave>.`,
     illustration: {
       label: 'Escena 3 - Respuesta 1: El ojo blanco pulsa suavemente de forma rítmica, de pie frente al protagonista.'
     },
@@ -77,7 +84,9 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_3_ans_2_second',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: 'Es una larga historia, en este mundo yacen los espíritus de la gente...\nmuchos han perdido su <highlight>luz</highlight>, han sido <highlight>persuadidos</highlight> y se encuentran <highlight>dormidos</highlight>...\ncuriosamente tú pareces ser la excepción...',
+    text: `Es una larga historia, en este mundo yacen los espíritus de la gente...
+Muchos han perdido su <heartbeat>luz</heartbeat>, han sido <wave>persuadidos</wave> y se encuentran <wave>dormidos</wave>...
+Curiosamente tú pareces ser la excepción...`,
     illustration: {
       label: 'Escena 3 - Respuesta 2: El ojo parpadea suavemente, mostrando melancolía al recordar a las almas caídas.'
     },
@@ -89,7 +98,9 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_3_ans_2_first',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: 'Es una larga historia, en este mundo yacen los espíritus de la gente...\nmuchos han perdido su <highlight>luz</highlight>, han sido <highlight>persuadidos</highlight> y se encuentran <highlight>dormidos</highlight>...\ncuriosamente tú pareces ser la excepción...',
+    text: `Es una larga historia, en este mundo yacen los espíritus de la gente...
+muchos han perdido su <highlight>luz</highlight>, han sido <highlight>persuadidos</highlight> y se encuentran <highlight>dormidos</highlight>...
+curiosamente tú pareces ser la excepción...`,
     illustration: {
       label: 'Escena 3 - Respuesta 2: El ojo parpadea suavemente, mostrando melancolía al recordar a las almas caídas.'
     },
@@ -106,7 +117,11 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_3_ans_1_second',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: 'No poseo un nombre...\ntampoco recuerdo el momento de mi creación...\nsolo sé que existo en un lugar apartado del mundo...\napartado de la razón...\nalgunos me llaman el <highlight>subconsciente</highlight>.',
+    text: `No poseo un nombre...
+tampoco recuerdo el momento de mi creación...
+solo sé que existo en un lugar apartado del mundo...
+apartado de la razón...
+algunos me llaman el <highlight>subconsciente</highlight>.`,
     illustration: {
       label: 'Escena 3 - Respuesta 1: El ojo blanco pulsa suavemente de forma rítmica, de pie frente al protagonista.'
     },
@@ -118,7 +133,8 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_4_walking_start',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: 'Tal como pensaba, el hecho de tu llegada está cambiando algo...\n<action>Acompáñame</action>, siento un alma <highlight>levemente</highlight> despierta...',
+    text: `Tal como pensaba, el hecho de tu llegada está cambiando algo...
+<action>Acompáñame</action>, siento un alma <wave>levemente</wave> despierta...`,
     illustration: {
       label: 'Escena 4: El subconsciente comienza a moverse y el pingüino protagonista camina a su lado.'
     },
@@ -128,7 +144,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_4_walking_transition',
     speaker: 'system',
     speakerLabel: 'Narrador',
-    text: 'Ambos caminan a través de la oscuridad. Una sutil energía entusiasta y militar y un aura distorsionada se perciben adelante...',
+    text: `Ambos caminan a través de la oscuridad. Una sutil energía entusiasta y militar y un aura distorsionada se perciben adelante...`,
     illustration: {
       label: 'Escena 4: La silueta de los personajes avanza a través del limbo en dirección al alma distorsionada.'
     },
@@ -140,7 +156,8 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_5_dialogue_1',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: 'Tal como tú antes de levantarte, esta alma se encuentra perdida, <highlight>oscurecida</highlight> y <highlight>persuadida</highlight>...\nA diferencia tuya, no parece querer levantarse solo...',
+    text: `Tal como tú antes de levantarte, esta alma se encuentra perdida, <spooky>oscurecida</spooky> y <spooky>persuadida</spooky>...
+A diferencia tuya, no parece querer levantarse sola...`,
     illustration: {
       label: 'Escena 5: El protagonista observa el alma oscurecida de Camo durmiendo. El ojo también lo examina.'
     },
@@ -150,7 +167,9 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_5_dialogue_2',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: 'Todas las almas de este mundo son iguales, una vez que el <highlight>Patrón</highlight> las consume.\nDejan de ser <highlight>conscientes</highlight> de lo que les pasó...\nlas consecuencias llegan tarde...',
+    text: `Todas las almas de este mundo son iguales, una vez que el <tremble>Patrón</tremble> las consume.
+Dejan de ser <spooky>conscientes</spooky> de lo que les pasó...
+las consecuencias llegan tarde...`,
     illustration: {
       label: 'Escena 5: El subconsciente explica cómo el Patrón consume a las almas indefensas.'
     },
@@ -160,7 +179,9 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_6_dialogue_1',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: 'No es la única alma en este estado...\npero yo no puedo hacer nada...\nMi poder como <highlight>subconsciente</highlight> es solo mirar, absorber pero nunca <highlight>intervenir</highlight>, tomo y obtengo todo aquello que el espíritu <highlight>ignora</highlight>.',
+    text: `No es la única alma en este estado...
+pero yo no puedo hacer nada...
+Mi poder como <wave>subconsciente</wave> es solo mirar, absorber pero nunca <wave>intervenir</wave>, tomo y obtengo todo aquello que el espíritu <spooky>ignora</spooky>.`,
     illustration: {
       label: 'Escena 6: El protagonista mira el resplandor en sus manos bajo la mirada del ojo.'
     },
@@ -170,7 +191,10 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_6_dialogue_2',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: 'Pero tú eres diferente, puedo sentirlo, es como si pudieras <highlight>decidir</highlight> por tu cuenta, quizás...\nlos dos juntos podamos cambiar la historia de estos espíritus...\ndespertarlos...\nalejarlos de los <highlight>patrones oscuros</highlight> que los acechan.',
+    text: `Pero tú eres diferente, puedo sentirlo, es como si pudieras <shake>decidir</shake> por tu cuenta, quizás...
+los dos juntos podamos <shake>cambiar la historia de estos espíritus</shake>...
+<heartbeat>despertarlos</heartbeat>...
+alejarlos de los <tremble>patrones oscuros</tremble> que los acechan.`,
     illustration: {
       label: 'Escena 6: El subconsciente reconoce la singularidad del protagonista.'
     },
@@ -180,7 +204,8 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_6_dialogue_3',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: 'Adentrémonos en la <highlight>historia</highlight> de este espíritu...\nvale la pena intentar <action>ayudarlo</action>.',
+    text: `Adentrémonos en la <wave>historia</wave> y <wave>alma</wave> de este espíritu...
+vale la pena intentar <action>ayudarlo</action>.`,
     illustration: {
       label: 'Escena 6: El protagonista decide adentrarse en la mente de Camo.'
     },
@@ -190,7 +215,8 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_7_init',
     speaker: 'narrator',
     speakerLabel: 'Narrador',
-    text: 'Puedo ver su pasado...\nSu nombre era <highlight>Camo</highlight>, el pingüino <highlight>sigiloso</highlight>, dentro de la comarca <highlight>pingüinal</highlight>, era conocido como el mejor francotirador.',
+    text: `Puedo ver su <wave>pasado</wave>...
+Su nombre era <sneaky>Camo</sneaky>, el pingüino <sneaky>sigiloso</sneaky>, dentro de la comarca pingüinal, era conocido como el mejor <sneaky>francotirador</sneaky>.`,
     illustration: {
       label: 'Escena 7: Camo en su podio militar con su rifle de francotirador.'
     },
@@ -200,7 +226,11 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_7_dialogue_2',
     speaker: 'narrator',
     speakerLabel: 'Narrador',
-    text: 'Camo vestía su camuflaje con orgullo, y todo el mundo lo conocía por su pericia y aptitud frente a su rol de francotirador...\nEra especialmente <highlight>sigiloso</highlight>...\nmaestro del engaño y del escondite...\nnadie podía ser más <highlight>sigiloso</highlight> que él...\no eso él pensaba...',
+    text: `Camo vestía su camuflaje con orgullo, y todo el mundo lo conocía por su pericia y aptitud frente a su rol de francotirador...
+Era especialmente <sneaky>sigiloso</sneaky>...
+maestro del <tremble>engaño</tremble> y del <tremble>escondite</tremble>...
+nadie podía ser más <sneaky>sigiloso</sneaky> que él...
+o eso él pensaba...`,
     illustration: {
       label: 'Escena 7: Camo vistiendo su camuflaje con orgullo.'
     },
@@ -210,7 +240,8 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_8_init',
     speaker: 'narrator',
     speakerLabel: 'Narrador',
-    text: 'Lamentablemente, como a muchos otros espíritus, este fue cegado por su ego...\ny fue víctima de los <highlight>patrones oscuros</highlight> los cuales lo llevaron a no tener <highlight>decisión propia</highlight>...',
+    text: `Lamentablemente, como a muchos otros espíritus, este fue <spooky>cegado</spooky> por su ego...
+y fue víctima de los <tremble>patrones oscuros</tremble> los cuales lo llevaron a perder la <spooky>decisión propia</spooky>...`,
     illustration: {
       label: 'Escena 8: Camo durmiendo plácidamente acechado por el Patrón Oscuro.'
     },
@@ -220,7 +251,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_9_init',
     speaker: 'narrator',
     speakerLabel: 'Narrador',
-    text: 'Con su experiencia y competencia, Camo fue remunerado con grandes cantidades de <highlight>Dólares pingüinales$</highlight>.',
+    text: `Con su experiencia y competencia, Camo fue remunerado con grandes cantidades de <tremble>Dólares pingüinales$</tremble>.`,
     illustration: {
       label: 'Escena 9: Camo durmiendo plácidamente acechado por el teléfono y rodeado de dinero.'
     },
@@ -230,7 +261,9 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_10_init',
     speaker: 'narrator',
     speakerLabel: 'Narrador',
-    text: 'Uno de sus mayores pasatiempos era recorrer y revisar páginas <highlight>comerciales</highlight> de productos en su celular...\npero como <highlight>Camo</highlight> ya no se encontraba en el campo de batalla, este perdió su rigurosidad y al no sentirse amenazado por enemigos...\nse dejó <highlight>llevar</highlight>...',
+    text: `Uno de sus mayores pasatiempos era recorrer y revisar páginas <tremble>comerciales</tremble> de productos en su celular...
+pero como Camo ya no se encontraba en el campo de batalla, este perdió su <wave>rigurosidad y al no sentirse amenazado por enemigos</wave>...
+se dejó <wave>llevar</wave>...`,
     illustration: {
       label: 'Escena 10: Catálogo del celular en grande para ver detalladamente la interfaz.'
     },
@@ -240,7 +273,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_12_init_1',
     speaker: 'narrator',
     speakerLabel: 'Narrador',
-    text: 'Como cualquier otro día, Camo se encontraba <highlight>surfeando</highlight> páginas de compra en su celular...',
+    text: `Como cualquier otro día, Camo se encontraba <wave>surfeando</wave> páginas de compra en su celular...`,
     illustration: {
       label: 'Escena 12: Camo con un celular gigante que despliega un iglú brillante caricaturesco.'
     },
@@ -250,7 +283,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_12_init_2',
     speaker: 'narrator',
     speakerLabel: 'Narrador',
-    text: 'Todo iba normal hasta que en la página de bienes raíces <highlight>Pinguilario inmobiliario</highlight>, Camo vio el iglú de sus sueños.',
+    text: `Todo iba normal hasta que en la página de bienes raíces <heartbeat>Pinguilario inmobiliario</heartbeat>, Camo vio el iglú de sus sueños.`,
     illustration: {
       label: 'Escena 12: Camo con un celular gigante que despliega un iglú brillante caricaturesco.'
     },
@@ -260,7 +293,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_12_init_3',
     speaker: 'narrator',
     speakerLabel: 'Narrador',
-    text: 'Esto ocasionó un sentimiento <highlight>impulsivo</highlight>, y Camo <highlight>decidió</highlight> obtenerlo a toda costa...',
+    text: `Esto ocasionó un sentimiento <tremble>impulsivo</tremble>, y Camo <shake>decidió</shake> obtenerlo a toda costa...`,
     illustration: {
       label: 'Escena 12: Camo con un celular gigante que despliega un iglú brillante caricaturesco.'
     },
@@ -270,7 +303,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_13_init_1',
     speaker: 'narrator',
     speakerLabel: 'Narrador',
-    text: '¡Camo entró rápidamente a la página!',
+    text: `<heartbeat>¡Camo entró rápidamente a la página!</heartbeat>`,
     illustration: {
       label: 'Escena 13: La pantalla táctica gigante del celular inundada por pop-ups y anuncios persuasivos de compra compulsiva.'
     },
@@ -280,7 +313,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_13_init_2',
     speaker: 'narrator',
     speakerLabel: 'Narrador',
-    text: '¡Lo primero que encontró fue una pantalla llena de botones y anuncios que decían <highlight>comprar ahora</highlight>!',
+    text: `Lo primero que encontró fue una pantalla llena de botones y anuncios que decían <heartbeat>¡comprar ahora!</heartbeat>`,
     illustration: {
       label: 'Escena 13: La pantalla táctica gigante del celular inundada por pop-ups y anuncios persuasivos de compra compulsiva.'
     },
@@ -290,7 +323,9 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_13_init_3',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: '¡Es el momento, toma las riendas y usa tu <highlight>conciencia</highlight> para ayudar a Camo! ¡Lucha contra el Patrón Oscuro y toma las riendas de tus decisiones!\nUsa el <highlight>conocimiento</highlight> de <highlight>sigilo</highlight> de Camo, ponte atento y no te dejes llevar por ilusiones!\nRecuerda: ¡el camino más llamativo y fácil casi nunca es el correcto!',
+    text: `¡Es el momento, toma las riendas y usa tu <wave>conciencia</wave> para ayudar a Camo! ¡Lucha contra el <tremble>Patrón Oscuro y toma las riendas de tus decisiones</tremble>!
+Usa el <sneaky>conocimiento</sneaky> de <sneaky>sigilo</sneaky> de Camo, ponte atento y no te dejes llevar por ilusiones!
+Recuerda: ¡el camino más llamativo y fácil casi nunca es el correcto!`,
     illustration: {
       label: 'Escena 13: La pantalla táctica gigante del celular inundada por pop-ups y anuncios persuasivos de compra compulsiva.'
     },
@@ -300,7 +335,9 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_11_init',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: 'A este paso la historia de Camo tendrá un trágico final, ayúdame <highlight>[nombre del jugador]</highlight>, yo solo puedo narrar y absorber...\npero <highlight>TÚ</highlight> puedes hacer la diferencia!\nayuda a Camo a tomar la decisión correcta, tu <highlight>conciencia</highlight> frente a los <highlight>patrones oscuros</highlight> puede <action>ayudarlo</action>.',
+    text: `A este paso la historia de Camo tendrá un trágico final, ayúdame <wave>[nombre del jugador]</wave>, yo solo puedo narrar y absorber...
+pero <wave>TÚ</wave> puedes hacer la diferencia!
+ayuda a Camo a tomar la decisión correcta, tu <wave>conciencia</wave> frente a los <tremble>patrones oscuros</tremble> puede <action>ayudarlo</action>.`,
     illustration: {
       label: 'Escena 11: Aleta de pingüino presionando el botón Pagar repetidamente.'
     },
@@ -310,7 +347,10 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_14_init',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: '¡Te enfrentarás al Patrón Oscuro!\n¡Un ser que solo busca obtener su beneficio sin que te des cuenta!\nestá intentando aplicar <highlight>Anuncios Disfrazados</highlight> para manipular a Camo!\n¡Interviene y toma la decisión que ayude a Camo a combatir el Patrón Oscuro!',
+    text: `¡Te enfrentarás al Patrón Oscuro!
+¡Un ser que solo busca obtener su beneficio sin que te des cuenta!
+está intentando aplicar <highlight>Anuncios Disfrazados</highlight> para manipular a Camo!
+¡Interviene y toma la decisión que ayude a Camo a combatir el Patrón Oscuro!`,
     illustration: {
       label: 'Escena 14: Camo peleando con el Patrón Oscuro en un choque de energías.'
     },
@@ -320,14 +360,14 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_14_choice',
     speaker: 'system',
     speakerLabel: 'Narrador',
-    text: '¿Cómo debe actuar Camo ante la avalancha de <glitch>"Anuncios Disfrazados"</glitch> del <shake>Patrón Oscuro</shake>?',
+    text: `¿Cómo debe actuar Camo ante la avalancha de <highlight>Anuncios Disfrazados</highlight> del Patrón Oscuro?`,
     illustration: {
       label: 'Escena 14: La batalla mental entre Camo y el Patrón Oscuro, esperando tu decisión.'
     },
     choices: [
       {
         id: 'camo_c1',
-        text: 'Tomas desesperadamente el celular y presionas <highlight>todos los botones</highlight>, pensando solo en ti, en tu iglú y un rico café caliente.',
+        text: 'Tomas desesperadamente el celular y presionas todos los botones, pensando solo en ti, en tu iglú y un rico café caliente.',
         nextNodeId: 'scene_14_resultado_1',
         isCorrect: false,
       },
@@ -349,7 +389,9 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_14_resultado_1',
     speaker: 'narrator',
     speakerLabel: 'Narrador',
-    text: 'Luego de presionar todos los anuncios de las páginas, ¡se abren múltiples ventanas y se descargan múltiples archivos!, pero en su apuro, Camo ignora todo esto y prosigue por una página externa...\n\n¡Has caído en el patrón oscuro!',
+    text: `Luego de presionar todos los anuncios de las páginas, ¡se abren múltiples ventanas y se descargan múltiples archivos!, pero en su apuro, Camo ignora todo esto y prosigue por una página externa...
+
+¡Has caído en el patrón oscuro!`,
     illustration: {
       label: 'Resultado 1: Camo asustado frente a un celular lleno de pop-ups y descargas maliciosas.'
     },
@@ -359,7 +401,9 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_14_explicacion_1',
     speaker: 'narrator',
     speakerLabel: 'Explicación del Patrón',
-    text: 'El <highlight>Patrón Oscuro</highlight> del enemigo utilizado fue Sneaking (Sigilo) en combinación con Bait and Switch (Señuelo y Cambio) para ejecutar la técnica de <highlight>Disguised Ads</highlight> (Anuncios Disfrazados).\n\nEsto consiste en diseñar y maquillar anuncios de modo que parezcan elementos legítimos de la interfaz (botones de descarga, flechas de continuar, etc.). Los usuarios pulsan en ellos asumiendo que es una interacción válida del sitio, cayendo en descargas de software no deseado o redirecciones maliciosas.',
+    text: `El <highlight>Patrón Oscuro</highlight> del enemigo utilizado fue Sneaking <highlight>en combinación con Bait and Switch (Señuelo y Cambio) para ejecutar la técnica de</highlight><highlight>Disguised Ads</highlight> (Anuncios Disfrazados).
+
+Esto consiste en diseñar y maquillar anuncios de modo que parezcan elementos legítimos de la interfaz (botones de descarga, flechas de continuar, etc.). Los usuarios pulsan en ellos asumiendo que es una interacción válida del sitio, cayendo en descargas de software no deseado o redirecciones maliciosas.`,
     illustration: {
       label: 'Explicación 1: Patrón alegre celebrando al haber engañado a Camo.'
     },
@@ -369,7 +413,9 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_14_resultado_2',
     speaker: 'narrator',
     speakerLabel: 'Narrador',
-    text: 'Avanzas exitosamente al siguiente paso de compra, pero te queda una pequeña desconfianza de la plataforma, la cual tenía un exceso de anuncios.\n\n¡Has evitado el patrón oscuro!',
+    text: `Avanzas exitosamente al siguiente paso de compra, pero te queda una pequeña desconfianza de la plataforma, la cual tenía un exceso de anuncios.
+
+¡Has evitado el patrón oscuro!`,
     illustration: {
       label: 'Resultado 2: Camo concentrado encontrando el botón de reserva real entre anuncios atenuados.'
     },
@@ -379,7 +425,12 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_14_explicacion_2',
     speaker: 'narrator',
     speakerLabel: 'Explicación del Patrón',
-    text: '¡Muy bien! Lograste superar el patrón de Disguised Ads (Anuncios Disfrazados).\nEl <highlight>Patrón Oscuro</highlight> del enemigo utilizado fue Sneaking (Sigilo) en combinación con Bait and Switch (Señuelo y Cambio) para ejecutar la técnica de <highlight>Disguised Ads</highlight> (Anuncios Disfrazados).\n\nEsto consiste en diseñar y maquillar anuncios de modo que parezcan elementos legítimos de la interfaz (botones de descarga, flechas de continuar, etc.). Los usuarios pulsan en ellos asumiendo que es una interacción válida del sitio, cayendo en descargas de software no deseado o redirecciones maliciosas.\n\nAl fijarte con atención, notaste la inconsistencia visual de los anuncios encubiertos. En la web, un diseño fuera de tema o inconsistente suele delatar fuentes patrocinadas o anuncios disfrazados. Detenerse y examinar la coherencia del diseño es una defensa fundamental.',
+    text: `¡Muy bien! Lograste superar el patrón de Disguised Ads (Anuncios Disfrazados).
+El <highlight>Patrón Oscuro</highlight> del enemigo utilizado fue Sneaking <highlight>en combinación con Bait and Switch (Señuelo y Cambio) para ejecutar la técnica de</highlight><highlight>Disguised Ads</highlight> (Anuncios Disfrazados).
+
+Esto consiste en diseñar y maquillar anuncios de modo que parezcan elementos legítimos de la interfaz (botones de descarga, flechas de continuar, etc.). Los usuarios pulsan en ellos asumiendo que es una interacción válida del sitio, cayendo en descargas de software no deseado o redirecciones maliciosas.
+
+Al fijarte con atención, notaste la inconsistencia visual de los anuncios encubiertos. En la web, un diseño fuera de tema o inconsistente suele delatar fuentes patrocinadas o anuncios disfrazados. Detenerse y examinar la coherencia del diseño es una defensa fundamental.`,
     illustration: {
       label: 'Explicación 2: Patrón derrotado con el núcleo apagado tras identificar la trampa.'
     },
@@ -389,7 +440,9 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_14_resultado_3',
     speaker: 'narrator',
     speakerLabel: 'Narrador',
-    text: 'Luego de revisar cuidadosamente otras páginas y experiencias de usuarios confiables, te enteras que el estándar es usar <highlight>Polo Iglús</highlight>, vas y buscas el mismo iglú en esta página segura.\n\n¡Has evitado el patrón oscuro!',
+    text: `Luego de revisar cuidadosamente otras páginas y experiencias de usuarios confiables, te enteras que el estándar es usar <highlight>Polo Iglús</highlight>, vas y buscas el mismo iglú en esta página segura.
+
+¡Has evitado el patrón oscuro!`,
     illustration: {
       label: 'Resultado 3: Camo celebrando con su iglú verificado y seguro.'
     },
@@ -399,7 +452,10 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_14_explicacion_3',
     speaker: 'narrator',
     speakerLabel: 'Explicación del Patrón',
-    text: '¡Muy bien! Lograste superar el patrón de Disguised Ads (Anuncios Disfrazados).\nEl <highlight>Patrón Oscuro</highlight> del enemigo utilizado fue Sneaking (Sigilo) en combinación con Bait and Switch (Señuelo y Cambio) para ejecutar la técnica de <highlight>Disguised Ads</highlight> (Anuncios Disfrazados).\n\nEsto consiste en diseñar y maquillar anuncios de modo que parezcan elementos legítimos de la interfaz (botones de descarga, flechas de continuar, etc.). Los usuarios pulsan en ellos asumiendo que es una interacción válida del sitio, cayendo en descargas de software no deseado o redirecciones maliciosas.',
+    text: `¡Muy bien! Lograste superar el patrón de Disguised Ads (Anuncios Disfrazados).
+El <highlight>Patrón Oscuro</highlight> del enemigo utilizado fue Sneaking <highlight>en combinación con Bait and Switch (Señuelo y Cambio) para ejecutar la técnica de</highlight><highlight>Disguised Ads</highlight> (Anuncios Disfrazados).
+
+Esto consiste en diseñar y maquillar anuncios de modo que parezcan elementos legítimos de la interfaz (botones de descarga, flechas de continuar, etc.). Los usuarios pulsan en ellos asumiendo que es una interacción válida del sitio, cayendo en descargas de software no deseado o redirecciones maliciosas.`,
     illustration: {
       label: 'Explicación 3: Patrón derrotado con el núcleo apagado.'
     },
@@ -410,7 +466,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_15_init_1',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: 'Una vez dentro del proceso de compra, Camo se enfrenta a la tediosa tarea de <highlight>confirmar todos los pasos para completar la compra</highlight>... sin perder la <highlight>paciencia</highlight>.',
+    text: `Una vez dentro del proceso de compra, Camo se enfrenta a la tediosa tarea de <highlight>confirmar todos los pasos para completar la compra</highlight>... sin perder la <highlight>paciencia</highlight>.`,
     illustration: {
       label: 'Escena 15: Camo en el sillón revisando el proceso de compra en su celular.'
     },
@@ -420,7 +476,8 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_15_init_2',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: 'De otras experiencias, Camo sabe que la mayoría de páginas tienen el mismo proceso de compra...\npor lo que se prepara para repetir lo que está acostumbrado a hacer...',
+    text: `De otras experiencias, Camo sabe que la mayoría de páginas tienen el mismo proceso de compra...
+por lo que se prepara para repetir lo que está acostumbrado a hacer...`,
     illustration: {
       label: 'Escena 15: Camo confiado, listo para presionar siguiente sin leer.'
     },
@@ -430,7 +487,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_15_init_3',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: 'Así es, presionar siguiente <highlight>sin leer</highlight> ni una <highlight>aleta de pingüino</highlight>...',
+    text: `Así es, presionar siguiente <highlight>sin leer</highlight> ni una <highlight>aleta de pingüino</highlight>...`,
     illustration: {
       label: 'Escena 15: Camo presionando siguiente repetidamente sin mirar la pantalla.'
     },
@@ -440,7 +497,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_15_init_4',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: 'Sin saberlo, dentro de estos numerosos pasos, Camo no solo estaba pagando la totalidad de su iglú de ensueño, sino también un seguro opcional para cubrirlo en caso de que su iglú se viera afectado por <highlight>Bombas atómicas</highlight> enviadas por los pingüinos del <highlight>Polo Norte</highlight>...',
+    text: `Sin saberlo, dentro de estos numerosos pasos, Camo no solo estaba pagando la totalidad de su iglú de ensueño, sino también un seguro opcional para cubrirlo en caso de que su iglú se viera afectado por <highlight>Bombas atómicas</highlight> enviadas por los pingüinos del <highlight>Polo Norte</highlight>...`,
     illustration: {
       label: 'Escena 15: Pantalla del celular mostrando el seguro Anti-Bombardeo atómico en letra pequeña.'
     },
@@ -450,7 +507,8 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_15_init_4b',
     speaker: 'system',
     speakerLabel: 'Narrador',
-    text: '¡NO HAY PINGÜINOS EN EL POLO NORTE! \nAsí es... un cobro mensual... Para ser un francotirador renombrado, Camo no esperaba mucho al navegar por internet...',
+    text: `¡NO HAY PINGÜINOS EN EL POLO NORTE!
+Así es... un cobro mensual... Para ser un francotirador renombrado, Camo no esperaba mucho al navegar por internet...`,
     illustration: {
       label: 'Escena 15: Revelación dramática - No hay pingüinos en el Polo Norte.'
     },
@@ -460,20 +518,20 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_15_choice',
     speaker: 'system',
     speakerLabel: 'Narrador',
-    text: '¡Camo está por caer en otro <highlight>patrón oscuro</highlight>, extiéndele una mano! ¡Es tu momento de ayudarlo!',
+    text: `¡Camo está por caer en otro <highlight>patrón oscuro</highlight>, extiéndele una mano! ¡Es tu momento de ayudarlo!`,
     illustration: {
       label: 'Escena 15: Camo ante la decisión de leer o presionar siguiente.'
     },
     choices: [
       {
         id: 'drip_c1',
-        text: 'Recuerdas tus enseñanzas militares y, al haber ya evadido el primer <highlight>patrón oscuro</highlight>, entras en un estado de alerta y <highlight>lees atentamente</highlight> cada paso y término antes de proceder al siguiente.',
+        text: 'Recuerdas tus enseñanzas militares y, al haber ya evadido el primer patrón oscuro, entras en un estado de alerta y lees atentamente cada paso y término antes de proceder al siguiente.',
         nextNodeId: 'scene_15_resultado_1',
         isCorrect: true,
       },
       {
         id: 'drip_c2',
-        text: 'Ya confiado de haber superado la barrera de anuncios exitosamente, no piensas y presionas rápidamente el <highlight>llamativo</highlight> botón de siguiente.',
+        text: 'Ya confiado de haber superado la barrera de anuncios exitosamente, no piensas y presionas rápidamente el llamativo botón de siguiente.',
         nextNodeId: 'scene_15_resultado_2',
         isCorrect: false,
       }
@@ -483,7 +541,9 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_15_resultado_1',
     speaker: 'narrator',
     speakerLabel: 'Narrador',
-    text: 'Pasas atentamente por cada paso, te das cuenta de que el seguro de bombas atómicas es totalmente innecesario y que tendrías que pagar una <highlight>pingüinada</highlight> cada mes. Profundamente, Camo también piensa que podría dispararle a la bomba antes de que cayera... Sin duda Camo confía <highlight>excesivamente</highlight> en su habilidad... Camo decide optar por salir del seguro y sigue al final de la compra.\n\n¡Has evitado el patrón oscuro!',
+    text: `Pasas atentamente por cada paso, te das cuenta de que el seguro de bombas atómicas es totalmente innecesario y que tendrías que pagar una <highlight>pingüinada</highlight> cada mes. Profundamente, Camo también piensa que podría dispararle a la bomba antes de que cayera... Sin duda Camo confía <highlight>excesivamente</highlight> en su habilidad... Camo decide optar por salir del seguro y sigue al final de la compra.
+
+¡Has evitado el patrón oscuro!`,
     illustration: {
       label: 'Resultado 15-1: Camo con lupa, desmarcando el seguro innecesario.'
     },
@@ -493,7 +553,13 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_15_explicacion_1',
     speaker: 'narrator',
     speakerLabel: 'Explicación del Patrón',
-    text: '¡Bien hecho! Lograste detectar el patrón de Drip Pricing (Precios por Goteo).\n\nEl Patrón Oscuro que aplicó el enemigo en este caso pertenece a la categoría general de Sneaking (Sigilo). A través de la técnica intermedia de Hiding Information (Ocultación de Información), ejecutó el patrón específico de Drip Pricing (Precios por Goteo) con éxito.\n\nConsiste en agregar un cargo oculto en un paso tardío del proceso de compra, contando con que el apuro y el esfuerzo ya invertido te llevarán a ignorarlo para no perder el tiempo dedicado.\n\nEste Patrón Oscuro aprovecha eso para aplicar cobros adicionales o extraer información personal.',
+    text: `¡Bien hecho! Lograste detectar el patrón de Drip Pricing (Precios por Goteo).
+
+El Patrón Oscuro que aplicó el enemigo en este caso pertenece a la categoría general de Sneaking (Sigilo). A través de la técnica intermedia de Hiding Information (Ocultación de Información), ejecutó el patrón específico de Drip Pricing <highlight>con éxito</highlight>.
+
+Consiste en agregar un cargo oculto en un paso tardío del proceso de compra, contando con que el apuro y el esfuerzo ya invertido te llevarán a ignorarlo para no perder el tiempo dedicado.
+
+Este Patrón Oscuro aprovecha eso para aplicar cobros adicionales o extraer información personal.`,
     illustration: {
       label: 'Explicación 15-1: Patrón derrotado con el núcleo apagado.'
     },
@@ -503,7 +569,9 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_15_resultado_2',
     speaker: 'narrator',
     speakerLabel: 'Narrador',
-    text: 'Te apresuras y completas la compra con todos los <highlight>seguros</highlight> intermediarios. No te ves afectado por la decisión inmediatamente y en el fondo pagar una mensualidad sin ser <highlight>consciente</highlight> de ello no es relevante para Camo económicamente... pero no puedes dejar de sentir que están usando tu apuro y sentimiento para quitarte tu autonomía... tu alma se apaga nuevamente.\n\n¡Has caído en el patrón oscuro!',
+    text: `Te apresuras y completas la compra con todos los <highlight>seguros</highlight> intermediarios. No te ves afectado por la decisión inmediatamente y en el fondo pagar una mensualidad sin ser <highlight>consciente</highlight> de ello no es relevante para Camo económicamente... pero no puedes dejar de sentir que están usando tu apuro y sentimiento para quitarte tu autonomía... tu alma se apaga nuevamente.
+
+¡Has caído en el patrón oscuro!`,
     illustration: {
       label: 'Resultado 15-2: Camo asustado con el cobro mensual inesperado.'
     },
@@ -513,7 +581,11 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_15_explicacion_2',
     speaker: 'narrator',
     speakerLabel: 'Explicación del Patrón',
-    text: 'El Patrón Oscuro que aplicó el enemigo en este caso pertenece a la categoría general de Sneaking (Sigilo). A través de la técnica intermedia de Hiding Information (Ocultación de Información), ejecutó el patrón específico de Drip Pricing (Precios por Goteo) con éxito.\n\nConsiste en agregar un cargo oculto en un paso tardío del proceso de compra, contando con que el apuro y el esfuerzo ya invertido te llevarán a ignorarlo para no perder el tiempo dedicado.\n\nEste Patrón Oscuro aprovecha eso para aplicar cobros adicionales o extraer información personal.',
+    text: `El Patrón Oscuro que aplicó el enemigo en este caso pertenece a la categoría general de Sneaking (Sigilo). A través de la técnica intermedia de Hiding Information (Ocultación de Información), ejecutó el patrón específico de Drip Pricing <highlight>con éxito</highlight>.
+
+Consiste en agregar un cargo oculto en un paso tardío del proceso de compra, contando con que el apuro y el esfuerzo ya invertido te llevarán a ignorarlo para no perder el tiempo dedicado.
+
+Este Patrón Oscuro aprovecha eso para aplicar cobros adicionales o extraer información personal.`,
     illustration: {
       label: 'Explicación 15-2: Patrón alegre celebrando el cobro mensual aceptado.'
     },
@@ -524,7 +596,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_18_init_1',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: 'Al evadir el cobro de seguros ocultos, Camo continúa hacia el siguiente y último paso de la transacción: seleccionar un método de financiación para su iglú...',
+    text: `Al evadir el cobro de seguros ocultos, Camo continúa hacia el siguiente y último paso de la transacción: seleccionar un método de financiación para su iglú...`,
     illustration: {
       label: 'Escena 18: Camo en el sillón revisando las opciones de pago en su celular.'
     },
@@ -534,7 +606,9 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_18_init_2',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: 'La interfaz presenta tres planes de pago. Uno de ellos está resaltado con bordes brillantes y un cartel de <highlight>más popular</highlight> en un llamativo color verde...\n¿Quién lo esperaría?...\nCamo <highlight>AMA</highlight> el color <highlight>Verde</highlight>...',
+    text: `La interfaz presenta tres planes de pago. Uno de ellos está resaltado con bordes brillantes y un cartel de <highlight>más popular</highlight> en un llamativo color verde...
+¿Quién lo esperaría?...
+Camo <highlight>AMA</highlight> el color <highlight>Verde</highlight>...`,
     illustration: {
       label: 'Escena 18: Interfaz de selección de plan destacando la opción premium en verde.'
     },
@@ -544,7 +618,8 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_18_init_3',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: 'Este Plan Premium promete una tasa de interés del <highlight>3.5% TNA</highlight> (Tasa Nominal Anual, que es el interés base anual sin incluir cargos adicionales), que a simple vista parece menor y más conveniente que la del Plan Estándar del <highlight>8.9% TNA</highlight>. \nCamo siente la inercia de seleccionar el botón verde inmediatamente, con mayor fuerza...',
+    text: `Este Plan Premium promete una tasa de interés del <highlight>3.5% TNA</highlight> (Tasa Nominal Anual, que es el interés base anual sin incluir cargos adicionales), que a simple vista parece menor y más conveniente que la del Plan Estándar del <highlight>8.9% TNA</highlight>.
+Camo siente la inercia de seleccionar el botón verde inmediatamente, con mayor fuerza...`,
     illustration: {
       label: 'Escena 18: Camo tentado a hacer clic en el botón premium de tasa nominal baja.'
     },
@@ -554,7 +629,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_18_init_4',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: 'Sin embargo, Camo no advierte la trampa oculta: el llamativo Plan Premium lo obligará a pagar durante <highlight>240 meses</highlight> (¡20 largos años!) a un interés real del <highlight>45.2% TEA</highlight> (Tasa Efectiva Anual, que es el interés real que terminas pagando al año incluyendo todos los cargos adicionales y comisiones), resultando en un costo total mucho mayor y menos conveniente que el Plan Estándar, el cual se liquida en solo <highlight>36 meses</highlight> con un <highlight>9.5% TEA</highlight> total, siendo este el plan más conveniente.',
+    text: `Sin embargo, Camo no advierte la trampa oculta: el llamativo Plan Premium lo obligará a pagar durante <highlight>240 meses</highlight> <highlight>a un interés real del</highlight><highlight>45.2% TEA</highlight> (Tasa Efectiva Anual, que es el interés real que terminas pagando al año incluyendo todos los cargos adicionales y comisiones), resultando en un costo total mucho mayor y menos conveniente que el Plan Estándar, el cual se liquida en solo <highlight>36 meses</highlight> con un <highlight>9.5% TEA</highlight> total, siendo este el plan más conveniente.`,
     illustration: {
       label: 'Escena 18: Comparativa de plazos y tasas efectivas reales ocultas en la interfaz.'
     },
@@ -564,7 +639,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_18_init_4b',
     speaker: 'system',
     speakerLabel: 'Narrador',
-    text: 'El sistema destaca una tasa de interés menor como <highlight>ancla de referencia</highlight> visual para atraer su atención, y coloca opciones peores al lado para empujarlo a elegir el plan más costoso pensando que es una gran oferta.',
+    text: `El sistema destaca una tasa de interés menor como <highlight>ancla de referencia</highlight> visual para atraer su atención, y coloca opciones peores al lado para empujarlo a elegir el plan más costoso pensando que es una gran oferta.`,
     illustration: {
       label: 'Escena 18: El efecto de precios de referencia manipulando la percepción de conveniencia.'
     },
@@ -574,7 +649,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_18_choice',
     speaker: 'system',
     speakerLabel: 'Narrador',
-    text: '¡Camo está a punto de firmar un <shake>financiamiento abusivo de 20 años</shake>! ¡Ayúdalo a evaluar el costo financiero real y elegir correctamente!',
+    text: `¡Camo está a punto de firmar un financiamiento abusivo de 20 años! ¡Ayúdalo a evaluar el costo financiero real y elegir correctamente!`,
     illustration: {
       label: 'Escena 18: La batalla mental entre Camo y el Patrón Oscuro, esperando tu decisión.'
     },
@@ -597,7 +672,9 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_18_resultado_1',
     speaker: 'narrator',
     speakerLabel: 'Narrador',
-    text: 'Camo detecta que el <highlight>Plan Premium</highlight> tiene un plazo de 20 años y un costo final mucho mayor que lo atará de por vida. Identifica que esa opción no es la más conveniente y decide seleccionar el Plan Estándar de 36 meses, pagando mucho menos en total.\n\n¡Has evitado el patrón oscuro!',
+    text: `Camo detecta que el <highlight>Plan Premium</highlight> tiene un plazo de 20 años y un costo final mucho mayor que lo atará de por vida. Identifica que esa opción no es la más conveniente y decide seleccionar el Plan Estándar de 36 meses, pagando mucho menos en total.
+
+¡Has evitado el patrón oscuro!`,
     illustration: {
       label: 'Resultado 18-1: Camo seleccionando con éxito el Plan Estándar justo.'
     },
@@ -607,7 +684,13 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_18_explicacion_1',
     speaker: 'narrator',
     speakerLabel: 'Explicación del Patrón',
-    text: '¡Bien hecho! Lograste detectar el patrón de Reference Pricing (Precios de Referencia).\n\nEl Patrón Oscuro que aplicó el enemigo en este caso pertenece a la categoría general de Sneaking (Sigilo). A través de la técnica intermedia de Hiding Information (Ocultación de Información), ejecutó el patrón específico de Reference Pricing (Precios de Referencia) con éxito.\n\nConsiste en destacar visualmente un interés mensual menor como referencia engañosa para empujar al usuario a elegir un plan con un plazo y costo total mucho mayores y menos convenientes.\n\nEste Patrón Oscuro aprovecha eso para guiar las decisiones del usuario hacia la alternativa que genera mayor ganancia para la plataforma y menos conveniencia para ti.',
+    text: `¡Bien hecho! Lograste detectar el patrón de Reference Pricing (Precios de Referencia).
+
+El Patrón Oscuro que aplicó el enemigo en este caso pertenece a la categoría general de Sneaking (Sigilo). A través de la técnica intermedia de Hiding Information (Ocultación de Información), ejecutó el patrón específico de Reference Pricing <highlight>con éxito</highlight>.
+
+Consiste en destacar visualmente un interés mensual menor como referencia engañosa para empujar al usuario a elegir un plan con un plazo y costo total mucho mayores y menos convenientes.
+
+Este Patrón Oscuro aprovecha eso para guiar las decisiones del usuario hacia la alternativa que genera mayor ganancia para la plataforma y menos conveniencia para ti.`,
     illustration: {
       label: 'Explicación 18-1: Patrón derrotado con el núcleo apagado.'
     },
@@ -617,7 +700,9 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_18_resultado_2',
     speaker: 'narrator',
     speakerLabel: 'Narrador',
-    text: 'Camo elige el Plan Premium deslumbrado por una tasa de interés que parecía menor. No advierte que el plazo de 240 meses implica un costo final mucho mayor y menos conveniente para su bolsillo. Ha aceptado un plan abusivo por una ilusión de descuento promovida por un plan verde e imponente.\n\n¡Has caído en el patrón oscuro!',
+    text: `Camo elige el Plan Premium deslumbrado por una tasa de interés que parecía menor. No advierte que el plazo de 240 meses implica un costo final mucho mayor y menos conveniente para su bolsillo. Ha aceptado un plan abusivo por una ilusión de descuento promovida por un plan verde e imponente.
+
+¡Has caído en el patrón oscuro!`,
     illustration: {
       label: 'Resultado 18-2: Camo lamentando el financiamiento a 20 años.'
     },
@@ -627,7 +712,11 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_18_explicacion_2',
     speaker: 'narrator',
     speakerLabel: 'Explicación del Patrón',
-    text: 'El Patrón Oscuro que aplicó el enemigo en este caso pertenece a la categoría general de Sneaking (Sigilo). A través de la técnica intermedia de Hiding Information (Ocultación de Información), ejecutó el patrón específico de Reference Pricing (Precios de Referencia) con éxito.\n\nConsiste en destacar visualmente un interés mensual menor como referencia engañosa para empujar al usuario a elegir un plan con un plazo y costo total mucho mayores y menos convenientes.\n\nEste Patrón Oscuro aprovecha eso para guiar las decisiones del usuario hacia la alternativa que genera mayor ganancia para la plataforma y menos conveniencia para ti.',
+    text: `El Patrón Oscuro que aplicó el enemigo en este caso pertenece a la categoría general de Sneaking (Sigilo). A través de la técnica intermedia de Hiding Information (Ocultación de Información), ejecutó el patrón específico de Reference Pricing <highlight>con éxito</highlight>.
+
+Consiste en destacar visualmente un interés mensual menor como referencia engañosa para empujar al usuario a elegir un plan con un plazo y costo total mucho mayores y menos convenientes.
+
+Este Patrón Oscuro aprovecha eso para guiar las decisiones del usuario hacia la alternativa que genera mayor ganancia para la plataforma y menos conveniencia para ti.`,
     illustration: {
       label: 'Explicación 18-2: Patrón alegre celebrando la firma del contrato abusivo.'
     },
@@ -638,7 +727,10 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_21_init_1',
     speaker: 'camo',
     speakerLabel: 'Camo',
-    text: '¡Muchas gracias, camarada!\nAl ayudarme a evadir las garras del Patrón Oscuro y sus engañosos patrones de diseño, salvaste mi subconsciente y evitaste que <highlight>tomara decisiones sin darme cuenta</highlight>...\n¡Siempre debo recordar las enseñanzas militares!\n¡El enemigo más sigiloso... es el más mortal!',
+    text: `¡Muchas gracias, camarada!
+Al ayudarme a evadir las garras del Patrón Oscuro y sus engañosos patrones de diseño, salvaste mi subconsciente y evitaste que <highlight>tomara decisiones sin darme cuenta</highlight>...
+¡Siempre debo recordar las enseñanzas militares!
+¡El enemigo más sigiloso... es el más mortal!`,
     illustration: {
       label: 'Escena 21: Camo de pie agradeciendo alegremente al protagonista.'
     },
@@ -648,7 +740,8 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_21_init_2',
     speaker: 'camo',
     speakerLabel: 'Camo',
-    text: 'Me has enseñado a ver más allá de los colores llamativos y los elementos convenientemente ubicados. ¡Ahora entiendo cómo operan estas interfaces oscuras y sus oscuros planes!\n¡Usan el <highlight>sigilo</highlight> para <highlight>adentrarse en nuestras decisiones</highlight>!',
+    text: `Me has enseñado a ver más allá de los colores llamativos y los elementos convenientemente ubicados. ¡Ahora entiendo cómo operan estas interfaces oscuras y sus oscuros planes!
+¡Usan el <highlight>sigilo</highlight> para <highlight>adentrarse en nuestras decisiones</highlight>!`,
     illustration: {
       label: 'Escena 21: Camo conversando con entusiasmo con el protagonista.'
     },
@@ -659,7 +752,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_22_init_1',
     speaker: 'system',
     speakerLabel: 'Patrón Oscuro',
-    text: '¡Malditos intrusos! ¿Cómo se atreven a entrometerse en mi dominio y desbaratar mis planes de <highlight>robo de voluntad</highlight>?',
+    text: `¡Malditos intrusos! ¿Cómo se atreven a entrometerse en mi dominio y desbaratar mis planes de <highlight>robo de voluntad</highlight>?`,
     illustration: {
       label: 'Escena 22: El Patrón Oscuro retorciéndose con furia inestable en rojo y púrpura.'
     },
@@ -669,7 +762,9 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_22_init_2',
     speaker: 'system',
     speakerLabel: 'Patrón Oscuro',
-    text: '¡Y tú, <highlight>subconsciente</highlight>, quédate quieto y no intervengas poniéndole ideas en la cabeza a los pingüinos!\n¡No me sirve que estos tomen sus propias decisiones!\nNo permitiré que arruines mi sagrada misión de engañarlos y arrebatarles su <highlight>poder de decisión y voluntad</highlight>...',
+    text: `¡Y tú, <highlight>subconsciente</highlight>, quédate quieto y no intervengas poniéndole ideas en la cabeza a los pingüinos!
+¡No me sirve que estos tomen sus propias decisiones!
+No permitiré que arruines mi sagrada misión de engañarlos y arrebatarles su <highlight>poder de decisión y voluntad</highlight>...`,
     illustration: {
       label: 'Escena 22: El Patrón Oscuro lanzando destellos hostiles hacia el Ojo Blanco.'
     },
@@ -680,7 +775,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_23_init_1',
     speaker: 'narrator',
     speakerLabel: 'Narrador',
-    text: 'El Patrón Oscuro, incapaz de resistir la fuerza de la verdad revelada, comienza a perder estabilidad y huye, disipándose en las profundidades del subconsciente...',
+    text: `El Patrón Oscuro, incapaz de resistir la fuerza de la verdad revelada, comienza a perder estabilidad y huye, disipándose en las profundidades del subconsciente...`,
     illustration: {
       label: 'Escena 23: El Patrón Oscuro encogiéndose y huyendo al infinito.'
     },
@@ -690,7 +785,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_23_init_2',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: 'Hemos logrado salvar al primer espíritu de un pingüino, liberándolo de las cadenas de la <highlight>manipulación</highlight> mediante <highlight>patrones oscuros</highlight>...',
+    text: `Hemos logrado salvar al primer espíritu de un pingüino, liberándolo de las cadenas de la <highlight>manipulación</highlight> mediante <highlight>patrones oscuros</highlight>...`,
     illustration: {
       label: 'Escena 23: El protagonista y el Ojo contemplando un cielo estrellado y pacífico.'
     },
@@ -700,7 +795,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_23_init_3',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: 'Pero esto es solo el comienzo de nuestra travesía en este mundo. Aún quedan muchas más almas que necesitan ser rescatadas y aprender a defender su <highlight>autonomía</highlight>...',
+    text: `Pero esto es solo el comienzo de nuestra travesía en este mundo. Aún quedan muchas más almas que necesitan ser rescatadas y aprender a defender su <highlight>autonomía</highlight>...`,
     illustration: {
       label: 'Escena 23: El protagonista y el Ojo contemplando un cielo estrellado y pacífico.'
     },
@@ -710,7 +805,7 @@ export const NARRATIVE_NODES: Record<string, DialogueNode> = {
     id: 'scene_11_end',
     speaker: 'system',
     speakerLabel: 'Narrador',
-    text: '¡Felicitaciones! Has completado con éxito la demo de Antipatrón. Muchas gracias por jugar y aprender a identificar y combatir las trampas del diseño de interfaces.',
+    text: `¡Felicitaciones! Has completado con éxito la demo de Antipatrón. Muchas gracias por jugar y aprender a identificar y combatir las trampas del diseño de interfaces.`,
     illustration: {
       label: 'Fin de la Demo de Narrativa.'
     },

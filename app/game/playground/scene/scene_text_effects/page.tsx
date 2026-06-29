@@ -539,6 +539,132 @@ function PlayfulJiggle({ text }: { text: string }) {
   );
 }
 
+// 31. Sneaky Opción 1: Reposo Largo (Recomendado)
+function SneakyOption1Pause({ text }: { text: string }) {
+  const letters = Array.from(text);
+  return (
+    <div className="leading-relaxed tracking-wide select-none inline-block font-mono text-xs text-[#7ba077]">
+      {letters.map((c, i) => c === ' ' ? <span key={i}>&nbsp;</span> : (
+        <motion.span 
+          key={i} 
+          className="inline-block origin-bottom font-bold" 
+          animate={{ 
+            y: [0, -12, -12, 0, 0, 0, 0],
+            scaleY: [1, 0.74, 1.16, 1.16, 0.75, 1, 1, 1, 1],
+            skewX: [0, 15, -15, 15, 0, 0, 0, 0],
+            rotate: [0, -6, 6, -6, 0, 0, 0, 0]
+          }} 
+          transition={{ 
+            repeat: Infinity, 
+            duration: 3.6, 
+            ease: "easeInOut", 
+            delay: i * 0.45 
+          }}
+        >
+          {c}
+        </motion.span>
+      ))}
+    </div>
+  );
+}
+
+// 32. Sneaky Opción 2: Sin Solapamiento
+function SneakyOption2NoOverlap({ text }: { text: string }) {
+  const letters = Array.from(text);
+  const stepDuration = 0.35;
+  const totalDuration = Math.max(5, letters.length) * stepDuration;
+  return (
+    <div className="leading-relaxed tracking-wide select-none inline-block font-mono text-xs text-[#7ba077]">
+      {letters.map((c, i) => c === ' ' ? <span key={i}>&nbsp;</span> : (
+        <motion.span 
+          key={i} 
+          className="inline-block origin-bottom font-bold" 
+          animate={{ 
+            y: [0, -12, -12, 0, 0],
+            scaleY: [1, 0.74, 1.16, 1.16, 0.75, 1, 1],
+            skewX: [0, 15, -15, 15, 0, 0],
+            rotate: [0, -6, 6, -6, 0, 0]
+          }} 
+          transition={{ 
+            repeat: Infinity, 
+            duration: totalDuration, 
+            ease: "easeInOut", 
+            delay: i * stepDuration 
+          }}
+        >
+          {c}
+        </motion.span>
+      ))}
+    </div>
+  );
+}
+
+// 33. Sneaky Opción 3: Deformación Baja
+function SneakyOption3LowDeform({ text }: { text: string }) {
+  const letters = Array.from(text);
+  return (
+    <div className="leading-relaxed tracking-wide select-none inline-block font-mono text-xs text-[#7ba077]">
+      {letters.map((c, i) => c === ' ' ? <span key={i}>&nbsp;</span> : (
+        <motion.span 
+          key={i} 
+          className="inline-block origin-bottom font-bold" 
+          animate={{ 
+            y: [0, -4, -4, 0],
+            scaleY: [1, 0.92, 1.05, 1.05, 1],
+            skewX: [0, 3, -3, 0],
+            rotate: [0, -1, 1, 0]
+          }} 
+          transition={{ 
+            repeat: Infinity, 
+            duration: 2.5, 
+            ease: "easeInOut", 
+            delay: i * 0.35 
+          }}
+        >
+          {c}
+        </motion.span>
+      ))}
+    </div>
+  );
+}
+
+// 34. Sneaky Opción 4: Tippy Toe (Alternado - Bucle de Pasos)
+function SneakyOption4TippyToe({ text }: { text: string }) {
+  const letters = Array.from(text);
+  return (
+    <div className="leading-relaxed tracking-wide select-none inline-block font-mono text-xs text-[#7ba077]">
+      {letters.map((c, i) => {
+        if (c === ' ') return <span key={i}>&nbsp;</span>;
+        
+        // Alternar izquierdo/derecho (pares e impares) como pies reales en marcha
+        const isLeftFoot = i % 2 === 0;
+        const delay = isLeftFoot ? 0 : 0.8; // Para un ciclo de 1.6s
+        
+        return (
+          <motion.span 
+            key={i} 
+            className="inline-block origin-bottom font-bold" 
+            animate={{ 
+              y: [0, -8, 0, 0, 0, 0],
+              scaleY: [1, 1.25, 1, 1, 1, 1],
+              scaleX: [1, 0.8, 1, 1, 1, 1],
+              rotate: isLeftFoot ? [0, 8, 0, 0, 0, 0] : [0, -8, 0, 0, 0, 0]
+            }} 
+            transition={{ 
+              repeat: Infinity, 
+              duration: 1.6, 
+              ease: "easeInOut", 
+              delay: delay 
+            }}
+          >
+            {c}
+          </motion.span>
+        );
+      })}
+    </div>
+  );
+}
+
 // ==========================================
 // COMPONENTE PRINCIPAL DE LA PÁGINA
 // ==========================================
@@ -997,6 +1123,54 @@ export default function SceneTextEffectsPlaygroundPage() {
                   <div style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }} className="text-xs md:text-sm leading-relaxed tracking-wide italic">
                     <PlayfulJiggle text={customText} />
                   </div>
+                </div>
+              </div>
+
+              {/* 31. Sneaky Opción 1: Reposo Largo */}
+              <div className="flex flex-col space-y-2 border border-emerald-500/20 bg-emerald-950/5 rounded-md">
+                <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest pl-1 pt-1 block font-bold">31. Sneaky Opción 1: Reposo Largo (Recomendado)</span>
+                <div className="p-5 flex-1 flex flex-col min-h-[140px]">
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-[#7ba077] italic mb-2 block">Camo (Sigilo)</span>
+                  <div style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }} className="text-xs md:text-sm leading-relaxed tracking-wide italic">
+                    <SneakyOption1Pause text={customText} />
+                  </div>
+                  <span className="text-[9px] text-zinc-500 mt-auto pt-2 block leading-snug">Cada letra da un paso sigiloso y luego reposa estática en el suelo. Muy legible.</span>
+                </div>
+              </div>
+
+              {/* 32. Sneaky Opción 2: Sin Solapamiento */}
+              <div className="flex flex-col space-y-2">
+                <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest pl-1 pt-1 block">32. Sneaky Opción 2: Sin Solapamiento</span>
+                <div className="bg-zinc-900/10 border border-zinc-900 p-5 rounded-md flex-1 flex flex-col min-h-[140px]">
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-[#7ba077] italic mb-2 block">Camo (Sigilo)</span>
+                  <div style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }} className="text-xs md:text-sm leading-relaxed tracking-wide italic">
+                    <SneakyOption2NoOverlap text={customText} />
+                  </div>
+                  <span className="text-[9px] text-zinc-500 mt-auto pt-2 block leading-snug">Solo una letra se mueve a la vez secuencialmente. Cero distorsión simultánea.</span>
+                </div>
+              </div>
+
+              {/* 33. Sneaky Opción 3: Deformación Baja */}
+              <div className="flex flex-col space-y-2">
+                <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest pl-1 pt-1 block">33. Sneaky Opción 3: Deformación Baja</span>
+                <div className="bg-zinc-900/10 border border-zinc-900 p-5 rounded-md flex-1 flex flex-col min-h-[140px]">
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-[#7ba077] italic mb-2 block">Camo (Sigilo)</span>
+                  <div style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }} className="text-xs md:text-sm leading-relaxed tracking-wide italic">
+                    <SneakyOption3LowDeform text={customText} />
+                  </div>
+                  <span className="text-[9px] text-zinc-500 mt-auto pt-2 block leading-snug">Se reduce la altura del paso a 4px y las torsiones laterales para mayor claridad.</span>
+                </div>
+              </div>
+
+              {/* 34. Sneaky Opción 4: Tippy Toe (Alternado) */}
+              <div className="flex flex-col space-y-2 border border-sky-500/20 bg-sky-950/5 rounded-md animate-pulse">
+                <span className="text-[10px] font-mono text-sky-400 uppercase tracking-widest pl-1 pt-1 block font-bold">34. Sneaky Opción 4: Tippy Toe (Alternado)</span>
+                <div className="p-5 flex-1 flex flex-col min-h-[140px]">
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-[#7ba077] italic mb-2 block">Camo (Sigilo)</span>
+                  <div style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }} className="text-xs md:text-sm leading-relaxed tracking-wide italic">
+                    <SneakyOption4TippyToe text={customText} />
+                  </div>
+                  <span className="text-[9px] text-zinc-500 mt-auto pt-2 block leading-snug">Letras pares e impares alternan sus pasos como pie izquierdo y derecho. Con pausa de reposo.</span>
                 </div>
               </div>
             </>

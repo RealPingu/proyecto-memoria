@@ -35,8 +35,9 @@ import Scene23DesenlaceFinal from './illustrations/scene_23_desenlace_final';
 
 // Tokenizador para dar formato especial a etiquetas y marcadores
 interface TextToken {
-  type: 'text' | 'highlight' | 'action' | 'wave' | 'shake' | 'tremble' | 'rainbow' | 'breathe' | 'glitch' | 'neon';
+  type: 'text' | 'highlight' | 'action' | 'wave' | 'shake' | 'tremble' | 'rainbow' | 'breathe' | 'glitch' | 'neon' | 'sneaky' | 'spooky' | 'heartbeat';
   content: string;
+  color?: string;
 }
 
 import {
@@ -47,22 +48,29 @@ import {
   FearTremble,
   PulseBreathe,
   SparklingGlow,
-  HighlightText
+  HighlightText,
+  SneakyStealthText,
+  SpookyGhostText,
+  FreneticHeartbeatText
 } from './components/dialogue_effects';
 
 function parseDialogueText(text: string): TextToken[] {
   const tokens: TextToken[] = [];
-  // Regex para buscar únicamente etiquetas XML
-  const regex = /<(wave|shake|tremble|rainbow|breathe|glitch|neon|highlight|action)>([\s\S]*?)<\/\1>|([^<>]+)/g;
+  // Regex robusto que soporta etiquetas con atributos opcionales como color="..."
+  const regex = /<([a-z1-9\-]+)(?:\s+color="([^"]+)")?>([\s\S]*?)<\/\1>|([^<>]+)/gi;
   let match;
 
   while ((match = regex.exec(text)) !== null) {
     if (match[1]) {
-      // Es una etiqueta (ej: <wave>...</wave>)
-      tokens.push({ type: match[1] as any, content: match[2] });
-    } else if (match[3]) {
+      // Es una etiqueta (ej: <wave color="#ff0000">...</wave>)
+      tokens.push({ 
+        type: match[1].toLowerCase() as any, 
+        content: match[3],
+        color: match[2]
+      });
+    } else if (match[4]) {
       // Texto normal fuera de etiquetas
-      tokens.push({ type: 'text', content: match[3] });
+      tokens.push({ type: 'text', content: match[4] });
     }
   }
   return tokens;
@@ -235,7 +243,7 @@ export default function NarrativeIntroPage() {
         if (visibleLength < tokenLength) {
           return <span key={index} className="font-bold mx-1 select-none text-zinc-300">{visibleContent.toUpperCase()}</span>;
         }
-        return <HighlightText key={index} text={token.content} isDarkPatternTheme={isDarkPatternTheme} />;
+        return <HighlightText key={index} text={token.content} isDarkPatternTheme={isDarkPatternTheme} color={token.color} />;
       } else if (token.type === 'action') {
         if (visibleLength < tokenLength) {
           return <span key={index}>{visibleContent}</span>;
@@ -254,39 +262,54 @@ export default function NarrativeIntroPage() {
         );
       } else if (token.type === 'wave') {
         if (visibleLength < tokenLength) {
-          return <span key={index} className="text-sky-400/80 italic">{visibleContent}</span>;
+          return <span key={index} className="italic" style={{ color: token.color || '#38bdf8' }}>{visibleContent}</span>;
         }
-        return <WaveFloatingText key={index} text={token.content} />;
+        return <WaveFloatingText key={index} text={token.content} color={token.color} />;
       } else if (token.type === 'shake') {
         if (visibleLength < tokenLength) {
-          return <span key={index} className="text-red-400 font-bold font-mono">{visibleContent}</span>;
+          return <span key={index} className="font-bold font-mono" style={{ color: token.color || '#ef4444' }}>{visibleContent}</span>;
         }
-        return <BattleImpactShake key={index} text={token.content} />;
+        return <BattleImpactShake key={index} text={token.content} color={token.color} />;
       } else if (token.type === 'tremble') {
         if (visibleLength < tokenLength) {
-          return <span key={index} className="text-purple-300/80 italic">{visibleContent}</span>;
+          return <span key={index} className="italic" style={{ color: token.color || '#d8b4fe' }}>{visibleContent}</span>;
         }
-        return <FearTremble key={index} text={token.content} />;
+        return <FearTremble key={index} text={token.content} color={token.color} />;
       } else if (token.type === 'rainbow') {
         if (visibleLength < tokenLength) {
-          return <span key={index} className="text-zinc-400 font-medium">{visibleContent}</span>;
+          return <span key={index} className="font-medium" style={{ color: token.color || '#a1a1aa' }}>{visibleContent}</span>;
         }
-        return <RainbowShimmer key={index} text={token.content} />;
+        return <RainbowShimmer key={index} text={token.content} color={token.color} />;
       } else if (token.type === 'breathe') {
         if (visibleLength < tokenLength) {
-          return <span key={index} className="text-zinc-300/80 italic">{visibleContent}</span>;
+          return <span key={index} className="italic" style={{ color: token.color || '#d4d4d8' }}>{visibleContent}</span>;
         }
-        return <PulseBreathe key={index} text={token.content} />;
+        return <PulseBreathe key={index} text={token.content} color={token.color} />;
       } else if (token.type === 'glitch') {
         if (visibleLength < tokenLength) {
-          return <span key={index} className="text-lime-400/80 font-mono">{visibleContent}</span>;
+          return <span key={index} className="font-mono" style={{ color: token.color || '#84cc16' }}>{visibleContent}</span>;
         }
-        return <HoloDigitalGlitch key={index} text={token.content} />;
+        return <HoloDigitalGlitch key={index} text={token.content} color={token.color} />;
       } else if (token.type === 'neon') {
         if (visibleLength < tokenLength) {
-          return <span key={index} className="text-zinc-200/80">{visibleContent}</span>;
+          return <span key={index} style={{ color: token.color || '#e4e4e7' }}>{visibleContent}</span>;
         }
-        return <SparklingGlow key={index} text={token.content} />;
+        return <SparklingGlow key={index} text={token.content} color={token.color} />;
+      } else if (token.type === 'sneaky') {
+        if (visibleLength < tokenLength) {
+          return <span key={index} className="font-mono" style={{ color: token.color || '#7ba077' }}>{visibleContent}</span>;
+        }
+        return <SneakyStealthText key={index} text={token.content} color={token.color} />;
+      } else if (token.type === 'spooky') {
+        if (visibleLength < tokenLength) {
+          return <span key={index} className="font-mono italic" style={{ color: token.color || '#c084fc' }}>{visibleContent}</span>;
+        }
+        return <SpookyGhostText key={index} text={token.content} color={token.color} />;
+      } else if (token.type === 'heartbeat') {
+        if (visibleLength < tokenLength) {
+          return <span key={index} className="font-bold animate-pulse" style={{ color: token.color || '#f43f5e' }}>{visibleContent}</span>;
+        }
+        return <FreneticHeartbeatText key={index} text={token.content} color={token.color} />;
       } else {
         return <span key={index}>{visibleContent}</span>;
       }
@@ -552,7 +575,10 @@ export default function NarrativeIntroPage() {
               className="flex-1 min-h-0 w-full bg-game-surface/30 border border-game-muted/10 p-5 rounded-md flex flex-col justify-start relative transition-all duration-300 select-none overflow-y-auto custom-scrollbar cursor-pointer hover:border-game-muted/20 hover:bg-game-surface/40"
             >
               <div 
-                style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }}
+                style={{ 
+                  fontFamily: '"Comic Sans MS", "Comic Sans", cursive',
+                  whiteSpace: 'pre-wrap'
+                }}
                 className={`${currentNode.speaker === 'subconscious' ? 'text-white' : 'text-zinc-400'} text-xs md:text-sm leading-relaxed tracking-wide w-full font-medium italic pr-4`}
               >
                 {renderDialogue(parseDialogueText(getProcessedText(currentNode.text)), visibleCharCount)}

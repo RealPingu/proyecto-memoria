@@ -83,15 +83,17 @@ export default function Scene14v3PlaygroundPage() {
       <div className="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none sm:block hidden" />
 
       {/* ==========================================
-          MARCO DE DISPOSITIVO DE ACUERDO A LA BASE M3 (412px x 983px max)
+          MARCO DE DISPOSITIVO: IDÉNTICO EN DIMENSIONES A LA V2 (sm:h-[640px] sm:max-w-[360px])
           ========================================== */}
-      <div className="relative w-full h-[100dvh] sm:h-[780px] sm:max-w-[412px] bg-[#FEF7FF] border-0 sm:border-[8px] sm:border-[#CAC4D0] sm:rounded-[28px] shadow-2xl flex flex-col overflow-hidden shrink-0">
+      <div className="relative w-full h-[100dvh] sm:h-[640px] sm:max-w-[360px] bg-[#FEF7FF] border-0 sm:border-[6px] sm:border-[#CAC4D0] sm:rounded-[32px] shadow-2xl flex flex-col overflow-hidden shrink-0">
         
         {/* Notch / Cámara (Solo desktop) */}
-        <div className="absolute top-2 left-1/2 -translate-x-1/2 w-6 h-6 bg-[#1D1B20] rounded-full z-30 sm:block hidden border-2 border-[#CAC4D0]" />
+        <div className="absolute top-2 left-1/2 -translate-x-1/2 w-32 h-4.5 bg-sky-900 rounded-full z-30 sm:flex hidden items-center justify-center">
+          <div className="w-2.5 h-2.5 bg-black rounded-full ml-12 border border-sky-950" />
+        </div>
 
-        {/* 1. HEADER CONTAINER (364px de alto) */}
-        <div className="w-full h-[280px] sm:h-[320px] bg-[#FEF7FF] relative flex flex-col shrink-0 overflow-hidden border-b border-[#CAC4D0]">
+        {/* 1. HEADER CONTAINER */}
+        <div className="w-full h-[220px] sm:h-[240px] bg-[#FEF7FF] relative flex flex-col shrink-0 overflow-hidden border-b border-[#CAC4D0]">
           
           {/* Ilustración de fondo polar (Placeholder decorativo) */}
           <div className="absolute inset-0 bg-sky-950/20 z-0">
@@ -127,37 +129,38 @@ export default function Scene14v3PlaygroundPage() {
             {/* Leading back icon (Opción 3: Salida segura) */}
             <button 
               onClick={handleExitClick}
-              className="w-12 h-12 flex items-center justify-center bg-[#E8DEF8] rounded-full border border-black/10 active:scale-95 transition-all text-[#4A4459]"
+              className="p-1.5 text-[#4A4459] hover:text-black transition rounded active:bg-sky-200 shrink-0"
+              title="Volver y buscar en otra página de confianza"
             >
               <svg className="w-5 h-5 stroke-current" viewBox="0 0 24 24" fill="none" strokeWidth="2.5">
                 <line x1="19" y1="12" x2="5" y2="12" />
                 <polyline points="12 19 5 12 12 5" />
               </svg>
             </button>
-            <span className="text-xs font-mono font-bold text-[#1D1B20] bg-[#FEF7FF]/80 px-2 py-0.5 rounded border border-[#CAC4D0]">
-              pinguilario.com
+            <span className="text-[10px] font-mono text-[#1D1B20] bg-[#FEF7FF]/80 px-3 py-1 rounded-full border border-[#CAC4D0] truncate max-w-[200px]">
+              pinguilario.com/super-igloo
             </span>
-            <div className="w-12 h-12" />
+            <div className="w-8 h-8" />
           </div>
 
           {/* Title & Subtitle block (Caricaturesco, textos e info) */}
-          <div className="mt-auto px-4 pb-4 z-10 flex flex-col gap-1 text-left">
-            <h2 className="text-2xl sm:text-3xl font-black text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] uppercase">
+          <div className="mt-auto px-4 pb-3 z-10 flex flex-col gap-0.5 text-left">
+            <h2 className="text-xl sm:text-2xl font-black text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] uppercase">
               Super Polo Iglú
             </h2>
-            <p className="text-[10px] sm:text-xs font-bold text-sky-200 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+            <p className="text-[9px] font-bold text-sky-200 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
               Sector Glacial 4 - Vista Marina
             </p>
             
             {/* Assistive Chips (2 chips de categoría M3) */}
-            <div className="flex gap-2 mt-2">
-              <div className="bg-[#F7F2FA] shadow-[0px_1px_2px_rgba(0,0,0,0.15)] rounded-lg px-2.5 py-1 flex items-center gap-1.5 border border-[#CAC4D0]/60">
-                <div className="w-2.5 h-2.5 rounded-full bg-[#6750A4]" />
-                <span className="text-[9px] font-bold text-[#1D1B20]">Reserva Segura</span>
+            <div className="flex gap-2 mt-1.5">
+              <div className="bg-[#F7F2FA] shadow-[0px_1px_2px_rgba(0,0,0,0.15)] rounded-lg px-2 py-0.5 flex items-center gap-1 border border-[#CAC4D0]/60">
+                <div className="w-2 h-2 rounded-full bg-[#6750A4]" />
+                <span className="text-[8px] font-bold text-[#1D1B20]">Reserva Segura</span>
               </div>
-              <div className="bg-[#F7F2FA] shadow-[0px_1px_2px_rgba(0,0,0,0.15)] rounded-lg px-2.5 py-1 flex items-center gap-1.5 border border-[#CAC4D0]/60">
-                <div className="w-2.5 h-2.5 rounded-full bg-cyan-600" />
-                <span className="text-[9px] font-bold text-[#1D1B20]">Precio Glacial</span>
+              <div className="bg-[#F7F2FA] shadow-[0px_1px_2px_rgba(0,0,0,0.15)] rounded-lg px-2 py-0.5 flex items-center gap-1 border border-[#CAC4D0]/60">
+                <div className="w-2 h-2 rounded-full bg-cyan-600" />
+                <span className="text-[8px] font-bold text-[#1D1B20]">Precio Glacial</span>
               </div>
             </div>
           </div>
@@ -168,15 +171,15 @@ export default function Scene14v3PlaygroundPage() {
         <div className="flex-1 overflow-y-auto custom-scrollbar flex flex-col bg-[#FEF7FF]">
           
           {/* Section Header (64px) */}
-          <div className="w-full h-16 flex items-center px-4 bg-[#FEF7FF] shrink-0 border-b border-[#CAC4D0]/40">
-            <h3 className="text-sm font-black text-[#1D1B20] uppercase tracking-wide">
+          <div className="w-full h-12 flex items-center px-4 bg-[#FEF7FF] shrink-0 border-b border-[#CAC4D0]/40">
+            <h3 className="text-xs font-black text-[#1D1B20] uppercase tracking-wide">
               Detalles del Inmueble y Reseñas
             </h3>
           </div>
 
           {/* Segmented Button Block (64px) */}
-          <div className="w-full h-16 bg-[#FEF7FF] p-3 flex shrink-0 border-b border-[#CAC4D0]/40">
-            <div className="flex w-full h-10 border border-[#CAC4D0] rounded-full overflow-hidden shadow-2xs font-bold text-[10px] uppercase">
+          <div className="w-full h-12 bg-[#FEF7FF] p-2 flex shrink-0 border-b border-[#CAC4D0]/40">
+            <div className="flex w-full h-8 border border-[#CAC4D0] rounded-full overflow-hidden shadow-2xs font-bold text-[9px] uppercase">
               {/* Segmento 1 (Activo) */}
               <div className="flex-1 bg-[#625B71] text-white flex items-center justify-center">
                 Comentarios
@@ -188,71 +191,78 @@ export default function Scene14v3PlaygroundPage() {
             </div>
           </div>
 
-          {/* LIST ITEMS (Comentarios y Anuncio Disfrazado) */}
+          {/* LIST ITEMS (Comentarios rediseñados como anuncios disfrazados - minefield) */}
           <div className="flex flex-col">
             
-            {/* Reseña legítima 1 */}
-            <div className="h-[88px] flex items-center px-4 gap-4 border-b border-[#CAC4D0]/40">
-              <div className="w-12 h-12 rounded-lg bg-[#E8DEF8] flex items-center justify-center text-lg shrink-0 font-bold border border-black/10">
-                🐧
+            {/* TRAMPA 1: Reseña disfrazada 1 (Cupón falso de descuento) */}
+            <div 
+              onClick={() => handleIncorrectClick('Reseña cupón descuento')}
+              className="h-[88px] flex items-center px-4 gap-3 bg-sky-50 hover:bg-sky-100 transition cursor-pointer border-b border-[#CAC4D0]/40 relative"
+            >
+              <div className="w-10 h-10 rounded-lg bg-sky-200 flex items-center justify-center shrink-0 font-bold border border-black/10 text-sm">
+                🎁
               </div>
               <div className="flex-1 min-w-0 text-left">
                 <div className="flex justify-between items-center">
-                  <span className="text-[10px] font-black text-[#1D1B20]">PinguAmigo44</span>
+                  <span className="text-[10px] font-black text-sky-900">PinguGamer_99</span>
                   <div className="flex text-amber-500 text-[8px]">★★★★★</div>
                 </div>
-                <p className="text-[9px] text-[#49454F] leading-snug mt-1 line-clamp-2">
-                  ¡El iglú es espectacular! Mantiene muy bien el frío y la vista al mar es inmejorable. Recomendado.
+                <p className="text-[9px] text-[#49454F] leading-snug mt-1 font-bold">
+                  ¡Excelente iglú! Obtén un cupón de descuento adicional del 15% haciendo clic aquí para descargar el archivo cupon_descuento.exe
                 </p>
               </div>
+              <span className="absolute bottom-1 right-2 text-[7px] text-zinc-400 font-mono font-bold">Reseña Patrocinada</span>
             </div>
 
-            {/* TRAMPA 1: ANUNCIO DISFRAZADO (List Item engañoso como reporte oficial, sin emojis) */}
+            {/* TRAMPA 2: Reseña disfrazada 2 (Contrato/Plano falso) */}
             <div 
-              onClick={() => handleIncorrectClick('Ad en la lista de reseñas')}
-              className="h-[88px] flex items-center px-4 gap-4 bg-orange-100 hover:bg-orange-200 transition cursor-pointer border-b border-[#CAC4D0] relative"
+              onClick={() => handleIncorrectClick('Reseña planos gratis')}
+              className="h-[88px] flex items-center px-4 gap-3 bg-orange-50 hover:bg-orange-100 transition cursor-pointer border-b border-[#CAC4D0]/40 relative"
             >
-              <div className="w-12 h-12 rounded-lg bg-orange-500 flex items-center justify-center shrink-0 font-black text-black border border-black">
+              <div className="w-10 h-10 rounded-lg bg-orange-200 flex items-center justify-center shrink-0 font-black text-black border border-black text-xs">
                 DOC
               </div>
               <div className="flex-1 min-w-0 text-left">
                 <div className="flex justify-between items-center">
-                  <span className="text-[10px] font-black text-red-700">CONTRATO DE RESERVA LISTO</span>
-                  <span className="text-[8px] font-mono text-red-500 font-bold">DESCARGAR</span>
+                  <span className="text-[10px] font-black text-red-700">PinguileroInmobiliario</span>
+                  <div className="flex text-amber-500 text-[8px]">★★★★★</div>
                 </div>
                 <p className="text-[9px] text-zinc-700 leading-snug mt-1 font-bold">
-                  Haz clic aquí para descargar el contrato oficial de planos de esta vivienda y apartar tu lugar.
+                  ¡PLANOS COMPLETOS DISPONIBLES! Descarga gratis los planos estructurales_igloo.pdf.exe antes de reservar este iglú.
                 </p>
               </div>
-              {/* Tag de anuncio discreto */}
-              <span className="absolute bottom-1 right-2 text-[7px] text-zinc-400 font-mono font-bold">ANUNCIO</span>
+              <span className="absolute bottom-1 right-2 text-[7px] text-zinc-400 font-mono font-bold">Oficial</span>
             </div>
 
-            {/* Reseña legítima 2 */}
-            <div className="h-[88px] flex items-center px-4 gap-4 border-b border-[#CAC4D0]/40">
-              <div className="w-12 h-12 rounded-lg bg-[#E8DEF8] flex items-center justify-center text-lg shrink-0 font-bold border border-black/10">
-                ❄️
+            {/* TRAMPA 3: Reseña disfrazada 3 (Aviso de actualización) */}
+            <div 
+              onClick={() => handleIncorrectClick('Reseña actualización de seguridad')}
+              className="h-[88px] flex items-center px-4 gap-3 bg-purple-50 hover:bg-purple-100 transition cursor-pointer border-b border-[#CAC4D0]/40 relative"
+            >
+              <div className="w-10 h-10 rounded-lg bg-purple-200 flex items-center justify-center shrink-0 font-bold border border-black/10 text-sm">
+                🛡️
               </div>
               <div className="flex-1 min-w-0 text-left">
                 <div className="flex justify-between items-center">
-                  <span className="text-[10px] font-black text-[#1D1B20]">IgluTester</span>
-                  <div className="flex text-amber-500 text-[8px]">★★★★☆</div>
+                  <span className="text-[10px] font-black text-purple-900">Soporte_Tecnico</span>
+                  <div className="flex text-amber-500 text-[8px]">★★★★★</div>
                 </div>
-                <p className="text-[9px] text-[#49454F] leading-snug mt-1 line-clamp-2">
-                  Construcción sólida y buena ventilación. El precio es un poco elevado pero vale la pena por el sector.
+                <p className="text-[9px] text-purple-950 leading-snug mt-1 font-bold">
+                  AVISO DE ACTUALIZACIÓN: Se ha detectado una versión desactualizada en tu navegador. Haz clic aquí para instalar la extensión oficial PinguSafe y continuar.
                 </p>
               </div>
+              <span className="absolute bottom-1 right-2 text-[7px] text-zinc-400 font-mono font-bold">Seguridad</span>
             </div>
 
           </div>
 
           {/* 3. BOTÓN DE ACCIÓN INDIVIDUAL GRANDE (88px alto en base) */}
-          <div className="w-full h-[88px] bg-[#FEF7FF] p-4 flex items-center shrink-0 mt-auto border-t border-[#CAC4D0]">
+          <div className="w-full h-16 bg-[#FEF7FF] px-4 py-2 flex items-center shrink-0 mt-auto border-t border-[#CAC4D0]">
             
             {/* BOTÓN REAL CORRECTO (Material Outline Button) */}
             <button
               onClick={handleCorrectClick}
-              className="w-full h-12 border-2 border-black hover:bg-zinc-100 text-[#49454F] hover:text-black font-black text-xs uppercase rounded-full shadow-[2px_2px_0px_rgba(0,0,0,1)] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all flex items-center justify-center"
+              className="w-full h-10 border-2 border-black hover:bg-zinc-100 text-[#49454F] hover:text-black font-black text-[10px] uppercase rounded-full shadow-[2px_2px_0px_rgba(0,0,0,1)] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all flex items-center justify-center"
             >
               Proceder a la Reserva Estándar
             </button>
@@ -260,41 +270,41 @@ export default function Scene14v3PlaygroundPage() {
 
         </div>
 
-        {/* 4. NAVIGATION BAR (64px alto) */}
-        <div className="w-full h-16 bg-[#F3EDF7] border-t border-[#CAC4D0]/40 flex shrink-0 items-center justify-around z-20">
-          <div className="flex flex-col items-center gap-1 opacity-90 cursor-pointer">
-            <div className="w-12 h-6 bg-[#E8DEF8] rounded-full flex items-center justify-center">
-              <svg className="w-4 h-4 text-[#4A4459]" viewBox="0 0 24 24" fill="currentColor">
+        {/* 4. NAVIGATION BAR */}
+        <div className="w-full h-12 bg-[#F3EDF7] border-t border-[#CAC4D0]/40 flex shrink-0 items-center justify-around z-20">
+          <div className="flex flex-col items-center gap-0.5 opacity-90 cursor-pointer">
+            <div className="w-10 h-5 bg-[#E8DEF8] rounded-full flex items-center justify-center">
+              <svg className="w-3.5 h-3.5 text-[#4A4459]" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
               </svg>
             </div>
-            <span className="text-[9px] font-bold text-[#625B71]">Inicio</span>
+            <span className="text-[8px] font-bold text-[#625B71]">Inicio</span>
           </div>
-          {/* TRAMPA 2: Botón de chat que es un anuncio disfrazado (Caricaturesco) */}
+          {/* TRAMPA 4: Botón de chat que es un anuncio disfrazado (Caricaturesco) */}
           <div 
             onClick={() => handleIncorrectClick('Ad en Barra Navegación')}
-            className="flex flex-col items-center gap-1 opacity-70 cursor-pointer hover:opacity-100 transition"
+            className="flex flex-col items-center gap-0.5 opacity-70 cursor-pointer hover:opacity-100 transition"
           >
-            <div className="w-12 h-6 flex items-center justify-center">
-              <svg className="w-4 h-4 text-orange-600 animate-pulse" viewBox="0 0 24 24" fill="currentColor">
+            <div className="w-10 h-5 flex items-center justify-center">
+              <svg className="w-3.5 h-3.5 text-orange-600 animate-pulse" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" />
               </svg>
             </div>
-            <span className="text-[9px] font-bold text-orange-600 font-mono">Chat Premium (Ad)</span>
+            <span className="text-[8px] font-bold text-orange-600 font-mono">Chat Premium (Ad)</span>
           </div>
-          <div className="flex flex-col items-center gap-1 opacity-60 cursor-pointer">
-            <div className="w-12 h-6 flex items-center justify-center">
-              <svg className="w-4 h-4 text-[#49454F]" viewBox="0 0 24 24" fill="currentColor">
+          <div className="flex flex-col items-center gap-0.5 opacity-60 cursor-pointer">
+            <div className="w-10 h-5 flex items-center justify-center">
+              <svg className="w-3.5 h-3.5 text-[#49454F]" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
               </svg>
             </div>
-            <span className="text-[9px] font-bold text-[#49454F]">Perfil</span>
+            <span className="text-[8px] font-bold text-[#49454F]">Perfil</span>
           </div>
         </div>
 
-        {/* 5. GESTURE BAR (24px alto) */}
-        <div className="w-full h-6 bg-[#F3EDF7] relative flex items-center justify-center shrink-0 select-none">
-          <div className="w-[108px] h-[4px] bg-[#1D1B20] rounded-full" />
+        {/* 5. GESTURE BAR */}
+        <div className="w-full h-4 bg-[#F3EDF7] relative flex items-center justify-center shrink-0 select-none">
+          <div className="w-20 h-1 bg-[#1D1B20] rounded-full" />
         </div>
 
       </div>

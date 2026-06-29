@@ -82,7 +82,7 @@ export default function Battle2DripPricingRender({ onCorrect, onIncorrect, onBac
           {/* =======================================================
               CAJA DE DIÁLOGO INTERACTIVA DE CHECKOUT
               ======================================================= */}
-          <div className="flex-1 min-h-0 w-full bg-[#131520]/80 border border-[#272a3d]/80 rounded-md flex flex-col justify-between relative select-none p-4 bg-[radial-gradient(#1e2235_1px,transparent_1px)] [background-size:16px_16px]">
+          <div className="flex-1 w-full bg-[#131520]/80 border border-[#272a3d]/80 rounded-md flex flex-col relative select-none p-4 bg-[radial-gradient(#1e2235_1px,transparent_1px)] [background-size:16px_16px] overflow-y-auto custom-scrollbar gap-4">
             
             {/* SECCIÓN 1: Narrativa / Texto Introductorio del Patrón Oscuro */}
             <div 
@@ -93,7 +93,7 @@ export default function Battle2DripPricingRender({ onCorrect, onIncorrect, onBac
             </div>
 
             {/* Contenedor del paso actual */}
-            <div className="flex-1 min-h-0 flex flex-col justify-start overflow-y-auto custom-scrollbar pr-1 mt-3">
+            <div className="flex-1 flex flex-col justify-start">
               
               {step === 1 && (
                 <div className="flex flex-col gap-3">
@@ -250,8 +250,8 @@ export default function Battle2DripPricingRender({ onCorrect, onIncorrect, onBac
 
             </div>
 
-            {/* 3. BOTONES DE ACCIÓN */}
-            <div className="shrink-0 pt-2 border-t border-[#272a3d]/20 mt-2">
+            {/* 3. BOTONES DE ACCIÓN (Alineados abajo naturalmente) */}
+            <div className="shrink-0 pt-2 border-t border-[#272a3d]/20 mt-auto">
               {step === 1 && (
                 <button 
                   onClick={() => setStep(2)}

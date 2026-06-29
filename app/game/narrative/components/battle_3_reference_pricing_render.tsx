@@ -5,10 +5,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Scene20Batalla from '../illustrations/scene_20_batalla';
 import { FearTremble } from './dialogue_effects';
 
+import { getNodeLabel } from './progress_helpers';
+
 interface Battle3Props {
   onCorrect: () => void;
   onIncorrect: () => void;
   onBack: () => void;
+  visitedNodes: string[];
+  currentNodeId: string;
+  jumpToNode: (nodeId: string) => void;
 }
 
 interface Plan {
@@ -27,7 +32,14 @@ interface Plan {
   bgColor: string;
 }
 
-export default function Battle3ReferencePricingRender({ onCorrect, onIncorrect, onBack }: Battle3Props) {
+export default function Battle3ReferencePricingRender({ 
+  onCorrect, 
+  onIncorrect, 
+  onBack,
+  visitedNodes,
+  currentNodeId,
+  jumpToNode
+}: Battle3Props) {
   const [activeIndex, setActiveIndex] = useState(0); // 0: Premium, 1: Estándar, 2: Básico
   const [direction, setDirection] = useState(0);
 
@@ -124,7 +136,7 @@ export default function Battle3ReferencePricingRender({ onCorrect, onIncorrect, 
       >
 
         {/* 1. HEADER */}
-        <header className="flex justify-between items-center shrink-0 pb-3 border-b border-zinc-900/60">
+        <header className="flex justify-between items-center shrink-0 pb-3 border-b border-zinc-900/60 gap-2 flex-wrap">
           <button
             onClick={onBack}
             className="text-[9px] border border-zinc-800 text-game-muted hover:border-zinc-500 hover:text-game-accent transition-all px-3 py-1 font-bold uppercase tracking-wider rounded-sm active:scale-95 cursor-pointer"
@@ -132,9 +144,23 @@ export default function Battle3ReferencePricingRender({ onCorrect, onIncorrect, 
             Atrás
           </button>
           
-          <span className="text-[8px] font-mono text-zinc-500 uppercase tracking-widest">
-            Financiación Iglú
-          </span>
+          <div className="flex items-center gap-2 ml-auto flex-wrap justify-end">
+            <span className="text-[8px] font-mono text-zinc-500 uppercase tracking-widest">
+              Financiación Iglú
+            </span>
+
+            <select
+              value={currentNodeId}
+              onChange={(e) => jumpToNode(e.target.value)}
+              className="bg-zinc-950 border border-zinc-800 text-zinc-300 text-[9px] font-medium py-1 px-2 rounded hover:border-zinc-700 outline-none cursor-pointer max-w-[130px] sm:max-w-[170px] truncate"
+            >
+              {visitedNodes.map((nodeId) => (
+                <option key={nodeId} value={nodeId}>
+                  {getNodeLabel(nodeId)}
+                </option>
+              ))}
+            </select>
+          </div>
         </header>
 
         {/* 2. MAIN AREA */}

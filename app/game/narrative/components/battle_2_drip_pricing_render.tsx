@@ -5,13 +5,25 @@ import { motion } from 'framer-motion';
 import Scene17Batalla from '../illustrations/scene_17_batalla';
 import { FearTremble } from './dialogue_effects';
 
+import { getNodeLabel } from './progress_helpers';
+
 interface Battle2Props {
   onCorrect: () => void;
   onIncorrect: () => void;
   onBack: () => void;
+  visitedNodes: string[];
+  currentNodeId: string;
+  jumpToNode: (nodeId: string) => void;
 }
 
-export default function Battle2DripPricingRender({ onCorrect, onIncorrect, onBack }: Battle2Props) {
+export default function Battle2DripPricingRender({ 
+  onCorrect, 
+  onIncorrect, 
+  onBack,
+  visitedNodes,
+  currentNodeId,
+  jumpToNode
+}: Battle2Props) {
   // Estados del asistente de checkout interactivo
   const [step, setStep] = useState(1);
   const [checkedSeguro, setCheckedSeguro] = useState(true); // Trampa
@@ -51,7 +63,7 @@ export default function Battle2DripPricingRender({ onCorrect, onIncorrect, onBac
       >
 
         {/* 1. HEADER (shrink-0) */}
-        <header className="flex justify-between items-center shrink-0 pb-3 border-b border-zinc-900/60">
+        <header className="flex justify-between items-center shrink-0 pb-3 border-b border-zinc-900/60 gap-2 flex-wrap">
           <button
             onClick={onBack}
             className="text-[9px] border border-zinc-800 text-game-muted hover:border-zinc-500 hover:text-game-accent transition-all px-3 py-1 font-bold uppercase tracking-wider rounded-sm active:scale-95 cursor-pointer"
@@ -59,9 +71,23 @@ export default function Battle2DripPricingRender({ onCorrect, onIncorrect, onBac
             Atrás
           </button>
           
-          <span className="text-[8px] font-mono text-zinc-500 uppercase tracking-widest">
-            Paso {step} de 3
-          </span>
+          <div className="flex items-center gap-2 ml-auto flex-wrap justify-end">
+            <span className="text-[8px] font-mono text-zinc-500 uppercase tracking-widest">
+              Paso {step} de 3
+            </span>
+
+            <select
+              value={currentNodeId}
+              onChange={(e) => jumpToNode(e.target.value)}
+              className="bg-zinc-950 border border-zinc-800 text-zinc-300 text-[9px] font-medium py-1 px-2 rounded hover:border-zinc-700 outline-none cursor-pointer max-w-[130px] sm:max-w-[170px] truncate"
+            >
+              {visitedNodes.map((nodeId) => (
+                <option key={nodeId} value={nodeId}>
+                  {getNodeLabel(nodeId)}
+                </option>
+              ))}
+            </select>
+          </div>
         </header>
 
         {/* 2. MAIN AREA */}

@@ -35,6 +35,7 @@ import Battle2DripPricingRender from './components/battle_2_drip_pricing_render'
 import Battle3ReferencePricingRender from './components/battle_3_reference_pricing_render';
 import Scene22PatronHostil from './illustrations/scene_22_patron_hostil';
 import Scene23DesenlaceFinal from './illustrations/scene_23_desenlace_final';
+import { getNodeLabel } from './components/progress_helpers';
 
 // Tokenizador para dar formato especial a etiquetas y marcadores
 interface TextToken {
@@ -80,28 +81,6 @@ function parseDialogueText(text: string): TextToken[] {
 }
 
 
-const CHECKPOINTS = [
-  { id: 'scene_1_init', label: 'E1', name: 'El Despertar' },
-  { id: 'scene_2_init_1', label: 'E2', name: 'El Encuentro' },
-  { id: 'scene_3_init_1', label: 'E3', name: 'Cuestionamiento' },
-  { id: 'scene_4_init_1', label: 'E4', name: 'Sendero Glacial' },
-  { id: 'scene_5_init_1', label: 'E5', name: 'Aproximación' },
-  { id: 'scene_6_init_1', label: 'E6', name: 'El Resplandor' },
-  { id: 'scene_7_init_1', label: 'E7', name: 'En la Mira' },
-  { id: 'scene_8_init_1', label: 'E8', name: 'El Asalto' },
-  { id: 'scene_9_init_1', label: 'E9', name: 'Zoom Celular' },
-  { id: 'scene_10_init_1', label: 'E10', name: 'Gran Celular' },
-  { id: 'scene_11_init_1', label: 'E11', name: 'Aleta y Celular' },
-  { id: 'scene_12_init_1', label: 'E12', name: 'El Iglú' },
-  { id: 'scene_13_init_1', label: 'E13', name: 'Portal Anuncios' },
-  { id: 'scene_14_init', label: 'E14', name: 'Batalla: Anuncios' },
-  { id: 'scene_15_init_1', label: 'E15', name: 'Batalla: Goteo' },
-  { id: 'scene_18_init_1', label: 'E18', name: 'Batalla: Referencia' },
-  { id: 'scene_21_init_1', label: 'E21', name: 'Camo Revivido' },
-  { id: 'scene_22_init_1', label: 'E22', name: 'Furia del Patrón' },
-  { id: 'scene_23_init_1', label: 'E23', name: 'Desenlace Final' }
-];
-
 export default function NarrativeIntroPage() {
   const [currentNodeId, setCurrentNodeId] = useState('scene_1_init');
   const [visibleCharCount, setVisibleCharCount] = useState(0);
@@ -111,31 +90,35 @@ export default function NarrativeIntroPage() {
   // Historial interno para el botón Atrás en la narrativa
   const [history, setHistory] = useState<string[]>([]);
   
-  // Checkpoints ya desbloqueados por el usuario
-  const [visitedCheckpoints, setVisitedCheckpoints] = useState<string[]>(['scene_1_init']);
+  // Nodos de diálogo ya visitados por el usuario
+  const [visitedNodes, setVisitedNodes] = useState<string[]>(['scene_1_init']);
   
   const typingTimer = useRef<NodeJS.Timeout | null>(null);
   const router = useRouter();
 
-  // Helper para saltar a un checkpoint desbloqueado
-  const jumpToCheckpoint = (checkpointId: string, idx: number) => {
-    const newHistory = CHECKPOINTS.slice(0, idx).map(c => c.id);
-    setHistory(newHistory);
-    setCurrentNodeId(checkpointId);
+  // Helper para saltar a un nodo desbloqueado
+  const jumpToNode = (nodeId: string) => {
+    if (!NARRATIVE_NODES[nodeId]) return;
+    const idx = visitedNodes.indexOf(nodeId);
+    if (idx !== -1) {
+      const newHistory = visitedNodes.slice(0, idx);
+      setHistory(newHistory);
+      setCurrentNodeId(nodeId);
+    }
   };
 
-  // Cargar checkpoints visitados, último nodo e historial al montar (evita SSR mismatch)
+  // Cargar nodos visitados, último nodo e historial al montar (evita SSR mismatch)
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const savedCheckpoints = localStorage.getItem('antipatron_visited_checkpoints');
-      if (savedCheckpoints) {
+      const savedVisited = localStorage.getItem('antipatron_visited_nodes');
+      if (savedVisited) {
         try {
-          const parsed = JSON.parse(savedCheckpoints);
+          const parsed = JSON.parse(savedVisited);
           if (Array.isArray(parsed) && parsed.length > 0) {
-            setVisitedCheckpoints(parsed);
+            setVisitedNodes(parsed);
           }
         } catch (e) {
-          console.error("Error al parsear checkpoints guardados:", e);
+          console.error("Error al parsear nodos visitados guardados:", e);
         }
       }
 
@@ -161,7 +144,7 @@ export default function NarrativeIntroPage() {
     }
   }, []);
 
-  // Persistir el último nodo visitado, historial y desbloquear nuevos checkpoints
+  // Persistir el último nodo visitado, historial y desbloquear nuevos nodos
   useEffect(() => {
     if (typeof window !== 'undefined') {
       if (currentNodeId === 'scene_11_end') {
@@ -173,15 +156,14 @@ export default function NarrativeIntroPage() {
         localStorage.setItem('antipatron_narrative_history', JSON.stringify(history));
       }
 
-      // Desbloquear si el nuevo nodo es un checkpoint
-      const isCheckpoint = CHECKPOINTS.some(c => c.id === currentNodeId);
-      if (isCheckpoint && !visitedCheckpoints.includes(currentNodeId)) {
-        const updated = [...visitedCheckpoints, currentNodeId];
-        setVisitedCheckpoints(updated);
-        localStorage.setItem('antipatron_visited_checkpoints', JSON.stringify(updated));
+      // Registrar nuevo nodo visitado
+      if (!visitedNodes.includes(currentNodeId)) {
+        const updated = [...visitedNodes, currentNodeId];
+        setVisitedNodes(updated);
+        localStorage.setItem('antipatron_visited_nodes', JSON.stringify(updated));
       }
     }
-  }, [currentNodeId, history, visitedCheckpoints]);
+  }, [currentNodeId, history, visitedNodes]);
   const currentNode = NARRATIVE_NODES[currentNodeId] || NARRATIVE_NODES['scene_1_init'];
 
   // Leer nodo desde los parámetros de búsqueda de la URL (para retornar desde el minijuego de anuncios disfrazados)
@@ -673,6 +655,9 @@ export default function NarrativeIntroPage() {
           setCurrentNodeId('scene_14_resultado_3');
         }}
         onBack={handleBack}
+        visitedNodes={visitedNodes}
+        currentNodeId={currentNodeId}
+        jumpToNode={jumpToNode}
       />
     );
   }
@@ -690,6 +675,9 @@ export default function NarrativeIntroPage() {
           setCurrentNodeId('scene_15_resultado_2');
         }}
         onBack={handleBack}
+        visitedNodes={visitedNodes}
+        currentNodeId={currentNodeId}
+        jumpToNode={jumpToNode}
       />
     );
   }
@@ -707,6 +695,9 @@ export default function NarrativeIntroPage() {
           setCurrentNodeId('scene_18_resultado_2');
         }}
         onBack={handleBack}
+        visitedNodes={visitedNodes}
+        currentNodeId={currentNodeId}
+        jumpToNode={jumpToNode}
       />
     );
   }
@@ -726,34 +717,22 @@ export default function NarrativeIntroPage() {
             Atrás
           </button>
 
-          {/* Selector de Escenas (similar al Likert) */}
-          <div className="flex flex-wrap gap-1 items-center justify-end">
-            <span className="text-[7.5px] text-zinc-500 uppercase tracking-widest font-mono mr-1 hidden sm:inline">
-              Escenas:
+          {/* Selector de progreso (dropdown) */}
+          <div className="flex items-center gap-1.5 ml-auto">
+            <span className="text-[7.5px] text-zinc-500 uppercase tracking-widest font-mono hidden sm:inline">
+              Progreso:
             </span>
-            {CHECKPOINTS.map((checkpoint, idx) => {
-              // Especial caso de coincidencia para hacer que el botón se vea activo si estamos en un subnodo
-              const isActuallyCurrent = currentNodeId.startsWith(checkpoint.id.replace('_init', '').replace('_1', '')) || currentNodeId === checkpoint.id;
-              const isVisited = visitedCheckpoints.includes(checkpoint.id);
-              
-              return (
-                <button
-                  key={checkpoint.id}
-                  disabled={!isVisited}
-                  onClick={() => isVisited && jumpToCheckpoint(checkpoint.id, idx)}
-                  title={checkpoint.name + (isVisited ? ' (Desbloqueado)' : ' (Bloqueado)')}
-                  className={`w-4 h-4 text-[7px] font-black flex items-center justify-center transition-all border rounded-sm select-none ${
-                    isActuallyCurrent 
-                      ? 'bg-game-accent border-game-accent text-game-bg scale-105 shadow-[0_0_8px_rgba(6,182,212,0.4)] z-10 font-bold' 
-                      : isVisited 
-                        ? 'bg-game-muted/20 border-zinc-800 text-zinc-300 hover:bg-game-accent/25 hover:border-game-accent/50 hover:text-game-accent cursor-pointer' 
-                        : 'bg-zinc-950/80 border-zinc-900/40 text-zinc-800 cursor-not-allowed'
-                  }`}
-                >
-                  {checkpoint.label.replace('E', '')}
-                </button>
-              );
-            })}
+            <select
+              value={currentNodeId}
+              onChange={(e) => jumpToNode(e.target.value)}
+              className="bg-zinc-950 border border-zinc-800 text-zinc-300 text-[9px] font-medium py-1 px-2 rounded hover:border-zinc-700 outline-none cursor-pointer max-w-[150px] sm:max-w-[200px] truncate"
+            >
+              {visitedNodes.map((nodeId) => (
+                <option key={nodeId} value={nodeId}>
+                  {getNodeLabel(nodeId)}
+                </option>
+              ))}
+            </select>
           </div>
         </header>
 

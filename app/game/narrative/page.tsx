@@ -31,6 +31,7 @@ import Scene19CelularReference from './illustrations/scene_19_celular_reference'
 import Scene20Batalla from './illustrations/scene_20_batalla';
 import Scene21CamoRevivido from './illustrations/scene_21_camo_revivido';
 import Battle1MockupDirectRender from './components/battle_1_mockup_render';
+import Battle2DripPricingRender from './components/battle_2_drip_pricing_render';
 import Scene22PatronHostil from './illustrations/scene_22_patron_hostil';
 import Scene23DesenlaceFinal from './illustrations/scene_23_desenlace_final';
 
@@ -108,6 +109,12 @@ export default function NarrativeIntroPage() {
           setHistory(['scene_1_init', 'scene_14_init', 'scene_14_choice', 'scene_14_resultado_2']);
         } else if (nodeParam === 'scene_14_explicacion_3') {
           setHistory(['scene_1_init', 'scene_14_init', 'scene_14_choice', 'scene_14_resultado_3']);
+        } else if (nodeParam.startsWith('scene_15_resultado_') || nodeParam === 'scene_15_choice') {
+          setHistory(['scene_1_init', 'scene_15_init_1', 'scene_15_init_2', 'scene_15_init_3', 'scene_15_init_4', 'scene_15_init_4b']);
+        } else if (nodeParam === 'scene_15_explicacion_1') {
+          setHistory(['scene_1_init', 'scene_15_init_1', 'scene_15_init_2', 'scene_15_init_3', 'scene_15_init_4', 'scene_15_init_4b', 'scene_15_choice', 'scene_15_resultado_1']);
+        } else if (nodeParam === 'scene_15_explicacion_2') {
+          setHistory(['scene_1_init', 'scene_15_init_1', 'scene_15_init_2', 'scene_15_init_3', 'scene_15_init_4', 'scene_15_init_4b', 'scene_15_choice', 'scene_15_resultado_2']);
         }
 
         // Limpiar los parámetros de búsqueda en la URL para evitar recargas accidentales
@@ -566,6 +573,23 @@ export default function NarrativeIntroPage() {
         onExit={() => {
           setHistory(prev => [...prev, 'scene_14_choice']);
           setCurrentNodeId('scene_14_resultado_3');
+        }}
+        onBack={handleBack}
+      />
+    );
+  }
+
+  // Integración directa del minijuego de precios por goteo en el flujo de la misma ruta
+  if (currentNodeId === 'scene_15_choice') {
+    return (
+      <Battle2DripPricingRender
+        onCorrect={() => {
+          setHistory(prev => [...prev, 'scene_15_choice']);
+          setCurrentNodeId('scene_15_resultado_1');
+        }}
+        onIncorrect={() => {
+          setHistory(prev => [...prev, 'scene_15_choice']);
+          setCurrentNodeId('scene_15_resultado_2');
         }}
         onBack={handleBack}
       />

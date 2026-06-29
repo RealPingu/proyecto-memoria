@@ -101,7 +101,7 @@ export default function NarrativeIntroPage() {
         window.history.replaceState({}, '', window.location.pathname);
       }
     }
-  }, []);
+  }, [router]);
 
   // Redirección automática al minijuego de anuncios disfrazados si llegamos a la decisión de la batalla 1
   useEffect(() => {

@@ -30,6 +30,7 @@ import Scene18ReferencePricing from './illustrations/scene_18_reference_pricing'
 import Scene19CelularReference from './illustrations/scene_19_celular_reference';
 import Scene20Batalla from './illustrations/scene_20_batalla';
 import Scene21CamoRevivido from './illustrations/scene_21_camo_revivido';
+import Battle1MockupDirectRender from './components/battle_1_mockup_render';
 import Scene22PatronHostil from './illustrations/scene_22_patron_hostil';
 import Scene23DesenlaceFinal from './illustrations/scene_23_desenlace_final';
 
@@ -97,18 +98,23 @@ export default function NarrativeIntroPage() {
       const nodeParam = searchParams.get('node');
       if (nodeParam && NARRATIVE_NODES[nodeParam]) {
         setCurrentNodeId(nodeParam);
+
+        // Inicializar historial según el nodo cargado para conservar el flujo al retroceder
+        if (nodeParam.startsWith('scene_14_resultado_') || nodeParam === 'scene_14_choice') {
+          setHistory(['scene_1_init', 'scene_14_init']);
+        } else if (nodeParam === 'scene_14_explicacion_1') {
+          setHistory(['scene_1_init', 'scene_14_init', 'scene_14_choice', 'scene_14_resultado_1']);
+        } else if (nodeParam === 'scene_14_explicacion_2') {
+          setHistory(['scene_1_init', 'scene_14_init', 'scene_14_choice', 'scene_14_resultado_2']);
+        } else if (nodeParam === 'scene_14_explicacion_3') {
+          setHistory(['scene_1_init', 'scene_14_init', 'scene_14_choice', 'scene_14_resultado_3']);
+        }
+
         // Limpiar los parámetros de búsqueda en la URL para evitar recargas accidentales
         window.history.replaceState({}, '', window.location.pathname);
       }
     }
   }, [router]);
-
-  // Redirección automática al minijuego de anuncios disfrazados si llegamos a la decisión de la batalla 1
-  useEffect(() => {
-    if (currentNodeId === 'scene_14_choice') {
-      router.push('/game/narrative/battle_1_mockup');
-    }
-  }, [currentNodeId, router]);
 
   // Obtener nickname desde localstorage/API
   useEffect(() => {
@@ -544,6 +550,27 @@ export default function NarrativeIntroPage() {
       </svg>
     );
   };
+
+  // Integración directa del minijuego de anuncios disfrazados en el flujo de la misma ruta
+  if (currentNodeId === 'scene_14_choice') {
+    return (
+      <Battle1MockupDirectRender
+        onCorrect={() => {
+          setHistory(prev => [...prev, 'scene_14_choice']);
+          setCurrentNodeId('scene_14_resultado_2');
+        }}
+        onIncorrect={() => {
+          setHistory(prev => [...prev, 'scene_14_choice']);
+          setCurrentNodeId('scene_14_resultado_1');
+        }}
+        onExit={() => {
+          setHistory(prev => [...prev, 'scene_14_choice']);
+          setCurrentNodeId('scene_14_resultado_3');
+        }}
+        onBack={handleBack}
+      />
+    );
+  }
 
   return (
     <div className="flex flex-col h-screen w-full bg-game-bg text-game-text p-4 md:p-6 overflow-hidden items-center justify-center font-sans">

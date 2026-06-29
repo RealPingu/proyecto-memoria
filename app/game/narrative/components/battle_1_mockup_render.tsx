@@ -1,21 +1,25 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import Scene14Batalla from '../illustrations/scene_14_batalla';
-import { FearTremble } from '../components/dialogue_effects';
+import { FearTremble } from './dialogue_effects';
 
-export default function Battle1MockupPage() {
-  const router = useRouter();
-  
+interface Battle1Props {
+  onCorrect: () => void;
+  onIncorrect: () => void;
+  onExit: () => void;
+  onBack: () => void;
+}
+
+export default function Battle1MockupDirectRender({ onCorrect, onIncorrect, onExit, onBack }: Battle1Props) {
   // Estados para simulación de caos de anuncios y hackeo
   const [clickedAd, setClickedAd] = useState<string | null>(null);
   const [hackedProgress, setHackedProgress] = useState(0);
   const [popups, setPopups] = useState<{ id: number; x: number; y: number; title: string }[]>([]);
   const [showFakePopup, setShowFakePopup] = useState(true);
 
-  // Manejo de opción incorrecta (Opción 1 y anuncios falsos)
+  // Manejo de opción incorrecta (adware / trampa)
   useEffect(() => {
     if (!clickedAd) return;
 
@@ -58,7 +62,7 @@ export default function Battle1MockupPage() {
     const timeout = setTimeout(() => {
       clearInterval(interval);
       clearInterval(progressInterval);
-      router.push('/game/narrative?node=scene_14_resultado_1');
+      onIncorrect();
     }, 3000);
 
     return () => {
@@ -66,40 +70,36 @@ export default function Battle1MockupPage() {
       clearInterval(progressInterval);
       clearTimeout(timeout);
     };
-  }, [clickedAd, router]);
+  }, [clickedAd, onIncorrect]);
 
   const handleIncorrectClick = (adName: string) => {
     if (clickedAd) return;
     setClickedAd(adName);
   };
 
-  const handleCorrectClick = () => {
-    if (clickedAd) return;
-    router.push('/game/narrative?node=scene_14_resultado_2');
-  };
-
-  const handleExitClick = () => {
-    if (clickedAd) return;
-    router.push('/game/narrative?node=scene_14_resultado_3');
-  };
-
   return (
     <div className="flex flex-col h-screen w-full bg-game-bg text-game-text p-4 md:p-6 overflow-hidden items-center justify-center font-sans relative">
       
-      {/* Contenedor adaptado a la Consistencia de Escenas (Layout Sándwich) */}
-      <div className="flex flex-col h-full max-w-lg w-full mx-auto justify-between py-2 md:py-4 relative z-10">
+      {/* Contenedor adaptado a la Consistencia de Escenas con animación de entrada fluida */}
+      <motion.div 
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -10 }}
+        transition={{ duration: 0.4 }}
+        className="flex flex-col h-full max-w-lg w-full mx-auto justify-between py-2 md:py-4 relative z-10"
+      >
 
         {/* 1. HEADER (shrink-0) - Botón Atrás y Opción 3 arriba a la derecha */}
         <header className="flex justify-between items-center shrink-0 pb-3 border-b border-zinc-900/60">
           <button
-            onClick={() => router.push('/game/narrative?node=scene_14_init')}
+            onClick={onBack}
             className="text-[9px] border border-zinc-800 text-game-muted hover:border-zinc-500 hover:text-game-accent transition-all px-3 py-1 font-bold uppercase tracking-wider rounded-sm active:scale-95 cursor-pointer"
           >
             Atrás
           </button>
           
           <button
-            onClick={handleExitClick}
+            onClick={onExit}
             className="text-[9px] border border-zinc-800 text-game-muted hover:border-zinc-500 hover:text-game-accent transition-all px-3 py-1 font-bold uppercase tracking-wider rounded-sm active:scale-95 cursor-pointer"
           >
             Buscar en otras páginas
@@ -116,8 +116,8 @@ export default function Battle1MockupPage() {
             </div>
           </div>
 
-          {/* Nombre del Hablante con efecto Tremble Fear usando la paleta del Patrón Oscuro (Cyan) */}
-          <div className="shrink-0 flex items-center justify-start pl-1">
+          {/* Nombre del Hablante consistente en tamaño y efectos con el resto de la narrativa */}
+          <div className="shrink-0 flex items-center justify-start pl-1 text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-game-accent italic block">
             <FearTremble text="EL PATRÓN OSCURO (SNEAKING)" color="#06b6d4" />
           </div>
 
@@ -154,7 +154,8 @@ export default function Battle1MockupPage() {
                 {showFakePopup && (
                   <motion.div 
                     exit={{ opacity: 0, scale: 0.95 }}
-                    className="bg-[#22c55e] text-black border-2 border-black p-2 rounded-lg relative shadow-[2px_2px_0px_rgba(0,0,0,1)] flex flex-col text-left rotate-[1deg] justify-between h-[96px]"
+                    onClick={() => handleIncorrectClick('Popup de seguridad click')}
+                    className="bg-[#22c55e] text-black border-2 border-black p-2 rounded-lg relative shadow-[2px_2px_0px_rgba(0,0,0,1)] flex flex-col text-left rotate-[1deg] justify-between h-[96px] cursor-pointer"
                   >
                     {/* Botón de cierre FALSO 'X' */}
                     <button 
@@ -169,7 +170,10 @@ export default function Battle1MockupPage() {
                     <div className="text-[7px] font-black uppercase text-green-950">SYSTEM ALERT</div>
                     <p className="text-[8px] font-bold leading-tight pr-3 mt-0.5">Actualización de seguridad requerida.</p>
                     <button 
-                      onClick={() => handleIncorrectClick('Descarga de actualización de seguridad')}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleIncorrectClick('Descarga de actualización de seguridad');
+                      }}
                       className="bg-black hover:bg-zinc-900 text-white text-[8px] font-black px-1.5 py-0.5 border border-black rounded self-start active:translate-x-[0.5px] active:translate-y-[0.5px]"
                     >
                       ACTUALIZAR
@@ -221,15 +225,15 @@ export default function Battle1MockupPage() {
               <div className="flex-1 flex flex-col justify-between min-w-0 w-full">
                 <div className="leading-tight">
                   <h4 className="text-[8px] font-black uppercase text-sky-800 tracking-wider">Pinguilario S.A.</h4>
-                  <span className="text-[10px] font-black text-zinc-950 truncate block">Super Polo Iglú Premium</span>
+                  <span className="text-[10px] font-black text-zinc-950 truncate block">Super polo iglú</span>
                 </div>
                 
                 {/* Botón de Reserva simple y temático */}
                 <button
-                  onClick={handleCorrectClick}
+                  onClick={onCorrect}
                   className="w-full bg-sky-800 border-2 border-black hover:bg-sky-700 text-white font-black py-2 px-3 rounded text-[9px] uppercase tracking-wide shadow-[1.5px_1.5px_0px_rgba(0,0,0,1)] active:translate-x-[0.5px] active:translate-y-[0.5px] active:shadow-none transition-all mt-2 text-center"
                 >
-                  Proceder a la Reserva Estándar
+                  PROCEDER A LA RESERVA
                 </button>
               </div>
 
@@ -268,7 +272,7 @@ export default function Battle1MockupPage() {
           </div>
         </main>
 
-      </div>
+      </motion.div>
 
       {/* ==========================================
           CAPA DE CAOS MALICIOSO (CUANDO CAE EN TRAMPA)

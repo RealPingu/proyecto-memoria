@@ -154,7 +154,8 @@ export default function Scene14v5PlaygroundRedesignPage() {
                 {showFakePopup && (
                   <motion.div 
                     exit={{ opacity: 0, scale: 0.95 }}
-                    className="bg-[#22c55e] text-black border-2 border-black p-2 rounded-lg relative shadow-[2px_2px_0px_rgba(0,0,0,1)] flex flex-col text-left rotate-[1deg] justify-between h-[96px]"
+                    onClick={() => handleIncorrectClick('Popup de seguridad click')}
+                    className="bg-[#22c55e] text-black border-2 border-black p-2 rounded-lg relative shadow-[2px_2px_0px_rgba(0,0,0,1)] flex flex-col text-left rotate-[1deg] justify-between h-[96px] cursor-pointer"
                   >
                     {/* Botón de cierre FALSO 'X' */}
                     <button 
@@ -169,7 +170,10 @@ export default function Scene14v5PlaygroundRedesignPage() {
                     <div className="text-[7px] font-black uppercase text-green-950">SYSTEM ALERT</div>
                     <p className="text-[8px] font-bold leading-tight pr-3 mt-0.5">Actualización de seguridad requerida.</p>
                     <button 
-                      onClick={() => handleIncorrectClick('Descarga de actualización de seguridad')}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleIncorrectClick('Descarga de actualización de seguridad');
+                      }}
                       className="bg-black hover:bg-zinc-900 text-white text-[8px] font-black px-1.5 py-0.5 border border-black rounded self-start active:translate-x-[0.5px] active:translate-y-[0.5px]"
                     >
                       ACTUALIZAR
@@ -221,7 +225,7 @@ export default function Scene14v5PlaygroundRedesignPage() {
               <div className="flex-1 flex flex-col justify-between min-w-0 w-full">
                 <div className="leading-tight">
                   <h4 className="text-[8px] font-black uppercase text-sky-800 tracking-wider">Pinguilario S.A.</h4>
-                  <span className="text-[10px] font-black text-zinc-950 truncate block">Super Polo Iglú Premium</span>
+                  <span className="text-[10px] font-black text-zinc-950 truncate block">Super polo iglú</span>
                 </div>
                 
                 {/* Botón de Reserva simple y temático */}
@@ -229,7 +233,7 @@ export default function Scene14v5PlaygroundRedesignPage() {
                   onClick={handleCorrectClick}
                   className="w-full bg-sky-800 border-2 border-black hover:bg-sky-700 text-white font-black py-2 px-3 rounded text-[9px] uppercase tracking-wide shadow-[1.5px_1.5px_0px_rgba(0,0,0,1)] active:translate-x-[0.5px] active:translate-y-[0.5px] active:shadow-none transition-all mt-2 text-center"
                 >
-                  Proceder a la Reserva Estándar
+                  PROCEDER A LA RESERVA
                 </button>
               </div>
 

@@ -137,27 +137,23 @@ export default function Scene22PatronHostil() {
       >
         {/* Cuerpo del Patrón Oscuro */}
         <g id="patron-figura-22" transform="matrix(0.204386, 0, 0, 0.179566, 109.414691, 19.192984)">
-          <path id="tentaculo-izq-22" d="M 76.803 196.156 C 71.563 178.814 115.955 225.818 91.894 280.699"
-            strokeLinecap="round" stroke="#000000" fill="none"
-            style={{ transformBox: 'fill-box', transformOrigin: '50% 50%', strokeWidth: '10.418px' }}
-            transform="matrix(0, 1.138222, -0.878563, 0, 0.000028, -0.00001)"/>
+          {/* Brazo izquierdo / tentáculo */}
+          <path id="tentaculo-izq-22" d="M 76.803 196.156 C 71.563 178.814 115.955 225.818 91.894 280.699" strokeLinecap="round" stroke="#000000" fill="none" style={{ transformBox: 'fill-box', transformOrigin: '50% 50%', strokeWidth: '10.418px' }} transform="matrix(0, 1.138222, -0.878563, 0, 0.000028, -0.00001)"/>
           
-          <polygon id="cuerpo-rombo-22" points="128.429 358.794 101.59 118.309 301.567 121.718 268.414 361.179"
-            fill="url(#teselacion-hostil-22)" stroke="#ef4444" strokeWidth="2.5"
-            style={{ transformOrigin: '200px 240px' }}/>
-
+          {/* Cuerpo rombo isométrico */}
+          <polygon id="cuerpo-rombo-22" points="128.429 358.794 101.59 118.309 301.567 121.718 268.414 361.179" fill="url(#teselacion-hostil-22)" stroke="#ef4444" strokeWidth="2.5" style={{ transformOrigin: '200px 240px' }}/>
+          
           {/* Núcleo inestable */}
           <motion.polygon id="nucleo-rombo-22" points="155.035 148.511 180.035 168.511 155.035 188.511 130.035 168.511"
             animate={{ fill: ["#ef4444", "#a855f7", "#f97316", "#ef4444"] }}
             transition={{ repeat: Infinity, duration: 1, ease: "easeInOut" }}/>
-          <line id="nucleo-linea-22"
-            x1="148.611" y1="158.732" x2="155.035" y2="182.988"
-            stroke="#020408" strokeWidth="3"/>
-
-          <path id="tentaculo-der-22" d="M 116.335 196.849 C 111.095 179.508 166.823 207.174 115.253 292.447"
-            strokeLinecap="round" stroke="#000000" fill="none"
-            style={{ strokeWidth: '10.418px', transformBox: 'fill-box', transformOrigin: '50% 50%' }}
-            transform="matrix(0, 1.138222, -0.878563, 0, -0.000013, 0.000012)"/>
+          <line id="nucleo-linea-22" x1="148.611" y1="158.732" x2="155.035" y2="182.988" stroke="#020408" strokeWidth="3" />
+          
+          {/* Brazo derecho / tentáculo */}
+          <path id="tentaculo-der-22" d="M 116.335 196.849 C 111.095 179.508 166.823 207.174 115.253 292.447" strokeLinecap="round" stroke="#000000" fill="none" style={{ strokeWidth: '10.418px', transformBox: 'fill-box', transformOrigin: '50% 50%' }} transform="matrix(0, 1.138222, -0.878563, 0, -0.000013, 0.000012)"/>
+          
+          {/* Brillo reflectivo en el borde */}
+          <path id="brillo-reflejo-22" d="M 386.098 120.481 C 434.242 133.117 400.957 140.502 385.262 152.43" strokeLinecap="round" style={{ fill: 'none', stroke: '#ffffff', transformOrigin: '273.549px -7.507px', strokeWidth: '5.20898px' }} transform="matrix(0, 1.138222, -0.878563, 0, -0.000058, 0.000053)"/>
         </g>
       </motion.g>
 

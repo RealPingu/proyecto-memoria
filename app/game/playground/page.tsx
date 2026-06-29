@@ -269,6 +269,21 @@ export default function SceneMenuPage() {
       )
     },
     {
+      id: 'scene_14v3',
+      number: 14.3,
+      title: 'La Batalla Mental v3 (M3 Spec)',
+      subtitle: 'Escena 14 v3 — Spec Material 3',
+      description: 'Prueba el mockup de batalla interactiva adaptado según las especificaciones de diseño M3.',
+      path: '/game/playground/scene/scene_14v3',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80 flex items-center justify-center">
+          <span className="text-[10px] font-mono text-purple-400">📱 INTERFAZ M3 SPEC v3</span>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+        </div>
+      )
+    },
+    {
       id: 'scene_15',
       number: 15,
       title: 'Camo y el Drip Pricing',

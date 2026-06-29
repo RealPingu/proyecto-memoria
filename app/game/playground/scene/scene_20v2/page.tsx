@@ -139,8 +139,8 @@ export default function Scene20v2PlaygroundPage() {
           </div>
 
           {/* Nombre del Hablante consistente (Patrón Oscuro) */}
-          <div className="shrink-0 flex items-center justify-start pl-1 text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-purple-400 italic block">
-            <FearTremble text="EL PATRÓN OSCURO (PRECIOS DE REFERENCIA)" color="#a855f7" />
+          <div className="shrink-0 flex items-center justify-start pl-1 text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-[#06b6d4] italic block">
+            <FearTremble text="EL PATRÓN OSCURO (PRECIOS DE REFERENCIA)" color="#06b6d4" />
           </div>
 
           {/* =======================================================

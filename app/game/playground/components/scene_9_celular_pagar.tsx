@@ -270,7 +270,7 @@ export default function Scene9CelularPagar() {
               // Monedita
               <g>
                 <circle cx="0" cy="0" r="3.2" fill="url(#oro-grad)" stroke="#d97706" strokeWidth="0.3" />
-                <text x="0" y="1" fontFamily="monospace" fontSize="3.5" fontWeight="900" fill="#78350f" text-anchor="middle">$</text>
+                <text x="0" y="1" fontFamily="monospace" fontSize="3.5" fontWeight="900" fill="#78350f" textAnchor="middle">$</text>
               </g>
             ) : (
               // Billetito

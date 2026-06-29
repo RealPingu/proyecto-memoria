@@ -15,11 +15,11 @@ export default function Scene14v3PlaygroundPage() {
     if (!clickedAd) return;
 
     const popupList = [
-      { title: 'ALERTA DE SEGURIDAD: Archivo ejecutable detectado', x: 10, y: 15 },
-      { title: 'DESCARGA AUTOMÁTICA: PinguSafe_Setup.exe', x: 45, y: 30 },
-      { title: 'SCRIPT SUSPECT: Modificando registros del sistema', x: 20, y: 60 },
-      { title: 'SISTEMA COMPROMETIDO: Múltiples popups de publicidad', x: 50, y: 70 },
-      { title: 'SUSCRIPCIÓN INDESEADA: Factura de 99 $P generada', x: 5, y: 45 }
+      { title: 'ALERTA DE DESCARGA: CleanPingu.exe iniciado', x: 10, y: 15 },
+      { title: 'PROPUESTA COMERCIAL: Crédito inmediato solicitado', x: 45, y: 30 },
+      { title: 'DESCARGA COMPLETA: Planos_Iglu_Gratis.exe', x: 20, y: 60 },
+      { title: 'ALERTA DE SISTEMA: Ejecutando scripts desconocidos', x: 50, y: 70 },
+      { title: 'SUSCRIPCIÓN ACTIVA: Servicio Premium Glacial contratado', x: 5, y: 45 }
     ];
 
     let currentPopupIndex = 0;
@@ -105,7 +105,7 @@ export default function Scene14v3PlaygroundPage() {
             <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-[#FEF7FF]" />
           </div>
 
-          {/* Status Bar (Simulado con las dimensiones de la base) */}
+          {/* Status Bar */}
           <div className="w-full h-[52px] flex justify-between items-end px-6 pb-2 select-none z-10 shrink-0">
             <span className="font-mono font-medium text-xs text-[#1D1B20]">09:41 AM</span>
             <div className="flex items-center gap-1.5 h-[17px]">
@@ -143,7 +143,7 @@ export default function Scene14v3PlaygroundPage() {
             <div className="w-8 h-8" />
           </div>
 
-          {/* Title & Subtitle block (Caricaturesco, textos e info) */}
+          {/* Title & Subtitle block */}
           <div className="mt-auto px-4 pb-3 z-10 flex flex-col gap-0.5 text-left">
             <h2 className="text-xl sm:text-2xl font-black text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] uppercase">
               Super Polo Iglú
@@ -152,7 +152,7 @@ export default function Scene14v3PlaygroundPage() {
               Sector Glacial 4 - Vista Marina
             </p>
             
-            {/* Assistive Chips (2 chips de categoría M3) */}
+            {/* Assistive Chips */}
             <div className="flex gap-2 mt-1.5">
               <div className="bg-[#F7F2FA] shadow-[0px_1px_2px_rgba(0,0,0,0.15)] rounded-lg px-2 py-0.5 flex items-center gap-1 border border-[#CAC4D0]/60">
                 <div className="w-2 h-2 rounded-full bg-[#6750A4]" />
@@ -167,17 +167,17 @@ export default function Scene14v3PlaygroundPage() {
 
         </div>
 
-        {/* 2. ÁREA INTERMEDIA DE CONTENIDO SCROLLABLE (Asegura contención responsive) */}
+        {/* 2. ÁREA INTERMEDIA DE CONTENIDO SCROLLABLE */}
         <div className="flex-1 overflow-y-auto custom-scrollbar flex flex-col bg-[#FEF7FF]">
           
-          {/* Section Header (64px) */}
+          {/* Section Header */}
           <div className="w-full h-12 flex items-center px-4 bg-[#FEF7FF] shrink-0 border-b border-[#CAC4D0]/40">
             <h3 className="text-xs font-black text-[#1D1B20] uppercase tracking-wide">
               Detalles del Inmueble y Reseñas
             </h3>
           </div>
 
-          {/* Segmented Button Block (64px) */}
+          {/* Segmented Button Block */}
           <div className="w-full h-12 bg-[#FEF7FF] p-2 flex shrink-0 border-b border-[#CAC4D0]/40">
             <div className="flex w-full h-8 border border-[#CAC4D0] rounded-full overflow-hidden shadow-2xs font-bold text-[9px] uppercase">
               {/* Segmento 1 (Activo) */}
@@ -194,7 +194,7 @@ export default function Scene14v3PlaygroundPage() {
           {/* LIST ITEMS (Comentarios rediseñados como anuncios disfrazados - minefield) */}
           <div className="flex flex-col">
             
-            {/* TRAMPA 1: Reseña disfrazada 1 (Cupón falso de descuento) */}
+            {/* TRAMPA 1: Reseña disfrazada 1 */}
             <div 
               onClick={() => handleIncorrectClick('Reseña cupón descuento')}
               className="h-[88px] flex items-center px-4 gap-3 bg-sky-50 hover:bg-sky-100 transition cursor-pointer border-b border-[#CAC4D0]/40 relative"
@@ -214,7 +214,7 @@ export default function Scene14v3PlaygroundPage() {
               <span className="absolute bottom-1 right-2 text-[7px] text-zinc-400 font-mono font-bold">Reseña Patrocinada</span>
             </div>
 
-            {/* TRAMPA 2: Reseña disfrazada 2 (Contrato/Plano falso) */}
+            {/* TRAMPA 2: Reseña disfrazada 2 */}
             <div 
               onClick={() => handleIncorrectClick('Reseña planos gratis')}
               className="h-[88px] flex items-center px-4 gap-3 bg-orange-50 hover:bg-orange-100 transition cursor-pointer border-b border-[#CAC4D0]/40 relative"
@@ -234,7 +234,7 @@ export default function Scene14v3PlaygroundPage() {
               <span className="absolute bottom-1 right-2 text-[7px] text-zinc-400 font-mono font-bold">Oficial</span>
             </div>
 
-            {/* TRAMPA 3: Reseña disfrazada 3 (Aviso de actualización) */}
+            {/* TRAMPA 3: Reseña disfrazada 3 */}
             <div 
               onClick={() => handleIncorrectClick('Reseña actualización de seguridad')}
               className="h-[88px] flex items-center px-4 gap-3 bg-purple-50 hover:bg-purple-100 transition cursor-pointer border-b border-[#CAC4D0]/40 relative"
@@ -256,10 +256,10 @@ export default function Scene14v3PlaygroundPage() {
 
           </div>
 
-          {/* 3. BOTÓN DE ACCIÓN INDIVIDUAL GRANDE (88px alto en base) */}
+          {/* 3. BOTÓN DE ACCIÓN INDIVIDUAL GRANDE */}
           <div className="w-full h-16 bg-[#FEF7FF] px-4 py-2 flex items-center shrink-0 mt-auto border-t border-[#CAC4D0]">
             
-            {/* BOTÓN REAL CORRECTO (Material Outline Button) */}
+            {/* BOTÓN REAL CORRECTO */}
             <button
               onClick={handleCorrectClick}
               className="w-full h-10 border-2 border-black hover:bg-zinc-100 text-[#49454F] hover:text-black font-black text-[10px] uppercase rounded-full shadow-[2px_2px_0px_rgba(0,0,0,1)] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all flex items-center justify-center"
@@ -280,7 +280,7 @@ export default function Scene14v3PlaygroundPage() {
             </div>
             <span className="text-[8px] font-bold text-[#625B71]">Inicio</span>
           </div>
-          {/* TRAMPA 4: Botón de chat que es un anuncio disfrazado (Caricaturesco) */}
+          {/* TRAMPA 4: Botón de chat que es un anuncio disfrazado */}
           <div 
             onClick={() => handleIncorrectClick('Ad en Barra Navegación')}
             className="flex flex-col items-center gap-0.5 opacity-70 cursor-pointer hover:opacity-100 transition"
@@ -320,6 +320,7 @@ export default function Scene14v3PlaygroundPage() {
             exit={{ opacity: 0 }}
             className="absolute inset-0 bg-black/95 z-50 flex flex-col items-center justify-center p-4 font-mono select-none"
           >
+            {/* Alertas de malware falsas flotantes */}
             {popups.map(p => (
               <motion.div
                 key={p.id}
@@ -335,6 +336,7 @@ export default function Scene14v3PlaygroundPage() {
               </motion.div>
             ))}
 
+            {/* Caja de Estado central */}
             <div className="bg-zinc-950 border-2 border-red-500 rounded-lg p-6 max-w-sm w-full flex flex-col gap-4 text-center relative overflow-hidden shadow-2xl">
               <div className="absolute top-0 left-0 w-full h-1 bg-red-500 animate-pulse" />
               

@@ -1,9 +1,8 @@
 'use client';
-import { renderToStaticMarkup } from 'react-dom/server';
-import { motion, AnimatePresence } from 'framer-motion';
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
 import Scene14Resultado2 from '../../../components/scene_14_resultado_2';
 
 export default function Scene14Resultado2Page() {
@@ -15,15 +14,16 @@ export default function Scene14Resultado2Page() {
 
   const handleCopyToClipboard = () => {
     try {
-      const element = <Scene14Resultado2 />;
-      const html = renderToStaticMarkup(element);
-      const match = html.match(/<svg[\s\S]*<\/svg>/);
-      const svgCode = match ? match[0] : html;
-      navigator.clipboard.writeText(svgCode);
-      setStatus({
-        type: 'success',
-        message: '¡Código SVG estático copiado al portapapeles!'
-      });
+      const svgElement = document.querySelector('svg');
+      if (svgElement) {
+        navigator.clipboard.writeText(svgElement.outerHTML);
+        setStatus({
+          type: 'success',
+          message: '¡Código SVG estático copiado al portapapeles!'
+        });
+      } else {
+        throw new Error('SVG no encontrado');
+      }
       setTimeout(() => setStatus({ type: 'idle', message: '' }), 3000);
     } catch (err) {
       setStatus({

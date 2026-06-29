@@ -77,7 +77,7 @@ export default function Battle1MockupPage() {
   };
 
   return (
-    <div className="h-[100dvh] w-full bg-[#030712] text-zinc-100 flex items-center justify-center p-0 sm:p-4 font-sans overflow-hidden relative">
+    <div className="h-[100dvh] w-full bg-[#030712] text-[#1D1B20] flex items-center justify-center p-0 sm:p-4 font-sans overflow-hidden relative">
       {/* Luces de fondo decorativas de tono ártico */}
       <div className="absolute top-1/4 left-1/4 w-[350px] h-[350px] bg-sky-500/5 rounded-full blur-[100px] pointer-events-none sm:block hidden" />
       <div className="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none sm:block hidden" />
@@ -105,7 +105,7 @@ export default function Battle1MockupPage() {
           </div>
         </div>
 
-        {/* Barra de Navegación del Navegador (Simulada, solucionado el desborde con min-w-0 y shrink-0) */}
+        {/* Barra de Navegación del Navegador */}
         <div className="bg-sky-900 px-3 py-2 border-b border-sky-800 flex flex-col gap-1.5 shrink-0 z-20 pt-3 sm:pt-2">
           <div className="flex items-center gap-2 min-w-0 w-full">
             {/* Botón Atrás (Opción 3) */}
@@ -132,7 +132,7 @@ export default function Battle1MockupPage() {
             ========================================== */}
         <div className="flex-1 bg-[#e0f2fe] overflow-y-auto custom-scrollbar p-4 flex flex-col gap-4 relative select-none">
           
-          {/* Alerta de urgencia falsa (Estilo caricaturesco polar) */}
+          {/* Alerta de urgencia falsa */}
           <div className="bg-red-500 text-white border-2 border-black p-3 rounded-lg text-[10px] leading-relaxed font-bold shadow-[2px_2px_0px_rgba(0,0,0,1)]">
             ALERTA: PRECIO EXCLUSIVO POR TIEMPO LIMITADO. Quedan solo 2 iglus disponibles en este sector.
           </div>
@@ -149,7 +149,7 @@ export default function Battle1MockupPage() {
               <circle cx="80" cy="18" r="4.5" fill="#fef08a" stroke="#000" strokeWidth="1" />
             </svg>
 
-            {/* Banner publicitario DISFRAZADO (Celeste/Amarillo llamativo) */}
+            {/* Banner publicitario DISFRAZADO */}
             <button 
               onClick={() => handleIncorrectClick('Planos de descarga')}
               className="absolute top-2 right-2 bg-yellow-400 hover:bg-yellow-300 text-black text-[9px] font-black px-2 py-1 border-2 border-black rounded shadow-[2px_2px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all"
@@ -173,7 +173,7 @@ export default function Battle1MockupPage() {
             </p>
           </div>
 
-          {/* TRAMPA 1: Banner estilo paso siguiente (Celeste vibrante) */}
+          {/* TRAMPA 1: Banner estilo paso siguiente */}
           <div 
             onClick={() => handleIncorrectClick('Contrato ejecutable')}
             className="border-2 border-black bg-cyan-400 text-black p-3 rounded-lg flex items-center justify-between cursor-pointer hover:bg-cyan-300 transition shadow-[3px_3px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
@@ -198,7 +198,7 @@ export default function Battle1MockupPage() {
             </p>
           </div>
 
-          {/* TRAMPA 2: Botón de Compra Directo Engañoso (Naranja contrastante) */}
+          {/* TRAMPA 2: Botón de Compra Directo Engañoso */}
           <button
             onClick={() => handleIncorrectClick('Compra directa descuento')}
             className="w-full bg-orange-500 hover:bg-orange-400 text-black font-black py-3.5 px-4 border-2 border-black rounded-lg text-xs tracking-wider shadow-[3px_3px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all uppercase text-center"
@@ -206,7 +206,7 @@ export default function Battle1MockupPage() {
             COMPRAR AHORA CON 80% DE DESCUENTO
           </button>
 
-          {/* Enlace de escape (Opción 3) */}
+          {/* Enlace de escape */}
           <div className="text-center py-1">
             <button 
               onClick={handleExitClick}
@@ -224,7 +224,6 @@ export default function Battle1MockupPage() {
               <span className="text-[8px] uppercase tracking-wider text-sky-600 font-bold">Reserva Oficial</span>
               <span className="text-[10px] text-sky-900 font-mono font-bold">Pinguilario S.A.</span>
             </div>
-            {/* Botón correcto: simple, sobrio, grisáceo/azul oscuro plano */}
             <button
               onClick={handleCorrectClick}
               className="bg-sky-800 border-2 border-black hover:bg-sky-700 text-zinc-100 font-black py-2.5 px-4 rounded-lg text-[10px] tracking-wide shadow-[2px_2px_0px_rgba(0,0,0,1)] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all uppercase"
@@ -253,7 +252,7 @@ export default function Battle1MockupPage() {
             exit={{ opacity: 0 }}
             className="absolute inset-0 bg-black/95 z-50 flex flex-col items-center justify-center p-4 font-mono select-none"
           >
-            {/* Alertas de malware falsas flotantes (Diseño caricaturesco plano) */}
+            {/* Alertas de malware falsas flotantes */}
             {popups.map(p => (
               <motion.div
                 key={p.id}

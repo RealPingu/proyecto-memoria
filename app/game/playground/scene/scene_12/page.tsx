@@ -89,21 +89,21 @@ function getScene12StaticSvg(): string {
         <rect x="185" y="52" width="130" height="20" rx="10" fill="#0f172a"/>
       </g>
       <g id="contenido-pantalla" transform="matrix(1, 0, 0, 1, 92.000003, 72.000002)">
-        <text x="158" y="40" font-family="sans-serif" font-size="20" font-weight="900" fill="#0f172a" text-anchor="middle" letter-spacing="0.5" transform="matrix(1, 0, 0, 1, 1.469486, 25.656913)">IGLÚ MEDITERRÁNEO</text>
+        <text x="158" y="40" fontFamily="sans-serif" fontSize="20" fontWeight="900" fill="#0f172a" textAnchor="middle" letterSpacing="0.5" transform="matrix(1, 0, 0, 1, 1.469486, 25.656913)">IGLÚ MEDITERRÁNEO</text>
         <g id="iglu-isometrico-brillos" transform="translate(48, 90)">
           <ellipse cx="110" cy="210" rx="110" ry="20" fill="#cbd5e1" opacity="0.5"/>
-          <path d="M 20 190 L 60 110 L 110 80 L 110 220 L 50 220 Z" fill="#38bdf8" stroke="#0284c7" stroke-width="2"/>
-          <path d="M 110 80 L 160 110 L 200 190 L 170 220 L 110 220 Z" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
-          <line x1="60" y1="110" x2="110" y2="140" stroke="#0284c7" stroke-width="2"/>
-          <line x1="160" y1="110" x2="110" y2="140" stroke="#0284c7" stroke-width="2"/>
-          <line x1="110" y1="140" x2="110" y2="220" stroke="#0284c7" stroke-width="2"/>
-          <line x1="38" y1="145" x2="80" y2="175" stroke="#0284c7" stroke-width="2"/>
-          <line x1="182" y1="145" x2="138" y2="175" stroke="#0284c7" stroke-width="2"/>
-          <path d="M 75 220 L 75 170 L 110 150 L 145 170 L 145 220 Z" fill="#0369a1" stroke="#0284c7" stroke-width="2"/>
+          <path d="M 20 190 L 60 110 L 110 80 L 110 220 L 50 220 Z" fill="#38bdf8" stroke="#0284c7" strokeWidth="2"/>
+          <path d="M 110 80 L 160 110 L 200 190 L 170 220 L 110 220 Z" fill="#e0f2fe" stroke="#0284c7" strokeWidth="2"/>
+          <line x1="60" y1="110" x2="110" y2="140" stroke="#0284c7" strokeWidth="2"/>
+          <line x1="160" y1="110" x2="110" y2="140" stroke="#0284c7" strokeWidth="2"/>
+          <line x1="110" y1="140" x2="110" y2="220" stroke="#0284c7" strokeWidth="2"/>
+          <line x1="38" y1="145" x2="80" y2="175" stroke="#0284c7" strokeWidth="2"/>
+          <line x1="182" y1="145" x2="138" y2="175" stroke="#0284c7" strokeWidth="2"/>
+          <path d="M 75 220 L 75 170 L 110 150 L 145 170 L 145 220 Z" fill="#0369a1" stroke="#0284c7" strokeWidth="2"/>
           <path d="M 85 220 L 85 180 L 110 165 L 135 180 L 135 220 Z" fill="#0f172a"/>
-          <line x1="110" y1="80" x2="160" y2="110" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
-          <line x1="160" y1="110" x2="200" y2="190" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
-          <line x1="110" y1="140" x2="138" y2="175" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+          <line x1="110" y1="80" x2="160" y2="110" stroke="#ffffff" strokeWidth="3" strokeLinecap="round"/>
+          <line x1="160" y1="110" x2="200" y2="190" stroke="#ffffff" strokeWidth="3" stroke-linecap="round"/>
+          <line x1="110" y1="140" x2="138" y2="175" stroke="#ffffff" strokeWidth="2" opacity="0.8"/>
           <path d="M 160 60 Q 160 75, 175 75 Q 160 75, 160 90 Q 160 75, 145 75 Q 160 75, 160 60 Z" fill="#fde047"/>
           <circle cx="160" cy="75" r="3" fill="#ffffff"/>
           <path d="M 40 100 Q 40 110, 50 110 Q 40 110, 40 120 Q 40 110, 30 110 Q 40 110, 40 100 Z" fill="#ffffff" opacity="0.9"/>
@@ -112,13 +112,13 @@ function getScene12StaticSvg(): string {
           <circle cx="130" cy="50" r="3" fill="#ffffff" opacity="0.7"/>
           <circle cx="180" cy="90" r="2.5" fill="#fde047"/>
         </g>
-        <text x="158" y="40" font-family="sans-serif" font-size="14" font-weight="900" fill="#2ca8f9" text-anchor="middle" letter-spacing="0.5" transform="matrix(1, 0, 0, 1, -0.080821, -15.408638)">Pingüilario Inmobiliario</text>
+        <text x="158" y="40" fontFamily="sans-serif" fontSize="14" fontWeight="900" fill="#2ca8f9" textAnchor="middle" letterSpacing="0.5" transform="matrix(1, 0, 0, 1, -0.080821, -15.408638)">Pingüilario Inmobiliario</text>
       </g>
       <g id="group-4" transform="matrix(1, 0, 0, 1, 92.000003, 430.000013)">
         <rect width="316" height="128" rx="30" fill="#ffffff"/>
         <g id="group-5" transform="translate(20, 42)">
-          <rect width="272" height="50" rx="12" style="fill: rgb(248, 203, 2);"/>
-          <text x="136" y="31" font-family="sans-serif" font-size="14" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="1">OBTENLO YA!!!!</text>
+          <rect width="272" height="50" rx="12" fill="#f8cb02"/>
+          <text x="136" y="31" fontFamily="sans-serif" fontSize="14" fontWeight="900" fill="#ffffff" textAnchor="middle" letterSpacing="1">OBTENLO YA!!!!</text>
         </g>
       </g>
     </g>

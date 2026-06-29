@@ -28,11 +28,11 @@ function getScene11StaticSvg(): string {
     </linearGradient>
   </defs>
   <rect width="100%" height="100%" fill="url(#aleta-bg-grad)"/>
-  <rect x="36" y="48" width="128" height="28" rx="8" fill="#22c55e" stroke="#4ade80" stroke-width="0.8" />
-  <text x="100" y="66" font-family="sans-serif" font-size="8.5" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="0.8">ALETEA PARA PAGAR !!!</text>
+  <rect x="36" y="48" width="128" height="28" rx="8" fill="#22c55e" stroke="#4ade80" strokeWidth="0.8" />
+  <text x="100" y="66" fontFamily="sans-serif" fontSize="8.5" fontWeight="900" fill="#ffffff" textAnchor="middle" letterSpacing="0.8">ALETEA PARA PAGAR !!!</text>
   <g transform="matrix(1, 0, 0, 1, 0, 12)">
-    <path id="aleta" d="M 50,-10 C 65,15 82,38 92,54 C 70,58 48,34 32,12 Z" fill="url(#camo-digital)" stroke="#1b2611" stroke-width="0.8" />
-    <path id="aleta-borde-blanco" d="M 50,-10 C 58,5 68,18 74,27" fill="none" stroke="#d8d8d0" stroke-width="2.5" stroke-linecap="round"/>
+    <path id="aleta" d="M 50,-10 C 65,15 82,38 92,54 C 70,58 48,34 32,12 Z" fill="url(#camo-digital)" stroke="#1b2611" strokeWidth="0.8" />
+    <path id="aleta-borde-blanco" d="M 50,-10 C 58,5 68,18 74,27" fill="none" stroke="#d8d8d0" strokeWidth="2.5" strokeLinecap="round"/>
   </g>
 </svg>`;
 }

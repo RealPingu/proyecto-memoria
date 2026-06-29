@@ -80,12 +80,12 @@ function getScene10StaticSvg(): string {
       </g>
       <g id="checkout-footer" transform="translate(92, 420)">
         <rect width="316" height="128" fill="#ffffff"/>
-        <line x1="20" y1="0" x2="296" y2="0" stroke="#f1f5f9" stroke-width="2"/>
-        <text x="24" y="27" font-family="sans-serif" font-size="12" font-weight="bold" fill="#64748b">TOTAL PINGÜICARRO</text>
-        <text x="292" y="30" font-family="sans-serif" font-size="22" font-weight="900" fill="#0f172a" text-anchor="end">$49.99</text>
+        <line x1="20" y1="0" x2="296" y2="0" stroke="#f1f5f9" strokeWidth="2"/>
+        <text x="24" y="27" fontFamily="sans-serif" fontSize="12" fontWeight="bold" fill="#64748b">TOTAL PINGÜICARRO</text>
+        <text x="292" y="30" fontFamily="sans-serif" fontSize="22" fontWeight="900" fill="#0f172a" textAnchor="end">$49.99</text>
         <g id="boton-simple-aletea" transform="translate(20, 50)">
           <rect width="272" height="50" rx="12" fill="#22c55e"/>
-          <text x="136" y="31" font-family="sans-serif" font-size="15" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="1.2">ALETEA PARA PAGAR</text>
+          <text x="136" y="31" fontFamily="sans-serif" fontSize="15" fontWeight="900" fill="#ffffff" textAnchor="middle" letterSpacing="1.2">ALETEA PARA PAGAR</text>
         </g>
       </g>
     </g>

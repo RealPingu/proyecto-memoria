@@ -30,42 +30,42 @@ function getScene13StaticSvg(): string {
     <g id="caos-ventanas" transform="translate(92, 72)">
       <g id="popup-codigo-unico-wrapper" transform="translate(15, 15)">
         <g transform="matrix(0.993573, -0.131775, 0.097235, 0.993573, 0, 0)">
-          <rect width="286" height="60" rx="10" fill="#5b21b6" stroke="#f59e0b" stroke-width="2"/>
-          <text x="143" y="35" font-family="sans-serif" font-size="15" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="0.5">¡CÓDIGO ÚNICO! ¡PULSA AQUÍ!</text>
+          <rect width="286" height="60" rx="10" fill="#5b21b6" stroke="#f59e0b" strokeWidth="2"/>
+          <text x="143" y="35" fontFamily="sans-serif" fontSize="15" fontWeight="900" fill="#ffffff" textAnchor="middle" letterSpacing="0.5">¡CÓDIGO ÚNICO! ¡PULSA AQUÍ!</text>
         </g>
       </g>
       <g id="popup-compra-ya-wrapper" transform="translate(22.017, 102.155)">
         <g transform="matrix(0.975167, 0.257822, -0.190244, 0.975167, 0, 0)">
           <rect width="130" height="70" fill="#b91c1c" rx="15.8" ry="15.8"/>
-          <text x="65" y="42" font-family="sans-serif" font-size="15" font-weight="900" fill="#fde047" text-anchor="middle">¡COMPRA YA!</text>
+          <text x="65" y="42" fontFamily="sans-serif" fontSize="15" fontWeight="900" fill="#fde047" textAnchor="middle">¡COMPRA YA!</text>
         </g>
       </g>
       <g id="popup-solo-hoy-wrapper" transform="translate(244.216, 131.578)">
         <g transform="matrix(0.986488, 0.470699, -0.400603, 1.137813, 0, 0)">
-          <circle cx="0" cy="0" r="40" fill="#f97316" stroke="#c2410c" stroke-width="2"/>
-          <text x="0" y="-8" font-family="sans-serif" font-size="13" font-weight="900" fill="#ffffff" text-anchor="middle">SOLO HOY</text>
-          <text x="0" y="10" font-family="sans-serif" font-size="12" font-weight="900" fill="#ffffff" text-anchor="middle">APRESÚRATE</text>
+          <circle cx="0" cy="0" r="40" fill="#f97316" stroke="#c2410c" strokeWidth="2"/>
+          <text x="0" y="-8" fontFamily="sans-serif" fontSize="13" fontWeight="900" fill="#ffffff" textAnchor="middle">SOLO HOY</text>
+          <text x="0" y="10" fontFamily="sans-serif" fontSize="12" fontWeight="900" fill="#ffffff" textAnchor="middle">APRESÚRATE</text>
         </g>
       </g>
       <g id="popup-sigue-compra-wrapper" transform="translate(7, 185)">
         <rect x="20" y="17" width="262" height="62" rx="4" fill="#0f172a" opacity="0.3"/>
-        <rect x="15" y="12" width="262" height="62" stroke="#000000" stroke-width="2" fill="url(#gradient-3)"/>
-        <text x="146" y="48" fill="#2ca8f9" font-family="sans-serif" font-size="18" font-weight="900" letter-spacing="0.5" text-anchor="middle">SIGUE CON TU COMPRA</text>
+        <rect x="15" y="12" width="262" height="62" stroke="#000000" strokeWidth="2" fill="url(#gradient-3)"/>
+        <text x="146" y="48" fill="#2ca8f9" fontFamily="sans-serif" fontSize="18" fontWeight="900" letterSpacing="0.5" textAnchor="middle">SIGUE CON TU COMPRA</text>
       </g>
       <g id="popup-suscribete-wrapper" transform="translate(94.296, 330.225)">
-        <circle cx="0" cy="0" r="45" fill="#a3e635" stroke="#4d7c0f" stroke-width="2"/>
-        <text x="0" y="-8" font-family="sans-serif" font-size="13" font-weight="900" fill="#0f172a" text-anchor="middle">SUSCRÍBITE</text>
-        <text x="0" y="10" font-family="sans-serif" font-size="13" font-weight="900" fill="#0f172a" text-anchor="middle">AQUÍ!</text>
+        <circle cx="0" cy="0" r="45" fill="#a3e635" stroke="#4d7c0f" strokeWidth="2"/>
+        <text x="0" y="-8" fontFamily="sans-serif" fontSize="13" fontWeight="900" fill="#0f172a" textAnchor="middle">SUSCRÍBITE</text>
+        <text x="0" y="10" fontFamily="sans-serif" fontSize="13" fontWeight="900" fill="#0f172a" textAnchor="middle">AQUÍ!</text>
       </g>
       <g id="popup-relajate-wrapper" transform="translate(221.755, 329.605)">
-        <path d="M 0 -40 L 12 -15 L 35 -25 L 20 -3 L 42 8 L 12 12 L 20 40 L -4 15 L -28 30 L -16 4 L -40 -12 L -12 -12 Z" fill="#f472b6" stroke="#db2777" stroke-width="2"/>
-        <text x="0" y="4" font-family="sans-serif" font-size="12" font-weight="900" fill="#000000" text-anchor="middle">¡RELAJATE!</text>
+        <path d="M 0 -40 L 12 -15 L 35 -25 L 20 -3 L 42 8 L 12 12 L 20 40 L -4 15 L -28 30 L -16 4 L -40 -12 L -12 -12 Z" fill="#f472b6" stroke="#db2777" strokeWidth="2"/>
+        <text x="0" y="4" fontFamily="sans-serif" fontSize="12" fontWeight="900" fill="#000000" textAnchor="middle">¡RELAJATE!</text>
       </g>
     </g>
     <g id="footer-falso-wrapper" transform="translate(92, 470)">
       <rect width="316" height="88" fill="#f87171" opacity="0.6" rx="37.893" ry="37.893"/>
       <rect x="20" y="19" width="272" height="50" rx="12" fill="#111827"/>
-      <text x="156" y="50" font-family="sans-serif" font-size="15" font-weight="900" fill="#ef4444" text-anchor="middle">DESCARGAR ERROR_FIX.EXE</text>
+      <text x="156" y="50" fontFamily="sans-serif" fontSize="15" fontWeight="900" fill="#ef4444" textAnchor="middle">DESCARGAR ERROR_FIX.EXE</text>
     </g>
   </g>
 </svg>`;

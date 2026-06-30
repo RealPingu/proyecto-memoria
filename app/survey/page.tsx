@@ -50,13 +50,10 @@ export default function SurveyPage() {
 
         if (id) {
             fetch(`/api/survey?playerId=${id}`)
-                .then(res => res.ok ? res.json() : [])
+                .then(res => res.ok ? res.json() : null)
                 .then(data => {
-                    if (data && Array.isArray(data)) {
-                        const existingAnswers: Record<string, number> = {};
-                        data.forEach((item: { question_id: string; score: number }) => {
-                            existingAnswers[item.question_id] = item.score;
-                        });
+                    if (data && data.responses && typeof data.responses === 'object') {
+                        const existingAnswers = data.responses;
                         setAnswers(existingAnswers);
                         const firstUnanswered = SURVEY_QUESTIONS.findIndex(q => !existingAnswers[q.id]);
                         if (firstUnanswered !== -1) setCurrentIndex(firstUnanswered);
@@ -105,7 +102,7 @@ export default function SurveyPage() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
                     playerId, 
-                    responses: Object.entries(answers).map(([id, score]) => ({ questionId: id, score })) 
+                    responses: answers 
                 }),
             });
 

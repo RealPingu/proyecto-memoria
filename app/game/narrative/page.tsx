@@ -93,9 +93,138 @@ export default function NarrativeIntroPage() {
   // Nodos de diálogo ya visitados por el usuario
   const [visitedNodes, setVisitedNodes] = useState<string[]>(['scene_1_init']);
   const [showMenu, setShowMenu] = useState(false);
+
+  // Estados de telemetría y métricas (JSONB)
+  const [transitions, setTransitions] = useState<any[]>([]);
+  const [decisions, setDecisions] = useState<any[]>([]);
   
   const typingTimer = useRef<NodeJS.Timeout | null>(null);
   const router = useRouter();
+
+  // Cronómetro de lectura para nodos
+  const startTimeRef = useRef<number>(typeof window !== 'undefined' ? performance.now() : 0);
+
+  // Helper para guardar/sincronizar telemetría de forma centralizada
+  const syncTelemetry = async (
+    nextNodeId: string, 
+    updatedVisited: string[], 
+    updatedTransitions: any[], 
+    updatedDecisions: any[]
+  ) => {
+    const playerId = localStorage.getItem('antipatron_player_id');
+    if (!playerId) return;
+
+    const payload = {
+      currentNodeId: nextNodeId,
+      visitedNodes: updatedVisited,
+      transitions: updatedTransitions,
+      decisions: updatedDecisions
+    };
+
+    // Guardar en localstorage
+    localStorage.setItem('antipatron_narrative_state', JSON.stringify(payload));
+    localStorage.setItem('antipatron_last_node', nextNodeId);
+
+    // Guardar en la base de datos dedicada (narrative_state)
+    try {
+      fetch('/api/narrative', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          playerId,
+          metadata: payload
+        })
+      });
+    } catch (e) {
+      console.error("Error sincronizando telemetría en base de datos:", e);
+    }
+  };
+
+  // Función genérica para cambiar de nodo y registrar la transición
+  const changeNode = (
+    nextNodeId: string, 
+    transitionType: 'forward' | 'backtrack' | 'jump_forward',
+    updatedDecisionsOverride?: any[]
+  ) => {
+    const now = performance.now();
+    const timeSpent = (now - startTimeRef.current) / 1000;
+    startTimeRef.current = now; // Reiniciamos el cronómetro para el nuevo nodo
+
+    const newTransition = {
+      from: currentNodeId,
+      to: nextNodeId,
+      durationSeconds: parseFloat(timeSpent.toFixed(2)),
+      timestamp: new Date().toISOString(),
+      type: transitionType
+    };
+
+    const updatedTransitions = [...transitions, newTransition];
+    const updatedVisited = visitedNodes.includes(nextNodeId) 
+      ? visitedNodes 
+      : [...visitedNodes, nextNodeId];
+
+    setTransitions(updatedTransitions);
+    setVisitedNodes(updatedVisited);
+    setCurrentNodeId(nextNodeId);
+
+    // Guardamos en localstorage local
+    localStorage.setItem('antipatron_visited_nodes', JSON.stringify(updatedVisited));
+
+    // Determinar las decisiones finales (manejo de batching en React)
+    const finalDecisions = [...(updatedDecisionsOverride || decisions)];
+
+    // Si salimos de una escena interactiva/batalla, registramos la decisión correspondiente de forma automática
+    if (currentNodeId === 'scene_14_choice') {
+      const isCorrect = nextNodeId === 'scene_14_resultado_2' || nextNodeId === 'scene_14_resultado_3';
+      const outcome = nextNodeId === 'scene_14_resultado_2' 
+        ? 'correct_reservation' 
+        : nextNodeId === 'scene_14_resultado_3' 
+        ? 'avoided_by_seeking_other_pages' 
+        : 'fell_for_adware';
+      
+      finalDecisions.push({
+        nodeId: currentNodeId,
+        choiceId: outcome,
+        isCorrect,
+        errorsCount: isCorrect ? 0 : 1,
+        durationSeconds: parseFloat(timeSpent.toFixed(2)),
+        timestamp: new Date().toISOString(),
+        details: { outcome }
+      });
+      setDecisions(finalDecisions);
+    } else if (currentNodeId === 'scene_15_choice') {
+      const isCorrect = nextNodeId === 'scene_15_resultado_1';
+      const outcome = isCorrect ? 'correct_checkout' : 'fell_for_drip_pricing';
+      
+      finalDecisions.push({
+        nodeId: currentNodeId,
+        choiceId: outcome,
+        isCorrect,
+        errorsCount: isCorrect ? 0 : 1,
+        durationSeconds: parseFloat(timeSpent.toFixed(2)),
+        timestamp: new Date().toISOString(),
+        details: { outcome }
+      });
+      setDecisions(finalDecisions);
+    } else if (currentNodeId === 'scene_18_choice') {
+      const isCorrect = nextNodeId === 'scene_18_resultado_1';
+      const outcome = isCorrect ? 'correct_reference_price_selection' : 'fell_for_reference_pricing';
+      
+      finalDecisions.push({
+        nodeId: currentNodeId,
+        choiceId: outcome,
+        isCorrect,
+        errorsCount: isCorrect ? 0 : 1,
+        durationSeconds: parseFloat(timeSpent.toFixed(2)),
+        timestamp: new Date().toISOString(),
+        details: { outcome }
+      });
+      setDecisions(finalDecisions);
+    }
+
+    // Sincronizar
+    syncTelemetry(nextNodeId, updatedVisited, updatedTransitions, finalDecisions);
+  };
 
   // Helper para saltar a un nodo desbloqueado
   const jumpToNode = (nodeId: string) => {
@@ -104,28 +233,59 @@ export default function NarrativeIntroPage() {
     if (idx !== -1) {
       const newHistory = visitedNodes.slice(0, idx);
       setHistory(newHistory);
-      setCurrentNodeId(nodeId);
+      localStorage.setItem('antipatron_narrative_history', JSON.stringify(newHistory));
+
+      // Determinar si es backtrack o jump_forward
+      const currentIdx = visitedNodes.indexOf(currentNodeId);
+      const transitionType = idx < currentIdx ? 'backtrack' : 'jump_forward';
+
+      changeNode(nodeId, transitionType);
     }
   };
 
-  // Cargar nodos visitados, último nodo e historial al montar (evita SSR mismatch)
+  // Cargar nodos visitados, último nodo e historial al montar (evita SSR mismatch y sincroniza con el servidor)
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const savedVisited = localStorage.getItem('antipatron_visited_nodes');
-      if (savedVisited) {
+      const id = localStorage.getItem('antipatron_player_id');
+
+      // 1. Cargar estado local rápido
+      const localStateStr = localStorage.getItem('antipatron_narrative_state');
+      if (localStateStr) {
         try {
-          const parsed = JSON.parse(savedVisited);
-          if (Array.isArray(parsed) && parsed.length > 0) {
-            setVisitedNodes(parsed);
+          const parsed = JSON.parse(localStateStr);
+          if (parsed.currentNodeId && NARRATIVE_NODES[parsed.currentNodeId]) {
+            setCurrentNodeId(parsed.currentNodeId);
+          }
+          if (Array.isArray(parsed.visitedNodes)) {
+            setVisitedNodes(parsed.visitedNodes);
+          }
+          if (Array.isArray(parsed.transitions)) {
+            setTransitions(parsed.transitions);
+          }
+          if (Array.isArray(parsed.decisions)) {
+            setDecisions(parsed.decisions);
+          }
+          const savedHistory = localStorage.getItem('antipatron_narrative_history');
+          if (savedHistory) {
+            const parsedHist = JSON.parse(savedHistory);
+            if (Array.isArray(parsedHist)) {
+              setHistory(parsedHist);
+            }
           }
         } catch (e) {
-          console.error("Error al parsear nodos visitados guardados:", e);
+          console.error("Error cargando estado local:", e);
         }
-      }
-
-      const searchParams = new URLSearchParams(window.location.search);
-      const nodeParam = searchParams.get('node');
-      if (!nodeParam) {
+      } else {
+        // Compatibilidad con guardados antiguos
+        const savedVisited = localStorage.getItem('antipatron_visited_nodes');
+        if (savedVisited) {
+          try {
+            const parsed = JSON.parse(savedVisited);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+              setVisitedNodes(parsed);
+            }
+          } catch (e) {}
+        }
         const savedNode = localStorage.getItem('antipatron_last_node');
         const savedHistory = localStorage.getItem('antipatron_narrative_history');
         if (savedNode && NARRATIVE_NODES[savedNode]) {
@@ -134,13 +294,38 @@ export default function NarrativeIntroPage() {
         if (savedHistory) {
           try {
             const parsedHist = JSON.parse(savedHistory);
-            if (Array.isArray(parsedHist)) {
-              setHistory(parsedHist);
-            }
-          } catch (e) {
-            console.error("Error al parsear historial guardado:", e);
-          }
+            if (Array.isArray(parsedHist)) setHistory(parsedHist);
+          } catch (e) {}
         }
+      }
+
+      // 2. Cargar estado del servidor para sincronización remota
+      if (id) {
+        fetch(`/api/narrative?playerId=${id}`)
+          .then(res => res.ok ? res.json() : null)
+          .then(data => {
+            if (data && data.metadata) {
+              const remote = data.metadata;
+              if (remote.currentNodeId && NARRATIVE_NODES[remote.currentNodeId]) {
+                setCurrentNodeId(remote.currentNodeId);
+              }
+              if (Array.isArray(remote.visitedNodes)) {
+                setVisitedNodes(remote.visitedNodes);
+              }
+              if (Array.isArray(remote.transitions)) {
+                setTransitions(remote.transitions);
+              }
+              if (Array.isArray(remote.decisions)) {
+                setDecisions(remote.decisions);
+              }
+              
+              // Sincronizar el localstorage local
+              localStorage.setItem('antipatron_narrative_state', JSON.stringify(remote));
+              localStorage.setItem('antipatron_last_node', remote.currentNodeId);
+              localStorage.setItem('antipatron_visited_nodes', JSON.stringify(remote.visitedNodes));
+            }
+          })
+          .catch(err => console.error("Error sincronizando estado remoto de la narrativa:", err));
       }
     }
   }, []);
@@ -297,16 +482,20 @@ export default function NarrativeIntroPage() {
       }
     }
   };
-
   // Función para avanzar de nodo (actualizando el historial interno)
-  const advanceNode = (nextId: string) => {
+  const advanceNode = (nextId: string, updatedDecisionsOverride?: any[]) => {
     if (nextId === 'post-test-intro') {
       router.push('/marking/post-intro');
       return;
     }
     if (NARRATIVE_NODES[nextId]) {
-      setHistory(prev => [...prev, currentNodeId]);
-      setCurrentNodeId(nextId);
+      setHistory(prev => {
+        const nextHist = [...prev, currentNodeId];
+        localStorage.setItem('antipatron_narrative_history', JSON.stringify(nextHist));
+        return nextHist;
+      });
+      // Avance estándar
+      changeNode(nextId, 'forward', updatedDecisionsOverride);
     } else {
       // Si no existe, finalizamos la demo de la narrativa o enviamos a créditos
       router.push('/credits');
@@ -319,7 +508,10 @@ export default function NarrativeIntroPage() {
       const prevHistory = [...history];
       const prevNodeId = prevHistory.pop()!;
       setHistory(prevHistory);
-      setCurrentNodeId(prevNodeId);
+      localStorage.setItem('antipatron_narrative_history', JSON.stringify(prevHistory));
+      
+      // Retroceso estándar
+      changeNode(prevNodeId, 'backtrack');
     } else {
       // Regresa a la pantalla explicativa posterior al pre-test
       router.push('/game/narrative/instructions');
@@ -335,10 +527,28 @@ export default function NarrativeIntroPage() {
 
   // Manejo de decisiones (Fase de elección de la Novela Visual)
   const handleChoiceClick = (choice: { text: string; nextNodeId: string; isCorrect: boolean; id: string }) => {
+    // Registramos la decisión
+    const now = performance.now();
+    const timeSpent = (now - startTimeRef.current) / 1000;
+    
+    const newDecision = {
+      nodeId: currentNodeId,
+      choiceId: choice.id,
+      isCorrect: choice.isCorrect,
+      errorsCount: choice.isCorrect ? 0 : 1,
+      durationSeconds: parseFloat(timeSpent.toFixed(2)),
+      timestamp: new Date().toISOString(),
+      details: { text: choice.text }
+    };
+    
+    const updatedDecisions = [...decisions, newDecision];
+    setDecisions(updatedDecisions);
+    
     logInteraction(choice.id, choice.isCorrect, { text: choice.text });
-    advanceNode(choice.nextNodeId);
+    
+    // Avanzamos al nodo
+    advanceNode(choice.nextNodeId, updatedDecisions);
   };
-
   // Parser dinámico para formatear "" y ## en React
   const renderDialogue = (tokens: TextToken[], visibleCount: number) => {
     let charsRemaining = visibleCount;

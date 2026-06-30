@@ -36,27 +36,24 @@ async function setup() {
         console.log("Tabla 'interaction_logs' creada exitosamente con restricción UNIQUE");
 
         // 3. Crear la tabla de respuestas de la encuesta Likert
-        await client.sql`DROP TABLE IF EXISTS likert_responses;`;
         await client.sql`
           CREATE TABLE IF NOT EXISTS likert_responses (
             id SERIAL PRIMARY KEY,
-            player_id UUID NOT NULL,
-            question_id VARCHAR(50) NOT NULL,
-            score INTEGER NOT NULL CHECK (score >= 1 AND score <= 5),
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            UNIQUE(player_id, question_id)
+            player_id UUID NOT NULL UNIQUE,
+            responses JSONB DEFAULT '{}',
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
           );
         `;
         console.log("Tabla 'likert_responses' creada exitosamente");
 
         // 4. Crear la tabla de resultados de las pruebas de marcado
-        await client.sql`DROP TABLE IF EXISTS marking_results;`;
+        await client.sql`DROP TABLE IF EXISTS marking_results CASCADE;`;
         await client.sql`
           CREATE TABLE IF NOT EXISTS marking_results (
             id SERIAL PRIMARY KEY,
             player_id UUID NOT NULL,
             scenario_id VARCHAR(50) NOT NULL,
-            phase VARCHAR(10) NOT NULL, -- 'pre' o 'post'
+            phase VARCHAR(10) NOT NULL,
             points JSONB DEFAULT '[]',
             selected_patterns JSONB DEFAULT '[]',
             time_taken DECIMAL,
@@ -65,6 +62,19 @@ async function setup() {
           );
         `;
         console.log("Tabla 'marking_results' creada exitosamente");
+
+        // 5. Crear la tabla de estado de la narrativa (1 fila por jugador)
+        await client.sql`DROP TABLE IF EXISTS narrative_state CASCADE;`;
+        await client.sql`
+          CREATE TABLE IF NOT EXISTS narrative_state (
+            id SERIAL PRIMARY KEY,
+            player_id UUID NOT NULL UNIQUE,
+            metadata JSONB DEFAULT '{}',
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+          );
+        `;
+        console.log("Tabla 'narrative_state' creada exitosamente");
+
     } catch (error) {
         console.error("Error creando las tablas:", error);
     } finally {

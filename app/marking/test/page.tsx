@@ -172,17 +172,12 @@ function MarkingTestContent() {
                         exit={{ opacity: 0 }}
                         className="flex flex-col h-full w-full"
                     >
-                        <header className="p-4 border-b border-game-muted/10 grid grid-cols-3 items-center shrink-0 bg-game-bg z-20">
-                            <div className="text-[10px] uppercase font-bold tracking-widest text-game-muted">
+                        <header className="p-4 border-b border-game-muted/10 flex justify-between items-center shrink-0 bg-game-bg z-20">
+                            <div className="text-[10px] md:text-xs uppercase font-bold tracking-widest text-game-muted">
                                 Marcas: {markedPoints.length}
                             </div>
-                            <div className="flex justify-center">
-                                <div className={`px-5 py-2 border ${timeLeft < 10 ? 'border-red-500 text-red-500 shadow-[0_0_10px_rgba(239,68,68,0.2)]' : 'border-game-accent/20 text-game-accent'} font-mono font-bold text-xl transition-all duration-500`}>
-                                    00:{timeLeft.toString().padStart(2, '0')}
-                                </div>
-                            </div>
-                            <div className="flex justify-end">
-                                <button onClick={() => setMarkedPoints([])} className="text-[9px] uppercase font-black text-game-accent underline tracking-tighter hover:text-white transition-colors">Limpiar</button>
+                            <div className={`px-5 py-2 border ${timeLeft < 10 ? 'border-red-500 text-red-500 shadow-[0_0_10px_rgba(239,68,68,0.2)]' : 'border-game-accent/20 text-game-accent'} font-mono font-bold text-sm md:text-base transition-all duration-500`}>
+                                00:{timeLeft.toString().padStart(2, '0')}
                             </div>
                         </header>
 

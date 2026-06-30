@@ -2,52 +2,57 @@ import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
 
 export async function GET() {
+  const playerId = '206fdfc5-5e91-4930-9cc9-71c5af6207af';
+  const responsesMock = { d1_q1: 4, d1_q2: 5 };
+
+  let errorWithoutCast = null;
+  let errorWithCast = null;
+
+  // 1. Probar consulta SIN cast (como estaba en la encuesta)
   try {
-    // 1. Diagnosticar la estructura de la tabla likert_responses
-    const columnsResult = await sql`
-      SELECT column_name, data_type 
-      FROM information_schema.columns 
-      WHERE table_name = 'likert_responses';
+    await sql`BEGIN;`;
+    await sql`
+      INSERT INTO likert_responses (player_id, responses)
+      VALUES (${playerId}, ${JSON.stringify(responsesMock)})
+      ON CONFLICT (player_id) 
+      DO UPDATE SET 
+        responses = ${JSON.stringify(responsesMock)}, 
+        updated_at = CURRENT_TIMESTAMP;
     `;
-
-    // 2. Diagnosticar si hay restricciones (constraints) en la tabla
-    const constraintsResult = await sql`
-      SELECT conname, contype 
-      FROM pg_constraint 
-      WHERE conrelid = 'likert_responses'::regclass;
-    `;
-
-    // 3. Probar una inserción simulada (y hacer rollback) para ver el error exacto
-    let testInsertError = null;
-    try {
-      await sql`BEGIN;`;
-      await sql`
-        INSERT INTO likert_responses (player_id, responses)
-        VALUES ('206fdfc5-5e91-4930-9cc9-71c5af6207af', '{"test": true}'::jsonb);
-      `;
-      await sql`ROLLBACK;`;
-    } catch (err: any) {
-      testInsertError = {
-        message: err.message,
-        code: err.code,
-        detail: err.detail
-      };
-      try { await sql`ROLLBACK;`; } catch (_) {}
-    }
-
-    return NextResponse.json({
-      tableName: 'likert_responses',
-      columns: columnsResult.rows,
-      constraints: constraintsResult.rows,
-      testInsertError
-    }, { status: 200 });
-
-  } catch (error: any) {
-    console.error('Error en diagnóstico de base de datos:', error);
-    return NextResponse.json({ 
-      success: false, 
-      error: error.message,
-      stack: error.stack
-    }, { status: 500 });
+    await sql`ROLLBACK;`;
+  } catch (err: any) {
+    errorWithoutCast = {
+      message: err.message,
+      code: err.code,
+      detail: err.detail
+    };
+    try { await sql`ROLLBACK;`; } catch (_) {}
   }
+
+  // 2. Probar consulta CON cast (::jsonb)
+  try {
+    await sql`BEGIN;`;
+    await sql`
+      INSERT INTO likert_responses (player_id, responses)
+      VALUES (${playerId}, ${JSON.stringify(responsesMock)}::jsonb)
+      ON CONFLICT (player_id) 
+      DO UPDATE SET 
+        responses = ${JSON.stringify(responsesMock)}::jsonb, 
+        updated_at = CURRENT_TIMESTAMP;
+    `;
+    await sql`ROLLBACK;`;
+  } catch (err: any) {
+    errorWithCast = {
+      message: err.message,
+      code: err.code,
+      detail: err.detail
+    };
+    try { await sql`ROLLBACK;`; } catch (_) {}
+  }
+
+  return NextResponse.json({
+    description: "Comparación de inserción en likert_responses con y sin casteo jsonb",
+    errorWithoutCast,
+    errorWithCast
+  }, { status: 200 });
 }

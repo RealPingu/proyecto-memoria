@@ -109,15 +109,9 @@ export default function PlayerProfilePage() {
                     <h1 className="text-3xl md:text-5xl font-bold uppercase italic tracking-tighter text-game-accent">
                         Datos del Jugador
                     </h1>
-                    {isConsentGiven ? (
-                        <p className="text-game-muted text-[10px] md:text-xs uppercase tracking-widest">
-                            Identificación para fines estadísticos
-                        </p>
-                    ) : (
-                        <div className="max-w-2xl mx-auto p-4 bg-game-surface/50 border border-game-muted/20 text-zinc-300 text-[10px] md:text-xs text-left font-mono rounded-sm leading-relaxed mt-2">
-                            Tu perfil se creará únicamente para fines de reconocimiento básico dentro de la narrativa (por ejemplo, para que los diálogos del juego se refieran a ti por tu nombre/nick). Como decidiste no dar tu consentimiento, todo el testeo, encuestas y recopilación de información para el estudio del juego han sido omitidos y no se registrarán en la base de datos; solo se tomarán los datos pertinentes a tus decisiones de la historia.
-                        </div>
-                    )}
+                    <p className="text-game-muted text-[10px] md:text-xs uppercase tracking-widest">
+                        {isConsentGiven ? "Identificación para fines estadísticos" : "Identificación básica para el juego"}
+                    </p>
                 </motion.header>
 
                 {/* 2. ÁREA CENTRAL (flex-1): Con scroll interno si es necesario */}
@@ -127,60 +121,70 @@ export default function PlayerProfilePage() {
                     transition={{ delay: 0.2, duration: 0.6 }}
                     className="flex-1 flex flex-col items-center min-h-0 overflow-y-auto custom-scrollbar"
                 >
-                    {/* El div con my-auto garantiza el centrado vertical seguro */}
-                    <div className="my-auto w-full max-w-md bg-game-surface/30 p-8 border border-game-muted/10 rounded-sm shadow-2xl shrink-0 py-10">
-                        <form onSubmit={handleSubmit} className="space-y-8">
-                            <div className="space-y-3">
-                                <label className="text-[10px] uppercase tracking-widest text-game-muted italic ml-1 font-bold text-game-accent/70">Nombre o Nickname</label>
-                                <input
-                                    type="text"
-                                    required
-                                    minLength={3}
-                                    maxLength={20}
-                                    pattern="^[a-zA-Z0-9_]+$"
-                                    value={nickname}
-                                    onChange={(e) => {
-                                        setNickname(e.target.value);
-                                        setErrorMessage(null);
-                                    }}
-                                    className={`w-full h-12 bg-game-bg border ${errorMessage && (errorMessage.includes("nickname") || errorMessage.includes("Formato")) ? 'border-red-500' : 'border-game-muted/30'} px-4 text-game-text focus:border-game-accent outline-none transition-colors font-mono text-sm`}
-                                    placeholder="..."
-                                />
-                                <div className="flex justify-between text-[8px] uppercase text-game-muted/40 font-mono px-1">
-                                    <span>3-20 caracteres</span>
-                                    <span>{nickname.length}/20</span>
+                    {/* Contenedor que agrupa el cuadro de datos y la explicación */}
+                    <div className="my-auto w-full max-w-md space-y-4 py-4 shrink-0">
+                        {/* Cuadro de insertar nick y edad */}
+                        <div className="bg-game-surface/30 p-8 border border-game-muted/10 rounded-sm shadow-2xl py-10">
+                            <form onSubmit={handleSubmit} className="space-y-8">
+                                <div className="space-y-3">
+                                    <label className="text-[10px] uppercase tracking-widest text-game-muted italic ml-1 font-bold text-game-accent/70">Nombre o Nickname</label>
+                                    <input
+                                        type="text"
+                                        required
+                                        minLength={3}
+                                        maxLength={20}
+                                        pattern="^[a-zA-Z0-9_]+$"
+                                        value={nickname}
+                                        onChange={(e) => {
+                                            setNickname(e.target.value);
+                                            setErrorMessage(null);
+                                        }}
+                                        className={`w-full h-12 bg-game-bg border ${errorMessage && (errorMessage.includes("nickname") || errorMessage.includes("Formato")) ? 'border-red-500' : 'border-game-muted/30'} px-4 text-game-text focus:border-game-accent outline-none transition-colors font-mono text-sm`}
+                                        placeholder="..."
+                                    />
+                                    <div className="flex justify-between text-[8px] uppercase text-game-muted/40 font-mono px-1">
+                                        <span>3-20 caracteres</span>
+                                        <span>{nickname.length}/20</span>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="space-y-3">
-                                <label className="text-[10px] uppercase tracking-widest text-game-muted italic ml-1 font-bold text-game-accent/70">Edad</label>
-                                <input
-                                    type="number"
-                                    required
-                                    min="18"
-                                    max="120"
-                                    value={age}
-                                    onChange={(e) => setAge(e.target.value)}
-                                    className="w-full h-12 bg-game-bg border border-game-muted/30 px-4 text-game-text focus:border-game-accent outline-none transition-colors font-mono text-sm"
-                                    placeholder="18"
-                                />
-                                {parsedAge >= 118 ? (
-                                    <p className="text-[9px] text-red-500 font-bold uppercase mt-1 px-1 leading-tight italic">
-                                        La persona más longeva al día de hoy tiene 117 años. ¡Felicitaciones por el logro de todas formas!
-                                    </p>
-                                ) : (
-                                    <p className="text-[9px] text-red-500 font-medium uppercase italic px-1">
-                                        * Mínimo 18 años requerido.
+                                <div className="space-y-3">
+                                    <label className="text-[10px] uppercase tracking-widest text-game-muted italic ml-1 font-bold text-game-accent/70">Edad</label>
+                                    <input
+                                        type="number"
+                                        required
+                                        min="18"
+                                        max="120"
+                                        value={age}
+                                        onChange={(e) => setAge(e.target.value)}
+                                        className="w-full h-12 bg-game-bg border border-game-muted/30 px-4 text-game-text focus:border-game-accent outline-none transition-colors font-mono text-sm"
+                                        placeholder="18"
+                                    />
+                                    {parsedAge >= 118 ? (
+                                        <p className="text-[9px] text-red-500 font-bold uppercase mt-1 px-1 leading-tight italic">
+                                            La persona más longeva al día de hoy tiene 117 años. ¡Felicitaciones por el logro de todas formas!
+                                        </p>
+                                    ) : (
+                                        <p className="text-[9px] text-red-500 font-medium uppercase italic px-1">
+                                            * Mínimo 18 años requerido.
+                                        </p>
+                                    )}
+                                </div>
+
+                                {errorMessage && (
+                                    <p className="text-[10px] text-red-500 bg-red-500/10 p-3 border border-red-500/20 text-center uppercase tracking-tight font-bold">
+                                        {errorMessage}
                                     </p>
                                 )}
-                            </div>
+                            </form>
+                        </div>
 
-                            {errorMessage && (
-                                <p className="text-[10px] text-red-500 bg-red-500/10 p-3 border border-red-500/20 text-center uppercase tracking-tight font-bold">
-                                    {errorMessage}
-                                </p>
-                            )}
-                        </form>
+                        {/* Explicación en caso de que NO haya dado consentimiento */}
+                        {!isConsentGiven && (
+                            <div className="p-4 bg-game-surface/50 border border-game-muted/20 text-zinc-300 text-[10px] md:text-xs text-left font-mono rounded-sm leading-relaxed">
+                                Tu perfil se creará únicamente para fines de reconocimiento básico dentro de la narrativa (por ejemplo, para que los diálogos del juego se refieran a ti por tu nombre/nick). Como decidiste no dar tu consentimiento, todo el testeo, encuestas y recopilación de información para el estudio del juego han sido omitidos y no se registrarán en la base de datos; solo se tomarán los datos pertinentes a tus decisiones de la historia.
+                            </div>
+                        )}
                     </div>
                 </motion.main>
 

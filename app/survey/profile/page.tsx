@@ -179,10 +179,24 @@ export default function PlayerProfilePage() {
                             </form>
                         </div>
 
-                        {/* Explicación en caso de que NO haya dado consentimiento */}
-                        {!isConsentGiven && (
-                            <div className="p-4 bg-game-surface/50 border border-game-muted/20 text-zinc-300 text-[10px] md:text-xs text-left font-mono rounded-sm leading-relaxed">
-                                Tu perfil se creará únicamente para fines de reconocimiento básico dentro de la narrativa (por ejemplo, para que los diálogos del juego se refieran a ti por tu nombre/nick). Como decidiste no dar tu consentimiento, todo el testeo, encuestas y recopilación de información para el estudio del juego han sido omitidos y no se registrarán en la base de datos; solo se tomarán los datos pertinentes a tus decisiones de la historia.
+                        {/* Explicación según el consentimiento */}
+                        {isConsentGiven ? (
+                            <div className="p-4 bg-game-surface/50 border border-game-muted/20 text-zinc-300 text-[10px] md:text-xs text-left font-mono rounded-sm leading-relaxed space-y-2">
+                                <p>
+                                    <strong>Uso de Datos:</strong> Tu nickname (que no tiene por qué ser tu nombre real) se utilizará para personalizar los diálogos del juego. Tus respuestas en las encuestas, la prueba de marcado y tus decisiones en la historia se guardarán de forma anónima para medir el impacto pedagógico del estudio.
+                                </p>
+                                <p>
+                                    <strong>Sobre la Edad (18+):</strong> Este es un requisito ético y legal para evitar trabajar con menores de edad en el estudio. El juego no contiene material explícito o para adultos.
+                                </p>
+                            </div>
+                        ) : (
+                            <div className="p-4 bg-game-surface/50 border border-game-muted/20 text-zinc-300 text-[10px] md:text-xs text-left font-mono rounded-sm leading-relaxed space-y-2">
+                                <p>
+                                    <strong>Uso de Datos:</strong> Tu nickname (que no tiene por qué ser tu nombre real) se utilizará para personalizar los diálogos del juego. Las encuestas y pruebas de marcado quedan omitidas. Para poder jugar, solo se guardará tu progreso y decisiones dentro de la historia.
+                                </p>
+                                <p>
+                                    <strong>Sobre la Edad (18+):</strong> Este es un requisito ético y legal para evitar trabajar con menores de edad en el estudio. El juego no contiene material explícito o para adultos.
+                                </p>
                             </div>
                         )}
                     </div>

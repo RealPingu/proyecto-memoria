@@ -16,7 +16,7 @@ export default function NarrativeInstructionsPage() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center space-y-1 shrink-0 py-2 mb-6"
         >
-          <h1 className="text-3xl md:text-5xl font-bold uppercase italic tracking-tighter text-game-accent">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold uppercase italic tracking-tighter text-game-accent">
             Instrucciones
           </h1>
           <p className="text-game-muted text-[10px] md:text-xs uppercase tracking-widest">
@@ -31,24 +31,36 @@ export default function NarrativeInstructionsPage() {
           className="flex-1 flex flex-col items-center min-h-0 overflow-y-auto custom-scrollbar"
         >
           <div className="my-auto w-full max-w-xl space-y-6">
-            <div className="bg-game-surface/30 p-6 md:p-10 border border-game-muted/20 rounded-sm shadow-2xl text-center space-y-6">
-              <h2 className="text-sm font-bold font-mono text-game-accent uppercase tracking-wider">
+            <div className="bg-game-surface/30 p-6 md:p-10 border border-game-muted/20 rounded-sm shadow-2xl text-left space-y-4">
+              <h2 className="text-sm font-bold font-mono text-game-accent uppercase tracking-wider text-center mb-2">
                 Explicación del Juego
               </h2>
               
               <p className="leading-relaxed text-zinc-300 text-sm md:text-base">
-                [TEXTO DE INSTRUCCIONES PENDIENTE DE DEFINIR]
+                Antipatron es un juego narrativo simple, donde debes ir leyendo y tomando decisiones correctas para progresar en la historia.
               </p>
               
-              <p className="text-[10px] text-zinc-500 italic uppercase tracking-widest">
-                Aquí se detallarán las mecánicas de la historia en el futuro.
+              <p className="leading-relaxed text-zinc-300 text-sm md:text-base">
+                Para avanzar solo aprieta el cuadro de texto una vez para adelantar el texto y otra para seguir.
+              </p>
+              
+              <p className="leading-relaxed text-zinc-300 text-sm md:text-base">
+                Algunas pantallas requerirán de tu atención para tomar la decisión correcta.
+              </p>
+              
+              <p className="leading-relaxed text-zinc-300 text-sm md:text-base">
+                Siempre podrás retroceder con el botón "Atrás" en la parte superior si no alcanzaste a leer algo o quieres releer algún diálogo.
+              </p>
+              
+              <p className="leading-relaxed text-zinc-300 text-sm md:text-base">
+                También dispondrás de un menú para saltar a cualquier capítulo que ya hayas leído, estará en la parte superior derecha.
               </p>
             </div>
           </div>
         </motion.main>
 
         {/* Footer Actions */}
-        <footer className="shrink-0 pt-4 pb-2 md:pb-10">
+        <footer className="shrink-0 pt-4 pb-2 md:pb-6">
           <div className="flex flex-col md:flex-row w-full max-w-lg mx-auto gap-3 md:gap-4">
             <button
               onClick={() => router.push('/game/narrative')}
@@ -57,7 +69,14 @@ export default function NarrativeInstructionsPage() {
               Comenzar Aventura
             </button>
             <button
-              onClick={() => router.push('/marking/intro')}
+              onClick={() => {
+                const isConsenting = localStorage.getItem('antipatron_consent') !== 'false';
+                if (isConsenting) {
+                  router.push('/marking/intro');
+                } else {
+                  router.push('/survey/profile');
+                }
+              }}
               className="flex-1 h-12 border border-zinc-700 text-game-muted font-bold uppercase tracking-widest text-xs flex items-center justify-center hover:bg-game-surface hover:text-game-accent transition-all active:scale-95 cursor-pointer"
             >
               Regresar

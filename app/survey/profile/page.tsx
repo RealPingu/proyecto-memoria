@@ -12,11 +12,14 @@ export default function PlayerProfilePage() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
+    const [isConsentGiven, setIsConsentGiven] = useState(true);
     const router = useRouter();
 
     useEffect(() => {
         const id = localStorage.getItem('antipatron_player_id');
         setPlayerId(id);
+        const consent = localStorage.getItem('antipatron_consent') !== 'false';
+        setIsConsentGiven(consent);
 
         if (id) {
             fetch(`/api/player/profile?playerId=${id}`)
@@ -61,7 +64,11 @@ export default function PlayerProfilePage() {
             const data = await response.json();
 
             if (response.ok) {
-                router.push('/survey/intro');
+                if (isConsentGiven) {
+                    router.push('/survey/intro');
+                } else {
+                    router.push('/game/narrative/instructions');
+                }
             } else if (response.status === 409) {
                 setErrorMessage("Este nickname ya está en uso.");
             } else if (data.error === 'INVALID_FORMAT') {
@@ -102,9 +109,15 @@ export default function PlayerProfilePage() {
                     <h1 className="text-3xl md:text-5xl font-bold uppercase italic tracking-tighter text-game-accent">
                         Datos del Jugador
                     </h1>
-                    <p className="text-game-muted text-[10px] md:text-xs uppercase tracking-widest">
-                        Identificación para fines estadísticos
-                    </p>
+                    {isConsentGiven ? (
+                        <p className="text-game-muted text-[10px] md:text-xs uppercase tracking-widest">
+                            Identificación para fines estadísticos
+                        </p>
+                    ) : (
+                        <div className="max-w-2xl mx-auto p-4 bg-game-surface/50 border border-game-muted/20 text-zinc-300 text-[10px] md:text-xs text-left font-mono rounded-sm leading-relaxed mt-2">
+                            Tu perfil se creará únicamente para fines de reconocimiento básico dentro de la narrativa (por ejemplo, para que los diálogos del juego se refieran a ti por tu nombre/nick). Como decidiste no dar tu consentimiento, todo el testeo, encuestas y recopilación de información para el estudio del juego han sido omitidos y no se registrarán en la base de datos; solo se tomarán los datos pertinentes a tus decisiones de la historia.
+                        </div>
+                    )}
                 </motion.header>
 
                 {/* 2. ÁREA CENTRAL (flex-1): Con scroll interno si es necesario */}

@@ -32,7 +32,8 @@ export default function OnboardingPage() {
 
     const handleSaveConsent = async () => {
         await logInteraction('final_game_entry', { final_consent: consent });
-        if (consent && playerId) {
+        localStorage.setItem('antipatron_consent', consent ? 'true' : 'false');
+        if (playerId) {
             try {
                 fetch('/api/player/consent', {
                     method: 'POST',
@@ -233,7 +234,6 @@ export default function OnboardingPage() {
                                 <h2 className="text-xl md:text-2xl font-bold text-game-accent uppercase italic tracking-tighter">¡Felicidades, has resistido!</h2>
                                 <div className="space-y-3 md:space-y-4 text-zinc-400 text-xs md:text-sm leading-relaxed font-mono">
                                     <p>Si llegaste hasta aquí, significa que presenciaste e ignoraste <span className="text-game-accent font-bold">3 patrones oscuros</span>: el Desvío de la atención, la Apelación a las emociones y el Nagging.</p>
-                                    <p>Estos conceptos serán abordados más adelante y son parte de la primera etapa de la experiencia.</p>
                                     <p>Tal como lo quieres, tus datos no serán guardados ni utilizados, solamente el registro técnico de que rechazaste el consentimiento.</p>
                                 </div>
                             </div>

@@ -32,11 +32,11 @@ export default function NoConsentIntroPage() {
                     <div className="my-auto w-full max-w-2xl bg-game-surface/30 p-8 md:p-12 border border-game-muted/20 rounded-sm shadow-2xl shrink-0 text-center py-12">
                         <div className="space-y-6">
                             <p className="leading-relaxed text-zinc-300 text-sm md:text-lg">
-                                Has decidido no otorgar tu consentimiento para la recolección de datos académicos. 
+                                Respetamos tu privacidad, por ende lo único que te pediremos es que seas mayor de 18 años y un nick para identificarte, no tiene que ser tu nombre real.
                             </p>
                             <div className="pt-6 border-t border-game-muted/10">
                                 <p className="leading-relaxed text-zinc-400 text-xs md:text-sm font-mono italic">
-                                    "Respetamos tu privacidad. Sin embargo, para cumplir con el protocolo del estudio, las etapas del cuestionario y evaluación pedagógica serán omitidas."
+                                    Las etapas de cuestionario y evaluación de marcado serán omitidas, pero podrás jugar la experiencia narrativa normalmente.
                                 </p>
                             </div>
                         </div>
@@ -47,7 +47,7 @@ export default function NoConsentIntroPage() {
                 <footer className="shrink-0 pt-4 pb-6 md:pb-10">
                     <div className="flex flex-col md:flex-row w-full max-w-lg mx-auto gap-4">
                         <Link 
-                            href="/game" 
+                            href="/survey/profile" 
                             className="flex-1 flex items-center justify-center h-12 bg-game-accent text-game-bg font-bold uppercase tracking-widest text-xs transition-all hover:bg-game-text active:scale-95 text-center shadow-lg"
                         >
                             Continuar al juego

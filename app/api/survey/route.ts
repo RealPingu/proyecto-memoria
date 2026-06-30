@@ -40,10 +40,10 @@ export async function POST(request: Request) {
     // Insertamos o actualizamos la única fila (UPSERT)
     await sql`
       INSERT INTO likert_responses (player_id, responses)
-      VALUES (${playerId}, ${JSON.stringify(responses)})
+      VALUES (${playerId}, ${JSON.stringify(responses)}::jsonb)
       ON CONFLICT (player_id) 
       DO UPDATE SET 
-        responses = ${JSON.stringify(responses)}, 
+        responses = ${JSON.stringify(responses)}::jsonb, 
         updated_at = CURRENT_TIMESTAMP;
     `;
 

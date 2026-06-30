@@ -438,29 +438,6 @@ export default function NarrativeIntroPage() {
     };
   }, [currentNodeId, startTyping, getProcessedText, currentNode.text]);
 
-  const logInteraction = async (choiceId: string, isCorrect: boolean, metadata: any = {}) => {
-    const playerId = localStorage.getItem('antipatron_player_id');
-    if (!playerId) return;
-    try {
-      fetch('/api/logs', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          playerId,
-          eventName: 'narrative_decision',
-          metadata: {
-            currentNodeId,
-            choiceId,
-            isCorrect,
-            ...metadata
-          }
-        })
-      });
-    } catch (e) {
-      console.error("Error guardando log de decisión:", e);
-    }
-  };
-
   // Forzar completado inmediato del texto al hacer clic (skip) o avanzar
   const handleBoxClick = () => {
     if (isTyping) {
@@ -544,7 +521,6 @@ export default function NarrativeIntroPage() {
     const updatedDecisions = [...decisions, newDecision];
     setDecisions(updatedDecisions);
     
-    logInteraction(choice.id, choice.isCorrect, { text: choice.text });
     
     // Avanzamos al nodo
     advanceNode(choice.nextNodeId, updatedDecisions);

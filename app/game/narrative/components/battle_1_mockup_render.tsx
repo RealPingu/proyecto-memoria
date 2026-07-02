@@ -188,8 +188,8 @@ export default function Battle1MockupDirectRender({
           <div className="flex-1 min-h-0 w-full bg-[#131520]/80 border border-[#272a3d]/80 rounded-md flex flex-col justify-start relative select-none overflow-y-auto custom-scrollbar p-4 gap-4 bg-[radial-gradient(#1e2235_1px,transparent_1px)] [background-size:16px_16px]">
             
             {/* SECCIÓN 1: Narrativa */}
-            <div 
-              style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }}
+             <div 
+              style={{ fontFamily: 'var(--font-comic-neue), "Comic Sans MS", "Comic Sans", cursive' }}
               className="text-zinc-300 text-xs md:text-sm leading-relaxed italic pr-4 border-b border-[#272a3d]/40 pb-3 shrink-0"
             >
               "¡Has caído en mi patrón oscuro! ¡Anuncio por aquí, anuncio por allá! ¡Más te vale no picar o el iglú perderás!"

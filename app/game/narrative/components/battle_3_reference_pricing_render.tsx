@@ -218,7 +218,7 @@ export default function Battle3ReferencePricingRender({
             
             {/* SECCIÓN 1: Narrativa del Patrón Oscuro */}
             <div 
-              style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }}
+              style={{ fontFamily: 'var(--font-comic-neue), "Comic Sans MS", "Comic Sans", cursive' }}
               className="text-zinc-300 text-xs md:text-sm leading-relaxed italic pr-4 border-b border-[#272a3d]/40 pb-3 shrink-0"
             >
               "¡Mi última ayuda, Camo! ¡He diseñado un botón verde llamativo solo para ti! ¡Adelante, presiónalo y estarás un paso más cerca de tu ansiado iglú! ¡Jejeje!"

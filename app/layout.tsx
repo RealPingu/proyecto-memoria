@@ -1,5 +1,14 @@
 import type { Metadata } from "next";
+import { Comic_Neue } from "next/font/google";
 import "./globals.css";
+
+const comicNeue = Comic_Neue({
+  weight: ["300", "400", "700"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  variable: "--font-comic-neue",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Antipatron",
@@ -12,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" className={comicNeue.variable}>
       <body className="antialiased">
         {children}
       </body>

@@ -1025,7 +1025,7 @@ export default function NarrativeIntroPage() {
             >
               <div 
                 style={{ 
-                  fontFamily: '"Comic Sans MS", "Comic Sans", cursive',
+                  fontFamily: 'var(--font-comic-neue), "Comic Sans MS", "Comic Sans", cursive',
                   whiteSpace: 'pre-wrap'
                 }}
                 className={`${currentNode.speaker === 'subconscious' ? 'text-white' : 'text-zinc-400'} text-xs md:text-sm leading-relaxed tracking-wide w-full font-medium italic pr-4`}

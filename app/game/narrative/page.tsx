@@ -1028,7 +1028,7 @@ export default function NarrativeIntroPage() {
                   fontFamily: 'var(--font-comic-neue), "Comic Sans MS", "Comic Sans", cursive',
                   whiteSpace: 'pre-wrap'
                 }}
-                className={`${currentNode.speaker === 'subconscious' ? 'text-white' : 'text-zinc-400'} text-sm md:text-base leading-relaxed tracking-wide w-full font-medium italic pr-4`}
+                className={`${currentNode.speaker === 'subconscious' ? 'text-white' : 'text-zinc-400'} text-base md:text-lg leading-relaxed tracking-wide w-full font-medium italic pr-4`}
               >
                 {renderDialogue(parseDialogueText(getProcessedText(currentNode.text)), visibleCharCount)}
 

@@ -9,7 +9,7 @@ export default function Home() {
             <main className="flex flex-col items-center max-w-2xl w-full space-y-12 shrink-0">
                 <header className="text-center space-y-4">
                     <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-game-accent uppercase italic leading-none">
-                        Antipatron (Nombre por Definir)
+                        Antipatrón
                     </h1>
                     <p className="text-game-muted text-sm md:text-lg tracking-wide uppercase">
                         Una experiencia narrativa web

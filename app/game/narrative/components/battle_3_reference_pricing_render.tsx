@@ -221,7 +221,7 @@ export default function Battle3ReferencePricingRender({
               style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }}
               className="text-zinc-300 text-xs md:text-sm leading-relaxed italic pr-4 border-b border-[#272a3d]/40 pb-3 shrink-0"
             >
-              "¡Vaya, vaya! Parece que necesitas financiar tu iglú, Camo. Mira este Plan Premium... ¡Solo 3.5% de interés! Una ganga que ningún pingüino racional podría rechazar. Firma aquí y no te preocupes por el plazo de tiempo..."
+              "¡Mi última ayuda, Camo! ¡He diseñado un botón verde llamativo solo para ti! ¡Adelante, presiónalo y estarás un paso más cerca de tu ansiado iglú! ¡Jejeje!"
             </div>
 
             {/* SECCIÓN 2: Carrusel Rotable */}

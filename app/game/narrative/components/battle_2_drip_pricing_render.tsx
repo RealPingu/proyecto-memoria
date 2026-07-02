@@ -151,7 +151,7 @@ export default function Battle2DripPricingRender({
               style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }}
               className="text-zinc-300 text-xs md:text-sm leading-relaxed italic pr-4 border-b border-[#272a3d]/40 pb-3 shrink-0"
             >
-              "¡Jajaja! Estás a un paso de completar tu compra, Camo. ¿Quién tiene tiempo para leer todo ese aburrido texto legal? Solo presiona continuar... no te preocupes por los pequeños detalles de la factura..."
+              "¿Qué esperas, Camo? ¡Tu iglú te espera! ¡Sáltate todos estos pasos tediosos que nadie quiere completar!"
             </div>
 
             {/* Contenedor del paso actual */}

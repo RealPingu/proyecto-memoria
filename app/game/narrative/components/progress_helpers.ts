@@ -6,13 +6,13 @@ import { NARRATIVE_NODES } from '../data';
 export const getNodeLabel = (nodeId: string): string => {
   // Sobrescribir el texto y speaker para las escenas de batalla interactiva del Patrón Oscuro
   if (nodeId === 'scene_14_choice') {
-    return '[Patrón Oscuro] "Has caído en mi portal, Camo..."';
+    return '[Patrón Oscuro] "¡Has caído en mi patrón..."';
   }
   if (nodeId === 'scene_15_choice') {
-    return '[Patrón Oscuro] "¡Jajaja! ¿Creías que el iglú..."';
+    return '[Patrón Oscuro] "¿Qué esperas, Camo?..."';
   }
   if (nodeId === 'scene_18_choice') {
-    return '[Patrón Oscuro] "¡Vaya, vaya! Parece que necesitas..."';
+    return '[Patrón Oscuro] "¡Mi última ayuda, Camo!..."';
   }
 
   const node = NARRATIVE_NODES[nodeId];

@@ -49,9 +49,24 @@ import Scene22PatronHostil from '@/app/game/narrative/illustrations/scene_22_pat
 import Scene23DesenlaceFinal from '@/app/game/narrative/illustrations/scene_23_desenlace_final';
 
 interface TextToken {
-  type: 'text' | 'highlight' | 'action' | 'wave' | 'shake' | 'tremble' | 'rainbow' | 'breathe' | 'glitch' | 'neon' | 'sneaky' | 'spooky' | 'heartbeat';
+  type: 'text' | 'highlight' | 'action' | 'wave' | 'shake' | 'tremble' | 'rainbow' | 'breathe' | 'glitch' | 'neon' | 'sneaky' | 'spooky' | 'heartbeat' | 'link';
   content: string;
   color?: string;
+}
+
+function splitTextAndLinks(content: string): TextToken[] {
+  const urlRegex = /(https?:\/\/[^\s]+)/gi;
+  const parts = content.split(urlRegex);
+  const result: TextToken[] = [];
+  
+  for (const part of parts) {
+    if (urlRegex.test(part)) {
+      result.push({ type: 'link', content: part });
+    } else if (part) {
+      result.push({ type: 'text', content: part });
+    }
+  }
+  return result;
 }
 
 function parseDialogueText(text: string): TextToken[] {
@@ -67,7 +82,8 @@ function parseDialogueText(text: string): TextToken[] {
         color: match[2]
       });
     } else if (match[4]) {
-      tokens.push({ type: 'text', content: match[4] });
+      const subTokens = splitTextAndLinks(match[4]);
+      tokens.push(...subTokens);
     }
   }
   return tokens;
@@ -85,6 +101,7 @@ export default function SceneDialogueEditorPage() {
   const [customColor, setCustomColor] = useState('#fbbf24');
   const [useColor, setUseColor] = useState(true);
   const [isExporting, setIsExporting] = useState(false);
+  const [activeLink, setActiveLink] = useState<string | null>(null);
 
   // Máquina de Escribir Preview
   const [visibleCharCount, setVisibleCharCount] = useState(9999);
@@ -501,6 +518,22 @@ export default function SceneDialogueEditorPage() {
           return <span key={index} className="font-bold animate-pulse" style={{ color: token.color || '#f43f5e' }}>{visibleContent}</span>;
         }
         return <FreneticHeartbeatText key={index} text={token.content} color={token.color} />;
+      } else if (token.type === 'link') {
+        if (visibleLength < tokenLength) {
+          return <span key={index} className="underline text-cyan-400/90 font-mono text-xs md:text-sm">{visibleContent}</span>;
+        }
+        return (
+          <button
+            key={index}
+            onClick={(e) => {
+              e.stopPropagation(); // Evitamos avanzar el diálogo
+              setActiveLink(token.content);
+            }}
+            className="underline text-cyan-400 hover:text-cyan-300 font-mono cursor-pointer transition-all active:scale-95 inline-block text-left text-xs md:text-sm"
+          >
+            {token.content}
+          </button>
+        );
       } else {
         return <span key={index}>{visibleContent}</span>;
       }
@@ -745,7 +778,7 @@ export default function SceneDialogueEditorPage() {
                 )}
 
                 {/* Dialog Content */}
-                <div className="text-zinc-200 text-sm md:text-base leading-relaxed font-sans mt-2 min-h-[70px] select-none">
+                <div style={{ whiteSpace: 'pre-wrap' }} className="text-zinc-200 text-sm md:text-base leading-relaxed font-sans mt-2 min-h-[70px] select-none">
                   {renderDialogue(parseDialogueText(rawText), visibleCharCount)}
                 </div>
 
@@ -807,6 +840,49 @@ export default function SceneDialogueEditorPage() {
         </div>
 
       </div>
+
+      {/* POPUP DE CONFIRMACIÓN DE ENLACE SEGURO */}
+      {activeLink && (
+        <div className="absolute inset-0 bg-[#0c0d14]/95 border border-[#272a3d]/80 rounded-md z-50 flex flex-col items-center justify-center p-6 select-none animate-fade-in">
+          <div className="max-w-md w-full bg-game-surface border border-game-muted/20 p-6 rounded-md flex flex-col space-y-4 shadow-2xl relative">
+            <h2 className="text-sm font-bold text-game-accent uppercase tracking-widest border-b border-game-muted/10 pb-2 font-mono">
+              Enlace Externo Seguro
+            </h2>
+            
+            <p className="text-zinc-300 text-xs md:text-sm leading-relaxed font-sans text-left">
+              Los patrones engañosos (también conocidos como 'patrones oscuros') engañan a las personas para que hagan cosas que no tenían intención de hacer. Son características de aplicaciones, sitios web y sistemas de inteligencia artificial que te impiden hacer lo que deseas o te conducen a tomar decisiones perjudiciales que no habrías tomado deliberadamente.
+            </p>
+            
+            <div className="p-3 bg-zinc-950/50 border border-zinc-800/40 rounded-sm font-mono text-[9px] text-zinc-400 break-all select-all text-left">
+              {activeLink}
+            </div>
+            
+            <p className="text-zinc-400 text-[10px] leading-relaxed font-sans text-left">
+              Esta página es un repositorio educativo de código abierto, seguro y libre de anuncios, que documenta el impacto de los patrones oscuros en el diseño digital.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-2 pt-2">
+              <button
+                onClick={() => {
+                  window.open(activeLink, '_blank', 'noopener,noreferrer');
+                  setActiveLink(null);
+                }}
+                className="flex-1 py-2 px-3 bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 hover:text-white hover:border-cyan-500 rounded font-mono text-[10px] uppercase tracking-widest cursor-pointer transition active:scale-95 text-center font-bold"
+              >
+                Visitar Sitio
+              </button>
+              
+              <button
+                onClick={() => setActiveLink(null)}
+                className="flex-1 py-2 px-3 bg-zinc-900 border border-zinc-700/40 text-zinc-300 hover:text-white hover:border-zinc-500 rounded font-mono text-[10px] uppercase tracking-widest cursor-pointer transition active:scale-95 text-center font-bold"
+              >
+                Volver al Juego
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }

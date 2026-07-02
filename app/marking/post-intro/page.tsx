@@ -67,9 +67,12 @@ export default function MarkingPostIntroPage() {
                 </motion.main>
 
                 <footer className="shrink-0 pt-4 pb-2 md:pb-10">
-                    <div className="flex flex-col md:flex-row w-full max-w-xs mx-auto gap-3">
-                        <Link href="/marking/test?phase=post" className="flex-1 h-12 bg-game-accent text-game-bg font-bold uppercase tracking-widest text-xs flex items-center justify-center shadow-lg active:scale-95 transition-all">
+                    <div className="flex flex-col items-center space-y-3 w-full">
+                        <Link href="/marking/test?phase=post" className="w-full max-w-xs h-12 bg-game-accent text-game-bg font-bold uppercase tracking-widest text-xs flex items-center justify-center shadow-lg active:scale-95 transition-all">
                             Iniciar Evaluación Final
+                        </Link>
+                        <Link href="/game/narrative" className="text-zinc-500 hover:text-white transition-colors text-[10px] font-bold uppercase tracking-wider font-mono">
+                            Regresar
                         </Link>
                     </div>
                 </footer>

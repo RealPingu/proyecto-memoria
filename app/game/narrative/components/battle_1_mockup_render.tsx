@@ -192,7 +192,7 @@ export default function Battle1MockupDirectRender({
               style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }}
               className="text-zinc-300 text-xs md:text-sm leading-relaxed italic pr-4 border-b border-[#272a3d]/40 pb-3 shrink-0"
             >
-              "Has caído en mi portal, Camo. Tu desesperación te ciega. Mira qué fácil es reservar este iglú mediterráneo... Sólo tienes que seguir los pasos del asistente."
+              "¡Has caído en mi patrón oscuro!\n\n¡Anuncio por aquí, anuncio por allá! ¡Más te vale no picar o el iglú perderás!"
             </div>
 
             {/* SECCIÓN 2: Grid Asimétrico de Anuncios Pequeños (Incorrecto / Trampa) */}

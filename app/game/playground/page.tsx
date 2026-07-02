@@ -481,6 +481,23 @@ export default function SceneMenuPage() {
           </div>
         </div>
       )
+    },
+    {
+      id: 'scene_dialogue_editor',
+      number: 25,
+      title: 'Editor de Diálogos',
+      subtitle: 'Personalizador de Efectos y Colores',
+      description: 'Examina, edita y diseña los textos de todas las escenas de la historia. Selecciona fragmentos de texto para aplicarles colores y efectos de animación interactiva.',
+      path: '/game/playground/scene/scene_dialogue_editor',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80 flex flex-col items-center justify-center p-4">
+          <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest block mb-1">TEXT CUSTOMIZER</span>
+          <div className="text-[10px] font-bold text-white px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 shadow">
+            [ Editor de Diálogos ]
+          </div>
+        </div>
+      )
     }
 
 

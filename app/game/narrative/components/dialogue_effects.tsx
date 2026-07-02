@@ -52,25 +52,22 @@ export function BattleImpactShake({ text, color }: { text: string; color?: strin
   const words = text.split(' ');
   return (
     <span className="inline-flex flex-wrap gap-x-1 font-bold font-mono">
-      {words.map((w, i) => {
-        const impact = w.startsWith('¡') || w.endsWith('!') || w.includes('Camo') || w.includes('Pagar');
-        return impact ? (
-          <motion.span 
-            key={i} 
-            className="uppercase tracking-wider px-1 border rounded-sm inline-block animate-pulse" 
-            style={{ 
-              color: color || '#ef4444', 
-              borderColor: color ? `${color}40` : 'rgba(239, 68, 68, 0.2)', 
-              backgroundColor: color ? `${color}15` : 'rgba(239, 68, 68, 0.1)',
-              textShadow: color ? `0 0 8px ${color}` : '0 0 8px rgba(239, 68, 68, 0.4)'
-            }} 
-            animate={{ x: [0, -1.2, 1.2, -1.2, 0], y: [0, 1.2, -1.2, 1.2, 0], rotate: [0, 1, -1, 1, 0] }} 
-            transition={{ repeat: Infinity, duration: 0.2 }}
-          >
-            {w.replace(/#/g, '')}
-          </motion.span>
-        ) : <span key={i} className="uppercase tracking-wide" style={{ color: color || '#f4f4f5' }}>{w.replace(/#/g, '')}</span>;
-      })}
+      {words.map((w, i) => (
+        <motion.span 
+          key={i} 
+          className="tracking-wider px-1 border rounded-sm inline-block animate-pulse" 
+          style={{ 
+            color: color || '#ef4444', 
+            borderColor: color ? `${color}40` : 'rgba(239, 68, 68, 0.2)', 
+            backgroundColor: color ? `${color}15` : 'rgba(239, 68, 68, 0.1)',
+            textShadow: color ? `0 0 8px ${color}` : '0 0 8px rgba(239, 68, 68, 0.4)'
+          }} 
+          animate={{ x: [0, -1.2, 1.2, -1.2, 0], y: [0, 1.2, -1.2, 1.2, 0], rotate: [0, 1, -1, 1, 0] }} 
+          transition={{ repeat: Infinity, duration: 0.2 }}
+        >
+          {w.replace(/#/g, '')}
+        </motion.span>
+      ))}
     </span>
   );
 }
@@ -242,15 +239,16 @@ export function SpookyGhostText({ text, color }: { text: string; color?: string 
           key={i} 
           className="inline-block" 
           animate={{ 
-            y: [0, -3.5, 0],
-            opacity: [0.55, 1, 0.55],
-            skewY: [0, 2, -2, 0]
+            x: [-2, 2, -2],
+            y: [-1, 1, -1],
+            filter: ['blur(0px)', 'blur(2.5px)', 'blur(0px)'],
+            opacity: [0.9, 0.5, 0.9]
           }} 
           transition={{ 
             repeat: Infinity, 
-            duration: 6.4, 
+            duration: 3.5, 
             ease: "easeInOut", 
-            delay: i * 0.30 
+            delay: i * 0.06 
           }}
         >
           {c}

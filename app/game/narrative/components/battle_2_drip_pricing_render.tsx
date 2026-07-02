@@ -149,7 +149,7 @@ export default function Battle2DripPricingRender({
             {/* SECCIÓN 1: Narrativa / Texto Introductorio del Patrón Oscuro */}
             <div 
               style={{ fontFamily: 'var(--font-comic-neue), "Comic Sans MS", "Comic Sans", cursive' }}
-              className="text-zinc-300 text-xs md:text-sm leading-relaxed italic pr-4 border-b border-[#272a3d]/40 pb-3 shrink-0"
+              className="text-zinc-300 text-sm md:text-base leading-relaxed italic pr-4 border-b border-[#272a3d]/40 pb-3 shrink-0"
             >
               "¿Qué esperas, Camo? ¡Tu iglú te espera! ¡Sáltate todos estos pasos tediosos que nadie quiere completar!"
             </div>

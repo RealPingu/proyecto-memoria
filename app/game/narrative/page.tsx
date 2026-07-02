@@ -1072,38 +1072,34 @@ export default function NarrativeIntroPage() {
 
       {/* POPUP DE CONFIRMACIÓN DE ENLACE SEGURO */}
       {activeLink && (
-        <div className="absolute inset-0 bg-[#0c0d14]/95 border border-[#272a3d]/80 rounded-md z-50 flex flex-col items-center justify-center p-6 select-none animate-fade-in">
-          <div className="max-w-md w-full bg-game-surface border border-game-muted/20 p-6 rounded-md flex flex-col space-y-4 shadow-2xl relative">
+        <div className="absolute inset-0 z-50 flex items-center justify-center bg-game-bg/95 backdrop-blur-sm p-4 select-none animate-fade-in">
+          <div className="bg-game-surface border border-game-muted/30 p-6 md:p-8 w-[95%] max-w-md space-y-5 text-center shadow-2xl overflow-y-auto max-h-[90vh] rounded-md relative flex flex-col justify-between">
             <h2 className="text-sm font-bold text-game-accent uppercase tracking-widest border-b border-game-muted/10 pb-2 font-mono">
               Enlace Externo Seguro
             </h2>
             
-            <p className="text-zinc-300 text-xs md:text-sm leading-relaxed font-sans">
-              Los patrones engañosos (también conocidos como 'patrones oscuros') engañan a las personas para que hagan cosas que no tenían intención de hacer. Son características de aplicaciones, sitios web y sistemas de inteligencia artificial que te impiden hacer lo que deseas o te conducen a tomar decisiones perjudiciales que no habrías tomado deliberadamente.
+            <p className="text-zinc-300 text-xs md:text-sm leading-relaxed font-sans text-center">
+              Esta página es un medio educativo libre que explica y contextualiza los patrones oscuros y sus aristas.
             </p>
             
-            <div className="p-3 bg-zinc-950/50 border border-zinc-800/40 rounded-sm font-mono text-[9px] text-zinc-400 break-all select-all">
+            <div className="p-3 bg-zinc-950/50 border border-zinc-800/40 rounded-sm font-mono text-[9px] text-zinc-400 break-all select-all text-left">
               {activeLink}
             </div>
             
-            <p className="text-zinc-400 text-[10px] leading-relaxed font-sans">
-              Esta página es un repositorio educativo de código abierto, seguro y libre de anuncios, que documenta el impacto de los patrones oscuros en el diseño digital.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-2 pt-2">
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <button
                 onClick={() => {
                   window.open(activeLink, '_blank', 'noopener,noreferrer');
                   setActiveLink(null);
                 }}
-                className="flex-1 py-2 px-3 bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 hover:text-white hover:border-cyan-500 rounded font-mono text-[10px] uppercase tracking-widest cursor-pointer transition active:scale-95 text-center font-bold"
+                className="flex-1 h-12 bg-game-accent text-game-bg font-bold uppercase tracking-widest text-xs flex items-center justify-center shadow-lg active:scale-95 transition-all cursor-pointer border border-game-accent"
               >
                 Visitar Sitio
               </button>
               
               <button
                 onClick={() => setActiveLink(null)}
-                className="flex-1 py-2 px-3 bg-zinc-900 border border-zinc-700/40 text-zinc-300 hover:text-white hover:border-zinc-500 rounded font-mono text-[10px] uppercase tracking-widest cursor-pointer transition active:scale-95 text-center font-bold"
+                className="flex-1 h-12 border border-zinc-700 text-game-muted font-bold uppercase tracking-widest text-xs flex items-center justify-center hover:bg-game-surface hover:text-game-accent transition-all active:scale-95 cursor-pointer"
               >
                 Volver al Juego
               </button>

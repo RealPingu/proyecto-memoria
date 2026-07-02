@@ -447,12 +447,7 @@ Quédate quieto y no <heartbeat color="#ef4444">intervengas</heartbeat> poniénd
 ## SCENE: scene_23_init_1
 - **Speaker**: narrator
 - **SpeakerLabel**: Narrador
-- **Text**: El Patrón Oscuro
-Enfurecido de <heartbeat color="#ef4444">tu</heartbeat>
-
-Comienza a perder estabilidad y <wave color="#2a256f">huye</wave>
-
-Disipándose en las profundidades del <wave color="#22d3ee">subconsciente...</wave>
+- **Text**: El Patrón Oscuro, enfurecido de <heartbeat color="#ef4444">tu intervención</heartbeat>, comienza a perder estabilidad y <wave color="#2a256f">huye</wave>, disipándose en las profundidades del <wave color="#22d3ee">subconsciente...</wave>
 
 ## SCENE: scene_23_init_2
 - **Speaker**: subconscious

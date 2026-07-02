@@ -837,12 +837,7 @@ Quédate quieto y no <heartbeat color="#ef4444">intervengas</heartbeat> poniénd
     id: 'scene_23_init_1',
     speaker: 'narrator',
     speakerLabel: 'Narrador',
-    text: `El Patrón Oscuro
-Enfurecido de <heartbeat color="#ef4444">tu</heartbeat>
-
-Comienza a perder estabilidad y <wave color="#2a256f">huye</wave>
-
-Disipándose en las profundidades del <wave color="#22d3ee">subconsciente...</wave>`,
+    text: `El Patrón Oscuro, enfurecido de <heartbeat color="#ef4444">tu intervención</heartbeat>, comienza a perder estabilidad y <wave color="#2a256f">huye</wave>, disipándose en las profundidades del <wave color="#22d3ee">subconsciente...</wave>`,
     illustration: {
       label: 'Escena 23: El Patrón Oscuro encogiéndose y huyendo al infinito.'
     },

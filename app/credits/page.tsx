@@ -18,9 +18,6 @@ export default function CreditsPage() {
                     <h1 className="text-2xl md:text-4xl font-bold uppercase italic tracking-tighter text-game-accent">
                         ¡Gracias por jugar!
                     </h1>
-                    <p className="text-game-muted uppercase tracking-widest text-[9px] md:text-xs">
-                        Demo de Experiencia Finalizada
-                    </p>
                 </motion.header>
 
                 {/* 2. MAIN AREA */}
@@ -32,7 +29,7 @@ export default function CreditsPage() {
                 >
                     <div className="bg-game-surface/30 p-8 border border-game-muted/20 rounded-sm shadow-2xl w-full text-center">
                         <p className="leading-relaxed text-zinc-300 text-sm md:text-base">
-                            Muchas gracias por participar en la demo de Antipatrón. Tus respuestas y elecciones han sido registradas para nuestro estudio académico sobre patrones oscuros.
+                            Muchas gracias por jugar Antipatrón. El desarrollo completo de la experiencia fue desarrollado por Inti Vidal.
                         </p>
                     </div>
                 </motion.main>

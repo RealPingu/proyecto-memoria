@@ -138,7 +138,7 @@ export default function Battle2DripPricingRender({
 
           {/* Nombre del Hablante consistente */}
           <div className="shrink-0 flex items-center justify-start pl-1 text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-game-accent italic block">
-            <FearTremble text="EL PATRÓN OSCURO (PRECIOS POR GOTEO)" color="#06b6d4" />
+            <FearTremble text="EL PATRÓN OSCURO (COSTOS OCULTOS)" color="#06b6d4" />
           </div>
 
           {/* =======================================================

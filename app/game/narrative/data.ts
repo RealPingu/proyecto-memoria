@@ -392,7 +392,7 @@ Está intentando aplicar <shake color="#06b6d4">Anuncios Disfrazados</shake> par
     id: 'scene_14_resultado_1',
     speaker: 'narrator',
     speakerLabel: 'Narrador',
-    text: `Luego de presionar un <shake color="#06b6d4">Anuncio escondido</shake>
+    text: `Luego de presionar un <shake color="#06b6d4">Anuncio disfrazado</shake>
 ¡Se abren múltiples ventanas y se descargan múltiples archivos!
 Pero en su <tremble color="#2a256f">apuro</tremble>
 Camo <tremble color="#2a256f">ignora</tremble> todo esto
@@ -588,7 +588,7 @@ Sin duda Camo confía <wave color="#22d3ee">excesivamente</wave> en su habilidad
     id: 'scene_15_explicacion_1',
     speaker: 'narrator',
     speakerLabel: 'Explicación del Patrón',
-    text: `El <tremble color="#2a256f">Patrón Oscuro</tremble> que aplicó el enemigo fue <shake color="#06b6d4">hidden costs</shake>
+    text: `El <tremble color="#2a256f">Patrón Oscuro</tremble> que aplicó el enemigo fue <shake color="#06b6d4">Costos Ocultos</shake>
 
 Consiste en agregar un cargo oculto en un paso tardío del proceso de compra de formas sutil.
 
@@ -619,7 +619,7 @@ Ignoras los beneficios que podrían serte útiles y <tremble color="#2a256f">ace
     id: 'scene_15_explicacion_2',
     speaker: 'narrator',
     speakerLabel: 'Explicación del Patrón',
-    text: `El <tremble color="#2a256f">Patrón Oscuro</tremble> que aplicó el enemigo fue <shake color="#06b6d4">hidden costs</shake>
+    text: `El <tremble color="#2a256f">Patrón Oscuro</tremble> que aplicó el enemigo fue <shake color="#06b6d4">Costos Ocultos</shake>
 
 Consiste en agregar un cargo oculto en un paso tardío del proceso de compra de formas sutil.
 

@@ -208,7 +208,7 @@ export default function Battle3ReferencePricingRender({
 
           {/* Nombre del Hablante consistente (Patrón Oscuro) */}
           <div className="shrink-0 flex items-center justify-start pl-1 text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-[#06b6d4] italic block">
-            <FearTremble text="EL PATRÓN OSCURO (PRECIOS DE REFERENCIA)" color="#06b6d4" />
+            <FearTremble text="EL PATRÓN OSCURO (PREVENCIÓN DE COMPARACIÓN)" color="#06b6d4" />
           </div>
 
           {/* =======================================================

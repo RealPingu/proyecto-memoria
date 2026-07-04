@@ -1,0 +1,43 @@
+<svg width="400" height="800" viewBox="0 0 400 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect id="fondo-celular" width="400" height="800" fill="#ffffff" />
+  
+  <!-- Header del Sitio de Noticias -->
+  <g id="header-noticias" fill="#1e3a8a">
+    <rect x="0" y="0" width="400" height="55" />
+    <text x="20" y="34" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="bold">PINGU-POST DIARIO</text>
+  </g>
+
+  <!-- Artículo -->
+  <g id="articulo-contenido" transform="translate(20, 80)">
+    <text x="0" y="20" fill="#0f172a" font-family="sans-serif" font-size="18" font-weight="bold">10 Datos sorprendentes sobre el Ártico</text>
+    <text x="0" y="42" fill="#64748b" font-family="sans-serif" font-size="10">Por Corresponsal Polar • Actualizado hoy</text>
+    
+    <rect id="img-placeholder" x="0" y="60" width="360" height="150" rx="6" fill="#e2e8f0" />
+    <text x="180" y="140" fill="#94a3b8" font-family="sans-serif" font-size="12" text-anchor="middle">Fotografía Glacial</text>
+    
+    <text x="0" y="235" fill="#334155" font-family="sans-serif" font-size="12">
+      <tspan x="0" dy="0">El 98% del territorio está cubierto de hielo eterno.</tspan>
+      <tspan x="0" dy="18">Aunque muchos creen que hace demasiado frío,</tspan>
+      <tspan x="0" dy="18">la fauna local se ha adaptado de manera increíble.</tspan>
+    </text>
+  </g>
+
+  <!-- TRAMPA: Anuncio de "Siguiente" Gigante estilo Botón del sitio -->
+  <g id="anuncio-disfrazado-siguiente-trampa" transform="translate(20, 375)">
+    <rect id="bg-ad-siguiente" width="360" height="130" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+    
+    <!-- Botón trampa -->
+    <rect id="boton-siguiente-trampa" x="40" y="20" width="280" height="55" rx="28" fill="#2563eb" />
+    <text x="180" y="52" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle">SIGUIENTE DATO &gt;</text>
+    
+    <!-- Etiqueta AD minúscula -->
+    <text x="180" y="105" fill="#94a3b8" font-family="sans-serif" font-size="9" text-anchor="middle">Anuncio: Juega a construir tu imperio gratis ahora</text>
+    <rect id="badge-ad-2" x="13" y="10" width="20" height="12" rx="2" fill="#94a3b8" />
+    <text x="23" y="19" fill="#ffffff" font-family="sans-serif" font-size="7" text-anchor="middle">AD</text>
+  </g>
+
+  <!-- Paginación real (Muy pequeña y abajo) -->
+  <g id="paginacion-real" transform="translate(20, 530)">
+    <text x="180" y="25" fill="#64748b" font-family="sans-serif" font-size="12" text-anchor="middle">Páginas: <tspan fill="#2563eb" font-weight="bold" text-decoration="underline">1</tspan> | 2 | <tspan fill="#2563eb" text-decoration="underline">3</tspan> | <tspan fill="#2563eb" text-decoration="underline">Siguiente &gt;</tspan></text>
+  </g>
+</svg>

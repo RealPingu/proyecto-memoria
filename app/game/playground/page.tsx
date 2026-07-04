@@ -498,6 +498,23 @@ export default function SceneMenuPage() {
           </div>
         </div>
       )
+    },
+    {
+      id: 'scene_marking_designer',
+      number: 26,
+      title: 'Diseñador de Marcado',
+      subtitle: 'Bounding Boxes para Evaluación',
+      description: 'Dibuja rectángulos sobre las 8 interfaces del pre/post test de marcado. Genera y copia automáticamente las coordenadas porcentuales correctas.',
+      path: '/game/playground/scene/marking_designer',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80 flex flex-col items-center justify-center p-4">
+          <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest block mb-1">BOUNDING BOX DESIGNER</span>
+          <div className="text-[10px] font-bold text-white px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 shadow">
+            [ Coordenadas de Marcado ]
+          </div>
+        </div>
+      )
     }
 
 

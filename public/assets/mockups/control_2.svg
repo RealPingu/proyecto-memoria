@@ -12,8 +12,8 @@
     <text x="0" y="20" fill="#18181b" font-family="sans-serif" font-size="14" font-weight="bold">Item a Comprar</text>
     <rect x="0" y="35" width="360" height="90" rx="8" fill="#ffffff" stroke="#e4e4e7" stroke-width="1" />
     <rect x="15" y="50" width="60" height="60" rx="4" fill="#f4f4f5" />
-    <text x="25" y="85" fill="#a1a1aa" font-family="sans-serif" font-size="11" font-weight="bold">IGLU</text>
-    <text x="90" y="65" fill="#18181b" font-family="sans-serif" font-size="13" font-weight="bold">Iglú Estándar Táctico</text>
+    <text x="25" y="85" fill="#a1a1aa" font-family="sans-serif" font-size="11" font-weight="bold">AUDIO</text>
+    <text x="90" y="65" fill="#18181b" font-family="sans-serif" font-size="13" font-weight="bold">Auriculares Inalámbricos Pro</text>
     <text x="90" y="85" fill="#71717a" font-family="sans-serif" font-size="11">Cantidad: 1</text>
     <text x="345" y="65" fill="#18181b" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="end">$120,000</text>
   </g>
@@ -42,6 +42,6 @@
   <!-- Botón Proceder sin trampas -->
   <g id="footer-compra-segura" transform="translate(20, 410)">
     <rect x="0" y="0" width="360" height="50" rx="8" fill="#18181b" />
-    <text x="180" y="30" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">COMPRAR IGLÚ POR $120,000</text>
+    <text x="180" y="30" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">COMPRAR AHORA POR $120,000</text>
   </g>
 </svg>

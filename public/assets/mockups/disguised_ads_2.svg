@@ -19,7 +19,7 @@
         <text x="0" y="66" fill="#475569" font-family="sans-serif" font-size="10" style="white-space: pre;">La altitud real del Polo Sur geográfico es de 2,835 metros sobre el nivel del mar.</text>
       </g>
       <g id="foto-contenedor-2" transform="matrix(1, 0, 0, 1.678783, 0, 295.000009)" style="">
-        <image href="/assets/mockups/noaa.jpg" width="360" height="100" preserveAspectRatio="xMidYMid slice"/>
+        <image href="/assets/mockups/noaa.jpg" width="360" height="100" preserveAspectRatio="none"/>
       </g>
       <g id="datos-lista-2" transform="matrix(1, 0, 0, 1, 5.155316, 479.596786)">
         <text x="0" y="12" fill="#1e293b" font-family="sans-serif" font-size="11" font-weight="bold" style="white-space: pre;">3. El sol sale y se pone solo una vez al año</text>

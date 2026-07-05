@@ -11,22 +11,22 @@
   <g id="producto-info" transform="translate(20, 75)">
     <text x="0" y="20" fill="#1e293b" font-family="sans-serif" font-size="14" font-weight="bold">CARRITO DE COMPRAS (2)</text>
     
-    <!-- Item 1: Kit de Camping -->
+    <!-- Item 1: Saco de Dormir -->
     <g id="item-1" transform="translate(0, 30)">
-      <rect x="0" y="0" width="360" height="95" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" />
-      <image href="/assets/mockups/camping.jpg" x="15" y="12" width="70" height="70" preserveAspectRatio="xMidYMid slice" style="clip-path: inset(0px round 4px);" />
-      <text x="100" y="35" fill="#0f172a" font-family="sans-serif" font-size="12" font-weight="bold">Kit de Camping Aventura Completo</text>
-      <text x="100" y="53" fill="#475569" font-family="sans-serif" font-size="10">Cantidad: 1 • Incluye: Estacas y Bolso</text>
-      <text x="100" y="73" fill="#0f172a" font-family="sans-serif" font-size="12" font-weight="bold">45.000 CLP</text>
-    </g>
-
-    <!-- Item 2: Saco de Dormir -->
-    <g id="item-2" transform="translate(0, 140)">
       <rect x="0" y="0" width="360" height="95" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" />
       <image href="/assets/mockups/saco.jpg" x="15" y="12" width="70" height="70" preserveAspectRatio="xMidYMid slice" style="clip-path: inset(0px round 4px);" />
       <text x="100" y="35" fill="#0f172a" font-family="sans-serif" font-size="12" font-weight="bold">Saco de Dormir Térmico Impermeable</text>
-      <text x="100" y="53" fill="#475569" font-family="sans-serif" font-size="10">Cantidad: 1 • Color: Verde Militar</text>
+      <text x="100" y="53" fill="#475569" font-family="sans-serif" font-size="10">Cantidad: 1 • Color: Negro</text>
       <text x="100" y="73" fill="#0f172a" font-family="sans-serif" font-size="12" font-weight="bold">85.000 CLP</text>
+    </g>
+
+    <!-- Item 2: Kit Completo de Supervivencia -->
+    <g id="item-2" transform="translate(0, 140)">
+      <rect x="0" y="0" width="360" height="95" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" />
+      <image href="/assets/mockups/camping.jpg" x="15" y="12" width="70" height="70" preserveAspectRatio="xMidYMid slice" style="clip-path: inset(0px round 4px);" />
+      <text x="100" y="35" fill="#0f172a" font-family="sans-serif" font-size="12" font-weight="bold">Kit Completo de Supervivencia</text>
+      <text x="100" y="53" fill="#475569" font-family="sans-serif" font-size="10">Cantidad: 1 • Incluye: Herramientas y Estuche</text>
+      <text x="100" y="73" fill="#0f172a" font-family="sans-serif" font-size="12" font-weight="bold">45.000 CLP</text>
     </g>
   </g>
 

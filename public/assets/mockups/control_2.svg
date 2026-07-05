@@ -1,47 +1,57 @@
-<svg width="400" height="800" viewBox="0 0 400 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect id="fondo-celular" width="400" height="800" fill="#fafafa" />
-  
-  <!-- Header -->
-  <g id="header-limpio" fill="#18181b">
-    <rect x="0" y="0" width="400" height="55" />
-    <text x="20" y="34" fill="#ffffff" font-family="sans-serif" font-size="15" font-weight="bold">CHECKOUT SEGURO</text>
-  </g>
-
-  <!-- Resumen del Item -->
-  <g id="resumen-item" transform="translate(20, 75)">
-    <text x="0" y="20" fill="#18181b" font-family="sans-serif" font-size="14" font-weight="bold">Item a Comprar</text>
-    <rect x="0" y="35" width="360" height="90" rx="8" fill="#ffffff" stroke="#e4e4e7" stroke-width="1" />
-    <rect x="15" y="50" width="60" height="60" rx="4" fill="#f4f4f5" />
-    <text x="25" y="85" fill="#a1a1aa" font-family="sans-serif" font-size="11" font-weight="bold">AUDIO</text>
-    <text x="90" y="65" fill="#18181b" font-family="sans-serif" font-size="13" font-weight="bold">Auriculares Inalámbricos Pro</text>
-    <text x="90" y="85" fill="#71717a" font-family="sans-serif" font-size="11">Cantidad: 1</text>
-    <text x="345" y="65" fill="#18181b" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="end">$120,000</text>
-  </g>
-
-  <!-- Desglose de Gastos Transparentes (Sin sorpresas) -->
-  <g id="desglose-transparente" transform="translate(20, 195)">
-    <rect x="0" y="0" width="360" height="190" rx="8" fill="#ffffff" stroke="#e4e4e7" stroke-width="1" />
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="708.7819 2.8329 400.0001 800.0001" width="400px" height="800px">
+  <g transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, 0)">
+    <rect id="rect-1" width="400" height="800" fill="#fafafa" x="708.782" y="2.833" style="stroke-width: 1;"/>
+    <g id="header-limpio" fill="#18181b" transform="matrix(1, 0, 0, 1, 708.781943, 2.832875)">
+      <rect x="0" y="0" width="400" height="55"/>
+      <text x="20" y="34" fill="#ffffff" font-family="sans-serif" font-size="15" font-weight="bold" style="white-space: pre;">CHECKOUT SEGURO</text>
+    </g>
     
-    <text x="15" y="30" fill="#71717a" font-family="sans-serif" font-size="11">Precio Unitario</text>
-    <text x="345" y="30" fill="#18181b" font-family="sans-serif" font-size="11" text-anchor="end">$120,000.00</text>
+    <!-- Item a Comprar: Altura aumentada a 170px -->
+    <g id="resumen-item" transform="matrix(1, 0, 0, 1, 728.781943, 85.0)">
+      <text x="0" y="20" fill="#18181b" font-family="sans-serif" font-size="14" font-weight="bold" style="white-space: pre;">Item a Comprar</text>
+      <rect x="0" y="35" width="360" height="170" rx="8" fill="#ffffff" stroke="#e4e4e7" stroke-width="1"/>
+      
+      <!-- Box Audio Placeholder -->
+      <rect x="15" y="55" width="80" height="80" rx="6" fill="#f4f4f5"/>
+      <text x="32" y="100" fill="#a1a1aa" font-family="sans-serif" font-size="11" font-weight="bold" style="white-space: pre;">AUDIO</text>
+      
+      <!-- Detalles del Producto -->
+      <text x="110" y="80" fill="#18181b" font-family="sans-serif" font-size="14" font-weight="bold" style="white-space: pre;">Auriculares Inalámbricos Pro</text>
+      <text x="110" y="102" fill="#71717a" font-family="sans-serif" font-size="11.5" style="white-space: pre;">Cantidad: 1 • Color: Negro Carbono</text>
+      
+      <!-- Precio alineado a la derecha en formato CLP -->
+      <text x="345" y="80" fill="#18181b" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="end" style="white-space: pre;">120.000 CLP</text>
+    </g>
     
-    <text x="15" y="55" fill="#71717a" font-family="sans-serif" font-size="11">Gastos de Envío / Despliegue</text>
-    <text x="345" y="55" fill="#10b981" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="end">Gratis</text>
-
-    <text x="15" y="80" fill="#71717a" font-family="sans-serif" font-size="11">Impuestos de Reserva (19% IVA)</text>
-    <text x="345" y="80" fill="#18181b" font-family="sans-serif" font-size="11" text-anchor="end">$0.00 (Incluido)</text>
-
-    <line x1="15" y1="105" x2="345" y2="105" stroke="#f4f4f5" stroke-width="1" />
-
-    <text x="15" y="135" fill="#18181b" font-family="sans-serif" font-size="15" font-weight="bold">Total Final Declarado</text>
-    <text x="345" y="135" fill="#18181b" font-family="sans-serif" font-size="16" font-weight="black" text-anchor="end">$120,000.00</text>
+    <!-- Desglose de Gastos: Altura aumentada a 300px -->
+    <g id="desglose-transparente" transform="matrix(1, 0, 0, 1, 728.781943, 325.0)">
+      <rect x="0" y="0" width="360" height="300" rx="8" fill="#ffffff" stroke="#e4e4e7" stroke-width="1"/>
+      
+      <text x="15" y="40" fill="#71717a" font-family="sans-serif" font-size="11.5" style="white-space: pre;">Precio Unitario</text>
+      <text x="345" y="40" fill="#18181b" font-family="sans-serif" font-size="11.5" text-anchor="end" style="white-space: pre;">120.000 CLP</text>
+      
+      <text x="15" y="75" fill="#71717a" font-family="sans-serif" font-size="11.5" style="white-space: pre;">Gastos de Envío / Despliegue</text>
+      <text x="345" y="75" fill="#10b981" font-family="sans-serif" font-size="11.5" font-weight="bold" text-anchor="end" style="white-space: pre;">Gratis</text>
+      
+      <text x="15" y="110" fill="#71717a" font-family="sans-serif" font-size="11.5" style="white-space: pre;">Impuestos de Reserva (19% IVA)</text>
+      <text x="345" y="110" fill="#18181b" font-family="sans-serif" font-size="11.5" text-anchor="end" style="white-space: pre;">0 CLP (Incluido)</text>
+      
+      <line x1="15" y1="145" x2="345" y2="145" stroke="#f4f4f5" stroke-width="1"/>
+      
+      <text x="15" y="185" fill="#18181b" font-family="sans-serif" font-size="16" font-weight="bold" style="white-space: pre;">Total Final Declarado</text>
+      <text x="345" y="185" fill="#18181b" font-family="sans-serif" font-size="17" font-weight="black" text-anchor="end" style="white-space: pre;">120.000 CLP</text>
+      
+      <text x="15" y="240" fill="#71717a" font-family="sans-serif" font-size="10" style="white-space: pre;">
+        <tspan x="15" dy="0">No se aplicarán cargos ni comisiones adicionales a esta transacción.</tspan>
+        <tspan x="15" dy="14">El precio reflejado arriba es final y está exento de cobros extras.</tspan>
+      </text>
+    </g>
     
-    <text x="15" y="165" fill="#71717a" font-family="sans-serif" font-size="9">No se aplicarán cobros ni comisiones adicionales a esta transacción.</text>
-  </g>
-
-  <!-- Botón Proceder sin trampas -->
-  <g id="footer-compra-segura" transform="translate(20, 410)">
-    <rect x="0" y="0" width="360" height="50" rx="8" fill="#18181b" />
-    <text x="180" y="30" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">COMPRAR AHORA POR $120,000</text>
+    <!-- Botón de compra: Posicionado exactamente donde lo dejaste -->
+    <g id="footer-compra-segura" transform="matrix(1, 0, 0, 1, 728.781943, 722.339499)">
+      <rect x="0" y="0" width="360" height="65" rx="8" fill="#18181b"/>
+      <text x="180" y="38" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle" style="white-space: pre;">COMPRAR AHORA • 120.000 CLP</text>
+    </g>
   </g>
 </svg>

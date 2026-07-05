@@ -7,31 +7,31 @@
     <text x="20" y="34" fill="#ffffff" font-family="sans-serif" font-size="15" font-weight="bold">MOUNTAIN GEAR SHOP</text>
   </g>
 
-  <!-- Carrito de Compras: Dos Items para ocupar espacio -->
-  <g id="producto-info" transform="translate(20, 75)">
-    <text x="0" y="20" fill="#1e293b" font-family="sans-serif" font-size="14" font-weight="bold">CARRITO DE COMPRAS (2)</text>
+  <!-- Carrito de Compras: Dos Items con espaciado optimizado -->
+  <g id="producto-info" transform="translate(20, 80)">
+    <text x="0" y="15" fill="#1e293b" font-family="sans-serif" font-size="14" font-weight="bold">CARRITO DE COMPRAS (2)</text>
     
-    <!-- Item 1: Saco de Dormir -->
+    <!-- Item 1: Kit Completo de Supervivencia -->
     <g id="item-1" transform="translate(0, 30)">
-      <rect x="0" y="0" width="360" height="95" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" />
-      <image href="/assets/mockups/saco.jpg" x="15" y="12" width="70" height="70" preserveAspectRatio="xMidYMid slice" style="clip-path: inset(0px round 4px);" />
-      <text x="100" y="35" fill="#0f172a" font-family="sans-serif" font-size="12" font-weight="bold">Saco de Dormir Térmico Impermeable</text>
-      <text x="100" y="53" fill="#475569" font-family="sans-serif" font-size="10">Cantidad: 1 • Color: Negro</text>
-      <text x="100" y="73" fill="#0f172a" font-family="sans-serif" font-size="12" font-weight="bold">85.000 CLP</text>
-    </g>
-
-    <!-- Item 2: Kit Completo de Supervivencia -->
-    <g id="item-2" transform="translate(0, 140)">
       <rect x="0" y="0" width="360" height="95" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" />
       <image href="/assets/mockups/camping.jpg" x="15" y="12" width="70" height="70" preserveAspectRatio="xMidYMid slice" style="clip-path: inset(0px round 4px);" />
       <text x="100" y="35" fill="#0f172a" font-family="sans-serif" font-size="12" font-weight="bold">Kit Completo de Supervivencia</text>
       <text x="100" y="53" fill="#475569" font-family="sans-serif" font-size="10">Cantidad: 1 • Incluye: Herramientas y Estuche</text>
       <text x="100" y="73" fill="#0f172a" font-family="sans-serif" font-size="12" font-weight="bold">45.000 CLP</text>
     </g>
+
+    <!-- Item 2: Saco de Dormir -->
+    <g id="item-2" transform="translate(0, 150)">
+      <rect x="0" y="0" width="360" height="95" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" />
+      <image href="/assets/mockups/saco.jpg" x="15" y="12" width="70" height="70" preserveAspectRatio="xMidYMid slice" style="clip-path: inset(0px round 4px);" />
+      <text x="100" y="35" fill="#0f172a" font-family="sans-serif" font-size="12" font-weight="bold">Saco de Dormir Térmico Impermeable</text>
+      <text x="100" y="53" fill="#475569" font-family="sans-serif" font-size="10">Cantidad: 1 • Color: Negro</text>
+      <text x="100" y="73" fill="#0f172a" font-family="sans-serif" font-size="12" font-weight="bold">85.000 CLP</text>
+    </g>
   </g>
 
   <!-- TRAMPA: Checkbox de seguro de envío premarcado con bajo contraste -->
-  <g id="costos-ocultos-seguro-premarcado" transform="translate(20, 325)">
+  <g id="costos-ocultos-seguro-premarcado" transform="translate(20, 360)">
     <rect id="bg-seguro-trampa" width="360" height="75" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
     
     <!-- Checkbox premarcado -->
@@ -45,7 +45,7 @@
   </g>
 
   <!-- Total e Información -->
-  <g id="total-y-checkout" transform="translate(20, 420)">
+  <g id="total-y-checkout" transform="translate(20, 465)">
     <line x1="0" y1="0" x2="360" y2="0" stroke="#e2e8f0" stroke-width="1" />
     
     <text x="0" y="25" fill="#475569" font-family="sans-serif" font-size="12">Subtotal de Artículos (2)</text>
@@ -63,13 +63,13 @@
     <text x="360" y="110" fill="#0f172a" font-family="sans-serif" font-size="16" font-weight="black" text-anchor="end">139.990 CLP</text>
     
     <!-- Información de política de devolución gratis -->
-    <g id="politica-devolucion-info" transform="translate(0, 150)">
+    <g id="politica-devolucion-info" transform="translate(0, 140)">
       <rect x="0" y="0" width="360" height="40" rx="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
       <text x="180" y="24" fill="#475569" font-family="sans-serif" font-size="10" font-weight="bold" text-anchor="middle">✓ DEVOLUCIÓN GRATUITA EN 30 DÍAS</text>
     </g>
 
     <!-- Botón de compra Fijo en la parte inferior -->
-    <rect x="0" y="210" width="360" height="50" rx="8" fill="#10b981" />
-    <text x="180" y="240" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">PROCEDER AL PAGO (139.990 CLP)</text>
+    <rect x="0" y="200" width="360" height="50" rx="8" fill="#10b981" />
+    <text x="180" y="230" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">PROCEDER AL PAGO (139.990 CLP)</text>
   </g>
 </svg>

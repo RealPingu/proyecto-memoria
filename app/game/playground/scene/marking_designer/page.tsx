@@ -18,6 +18,10 @@ export default function MarkingDesignerPage() {
   const [boxes, setBoxes] = useState<BoundingBox[]>([]);
   const [labelInput, setLabelInput] = useState('');
   
+  // Estados para el JSON editable
+  const [jsonText, setJsonText] = useState('');
+  const [jsonError, setJsonError] = useState<string | null>(null);
+  
   // Contenido de los SVGs cargados en memoria
   const [svgContents, setSvgContents] = useState<string[]>(['', '', '', '', '', '', '', '']);
   const [isLoading, setIsLoading] = useState(true);
@@ -65,6 +69,64 @@ export default function MarkingDesignerPage() {
   useEffect(() => {
     setBoxes([]);
   }, [selectedMockup]);
+
+  // Sincronizar boxes con jsonText cuando cambien externamente (Canvas o eliminación)
+  useEffect(() => {
+    const serialized = JSON.stringify(
+      boxes.map(b => ({
+        xMin: b.xMin,
+        xMax: b.xMax,
+        yMin: b.yMin,
+        yMax: b.yMax,
+        label: b.label
+      })),
+      null,
+      2
+    );
+    // Evitamos pisar el estado local si el usuario está escribiendo directamente en la caja
+    if (document.activeElement?.id !== 'json-textarea') {
+      setJsonText(serialized);
+      setJsonError(null);
+    }
+  }, [boxes]);
+
+  const handleJsonTextChange = (val: string) => {
+    setJsonText(val);
+    if (!val.trim()) {
+      setBoxes([]);
+      setJsonError(null);
+      return;
+    }
+    try {
+      const parsed = JSON.parse(val);
+      if (Array.isArray(parsed)) {
+        const newBoxes = parsed.map((item: any, idx: number) => {
+          if (
+            typeof item.xMin !== 'number' ||
+            typeof item.xMax !== 'number' ||
+            typeof item.yMin !== 'number' ||
+            typeof item.yMax !== 'number'
+          ) {
+            throw new Error('Todas las coordenadas (xMin, xMax, yMin, yMax) deben ser números');
+          }
+          return {
+            id: item.id || Date.now() + idx,
+            xMin: Number(item.xMin),
+            xMax: Number(item.xMax),
+            yMin: Number(item.yMin),
+            yMax: Number(item.yMax),
+            label: item.label || `Zona ${idx + 1}`
+          };
+        });
+        setBoxes(newBoxes);
+        setJsonError(null);
+      } else {
+        setJsonError('El JSON debe ser un array/lista []');
+      }
+    } catch (err: any) {
+      setJsonError(err.message || 'Error de sintaxis JSON');
+    }
+  };
 
   // Manejo de clicks en el Canvas SVG overlay (400x800)
   const getSVGCoords = (e: React.MouseEvent<SVGSVGElement>) => {
@@ -366,17 +428,29 @@ export default function MarkingDesignerPage() {
               )}
             </div>
 
-            {/* Código JSON Generado */}
-            <div className="h-28 shrink-0 flex flex-col space-y-1">
+
+
+            {/* Código JSON Generado y Editable */}
+            <div className="h-40 shrink-0 flex flex-col space-y-1.5">
+              <div className="flex justify-between items-center">
+                <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">JSON de Bounding Boxes</span>
+                {jsonError ? (
+                  <span className="text-[9px] font-mono text-red-400 font-bold">✕ {jsonError}</span>
+                ) : (
+                  <span className="text-[9px] font-mono text-emerald-400 font-bold">✓ Válido ({boxes.length} de 8)</span>
+                )}
+              </div>
               <textarea
-                readOnly
-                value={getGeneratedJSON()}
-                className="flex-1 w-full bg-zinc-900/60 border border-zinc-800 rounded p-2 text-[9px] font-mono text-emerald-400 focus:outline-none focus:border-zinc-800 select-all"
+                id="json-textarea"
+                value={jsonText}
+                onChange={(e) => handleJsonTextChange(e.target.value)}
+                placeholder="[]"
+                className="flex-1 w-full bg-zinc-900/60 border border-zinc-800 rounded p-2 text-[9px] font-mono text-emerald-400 focus:outline-none focus:border-zinc-700"
               />
               <button
                 onClick={() => {
-                  navigator.clipboard.writeText(getGeneratedJSON());
-                  alert('Copiado al portapapeles!');
+                  navigator.clipboard.writeText(jsonText);
+                  alert('¡Copiado al portapapeles!');
                 }}
                 disabled={boxes.length === 0}
                 className="w-full py-1.5 text-[9px] font-mono font-bold uppercase tracking-wider rounded text-center transition bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 disabled:opacity-50 disabled:cursor-not-allowed"

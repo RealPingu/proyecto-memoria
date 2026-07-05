@@ -22,9 +22,8 @@
       <rect x="0" y="0" width="240" height="155" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
       <text x="15" y="38" fill="#0f172a" font-family="sans-serif" font-size="15" font-weight="bold">Suscripción Premium Ultra</text>
       <text x="15" y="58" fill="#64748b" font-family="sans-serif" font-size="10.5">Calidad 4K HDR + 4 pantallas a la vez</text>
-      <text x="15" y="90" fill="#475569" font-family="sans-serif" font-size="11.5">• Catálogo Ultra HD sin anuncios</text>
-      <text x="15" y="112" fill="#475569" font-family="sans-serif" font-size="11.5">• No permite descargas sin conexión</text>
-      <text x="15" y="134" fill="#475569" font-family="sans-serif" font-size="11.5">• Visualización en 4 pantallas</text>
+      <text x="15" y="100" fill="#475569" font-family="sans-serif" font-size="13" style="white-space: pre;">• Calidad Ultra HD con 4K</text>
+      <text x="15" y="122" fill="#475569" font-family="sans-serif" font-size="13" style="white-space: pre;">• No permite descargas sin conexión</text>
       
       <!-- Rectángulo Derecho (Precio Destacado) -->
       <rect x="250" y="0" width="110" height="155" rx="8" fill="#2563eb" stroke="#2563eb" stroke-width="2"/>
@@ -42,9 +41,8 @@
       <rect x="0" y="0" width="240" height="155" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
       <text x="15" y="38" fill="#0f172a" font-family="sans-serif" font-size="15" font-weight="bold">Suscripción Estándar Anual</text>
       <text x="15" y="58" fill="#64748b" font-family="sans-serif" font-size="10.5">Calidad 1080p + 2 pantallas simultáneas</text>
-      <text x="15" y="90" fill="#475569" font-family="sans-serif" font-size="11.5">• Catálogo con anuncios premium</text>
-      <text x="15" y="112" fill="#475569" font-family="sans-serif" font-size="11.5">• Descargas activas (límite 50 títulos)</text>
-      <text x="15" y="134" fill="#475569" font-family="sans-serif" font-size="11.5">• Excluye estrenos en su primer mes</text>
+      <text x="15" y="100" fill="#475569" font-family="sans-serif" font-size="13" style="white-space: pre;">• Reproducción en Full HD</text>
+      <text x="15" y="122" fill="#475569" font-family="sans-serif" font-size="13" style="white-space: pre;">• Excluye estrenos en su primer mes</text>
       
       <!-- Rectángulo Derecho (Precio) -->
       <rect x="250" y="0" width="110" height="155" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
@@ -58,9 +56,7 @@
       <rect x="0" y="0" width="240" height="155" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
       <text x="15" y="38" fill="#0f172a" font-family="sans-serif" font-size="15" font-weight="bold">Suscripción Básica Mensual</text>
       <text x="15" y="58" fill="#64748b" font-family="sans-serif" font-size="10.5">Calidad 720p + 1 pantalla activa</text>
-      <text x="15" y="90" fill="#475569" font-family="sans-serif" font-size="11.5">• Sin anuncios en series seleccionadas</text>
-      <text x="15" y="112" fill="#475569" font-family="sans-serif" font-size="11.5">• Acceso en 1 pantalla (calidad SD)</text>
-      <text x="15" y="134" fill="#475569" font-family="sans-serif" font-size="11.5">• No incluye descargas ni estrenos</text>
+      <text x="15" y="110" fill="#475569" font-family="sans-serif" font-size="13" style="white-space: pre;">• Calidad estándar en 1 pantalla</text>
       
       <!-- Rectángulo Derecho (Precio) -->
       <rect x="250" y="0" width="110" height="155" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>

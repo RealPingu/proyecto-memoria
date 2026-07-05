@@ -31,7 +31,11 @@
     </g>
     <g id="descarga-legitima-alternativa" transform="matrix(1, 0, 0, 1, 20.440562, 388.740643)">
       <rect id="bg-descarga-real" width="360" height="50" rx="8" fill="#fafafa" stroke="#e2e8f0" stroke-width="1"/>
-      <text x="180" y="30" fill="#64748b" font-family="sans-serif" font-size="11" text-anchor="middle" style="white-space: pre;" transform="matrix(1, 0, 0, 1, -9.211929, -17.765843)"><tspan x="180" dy="1em"></tspan>      Si la descarga no se inicia, pulsa en el <tspan fill="#3b82f6" font-weight="bold" text-decoration="underline">enlace alternativo<tspan x="180" dy="1em"></tspan> directo</tspan> para descargar el .zip original<tspan x="180" dy="1em"></tspan></text>
+      <text x="180" y="15" fill="#64748b" font-family="sans-serif" font-size="11" text-anchor="middle">
+      <tspan x="180" dy="0">Si la descarga no se inicia, pulsa en el</tspan>
+      <tspan x="180" dy="14" fill="#3b82f6" font-weight="bold" text-decoration="underline">enlace alternativo directo</tspan>
+      <tspan x="180" dy="14">para descargar el .zip original.</tspan>
+    </text>
     </g>
     <g id="user-comments" transform="matrix(1, 0, 0, 1, 24.38853, 463.740645)">
       <text x="0" y="20" fill="#1e293b" font-family="sans-serif" font-size="14" font-weight="bold" style="white-space: pre;">Comentarios (24)</text>

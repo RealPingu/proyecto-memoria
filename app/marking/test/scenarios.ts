@@ -133,25 +133,18 @@ export const SCENARIOS: Scenario[] = [
         ],
         correctAreas: [
             {
-                "xMin": 8.22,
-                "xMax": 94.13,
-                "yMin": 54.88,
-                "yMax": 61.65,
-                "label": "Cargos Adicionales en gris"
+                "xMin": 6.02,
+                "xMax": 94.4,
+                "yMin": 45.2,
+                "yMax": 54.46,
+                "label": "costo adicional pre seleccionado"
             },
             {
-                "xMin": 9.87,
-                "xMax": 90.84,
-                "yMin": 70.08,
-                "yMax": 75.06,
-                "label": "Nota de no reembolso"
-            },
-            {
-                "xMin": 5.2,
-                "xMax": 92.21,
-                "yMin": 79.49,
-                "yMax": 84.19,
-                "label": "no easy access to terms of service"
+                "xMin": 5.47,
+                "xMax": 95.23,
+                "yMin": 61.79,
+                "yMax": 64.55,
+                "label": "costo adicional 2"
             }
         ]
     },

@@ -31,7 +31,8 @@
         <rect x="0" y="0" width="240" height="150" rx="8" fill="#ffffff" stroke="#0d9488" stroke-width="2"/>
         <text x="15" y="40" fill="#0f172a" font-family="sans-serif" font-size="16" font-weight="bold" style="white-space: pre;">Pase Semanal Club</text>
         <text x="15" y="60" fill="#64748b" font-family="sans-serif" font-size="11" style="white-space: pre;">Pase más elegido por estudiantes</text>
-        <text x="15" y="115" fill="#475569" font-family="sans-serif" font-size="13" style="white-space: pre;">• Clases dirigidas y piscina</text>
+        <text x="15" y="100" fill="#475569" font-family="sans-serif" font-size="13" style="white-space: pre;">• Acceso a musculación y cardio</text>
+        <text x="15" y="122" fill="#475569" font-family="sans-serif" font-size="13" style="white-space: pre;">• Clases dirigidas y piscina</text>
         
         <!-- Rectángulo Derecho (Precio Destacado) -->
         <rect x="250" y="0" width="110" height="150" rx="8" fill="#0d9488" stroke="#0d9488" stroke-width="2"/>
@@ -49,7 +50,9 @@
         <rect x="0" y="0" width="240" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
         <text x="15" y="40" fill="#0f172a" font-family="sans-serif" font-size="16" font-weight="bold" style="white-space: pre;">Pase Mensual Premium</text>
         <text x="15" y="60" fill="#64748b" font-family="sans-serif" font-size="11" style="white-space: pre;">Acceso ilimitado 24/7 sin restricciones</text>
-        <text x="15" y="115" fill="#475569" font-family="sans-serif" font-size="13" style="white-space: pre;">• Evaluación y clases gratis</text>
+        <text x="15" y="85" fill="#475569" font-family="sans-serif" font-size="13" style="white-space: pre;">• Acceso a musculación y cardio</text>
+        <text x="15" y="107" fill="#475569" font-family="sans-serif" font-size="13" style="white-space: pre;">• Clases dirigidas y piscina</text>
+        <text x="15" y="129" fill="#475569" font-family="sans-serif" font-size="13" style="white-space: pre;">• Evaluación y clases gratis</text>
         
         <!-- Rectángulo Derecho (Precio) -->
         <rect x="250" y="0" width="110" height="150" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>

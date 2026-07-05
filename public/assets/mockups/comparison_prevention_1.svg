@@ -14,33 +14,36 @@
       <!-- PLAN 1: Pase Diario -->
       <g id="plan-basico" transform="translate(0, 0)">
         <rect x="0" y="0" width="360" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
-        <line x1="225" y1="15" x2="225" y2="135" stroke="#cbd5e1" stroke-width="1"/>
         <text x="20" y="40" fill="#0f172a" font-family="sans-serif" font-size="16" font-weight="bold" style="white-space: pre;">Pase Diario Acceso</text>
         <text x="20" y="60" fill="#64748b" font-family="sans-serif" font-size="11" style="white-space: pre;">Ideal para entrenamientos ocasionales</text>
-        <text x="340" y="50" fill="#0d9488" font-family="sans-serif" font-size="25" font-weight="black" text-anchor="end" style="white-space: pre;">1.800 CLP</text>
-        <text x="340" y="70" fill="#64748b" font-family="sans-serif" font-size="10" text-anchor="end" style="white-space: pre;">Por día / acceso individual</text>
+        <text x="340" y="50" fill="#0d9488" font-family="sans-serif" font-size="25" font-weight="black" text-anchor="end" style="white-space: pre;">
+          <tspan x="340" dy="0">1.800 CLP</tspan>
+          <tspan x="340" dy="16" fill="#64748b" font-size="10" font-weight="normal">Por día / acceso individual</tspan>
+        </text>
         <text x="20" y="115" fill="#475569" font-family="sans-serif" font-size="11.5" style="white-space: pre;">• Acceso a musculación y cardio</text>
       </g>
       <!-- PLAN 2: Pase Semanal (Recomendado) -->
       <g id="plan-profesional" transform="translate(0, 175)">
         <rect x="0" width="360" height="150" rx="8" fill="#f0fdfa" stroke="#0d9488" stroke-width="2" y="0"/>
-        <line x1="225" y1="15" x2="225" y2="135" stroke="#0d9488" stroke-width="1"/>
         <rect x="230" y="-10" width="110" height="22" rx="11" fill="#0d9488"/>
         <text x="285" y="4" fill="#ffffff" font-family="sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle" style="white-space: pre;">RECOMENDADO</text>
         <text x="20" y="40" fill="#0f172a" font-family="sans-serif" font-size="16" font-weight="bold" style="white-space: pre;">Pase Semanal Club</text>
         <text x="20" y="60" fill="#64748b" font-family="sans-serif" font-size="11" style="white-space: pre;">Pase más elegido por estudiantes</text>
-        <text x="340" y="50" fill="#0d9488" font-family="sans-serif" font-size="25" font-weight="black" text-anchor="end" style="white-space: pre;">8.990 CLP</text>
-        <text x="340" y="70" fill="#64748b" font-family="sans-serif" font-size="10" text-anchor="end" style="white-space: pre;">Por semana / renovación automática</text>
+        <text x="340" y="50" fill="#0d9488" font-family="sans-serif" font-size="25" font-weight="black" text-anchor="end" style="white-space: pre;">
+          <tspan x="340" dy="0">8.990 CLP</tspan>
+          <tspan x="340" dy="16" fill="#64748b" font-size="10" font-weight="normal">Por semana / renovación automática</tspan>
+        </text>
         <text x="20" y="115" fill="#475569" font-family="sans-serif" font-size="11.5" style="white-space: pre;">• Acceso a clases dirigidas y piscina</text>
       </g>
       <!-- PLAN 3: Pase Mensual -->
       <g id="plan-empresa" transform="translate(0, 350)">
         <rect x="0" y="0" width="360" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
-        <line x1="225" y1="15" x2="225" y2="135" stroke="#cbd5e1" stroke-width="1"/>
         <text x="20" y="40" fill="#0f172a" font-family="sans-serif" font-size="16" font-weight="bold" style="white-space: pre;">Pase Mensual Premium</text>
         <text x="20" y="60" fill="#64748b" font-family="sans-serif" font-size="11" style="white-space: pre;">Acceso ilimitado 24/7 sin restricciones</text>
-        <text x="340" y="50" fill="#0f172a" font-family="sans-serif" font-size="25" font-weight="black" text-anchor="end" style="white-space: pre;">27.990 CLP</text>
-        <text x="340" y="70" fill="#64748b" font-family="sans-serif" font-size="10" text-anchor="end" style="white-space: pre;">Por mes / contrato flexible mensual</text>
+        <text x="340" y="50" fill="#0f172a" font-family="sans-serif" font-size="25" font-weight="black" text-anchor="end" style="white-space: pre;">
+          <tspan x="340" dy="0">27.990 CLP</tspan>
+          <tspan x="340" dy="16" fill="#64748b" font-size="10" font-weight="normal">Por mes / contrato flexible mensual</tspan>
+        </text>
         <text x="20" y="115" fill="#475569" font-family="sans-serif" font-size="11.5" style="white-space: pre;">• Evaluación nutricional y clases gratis</text>
       </g>
     </g>

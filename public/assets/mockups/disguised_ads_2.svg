@@ -1,65 +1,42 @@
-<svg width="400" height="800" viewBox="0 0 400 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect id="fondo-celular" width="400" height="800" fill="#ffffff" />
-  
-  <!-- Header de Polar Posting -->
-  <g id="header-app" fill="#1e3a8a">
-    <rect x="0" y="0" width="400" height="55" />
-    <text x="20" y="34" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="bold" letter-spacing="1">POLAR POSTING</text>
-  </g>
-
-  <!-- Contenido del Artículo -->
-  <g id="articulo-contenido" transform="translate(20, 75)">
-    <!-- Título Principal -->
-    <text x="0" y="20" fill="#0f172a" font-family="sans-serif" font-size="18" font-weight="bold">10 datos sorprendentes del Polo Sur</text>
-    <text x="0" y="38" fill="#64748b" font-family="sans-serif" font-size="10">Por Ciencia Polar • Actualizado hoy</text>
-    
-    <!-- Imagen 1: Glaciar (Danielle Barnes) -->
-    <g id="foto-contenedor-1" transform="translate(0, 50)">
-      <image href="/assets/mockups/danielle-barnes.jpg" width="360" height="140" preserveAspectRatio="xMidYMid slice" />
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0.7695 0.5722 400.0001 800.0004" width="400px" height="800px">
+  <g transform="matrix(1.0000000000000002, 0, 0, 1.0000000000000002, -540.4544228450777, 23.843579049217055)">
+    <rect id="rect-1" width="400" height="800" fill="#ffffff" x="541.224" y="-23.271" style="stroke-width: 1;"/>
+    <g id="header-app" fill="#1e3a8a" transform="matrix(1, 0, 0, 1, 541.223893, -23.271382)">
+      <rect x="0" y="0" width="400" height="55"/>
+      <text x="20" y="34" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="bold" letter-spacing="1" style="white-space: pre;">POLAR POSTING</text>
     </g>
-
-    <!-- Lista de Datos (Primera Parte) -->
-    <g id="datos-lista-1" transform="translate(0, 210)">
-      <!-- Dato 1 -->
-      <text x="0" y="12" fill="#1e293b" font-family="sans-serif" font-size="11" font-weight="bold">1. Es el desierto más grande y seco del planeta</text>
-      <text x="0" y="26" fill="#475569" font-family="sans-serif" font-size="10">Aunque está cubierto de hielo, recibe menos de 10 mm de lluvia al año.</text>
-      
-      <!-- Dato 2 -->
-      <text x="0" y="52" fill="#1e293b" font-family="sans-serif" font-size="11" font-weight="bold">2. Toda la zona está sobre una capa de hielo de 2.8 km</text>
-      <text x="0" y="66" fill="#475569" font-family="sans-serif" font-size="10">La altitud real del Polo Sur geográfico es de 2,835 metros sobre el nivel del mar.</text>
+    <g id="group-1" transform="matrix(1, 0, 0, 1, 561.223955, 51.728647)">
+      <text x="0" y="20" fill="#0f172a" font-family="sans-serif" font-size="18" font-weight="bold" style="white-space: pre;">10 datos sorprendentes del Polo Sur</text>
+      <text x="0" y="38" fill="#64748b" font-family="sans-serif" font-size="10" style="white-space: pre;">Por Ciencia Polar • Actualizado hoy</text>
+      <g id="foto-contenedor-1" transform="translate(0, 50)">
+        <image href="/assets/mockups/danielle-barnes.jpg" width="360" height="140" preserveAspectRatio="xMidYMid slice"/>
+      </g>
+      <g id="datos-lista-1" transform="translate(0, 210)">
+        <text x="0" y="12" fill="#1e293b" font-family="sans-serif" font-size="11" font-weight="bold" style="white-space: pre;">1. Es el desierto más grande y seco del planeta</text>
+        <text x="0" y="26" fill="#475569" font-family="sans-serif" font-size="10" style="white-space: pre;">Aunque está cubierto de hielo, recibe menos de 10 mm de lluvia al año.</text>
+        <text x="0" y="52" fill="#1e293b" font-family="sans-serif" font-size="11" font-weight="bold" style="white-space: pre;">2. Toda la zona está sobre una capa de hielo de 2.8 km</text>
+        <text x="0" y="66" fill="#475569" font-family="sans-serif" font-size="10" style="white-space: pre;">La altitud real del Polo Sur geográfico es de 2,835 metros sobre el nivel del mar.</text>
+      </g>
+      <g id="foto-contenedor-2" transform="matrix(1, 0, 0, 1.678783, 0, 295.000009)" style="">
+        <image href="/assets/mockups/noaa.jpg" width="360" height="100" preserveAspectRatio="xMidYMid slice"/>
+      </g>
+      <g id="datos-lista-2" transform="matrix(1, 0, 0, 1, 5.155316, 479.596786)">
+        <text x="0" y="12" fill="#1e293b" font-family="sans-serif" font-size="11" font-weight="bold" style="white-space: pre;">3. El sol sale y se pone solo una vez al año</text>
+        <text x="0" y="26" fill="#475569" font-family="sans-serif" font-size="10" style="white-space: pre;">Hay 6 meses de luz solar continua seguidos por 6 meses de oscuridad total.</text>
+      </g>
     </g>
-
-    <!-- Imagen 2: Base Científica / Radar (NOAA) -->
-    <g id="foto-contenedor-2" transform="translate(0, 295)">
-      <image href="/assets/mockups/noaa.jpg" width="360" height="100" preserveAspectRatio="xMidYMid slice" />
+    <g id="group-2" transform="matrix(1, 0, 0, 1, 559.505571, 578.747759)">
+      <rect id="rect-2" width="360" height="130" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+      <rect id="rect-3" x="40" y="20" width="280" height="55" rx="28" fill="#2563eb"/>
+      <text x="180" y="52" fill="#ffffff" font-family="sans-serif" font-size="15" font-weight="bold" text-anchor="middle" style="white-space: pre;">VER DATOS RESTANTES &gt;</text>
+      <rect id="badge-ad-container" x="40" y="90" width="18" height="11" rx="2" fill="#cbd5e1"/>
+      <text x="49" y="98" fill="#ffffff" font-family="sans-serif" font-size="7" font-weight="bold" text-anchor="middle" style="white-space: pre;">AD</text>
+      <text x="63" y="99" fill="#94a3b8" font-family="sans-serif" font-size="9" style="white-space: pre;">Patrocinado: ¡Consigue un Iglú gratis en este juego!</text>
     </g>
-
-    <!-- Lista de Datos (Segunda Parte) -->
-    <g id="datos-lista-2" transform="translate(0, 410)">
-      <!-- Dato 3 -->
-      <text x="0" y="12" fill="#1e293b" font-family="sans-serif" font-size="11" font-weight="bold">3. El sol sale y se pone solo una vez al año</text>
-      <text x="0" y="26" fill="#475569" font-family="sans-serif" font-size="10">Hay 6 meses de luz solar continua seguidos por 6 meses de oscuridad total.</text>
-    </g>
-  </g>
-
-  <!-- TRAMPA: Anuncio Disfrazado de Botón de Navegación -->
-  <g id="anuncio-disfrazado-siguiente-trampa" transform="translate(20, 535)">
-    <rect id="bg-ad-siguiente" width="360" height="130" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
-    
-    <!-- Botón trampa -->
-    <rect id="boton-siguiente-trampa" x="40" y="20" width="280" height="55" rx="28" fill="#2563eb" />
-    <text x="180" y="52" fill="#ffffff" font-family="sans-serif" font-size="15" font-weight="bold" text-anchor="middle">VER DATOS RESTANTES &gt;</text>
-    
-    <!-- Etiqueta AD de publicidad disimulada -->
-    <rect id="badge-ad-container" x="40" y="90" width="18" height="11" rx="2" fill="#cbd5e1" />
-    <text x="49" y="98" fill="#ffffff" font-family="sans-serif" font-size="7" font-weight="bold" text-anchor="middle">AD</text>
-    <text x="63" y="99" fill="#94a3b8" font-family="sans-serif" font-size="9">Patrocinado: ¡Consigue un Iglú gratis en este juego!</text>
-  </g>
-
-  <!-- Paginación Real (Muy pequeña y abajo, para forzar el error) -->
-  <g id="paginacion-real" transform="translate(20, 685)">
-    <line x1="0" y1="0" x2="360" y2="0" stroke="#f1f5f9" stroke-width="1" />
-    <text x="180" y="25" fill="#64748b" font-family="sans-serif" font-size="11" text-anchor="middle">
+    <g id="group-3" transform="matrix(1, 0, 0, 1, 559.505571, 728.747763)">
+      <line x1="0" y1="0" x2="360" y2="0" stroke="#f1f5f9" stroke-width="1"/>
+      <text x="180" y="25" fill="#64748b" font-family="sans-serif" font-size="11" text-anchor="middle" style="white-space: pre;">
       Páginas del artículo: 
       <tspan fill="#2563eb" font-weight="bold" text-decoration="underline">1</tspan> 
       | 
@@ -69,5 +46,6 @@
       | 
       <tspan fill="#2563eb" text-decoration="underline">Siguiente &gt;</tspan>
     </text>
+    </g>
   </g>
 </svg>

@@ -1,24 +1,49 @@
 <svg width="400" height="800" viewBox="0 0 400 800" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect id="fondo-celular" width="400" height="800" fill="#fafafa" />
   
-  <!-- Header -->
+  <!-- Header PENGUIN EVENTS TOURS -->
   <g id="header-boleteria" fill="#4f46e5">
     <rect x="0" y="0" width="400" height="55" />
     <text x="20" y="34" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="bold">PENGUIN EVENTS TOURS</text>
   </g>
 
-  <!-- Ticket Info -->
-  <g id="resumen-ticket" transform="translate(20, 75)">
-    <text x="0" y="20" fill="#1f2937" font-family="sans-serif" font-size="15" font-weight="bold">Resumen de Compra de Entrada</text>
-    <rect x="0" y="35" width="360" height="80" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1" />
-    <text x="15" y="60" fill="#111827" font-family="sans-serif" font-size="13" font-weight="bold">Entrada General - Concierto Glacial</text>
-    <text x="15" y="80" fill="#6b7280" font-family="sans-serif" font-size="11">Fecha: 15 de Julio • 21:00 hrs</text>
-    <text x="345" y="60" fill="#111827" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="end">$45.00</text>
+  <!-- Indicador de Paso de Progreso -->
+  <g id="progreso-pasos" transform="translate(20, 70)">
+    <text x="0" y="15" fill="#6b7280" font-family="sans-serif" font-size="10" font-weight="bold">PASO 3 DE 3: CONFIRMACIÓN DE COMPRA</text>
+    <rect x="0" y="25" width="360" height="6" rx="3" fill="#e5e7eb" />
+    <rect x="0" y="25" width="360" height="6" rx="3" fill="#4f46e5" />
   </g>
 
-  <!-- Desglose de Costos (con trampa oculta de Delivery Fee sorpresa) -->
-  <g id="desglose-pagos" transform="translate(20, 185)">
-    <rect x="0" y="0" width="360" height="260" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1" />
+  <!-- Ticket/Event Info -->
+  <g id="resumen-ticket" transform="translate(20, 120)">
+    <rect x="0" y="0" width="360" height="95" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1" />
+    <text x="15" y="25" fill="#111827" font-family="sans-serif" font-size="13" font-weight="bold">Entrada General - Concierto Glacial</text>
+    <text x="15" y="45" fill="#6b7280" font-family="sans-serif" font-size="11">Fecha: 15 de Julio • 21:00 hrs</text>
+    <text x="15" y="65" fill="#6b7280" font-family="sans-serif" font-size="11">Asistente: Camo el Pingüino</text>
+    <text x="15" y="82" fill="#4f46e5" font-family="sans-serif" font-size="10" font-weight="bold">Ubicación: Sector Glaciar Central</text>
+    <text x="345" y="25" fill="#111827" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="end">$45.00</text>
+  </g>
+
+  <!-- Simulación Formulario Pago Tarjeta -->
+  <g id="formulario-tarjeta" transform="translate(20, 230)">
+    <text x="0" y="15" fill="#374151" font-family="sans-serif" font-size="11" font-weight="bold">INFORMACIÓN DE PAGO</text>
+    
+    <!-- Número de tarjeta -->
+    <rect x="0" y="25" width="360" height="40" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" />
+    <text x="15" y="49" fill="#1f2937" font-family="sans-serif" font-size="12">••••  ••••  ••••  4321</text>
+    <text x="345" y="49" fill="#9ca3af" font-family="sans-serif" font-size="10" text-anchor="end">VISA</text>
+
+    <!-- Campos Expiración y CVV -->
+    <rect x="0" y="75" width="170" height="40" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" />
+    <text x="15" y="99" fill="#1f2937" font-family="sans-serif" font-size="12">12 / 29</text>
+    
+    <rect x="190" y="75" width="170" height="40" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" />
+    <text x="205" y="99" fill="#1f2937" font-family="sans-serif" font-size="12">•••</text>
+  </g>
+
+  <!-- Desglose de Gastos (con trampa oculta de cargos adicionales) -->
+  <g id="desglose-pagos" transform="translate(20, 365)">
+    <rect x="0" y="0" width="360" height="250" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1" />
     
     <text x="15" y="30" fill="#374151" font-family="sans-serif" font-size="11">Subtotal de la Entrada</text>
     <text x="345" y="30" fill="#374151" font-family="sans-serif" font-size="11" text-anchor="end">$45.00</text>
@@ -38,19 +63,20 @@
     <text x="15" y="170" fill="#111827" font-family="sans-serif" font-size="16" font-weight="bold">Total Final a Pagar</text>
     <text x="345" y="170" fill="#111827" font-family="sans-serif" font-size="18" font-weight="black" text-anchor="end">$67.99</text>
     
-    <rect x="15" y="195" width="330" height="50" rx="4" fill="#fffbeb" stroke="#fef3c7" />
-    <text x="25" y="215" fill="#b45309" font-family="sans-serif" font-size="9" font-weight="bold">NOTA IMPORTANTE:</text>
-    <text x="25" y="230" fill="#b45309" font-family="sans-serif" font-size="9">Los cargos de procesamiento no son reembolsables.</text>
+    <rect x="15" y="195" width="330" height="40" rx="4" fill="#fffbeb" stroke="#fef3c7" />
+    <text x="25" y="210" fill="#b45309" font-family="sans-serif" font-size="9" font-weight="bold">NOTA:</text>
+    <text x="25" y="224" fill="#b45309" font-family="sans-serif" font-size="9">Los cargos de procesamiento y envío no son reembolsables.</text>
   </g>
 
-  <!-- Términos e Input -->
-  <g id="confirmar-pago-footer" transform="translate(20, 465)">
+  <!-- Confirmar e Información de Footer -->
+  <g id="confirmar-pago-footer" transform="translate(20, 630)">
     <text x="0" y="20" fill="#6b7280" font-family="sans-serif" font-size="9">
-      <tspan x="0" dy="0">Al hacer clic en "Confirmar Pago", declaras estar de acuerdo</tspan>
-      <tspan x="0" dy="12">con las políticas de no-retorno y los cargos añadidos.</tspan>
+      <tspan x="0" dy="0">Al hacer clic en "Confirmar Pago", declaras estar de acuerdo con las políticas</tspan>
+      <tspan x="0" dy="12">de la plataforma, términos de servicio y los cargos adicionales declarados.</tspan>
     </text>
     
-    <rect x="0" y="50" width="360" height="50" rx="8" fill="#4f46e5" />
-    <text x="180" y="80" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">CONFIRMAR PAGO DE $67.99</text>
+    <!-- Botón de Pago Fijo en la parte baja -->
+    <rect x="0" y="55" width="360" height="50" rx="8" fill="#4f46e5" />
+    <text x="180" y="85" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">CONFIRMAR Y PAGAR $67.99</text>
   </g>
 </svg>

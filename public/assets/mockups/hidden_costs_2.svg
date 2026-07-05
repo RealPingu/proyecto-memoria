@@ -1,25 +1,39 @@
 <svg width="400" height="800" viewBox="0 0 400 800" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect id="fondo-celular" width="400" height="800" fill="#fafafa" />
   
-  <!-- Header de la Tienda de Equipamiento -->
+  <!-- Header EQUIPOS GLACIALES S.A. -->
   <g id="header-tienda" fill="#0f172a">
     <rect x="0" y="0" width="400" height="55" />
     <text x="20" y="34" fill="#ffffff" font-family="sans-serif" font-size="15" font-weight="bold">EQUIPOS GLACIALES S.A.</text>
   </g>
 
-  <!-- Detalles del Producto -->
+  <!-- Carrito de Compras: Dos Items para ocupar espacio -->
   <g id="producto-info" transform="translate(20, 75)">
-    <text x="0" y="20" fill="#1e293b" font-family="sans-serif" font-size="15" font-weight="bold">Carrito de Compras</text>
-    <rect x="0" y="35" width="360" height="110" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" />
-    <rect x="15" y="50" width="80" height="80" rx="4" fill="#e2e8f0" />
-    <text x="20" y="95" fill="#94a3b8" font-family="sans-serif" font-size="10">Campamento</text>
-    <text x="110" y="68" fill="#0f172a" font-family="sans-serif" font-size="13" font-weight="bold">Saco de Dormir Térmico Camo</text>
-    <text x="110" y="88" fill="#475569" font-family="sans-serif" font-size="11">Cantidad: 1</text>
-    <text x="110" y="108" fill="#0f172a" font-family="sans-serif" font-size="13" font-weight="bold">$120.00</text>
+    <text x="0" y="20" fill="#1e293b" font-family="sans-serif" font-size="14" font-weight="bold">CARRITO DE COMPRAS (2)</text>
+    
+    <!-- Item 1: Saco de Dormir -->
+    <g id="item-1" transform="translate(0, 30)">
+      <rect x="0" y="0" width="360" height="95" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" />
+      <rect x="15" y="12" width="70" height="70" rx="4" fill="#e2e8f0" />
+      <text x="20" y="52" fill="#94a3b8" font-family="sans-serif" font-size="9" font-weight="bold">ABRIGO</text>
+      <text x="100" y="35" fill="#0f172a" font-family="sans-serif" font-size="12" font-weight="bold">Saco de Dormir Térmico Camo</text>
+      <text x="100" y="53" fill="#475569" font-family="sans-serif" font-size="10">Cantidad: 1 • Color: Verde Militar</text>
+      <text x="100" y="73" fill="#0f172a" font-family="sans-serif" font-size="12" font-weight="bold">$120.00</text>
+    </g>
+
+    <!-- Item 2: Linterna Glacial -->
+    <g id="item-2" transform="translate(0, 140)">
+      <rect x="0" y="0" width="360" height="95" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" />
+      <rect x="15" y="12" width="70" height="70" rx="4" fill="#e2e8f0" />
+      <text x="20" y="52" fill="#94a3b8" font-family="sans-serif" font-size="9" font-weight="bold">LUZ</text>
+      <text x="100" y="35" fill="#0f172a" font-family="sans-serif" font-size="12" font-weight="bold">Linterna Táctica Glacial LED</text>
+      <text x="100" y="53" fill="#475569" font-family="sans-serif" font-size="10">Cantidad: 1 • Carga: USB-C</text>
+      <text x="100" y="73" fill="#0f172a" font-family="sans-serif" font-size="12" font-weight="bold">$25.00</text>
+    </g>
   </g>
 
   <!-- TRAMPA: Checkbox de seguro de envío premarcado con bajo contraste -->
-  <g id="costos-ocultos-seguro-premarcado" transform="translate(20, 205)">
+  <g id="costos-ocultos-seguro-premarcado" transform="translate(20, 325)">
     <rect id="bg-seguro-trampa" width="360" height="75" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
     
     <!-- Checkbox premarcado -->
@@ -33,24 +47,33 @@
   </g>
 
   <!-- Total e Información -->
-  <g id="total-y-checkout" transform="translate(20, 300)">
+  <g id="total-y-checkout" transform="translate(20, 420)">
     <line x1="0" y1="0" x2="360" y2="0" stroke="#e2e8f0" stroke-width="1" />
     
-    <text x="0" y="25" fill="#475569" font-family="sans-serif" font-size="12">Subtotal</text>
-    <text x="360" y="25" fill="#1e293b" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="end">$120.00</text>
+    <text x="0" y="25" fill="#475569" font-family="sans-serif" font-size="12">Subtotal de Artículos (2)</text>
+    <text x="360" y="25" fill="#1e293b" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="end">$145.00</text>
     
-    <text x="0" y="45" fill="#475569" font-family="sans-serif" font-size="12">Garantía Extendida</text>
+    <text x="0" y="45" fill="#475569" font-family="sans-serif" font-size="12">Garantía Extendida Climática</text>
     <text x="360" y="45" fill="#1e293b" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="end">$18.99</text>
 
-    <text x="0" y="65" fill="#475569" font-family="sans-serif" font-size="12">Envío Estándar</text>
+    <text x="0" y="65" fill="#475569" font-family="sans-serif" font-size="12">Envío Estándar Polar</text>
     <text x="360" y="65" fill="#1e293b" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="end">Gratis</text>
 
     <line x1="0" y1="85" x2="360" y2="85" stroke="#cbd5e1" stroke-width="1" />
 
-    <text x="0" y="110" fill="#0f172a" font-family="sans-serif" font-size="15" font-weight="bold">Total Final</text>
-    <text x="360" y="110" fill="#0f172a" font-family="sans-serif" font-size="16" font-weight="black" text-anchor="end">$138.99</text>
+    <text x="0" y="110" fill="#0f172a" font-family="sans-serif" font-size="15" font-weight="bold">Total Final de la Orden</text>
+    <text x="360" y="110" fill="#0f172a" font-family="sans-serif" font-size="16" font-weight="black" text-anchor="end">$163.99</text>
     
-    <rect x="0" y="140" width="360" height="50" rx="8" fill="#10b981" />
-    <text x="180" y="170" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">PROCEDER AL CHECKOUT</text>
+    <!-- Información de confianza de compra segura en la parte baja -->
+    <g id="compra-segura-info" transform="translate(0, 150)">
+      <rect x="0" y="0" width="360" height="40" rx="4" fill="#f0fdf4" stroke="#dcfce7" />
+      <text x="40" y="24" fill="#166534" font-family="sans-serif" font-size="10" font-weight="bold">COMPRA PROTEGIDA POR ENCRIPTACIÓN SSL</text>
+      <circle cx="22" cy="20" r="8" fill="#166534" />
+      <path d="M20 18v-2a2 2 0 0 1 4 0v2m-5 0h6v4H19z" stroke="#ffffff" stroke-width="1" fill="none" />
+    </g>
+
+    <!-- Botón de compra Fijo en la parte inferior -->
+    <rect x="0" y="210" width="360" height="50" rx="8" fill="#10b981" />
+    <text x="180" y="240" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">PROCEDER AL PAGO ($163.99)</text>
   </g>
 </svg>

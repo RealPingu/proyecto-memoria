@@ -12,16 +12,15 @@
       <text x="0" y="20" fill="#18181b" font-family="sans-serif" font-size="14" font-weight="bold" style="white-space: pre;">Item a Comprar</text>
       <rect x="0" y="35" width="360" height="170" rx="8" fill="#ffffff" stroke="#e4e4e7" stroke-width="1"/>
       
-      <!-- Box Audio Placeholder -->
-      <rect x="15" y="55" width="80" height="80" rx="6" fill="#f4f4f5"/>
-      <text x="32" y="100" fill="#a1a1aa" font-family="sans-serif" font-size="11" font-weight="bold" style="white-space: pre;">AUDIO</text>
+      <!-- Imagen Audífonos -->
+      <image href="/assets/mockups/audifonos.jpg" x="15" y="55" width="80" height="80" preserveAspectRatio="xMidYMid slice" style="clip-path: inset(0px round 6px);" />
       
       <!-- Detalles del Producto -->
-      <text x="110" y="80" fill="#18181b" font-family="sans-serif" font-size="14" font-weight="bold" style="white-space: pre;">Auriculares Inalámbricos Pro</text>
-      <text x="110" y="102" fill="#71717a" font-family="sans-serif" font-size="11.5" style="white-space: pre;">Cantidad: 1 • Color: Negro Carbono</text>
+      <text x="110" y="75" fill="#18181b" font-family="sans-serif" font-size="14" font-weight="bold" style="white-space: pre;">Auriculares Inalámbricos Pro</text>
+      <text x="110" y="98" fill="#71717a" font-family="sans-serif" font-size="11.5" style="white-space: pre;">Cantidad: 1 • Color: Negro Carbono</text>
       
-      <!-- Precio alineado a la derecha en formato CLP -->
-      <text x="345" y="80" fill="#18181b" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="end" style="white-space: pre;">120.000 CLP</text>
+      <!-- Precio alineado abajo a la derecha para evitar solapamientos -->
+      <text x="345" y="125" fill="#18181b" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="end" style="white-space: pre;">120.000 CLP</text>
     </g>
     
     <!-- Desglose de Gastos: Altura aumentada a 300px -->

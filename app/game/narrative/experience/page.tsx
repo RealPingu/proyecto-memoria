@@ -123,7 +123,7 @@ export default function NarrativeExperiencePage() {
             Tu Experiencia
           </h1>
           <p className="text-game-muted text-[10px] md:text-xs uppercase tracking-widest">
-            Fase Post-Narrativa (Opcional)
+            Cuéntanos sobre ti
           </p>
         </motion.header>
 
@@ -136,12 +136,23 @@ export default function NarrativeExperiencePage() {
           <div className="my-auto w-full max-w-xl space-y-6">
             <div className="bg-game-surface/30 p-6 md:p-10 border border-game-muted/20 rounded-sm shadow-2xl text-left space-y-6">
               
-              <p className="leading-relaxed text-zinc-300 text-sm md:text-base text-center italic">
-                "¿Alguna vez te has sentido presionado, engañado o confundido al comprar en internet, intentar cancelar una suscripción o al aceptar cookies de navegación?"
-              </p>
+              <div className="space-y-4 text-zinc-300 text-sm md:text-base leading-relaxed text-center font-sans">
+                <p>
+                  La <span className="px-1.5 py-0.5 rounded bg-game-accent/25 text-game-accent font-semibold border border-game-accent/30">historia</span> de Camo es <span className="px-1.5 py-0.5 rounded bg-game-accent/25 text-game-accent font-semibold border border-game-accent/30">ficticia</span>, esta dramatiza y simplifica algunos patrones oscuros.
+                </p>
+                <p>
+                  Pero estos son <span className="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400 font-semibold border border-amber-500/35">reales</span> y tienen <span className="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400 font-semibold border border-amber-500/35">consecuencias</span> sobre ti y todos los usuarios de medios digitales.
+                </p>
+                <p>
+                  Estos no son los únicos que existen y están presentes de varias formas y en varios lugares en los medios digitales.
+                </p>
+                <p className="pt-2 font-medium">
+                  ¿Alguna vez te has sentido <span className="px-1.5 py-0.5 rounded bg-red-500/20 text-red-400 font-semibold border border-red-500/30">engañado</span>, <span className="px-1.5 py-0.5 rounded bg-red-500/20 text-red-400 font-semibold border border-red-500/30">confundido</span> o <span className="px-1.5 py-0.5 rounded bg-red-500/20 text-red-400 font-semibold border border-red-500/30">impulsado</span> al comprar en internet, intentar cancelar una suscripción, jugar videojuegos, etc?
+                </p>
+              </div>
 
-              <p className="leading-relaxed text-zinc-400 text-xs md:text-sm text-center">
-                Si lo deseas, cuéntanos brevemente alguna experiencia o anécdota personal donde creas haber sido afectado por un patrón oscuro:
+              <p className="leading-relaxed text-zinc-400 text-xs md:text-sm text-center border-t border-game-muted/10 pt-4">
+                Si lo deseas, cuéntanos brevemente alguna <span className="px-1.5 py-0.5 rounded bg-game-accent/25 text-game-accent font-semibold border border-game-accent/30">experiencia o anécdota personal</span> donde creas haber sido <span className="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400 font-semibold border border-amber-500/35">afectado</span> por un <span className="px-1.5 py-0.5 rounded bg-game-accent/25 text-game-accent font-semibold border border-game-accent/30">patrón oscuro</span>:
               </p>
 
               <div className="space-y-2 relative">

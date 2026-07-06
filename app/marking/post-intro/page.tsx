@@ -1,12 +1,19 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from "next/link";
 import { motion } from 'framer-motion';
 import MarkingVisor from '@/app/components/MarkingVisor';
 
 export default function MarkingPostIntroPage() {
     const [points, setPoints] = useState<{ x: number, y: number, id: number }[]>([]);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            window.scrollTo(0, 0);
+            document.body.scrollTop = 0;
+        }
+    }, []);
 
     const handleMark = (x: number, y: number) => {
         const threshold = 4;

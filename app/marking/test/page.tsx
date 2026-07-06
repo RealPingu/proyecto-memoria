@@ -32,6 +32,14 @@ function MarkingTestContent() {
         markedPointsRef.current = markedPoints;
     }, [markedPoints]);
 
+    // Resetear scroll al montar para evitar desfases causados por el teclado móvil en páginas anteriores
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            window.scrollTo(0, 0);
+            document.body.scrollTop = 0;
+        }
+    }, []);
+
     // Cargar o inicializar la asignación split-half de escenarios en localStorage
     useEffect(() => {
         setPlayerId(localStorage.getItem('antipatron_player_id'));

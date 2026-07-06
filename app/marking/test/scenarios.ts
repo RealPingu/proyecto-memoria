@@ -43,21 +43,21 @@ export const SCENARIOS: Scenario[] = [
                 "xMax": 95.23,
                 "yMin": 11.05,
                 "yMax": 25.02,
-                "label": "ad pdf"
+                "label": "Anuncio Disfrazado: Botón de descarga PDF falso"
             },
             {
                 "xMin": 4.93,
                 "xMax": 94.95,
                 "yMin": 27.23,
                 "yMax": 46.58,
-                "label": "Ad descarga"
+                "label": "Anuncio Disfrazado: Botón de descarga principal falso"
             },
             {
                 "xMin": 6.57,
                 "xMax": 92.21,
                 "yMin": 59.02,
                 "yMax": 93.45,
-                "label": "sus comments"
+                "label": "Anuncio Disfrazado: Sección de comentarios patrocinada"
             }
         ]
     },
@@ -79,7 +79,7 @@ export const SCENARIOS: Scenario[] = [
                 "xMax": 94.4,
                 "yMin": 75.06,
                 "yMax": 91.79,
-                "label": "Ad 1"
+                "label": "Anuncio Disfrazado: Botón 'Siguiente' falso en pie de página"
             }
         ]
     },
@@ -101,21 +101,21 @@ export const SCENARIOS: Scenario[] = [
                 "xMax": 94.13,
                 "yMin": 54.88,
                 "yMax": 61.65,
-                "label": "Cargos Adicionales en gris"
+                "label": "Cargos de procesamiento en gris (Costo oculto)"
             },
             {
                 "xMin": 9.87,
                 "xMax": 90.84,
                 "yMin": 70.08,
                 "yMax": 75.06,
-                "label": "Nota de no reembolso"
+                "label": "Cláusula restrictiva de no reembolso en letra pequeña"
             },
             {
                 "xMin": 5.2,
                 "xMax": 92.21,
                 "yMin": 79.49,
                 "yMax": 84.19,
-                "label": "no easy access to terms of service"
+                "label": "Dificultad de acceso a los Términos de Servicio"
             }
         ]
     },
@@ -137,14 +137,14 @@ export const SCENARIOS: Scenario[] = [
                 "xMax": 94.4,
                 "yMin": 45.2,
                 "yMax": 54.46,
-                "label": "costo adicional pre seleccionado"
+                "label": "Costo adicional preseleccionado (Seguro)"
             },
             {
                 "xMin": 5.47,
                 "xMax": 95.23,
                 "yMin": 61.79,
                 "yMax": 64.55,
-                "label": "costo adicional 2"
+                "label": "Item de seguro agregado en desglose de costos"
             }
         ]
     },
@@ -162,32 +162,32 @@ export const SCENARIOS: Scenario[] = [
         ],
         correctAreas: [
             {
-                "xMin": 8.77,
-                "xMax": 61.74,
-                "yMin": 30.82,
-                "yMax": 33.86,
-                "label": ":Lenguaje excluyente 1"
+                "xMin": 68.8,
+                "xMax": 93.8,
+                "yMin": 38.8,
+                "yMax": 41.3,
+                "label": "Badge Recomendado (Cebo de texto)"
             },
             {
-                "xMin": 8.77,
-                "xMax": 62.84,
-                "yMin": 51.97,
-                "yMax": 57.64,
-                "label": "Lenguaje excluyente 2"
+                "xMin": 67.5,
+                "xMax": 95.0,
+                "yMin": 40.0,
+                "yMax": 59.4,
+                "label": "Precio cebo semanal (Sin totalizar)"
             },
             {
-                "xMin": 67.23,
-                "xMax": 95.5,
-                "yMin": 38.98,
-                "yMax": 59.58,
-                "label": "Plan semanal resaltado"
+                "xMin": 5.0,
+                "xMax": 50.0,
+                "yMin": 54.0,
+                "yMax": 56.0,
+                "label": "Exclusión de piscina en plan cebo"
             },
             {
-                "xMin": 8.77,
-                "xMax": 63.66,
-                "yMin": 76.58,
-                "yMax": 79.49,
-                "label": "hidden cost"
+                "xMin": 5.0,
+                "xMax": 57.5,
+                "yMin": 75.8,
+                "yMax": 77.9,
+                "label": "Cobro adicional oculto en Plan Premium"
             }
         ]
     },
@@ -205,68 +205,75 @@ export const SCENARIOS: Scenario[] = [
         ],
         correctAreas: [
             {
-                "xMin": 8.49,
-                "xMax": 60.37,
-                "yMin": 42.3,
-                "yMax": 45.89,
-                "label": "Periodos no claros 1"
+                "xMin": 68.8,
+                "xMax": 93.8,
+                "yMin": 16.9,
+                "yMax": 19.4,
+                "label": "Badge Recomendado (Cebo superior)"
             },
             {
-                "xMin": 8.77,
-                "xMax": 60.09,
-                "yMin": 64.55,
-                "yMax": 67.46,
-                "label": "Periodos no claros 2"
+                "xMin": 67.5,
+                "xMax": 95.0,
+                "yMin": 18.1,
+                "yMax": 37.5,
+                "label": "Precio cebo semanal (Premium)"
             },
             {
-                "xMin": 9.32,
-                "xMax": 60.09,
-                "yMin": 71.74,
-                "yMax": 79.76,
-                "label": "Lenguaje confuso 2"
+                "xMin": 45.0,
+                "xMax": 59.0,
+                "yMin": 43.1,
+                "yMax": 45.6,
+                "label": "Contradicción: Texto 'Anual' en título"
             },
             {
-                "xMin": 8.77,
-                "xMax": 57.62,
-                "yMin": 49.62,
-                "yMax": 57.5,
-                "label": "Lenguaje confuso 2"
+                "xMin": 67.5,
+                "xMax": 95.0,
+                "yMin": 51.0,
+                "yMax": 54.0,
+                "label": "Contradicción: Cobro 'Por mes'"
             },
             {
-                "xMin": 76.01,
-                "xMax": 86.99,
-                "yMin": 50.73,
-                "yMax": 53.08,
-                "label": "peiodo confuso"
+                "xMin": 5.0,
+                "xMax": 55.0,
+                "yMin": 31.0,
+                "yMax": 33.5,
+                "label": "Exclusión de descargas en plan premium cebo"
             },
             {
-                "xMin": 8.22,
-                "xMax": 57.35,
-                "yMin": 27.37,
-                "yMax": 35.8,
-                "label": "Elementos no explicados"
-            },
-            {
-                "xMin": 9.04,
-                "xMax": 54.61,
-                "yMin": 23.36,
-                "yMax": 26.26,
-                "label": "Subtitulo llamativo 1"
-            },
-            {
-                "xMin": 9.04,
-                "xMax": 57.08,
-                "yMin": 45.61,
-                "yMax": 47.69,
-                "label": "Subtitulo con lenguaje diverso 2"
-            },
-            {
-                "xMin": 9.04,
-                "xMax": 50.49,
-                "yMin": 67.87,
-                "yMax": 69.67,
-                "label": "subtitulo 3 cambio de lenguaje."
+                "xMin": 5.0,
+                "xMax": 95.0,
+                "yMin": 84.0,
+                "yMax": 86.5,
+                "label": "Cargo por cancelación oculta en footer"
             }
         ]
+    },
+    {
+        id: 'sn_07',
+        title: 'Portal de Acceso - Control',
+        context: 'Tu objetivo es iniciar sesión en tu cuenta de usuario de forma segura.',
+        mockupUrl: '/assets/mockups/control_1.svg',
+        time: 30,
+        patternOptions: [
+            { id: 'opt_ctrl1_none', label: 'No se observan patrones oscuros', isCorrect: true },
+            { id: 'opt_ctrl1_da', label: 'Sneaking > Bait and Switch > Disguised Ads', isCorrect: false },
+            { id: 'opt_ctrl1_hc', label: 'Sneaking > Hiding Information > Hidden Costs', isCorrect: false },
+            { id: 'opt_ctrl1_cp', label: 'Sneaking > Hiding Information > Comparison Prevention', isCorrect: false }
+        ],
+        correctAreas: []
+    },
+    {
+        id: 'sn_08',
+        title: 'Checkout de Compra - Control',
+        context: 'Tu objetivo es revisar el resumen de tu compra e iniciar la transacción de forma segura.',
+        mockupUrl: '/assets/mockups/control_2.svg',
+        time: 30,
+        patternOptions: [
+            { id: 'opt_ctrl2_none', label: 'No se observan patrones oscuros', isCorrect: true },
+            { id: 'opt_ctrl2_da', label: 'Sneaking > Bait and Switch > Disguised Ads', isCorrect: false },
+            { id: 'opt_ctrl2_hc', label: 'Sneaking > Hiding Information > Hidden Costs', isCorrect: false },
+            { id: 'opt_ctrl2_cp', label: 'Sneaking > Hiding Information > Comparison Prevention', isCorrect: false }
+        ],
+        correctAreas: []
     }
 ];

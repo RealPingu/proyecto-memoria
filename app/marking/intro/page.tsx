@@ -52,10 +52,10 @@ export default function MarkingIntroPage() {
                             </h2>
                             <div className="space-y-3 text-zinc-300 text-sm md:text-base leading-relaxed">
                                 <p>
-                                    La prueba de <span className="px-1.5 py-0.5 rounded bg-game-accent/25 text-game-accent font-semibold border border-game-accent/30">marcado</span> consiste en identificar todo aquel elemento que intente subvertir o desviarte del <span className="px-1.5 py-0.5 rounded bg-game-accent/25 text-game-accent font-semibold border border-game-accent/30">objetivo</span> del contexto de la vista.
+                                    La prueba de <span className="text-game-accent font-semibold">marcado</span> consiste en identificar todo aquel elemento que intente subvertir o desviarte del <span className="text-game-accent font-semibold">objetivo</span> del contexto de la vista.
                                 </p>
                                 <p>
-                                    Te daremos el contexto de la vista previo a la etapa de <span className="px-1.5 py-0.5 rounded bg-game-accent/25 text-game-accent font-semibold border border-game-accent/30">marcado</span>. Cada vista tendrá un <span className="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400 font-semibold border border-amber-500/35">tiempo límite variable</span> (entre 25 y 80 segundos) acorde a la cantidad de elementos y texto que contiene.
+                                    Te daremos el contexto de la vista previo a la etapa de <span className="text-game-accent font-semibold">marcado</span>. Cada vista tendrá un <span className="text-amber-400 font-semibold">tiempo límite variable</span> (entre 25 y 80 segundos) acorde a la cantidad de elementos y texto que contiene.
                                 </p>
                             </div>
                         </div>
@@ -68,7 +68,7 @@ export default function MarkingIntroPage() {
                             
                             <ul className="space-y-3 text-zinc-300 text-xs md:text-sm leading-relaxed list-disc list-inside">
                                 <li>
-                                    <strong>Para <span className="px-1.5 py-0.5 rounded bg-game-accent/25 text-game-accent font-semibold border border-game-accent/30">marcar</span>:</strong> Funciona como un celular. Haz clic o presiona una vez para <span className="px-1.5 py-0.5 rounded bg-game-accent/25 text-game-accent font-semibold border border-game-accent/30">marcar</span> la posición del elemento sospechoso en la imagen.
+                                    <strong>Para <span className="text-game-accent font-semibold">marcar</span>:</strong> Funciona como un celular. Haz clic o presiona una vez para <span className="text-game-accent font-semibold">marcar</span> la posición del elemento sospechoso en la imagen.
                                 </li>
                                 <li>
                                     <strong>Para mover la imagen:</strong>

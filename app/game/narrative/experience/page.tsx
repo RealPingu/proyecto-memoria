@@ -138,21 +138,21 @@ export default function NarrativeExperiencePage() {
               
               <div className="space-y-4 text-zinc-300 text-sm md:text-base leading-relaxed text-center font-sans">
                 <p>
-                  La <span className="px-1.5 py-0.5 rounded bg-game-accent/25 text-game-accent font-semibold border border-game-accent/30">historia</span> de Camo es <span className="px-1.5 py-0.5 rounded bg-game-accent/25 text-game-accent font-semibold border border-game-accent/30">ficticia</span>, esta dramatiza y simplifica algunos patrones oscuros.
+                  La <span className="text-game-accent font-semibold">historia</span> de Camo es <span className="text-game-accent font-semibold">ficticia</span>, esta dramatiza y simplifica algunos patrones oscuros.
                 </p>
                 <p>
-                  Pero estos son <span className="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400 font-semibold border border-amber-500/35">reales</span> y tienen <span className="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400 font-semibold border border-amber-500/35">consecuencias</span> sobre ti y todos los usuarios de medios digitales.
+                  Pero estos son <span className="text-amber-400 font-semibold">reales</span> y tienen <span className="text-amber-400 font-semibold">consecuencias</span> sobre ti y todos los usuarios de medios digitales.
                 </p>
                 <p>
                   Estos no son los únicos que existen y están presentes de varias formas y en varios lugares en los medios digitales.
                 </p>
                 <p className="pt-2 font-medium">
-                  ¿Alguna vez te has sentido <span className="px-1.5 py-0.5 rounded bg-red-500/20 text-red-400 font-semibold border border-red-500/30">engañado</span>, <span className="px-1.5 py-0.5 rounded bg-red-500/20 text-red-400 font-semibold border border-red-500/30">confundido</span> o <span className="px-1.5 py-0.5 rounded bg-red-500/20 text-red-400 font-semibold border border-red-500/30">impulsado</span> al comprar en internet, intentar cancelar una suscripción, jugar videojuegos, etc?
+                  ¿Alguna vez te has sentido <span className="text-red-400 font-semibold">engañado</span>, <span className="text-red-400 font-semibold">confundido</span> o <span className="text-red-400 font-semibold">impulsado</span> al comprar en internet, intentar cancelar una suscripción, jugar videojuegos, etc?
                 </p>
               </div>
 
               <p className="leading-relaxed text-zinc-400 text-xs md:text-sm text-center border-t border-game-muted/10 pt-4">
-                Si lo deseas, cuéntanos brevemente alguna <span className="px-1.5 py-0.5 rounded bg-game-accent/25 text-game-accent font-semibold border border-game-accent/30">experiencia o anécdota personal</span> donde creas haber sido <span className="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400 font-semibold border border-amber-500/35">afectado</span> por un <span className="px-1.5 py-0.5 rounded bg-game-accent/25 text-game-accent font-semibold border border-game-accent/30">patrón oscuro</span>:
+                Si lo deseas, cuéntanos brevemente alguna <span className="text-game-accent font-semibold">experiencia o anécdota personal</span> donde creas haber sido <span className="text-amber-400 font-semibold">afectado</span> por un <span className="text-game-accent font-semibold">patrón oscuro</span>:
               </p>
 
               <div className="space-y-2 relative">

@@ -515,6 +515,23 @@ export default function SceneMenuPage() {
           </div>
         </div>
       )
+    },
+    {
+      id: 'scene_marking_simulator',
+      number: 27,
+      title: 'Simulador de Marcado',
+      subtitle: 'Simulación Pre y Post-Test',
+      description: 'Prueba la secuencia de evaluación completa (Pre-Test y Post-Test) con las 8 vistas y la lógica de Matriz de Confusión antes de ir a producción.',
+      path: '/game/playground/scene/marking_simulator',
+      available: true,
+      preview: (
+        <div className="w-full h-full bg-black/60 relative overflow-hidden rounded border border-zinc-800/80 flex flex-col items-center justify-center p-4">
+          <span className="text-[10px] font-mono text-teal-400 uppercase tracking-widest block mb-1">MARKING SIMULATOR</span>
+          <div className="text-[10px] font-bold text-white px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 shadow">
+            [ Simulación Pre/Post-Test ]
+          </div>
+        </div>
+      )
     }
 
 

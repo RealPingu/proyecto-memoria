@@ -24,11 +24,9 @@ export async function GET() {
     await sql`
       CREATE TABLE IF NOT EXISTS interaction_logs (
         id SERIAL PRIMARY KEY,
-        player_id UUID NOT NULL,
-        event_name VARCHAR(100) NOT NULL,
-        metadata JSONB DEFAULT '{}',
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        UNIQUE(player_id, event_name)
+        player_id UUID NOT NULL UNIQUE,
+        logs JSONB DEFAULT '{}',
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
     `;
     console.log("Tabla 'interaction_logs' recreada");
@@ -50,14 +48,9 @@ export async function GET() {
     await sql`
       CREATE TABLE IF NOT EXISTS marking_results (
         id SERIAL PRIMARY KEY,
-        player_id UUID NOT NULL,
-        scenario_id VARCHAR(50) NOT NULL,
-        phase VARCHAR(10) NOT NULL,
-        points JSONB DEFAULT '[]',
-        selected_patterns JSONB DEFAULT '[]',
-        time_taken DECIMAL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        UNIQUE(player_id, scenario_id, phase)
+        player_id UUID NOT NULL UNIQUE,
+        results JSONB DEFAULT '{}',
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
     `;
     console.log("Tabla 'marking_results' recreada");

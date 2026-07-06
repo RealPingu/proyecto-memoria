@@ -199,6 +199,31 @@ function MarkingTestContent() {
 
         const timeTaken = (Date.now() - startTime) / 1000;
 
+        // Calcular métricas de colisión (TP, FP, FN) en el cliente
+        const areas = scenario.correctAreas || [];
+        const points = markedPointsRef.current;
+        let tp = 0;
+        let fp = 0;
+        const matchedIndices = new Set<number>();
+
+        points.forEach(p => {
+            let hit = false;
+            for (let i = 0; i < areas.length; i++) {
+                const area = areas[i];
+                if (p.x >= area.xMin && p.x <= area.xMax && p.y >= area.yMin && p.y <= area.yMax) {
+                    hit = true;
+                    matchedIndices.add(i);
+                    break;
+                }
+            }
+            if (!hit) {
+                fp++;
+            }
+        });
+
+        tp = matchedIndices.size;
+        const fn = areas.length - tp;
+
         try {
             await fetch('/api/marking/save', {
                 method: 'POST',
@@ -207,9 +232,12 @@ function MarkingTestContent() {
                     playerId,
                     scenarioId: scenario.id,
                     phase: isPostTest ? 'post' : 'pre',
-                    points: markedPointsRef.current.map(p => ({ x: p.x, y: p.y })),
+                    points: points.map(p => ({ x: p.x, y: p.y })),
                     selectedPatterns,
-                    timeTaken
+                    timeTaken,
+                    tp,
+                    fp,
+                    fn
                 }),
             });
         } catch (e) {

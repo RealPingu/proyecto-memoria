@@ -21,21 +21,20 @@ async function setup() {
         `;
         console.log("Tabla 'players' recreada exitosamente");
 
-        // 2. Crear la tabla de logs de interacción (Optimizado: 1 fila por evento por jugador)
-        await client.sql`DROP TABLE IF EXISTS interaction_logs;`; 
+        // 2. Crear la tabla de logs de interacción
+        await client.sql`DROP TABLE IF EXISTS interaction_logs CASCADE;`; 
         await client.sql`
           CREATE TABLE IF NOT EXISTS interaction_logs (
             id SERIAL PRIMARY KEY,
-            player_id UUID NOT NULL,
-            event_name VARCHAR(100) NOT NULL,
-            metadata JSONB DEFAULT '{}',
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            UNIQUE(player_id, event_name)
+            player_id UUID NOT NULL UNIQUE,
+            logs JSONB DEFAULT '{}',
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
           );
         `;
-        console.log("Tabla 'interaction_logs' creada exitosamente con restricción UNIQUE");
+        console.log("Tabla 'interaction_logs' creada exitosamente");
 
         // 3. Crear la tabla de respuestas de la encuesta Likert
+        await client.sql`DROP TABLE IF EXISTS likert_responses CASCADE;`;
         await client.sql`
           CREATE TABLE IF NOT EXISTS likert_responses (
             id SERIAL PRIMARY KEY,
@@ -51,14 +50,9 @@ async function setup() {
         await client.sql`
           CREATE TABLE IF NOT EXISTS marking_results (
             id SERIAL PRIMARY KEY,
-            player_id UUID NOT NULL,
-            scenario_id VARCHAR(50) NOT NULL,
-            phase VARCHAR(10) NOT NULL,
-            points JSONB DEFAULT '[]',
-            selected_patterns JSONB DEFAULT '[]',
-            time_taken DECIMAL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            UNIQUE(player_id, scenario_id, phase)
+            player_id UUID NOT NULL UNIQUE,
+            results JSONB DEFAULT '{}',
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
           );
         `;
         console.log("Tabla 'marking_results' creada exitosamente");

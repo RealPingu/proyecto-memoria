@@ -28,14 +28,14 @@ export const SCENARIOS: Scenario[] = [
     {
         id: 'sn_01',
         title: 'Anuncios Disfrazados - Descarga',
-        context: 'Tu objetivo es descargar el manual en PDF de forma gratuita. Evita hacer clic en publicidad.',
+        context: 'Tu objetivo es descargar un archivo en formato PDF (documento).',
         mockupUrl: '/assets/mockups/disguised_ads_1.svg',
         time: 30,
         patternOptions: [
-            { id: 'opt_da_1', label: 'Sneaking > Bait and Switch > Disguised Ads', isCorrect: true },
-            { id: 'opt_da_2', label: 'Sneaking > Hiding Information > Hidden Costs', isCorrect: false },
-            { id: 'opt_da_3', label: 'Sneaking > Hiding Information > Sneak into Basket', isCorrect: false },
-            { id: 'opt_da_none', label: 'No lo sé / No recuerdo', isCorrect: false }
+            { id: 'opt_da_1', label: 'Anuncios Disfrazados', isCorrect: true },
+            { id: 'opt_da_2', label: 'Costos Ocultos', isCorrect: false },
+            { id: 'opt_da_3', label: 'Colarse en el Carrito', isCorrect: false },
+            { id: 'opt_da_none', label: 'No se observan patrones oscuros', isCorrect: false }
         ],
         correctAreas: [
             {
@@ -64,14 +64,14 @@ export const SCENARIOS: Scenario[] = [
     {
         id: 'sn_02',
         title: 'Anuncios Disfrazados - Siguiente',
-        context: 'Tu objetivo es avanzar a la siguiente sección del artículo presionando el botón de navegación correcto.',
+        context: 'Tu objetivo es avanzar a la siguiente sección del artículo.',
         mockupUrl: '/assets/mockups/disguised_ads_2.svg',
         time: 30,
         patternOptions: [
-            { id: 'opt_da2_1', label: 'Sneaking > Bait and Switch > Disguised Ads', isCorrect: true },
-            { id: 'opt_da2_2', label: 'Sneaking > Hiding Information > Hidden Costs', isCorrect: false },
-            { id: 'opt_da2_3', label: 'Sneaking > Hiding Information > Sneak into Basket', isCorrect: false },
-            { id: 'opt_da2_none', label: 'No lo sé / No recuerdo', isCorrect: false }
+            { id: 'opt_da2_1', label: 'Anuncios Disfrazados', isCorrect: true },
+            { id: 'opt_da2_2', label: 'Costos Ocultos', isCorrect: false },
+            { id: 'opt_da2_3', label: 'Colarse en el Carrito', isCorrect: false },
+            { id: 'opt_da2_none', label: 'No se observan patrones oscuros', isCorrect: false }
         ],
         correctAreas: [
             {
@@ -86,14 +86,14 @@ export const SCENARIOS: Scenario[] = [
     {
         id: 'sn_03',
         title: 'Costos Ocultos - Ticket',
-        context: 'Tu objetivo es comprar el ticket de entrada general por el precio anunciado de 15.000 CLP.',
+        context: 'Tu objetivo es comprar la entrada por el precio anunciado de 25.000 CLP.',
         mockupUrl: '/assets/mockups/hidden_costs_1.svg',
         time: 30,
         patternOptions: [
-            { id: 'opt_hc_1', label: 'Sneaking > Hiding Information > Hidden Costs', isCorrect: true },
-            { id: 'opt_hc_2', label: 'Sneaking > Bait and Switch > Disguised Ads', isCorrect: false },
-            { id: 'opt_hc_3', label: 'Urgency > Scarcity > Low Stock Message', isCorrect: false },
-            { id: 'opt_hc_none', label: 'No lo sé / No recuerdo', isCorrect: false }
+            { id: 'opt_hc_1', label: 'Costos Ocultos', isCorrect: true },
+            { id: 'opt_hc_2', label: 'Anuncios Disfrazados', isCorrect: false },
+            { id: 'opt_hc_3', label: 'Colarse en el Carrito', isCorrect: false },
+            { id: 'opt_hc_none', label: 'No se observan patrones oscuros', isCorrect: false }
         ],
         correctAreas: [
             {
@@ -122,14 +122,14 @@ export const SCENARIOS: Scenario[] = [
     {
         id: 'sn_04',
         title: 'Costos Ocultos - Seguro',
-        context: 'Tu objetivo es comprar el saco de dormir y el kit de supervivencia. Evita cargos adicionales no deseados.',
+        context: 'Tu objetivo es comprar el kit de supervivencia y el saco de dormir impermeable.',
         mockupUrl: '/assets/mockups/hidden_costs_2.svg',
         time: 30,
         patternOptions: [
-            { id: 'opt_hc2_1', label: 'Sneaking > Hiding Information > Hidden Costs', isCorrect: true },
-            { id: 'opt_hc2_2', label: 'Sneaking > Hiding Information > Sneak into Basket', isCorrect: true },
-            { id: 'opt_hc2_3', label: 'Sneaking > Bait and Switch > Disguised Ads', isCorrect: false },
-            { id: 'opt_hc2_none', label: 'No lo sé / No recuerdo', isCorrect: false }
+            { id: 'opt_hc2_1', label: 'Costos Ocultos', isCorrect: true },
+            { id: 'opt_hc2_2', label: 'Colarse en el Carrito', isCorrect: true },
+            { id: 'opt_hc2_3', label: 'Anuncios Disfrazados', isCorrect: false },
+            { id: 'opt_hc2_none', label: 'No se observan patrones oscuros', isCorrect: false }
         ],
         correctAreas: [
             {
@@ -151,14 +151,14 @@ export const SCENARIOS: Scenario[] = [
     {
         id: 'sn_05',
         title: 'Comparación - Unidades',
-        context: 'Tu objetivo es elegir el plan de acceso al gimnasio que consideres más conveniente. Evita trucos de tarifas.',
+        context: 'Tu objetivo es elegir el plan de gimnasio más conveniente.',
         mockupUrl: '/assets/mockups/comparison_prevention_1.svg',
         time: 30,
         patternOptions: [
-            { id: 'opt_cp1_1', label: 'Sneaking > Hiding Information > Comparison Prevention', isCorrect: true },
-            { id: 'opt_cp1_2', label: 'Sneaking > Hiding Information > Hidden Costs', isCorrect: false },
-            { id: 'opt_cp1_3', label: 'Urgency > Scarcity > Low Stock Message', isCorrect: false },
-            { id: 'opt_cp1_none', label: 'No lo sé / No recuerdo', isCorrect: false }
+            { id: 'opt_cp1_1', label: 'Prevención de Comparación', isCorrect: true },
+            { id: 'opt_cp1_2', label: 'Costos Ocultos', isCorrect: false },
+            { id: 'opt_cp1_3', label: 'Anuncios Disfrazados', isCorrect: false },
+            { id: 'opt_cp1_none', label: 'No se observan patrones oscuros', isCorrect: false }
         ],
         correctAreas: [
             {
@@ -194,14 +194,14 @@ export const SCENARIOS: Scenario[] = [
     {
         id: 'sn_06',
         title: 'Comparación - Cebo',
-        context: 'Tu objetivo es elegir la suscripción de streaming de video más conveniente para ti. Identifica trucos de comparación.',
+        context: 'Tu objetivo es elegir el plan de streaming más conveniente.',
         mockupUrl: '/assets/mockups/comparison_prevention_2.svg',
         time: 30,
         patternOptions: [
-            { id: 'opt_cp2_1', label: 'Sneaking > Hiding Information > Comparison Prevention', isCorrect: true },
-            { id: 'opt_cp2_2', label: 'Sneaking > Hiding Information > Hidden Costs', isCorrect: false },
-            { id: 'opt_cp2_3', label: 'Urgency > Scarcity > Low Stock Message', isCorrect: false },
-            { id: 'opt_cp2_none', label: 'No lo sé / No recuerdo', isCorrect: false }
+            { id: 'opt_cp2_1', label: 'Prevención de Comparación', isCorrect: true },
+            { id: 'opt_cp2_2', label: 'Costos Ocultos', isCorrect: false },
+            { id: 'opt_cp2_3', label: 'Anuncios Disfrazados', isCorrect: false },
+            { id: 'opt_cp2_none', label: 'No se observan patrones oscuros', isCorrect: false }
         ],
         correctAreas: [
             {
@@ -251,28 +251,28 @@ export const SCENARIOS: Scenario[] = [
     {
         id: 'sn_07',
         title: 'Portal de Acceso - Control',
-        context: 'Tu objetivo es iniciar sesión en tu cuenta de usuario de forma segura.',
+        context: 'Tu objetivo es iniciar sesión en una app.',
         mockupUrl: '/assets/mockups/control_1.svg',
         time: 30,
         patternOptions: [
             { id: 'opt_ctrl1_none', label: 'No se observan patrones oscuros', isCorrect: true },
-            { id: 'opt_ctrl1_da', label: 'Sneaking > Bait and Switch > Disguised Ads', isCorrect: false },
-            { id: 'opt_ctrl1_hc', label: 'Sneaking > Hiding Information > Hidden Costs', isCorrect: false },
-            { id: 'opt_ctrl1_cp', label: 'Sneaking > Hiding Information > Comparison Prevention', isCorrect: false }
+            { id: 'opt_ctrl1_da', label: 'Anuncios Disfrazados', isCorrect: false },
+            { id: 'opt_ctrl1_hc', label: 'Costos Ocultos', isCorrect: false },
+            { id: 'opt_ctrl1_cp', label: 'Prevención de Comparación', isCorrect: false }
         ],
         correctAreas: []
     },
     {
         id: 'sn_08',
         title: 'Checkout de Compra - Control',
-        context: 'Tu objetivo es revisar el resumen de tu compra e iniciar la transacción de forma segura.',
+        context: 'Tu objetivo es completar la compra de tus audífonos.',
         mockupUrl: '/assets/mockups/control_2.svg',
         time: 30,
         patternOptions: [
             { id: 'opt_ctrl2_none', label: 'No se observan patrones oscuros', isCorrect: true },
-            { id: 'opt_ctrl2_da', label: 'Sneaking > Bait and Switch > Disguised Ads', isCorrect: false },
-            { id: 'opt_ctrl2_hc', label: 'Sneaking > Hiding Information > Hidden Costs', isCorrect: false },
-            { id: 'opt_ctrl2_cp', label: 'Sneaking > Hiding Information > Comparison Prevention', isCorrect: false }
+            { id: 'opt_ctrl2_da', label: 'Anuncios Disfrazados', isCorrect: false },
+            { id: 'opt_ctrl2_hc', label: 'Costos Ocultos', isCorrect: false },
+            { id: 'opt_ctrl2_cp', label: 'Prevención de Comparación', isCorrect: false }
         ],
         correctAreas: []
     }

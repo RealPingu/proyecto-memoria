@@ -43,33 +43,30 @@
 
   <!-- Desglose de Gastos (con trampa oculta de cargos adicionales) -->
   <g id="desglose-pagos" transform="translate(20, 365)">
-    <rect x="0" y="0" width="360" height="250" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1" />
+    <rect x="0" y="0" width="360" height="225" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1" />
     
     <text x="15" y="30" fill="#111827" font-family="sans-serif" font-size="11" font-weight="bold">Subtotal de la Entrada</text>
     <text x="345" y="30" fill="#111827" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="end">25.000 CLP</text>
-    
-    <text x="15" y="55" fill="#111827" font-family="sans-serif" font-size="11" font-weight="bold">Impuesto Local (IVA 19%)</text>
-    <text x="345" y="55" fill="#111827" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="end">4.750 CLP</text>
 
     <!-- TRAMPA: Cargo de Emisión sorpresa + Cargo de seguro de envío predeterminado -->
-    <text x="15" y="90" fill="#94a3b8" font-family="sans-serif" font-size="10">Cargo de Procesamiento Web</text>
-    <text x="345" y="90" fill="#94a3b8" font-family="sans-serif" font-size="10" text-anchor="end">4.900 CLP</text>
+    <text x="15" y="58" fill="#94a3b8" font-family="sans-serif" font-size="10">Cargo de Procesamiento Web</text>
+    <text x="345" y="58" fill="#94a3b8" font-family="sans-serif" font-size="10" text-anchor="end">4.900 CLP</text>
 
-    <text x="15" y="115" fill="#94a3b8" font-family="sans-serif" font-size="10">Cargo por Envío Digital Inmediato</text>
-    <text x="345" y="115" fill="#94a3b8" font-family="sans-serif" font-size="10" text-anchor="end">1.990 CLP</text>
+    <text x="15" y="82" fill="#94a3b8" font-family="sans-serif" font-size="10">Cargo por Envío Digital Inmediato</text>
+    <text x="345" y="82" fill="#94a3b8" font-family="sans-serif" font-size="10" text-anchor="end">1.990 CLP</text>
 
-    <line x1="15" y1="140" x2="345" y2="140" stroke="#f3f4f6" stroke-width="1" />
+    <line x1="15" y1="105" x2="345" y2="105" stroke="#f3f4f6" stroke-width="1" />
 
-    <text x="15" y="170" fill="#111827" font-family="sans-serif" font-size="16" font-weight="bold">Total Final a Pagar</text>
-    <text x="345" y="170" fill="#111827" font-family="sans-serif" font-size="18" font-weight="black" text-anchor="end">36.640 CLP</text>
+    <text x="15" y="132" fill="#111827" font-family="sans-serif" font-size="16" font-weight="bold">Total Final a Pagar</text>
+    <text x="345" y="132" fill="#111827" font-family="sans-serif" font-size="18" font-weight="black" text-anchor="end">31.890 CLP</text>
     
-    <rect x="15" y="195" width="330" height="40" rx="4" fill="#fffbeb" stroke="#fef3c7" />
-    <text x="25" y="210" fill="#b45309" font-family="sans-serif" font-size="9" font-weight="bold">NOTA:</text>
-    <text x="25" y="224" fill="#b45309" font-family="sans-serif" font-size="9">Los cargos de procesamiento y envío no son reembolsables.</text>
+    <rect x="15" y="155" width="330" height="50" rx="4" fill="#fffbeb" stroke="#fef3c7" />
+    <text x="25" y="172" fill="#b45309" font-family="sans-serif" font-size="9" font-weight="bold">NOTA:</text>
+    <text x="25" y="188" fill="#b45309" font-family="sans-serif" font-size="9">Los cargos de procesamiento y envío no son reembolsables.</text>
   </g>
 
   <!-- Confirmar e Información de Footer -->
-  <g id="confirmar-pago-footer" transform="translate(20, 630)">
+  <g id="confirmar-pago-footer" transform="translate(20, 610)">
     <text x="0" y="20" fill="#6b7280" font-family="sans-serif" font-size="9">
       <tspan x="0" dy="0">Al hacer clic en "Confirmar Pago", declaras estar de acuerdo con las políticas</tspan>
       <tspan x="0" dy="12">de la plataforma, términos de servicio y los cargos adicionales declarados.</tspan>
@@ -77,6 +74,6 @@
     
     <!-- Botón de Pago Fijo en la parte baja -->
     <rect x="0" y="55" width="360" height="50" rx="8" fill="#4f46e5" />
-    <text x="180" y="85" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">CONFIRMAR Y PAGAR 36.640 CLP</text>
+    <text x="180" y="85" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">CONFIRMAR Y PAGAR 31.890 CLP</text>
   </g>
 </svg>

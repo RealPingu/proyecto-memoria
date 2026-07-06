@@ -220,7 +220,18 @@ export default function SurveyPage() {
                     </div>
 
                     <div className="flex justify-between items-center pt-10 md:pt-8 border-t border-game-muted/10">
-                        <button onClick={() => goToQuestion(currentIndex - 1)} disabled={currentIndex === 0} className={`text-[10px] uppercase tracking-widest transition-all ${currentIndex === 0 ? 'opacity-0' : 'text-game-muted hover:text-game-accent'}`}>← Ant.</button>
+                        <button 
+                            onClick={() => {
+                                if (currentIndex > 0) {
+                                    goToQuestion(currentIndex - 1);
+                                } else {
+                                    router.push('/survey/intro');
+                                }
+                            }} 
+                            className="text-[10px] uppercase tracking-widest transition-all text-game-muted hover:text-game-accent"
+                        >
+                            ← Ant.
+                        </button>
 
                         <div className="flex space-x-4 items-center">
                             {currentIndex < SURVEY_QUESTIONS.length - 1 && hasAnsweredCurrent && (

@@ -35,7 +35,7 @@ export default function LikertIntroPage() {
                     <div className="my-auto py-8 flex flex-col items-center space-y-8 md:space-y-16 w-full shrink-0">
                         <div className="bg-game-surface/30 p-8 md:p-12 border border-game-muted/20 rounded-sm shadow-2xl w-full max-w-3xl shrink-0">
                             <p className="leading-relaxed text-zinc-300 italic text-sm md:text-lg max-w-xl mx-auto text-center">
-                                "A continuación se presentarán <span className="text-yellow-200 font-bold">20</span> afirmaciones sobre tus hábitos y conocimientos digitales.
+                                "A continuación se presentarán <span className="text-yellow-200 font-bold">12</span> afirmaciones sobre tus hábitos y conocimientos digitales.
                                 Responde en una escala del <span className="text-red-500 font-bold">1</span> al <span className="text-blue-500 font-bold">5</span>, donde 1 es muy en desacuerdo y 5 es muy de acuerdo."
                             </p>
                         </div>

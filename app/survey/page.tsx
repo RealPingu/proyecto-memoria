@@ -147,11 +147,11 @@ export default function SurveyPage() {
                                 {DIMENSIONS[currentQuestion.dimension]}
                             </motion.p>
                         </AnimatePresence>
-                        <h1 className="text-[10px] md:text-xs font-mono text-game-muted uppercase">Paso {currentIndex + 1} de 20</h1>
+                        <h1 className="text-[10px] md:text-xs font-mono text-game-muted uppercase">Paso {currentIndex + 1} de {SURVEY_QUESTIONS.length}</h1>
                     </div>
 
                     {/* NAVEGADOR DESKTOP */}
-                    <div className="hidden md:grid grid-cols-10 gap-1 bg-game-surface/20 p-2 border border-game-muted/10 rounded-sm shrink-0">
+                    <div className="hidden md:grid grid-cols-12 gap-1 bg-game-surface/20 p-2 border border-game-muted/10 rounded-sm shrink-0">
                         {SURVEY_QUESTIONS.map((q, idx) => {
                             const isAnswered = answers[q.id] !== undefined;
                             const firstUnanswered = SURVEY_QUESTIONS.findIndex(sq => answers[sq.id] === undefined);

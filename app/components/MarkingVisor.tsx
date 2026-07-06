@@ -14,6 +14,19 @@ interface MarkingVisorProps {
 export default function MarkingVisor({ mockupUrl, markedPoints, onMark, isActive }: MarkingVisorProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const startPoint = useRef<{ x: number, y: number } | null>(null);
+    const [svgContent, setSvgContent] = useState<string>('');
+
+    // Cargar SVG en texto para inyectarlo inline y habilitar la carga de imágenes relativas
+    useEffect(() => {
+        if (mockupUrl && mockupUrl.endsWith('.svg')) {
+            fetch(mockupUrl)
+                .then(res => res.text())
+                .then(text => setSvgContent(text))
+                .catch(err => console.error("Error cargando SVG inline:", err));
+        } else {
+            setSvgContent('');
+        }
+    }, [mockupUrl]);
 
     // Lógica para diferenciar Clic de Arrastre (Pan)
     const handleMouseDown = (e: React.MouseEvent) => {
@@ -50,7 +63,7 @@ export default function MarkingVisor({ mockupUrl, markedPoints, onMark, isActive
                 minScale={1}
                 maxScale={6}
                 centerOnInit={true}
-                disabled={!isActive && markedPoints.length === 0}
+                disabled={false}
                 doubleClick={{ disabled: true }}
             >
                 <TransformComponent
@@ -64,11 +77,18 @@ export default function MarkingVisor({ mockupUrl, markedPoints, onMark, isActive
                         ${isActive ? 'cursor-crosshair' : 'cursor-default'}`}
                         style={{ width: 'auto', height: '85vh', aspectRatio: '9/18' }}
                     >
-                        <img 
-                            src={mockupUrl} 
-                            alt="Mockup Interface" 
-                            className="w-full h-full object-contain pointer-events-none rendering-pixelated"
-                        />
+                        {svgContent ? (
+                            <div 
+                                className="w-full h-full pointer-events-none [&>svg]:w-full [&>svg]:h-full"
+                                dangerouslySetInnerHTML={{ __html: svgContent }}
+                            />
+                        ) : (
+                            <img 
+                                src={mockupUrl} 
+                                alt="Mockup Interface" 
+                                className="w-full h-full object-contain pointer-events-none rendering-pixelated"
+                            />
+                        )}
 
                         {/* Capa de Marcado Sincronizada */}
                         <div className="absolute inset-0 pointer-events-none">

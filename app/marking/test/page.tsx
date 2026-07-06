@@ -1,13 +1,15 @@
 'use client';
 
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, Suspense, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import MarkingVisor from '@/app/components/MarkingVisor';
-import { SCENARIOS } from './scenarios';
+import { SCENARIOS, Scenario } from './scenarios';
 
 function MarkingTestContent() {
+    const [scenariosList, setScenariosList] = useState<Scenario[]>([]);
+    const [completedScenarios, setCompletedScenarios] = useState<string[]>([]);
     const [currentStep, setCurrentStep] = useState(0);
     const [mode, setMode] = useState<'context' | 'marking' | 'selection'>('context');
     const [markedPoints, setMarkedPoints] = useState<{ x: number, y: number, id: number }[]>([]);
@@ -22,16 +24,98 @@ function MarkingTestContent() {
     const searchParams = useSearchParams();
     
     const isPostTest = searchParams.get('phase') === 'post';
-    const scenario = SCENARIOS[currentStep];
+    const scenario = scenariosList[currentStep];
 
+    // Ref para mantener la versión más reciente de markedPoints en callbacks asíncronos (evita refrescos de intervalo)
+    const markedPointsRef = useRef(markedPoints);
+    useEffect(() => {
+        markedPointsRef.current = markedPoints;
+    }, [markedPoints]);
+
+    // Cargar o inicializar la asignación split-half de escenarios en localStorage
     useEffect(() => {
         setPlayerId(localStorage.getItem('antipatron_player_id'));
-    }, []);
+
+        let preIdsJson = localStorage.getItem('antipatron_pre_scenarios_ids');
+        let postIdsJson = localStorage.getItem('antipatron_post_scenarios_ids');
+
+        if (!preIdsJson || !postIdsJson) {
+            // Asignación balanceada aleatoria
+            const pairs = [
+                ['sn_01', 'sn_02'], // Anuncios Disfrazados
+                ['sn_03', 'sn_04'], // Costos Ocultos
+                ['sn_05', 'sn_06'], // Comparación
+                ['sn_07', 'sn_08']  // Control
+            ];
+
+            const preIds: string[] = [];
+            const postIds: string[] = [];
+
+            pairs.forEach(([p1, p2]) => {
+                if (Math.random() < 0.5) {
+                    preIds.push(p1);
+                    postIds.push(p2);
+                } else {
+                    preIds.push(p2);
+                    postIds.push(p1);
+                }
+            });
+
+            const shuffle = <T,>(arr: T[]): T[] => [...arr].sort(() => Math.random() - 0.5);
+
+            const shuffledPre = shuffle(preIds);
+            const shuffledPost = shuffle(postIds);
+
+            localStorage.setItem('antipatron_pre_scenarios_ids', JSON.stringify(shuffledPre));
+            localStorage.setItem('antipatron_post_scenarios_ids', JSON.stringify(shuffledPost));
+
+            preIdsJson = JSON.stringify(shuffledPre);
+            postIdsJson = JSON.stringify(shuffledPost);
+        }
+
+        const activeIds: string[] = JSON.parse(isPostTest ? postIdsJson : preIdsJson);
+        const activeScenarios = activeIds.map(id => SCENARIOS.find(s => s.id === id)!).filter(Boolean);
+        setScenariosList(activeScenarios);
+
+        // Cargar progreso completado
+        const completedKey = isPostTest ? 'antipatron_completed_post_ids' : 'antipatron_completed_pre_ids';
+        const completedIds: string[] = JSON.parse(localStorage.getItem(completedKey) || '[]');
+        setCompletedScenarios(completedIds);
+
+        // Iniciar siempre desde el paso 0
+        setCurrentStep(0);
+    }, [isPostTest, router]);
+
+    // Lógica para inicializar y cargar el estado correcto de un escenario al cambiar currentStep
+    useEffect(() => {
+        if (scenariosList.length === 0 || !scenario) return;
+
+        const completedKey = isPostTest ? 'antipatron_completed_post_ids' : 'antipatron_completed_pre_ids';
+        const completedIds: string[] = JSON.parse(localStorage.getItem(completedKey) || '[]');
+
+        if (completedIds.includes(scenario.id)) {
+            // Si ya está completado: mostrar directamente visor bloqueado y recuperar marcas
+            setMode('marking');
+            setIsActive(false);
+            setTimeLeft(0);
+            const savedPoints = JSON.parse(localStorage.getItem(`antipatron_marked_points_${scenario.id}`) || '[]');
+            setMarkedPoints(savedPoints);
+        } else {
+            // Si está incompleto: mostrar pantalla de misión y restablecer marcas/tiempo
+            setMode('context');
+            setIsActive(false);
+            setTimeLeft(scenario.time);
+            setMarkedPoints([]);
+        }
+    }, [currentStep, scenariosList, isPostTest, scenario]);
 
     // Lógica del Temporizador
     useEffect(() => {
         if (!isActive || timeLeft <= 0) {
-            if (timeLeft <= 0 && isActive) handleConfirmMarking(); // Auto-confirmar al acabar el tiempo
+            if (timeLeft <= 0 && isActive) {
+                setIsActive(false); // Detener interacción de marcas
+                saveAndMarkCompleted(); // Registrar como completado automáticamente
+            }
             return;
         }
         const timer = setInterval(() => setTimeLeft(prev => prev - 1), 1000);
@@ -70,19 +154,43 @@ function MarkingTestContent() {
     const handleConfirmMarking = async () => {
         setIsActive(false);
         
-        // Si es Pre-Test, guardamos aquí y pasamos al siguiente
+        const completedKey = isPostTest ? 'antipatron_completed_post_ids' : 'antipatron_completed_pre_ids';
+        const completedIds: string[] = JSON.parse(localStorage.getItem(completedKey) || '[]');
+        const wasAlreadyCompleted = completedIds.includes(scenario.id);
+
+        if (wasAlreadyCompleted) {
+            // Si ya estaba completada previamente, solo avanzamos secuencialmente
+            nextScenario();
+            return;
+        }
+
         if (!isPostTest) {
-            await saveResults();
+            await saveAndMarkCompleted();
             nextScenario();
         } else {
-            // Si es Post-Test, vamos a la selección de patrones
+            // En Post-Test va a la pantalla del quiz de selección técnica
             setMode('selection');
         }
     };
 
     const handleConfirmSelection = async () => {
-        await saveResults();
+        await saveAndMarkCompleted();
         nextScenario();
+    };
+
+    const saveAndMarkCompleted = async () => {
+        const completedKey = isPostTest ? 'antipatron_completed_post_ids' : 'antipatron_completed_pre_ids';
+        const completedIds: string[] = JSON.parse(localStorage.getItem(completedKey) || '[]');
+        if (!completedIds.includes(scenario.id)) {
+            completedIds.push(scenario.id);
+            localStorage.setItem(completedKey, JSON.stringify(completedIds));
+            setCompletedScenarios(completedIds);
+        }
+
+        // Persistir marcas para permitir navegación atrás y adelante
+        localStorage.setItem(`antipatron_marked_points_${scenario.id}`, JSON.stringify(markedPointsRef.current));
+
+        await saveResults();
     };
 
     const saveResults = async () => {
@@ -99,7 +207,7 @@ function MarkingTestContent() {
                     playerId,
                     scenarioId: scenario.id,
                     phase: isPostTest ? 'post' : 'pre',
-                    points: markedPoints.map(p => ({ x: p.x, y: p.y })),
+                    points: markedPointsRef.current.map(p => ({ x: p.x, y: p.y })),
                     selectedPatterns,
                     timeTaken
                 }),
@@ -112,13 +220,32 @@ function MarkingTestContent() {
     };
 
     const nextScenario = () => {
-        if (currentStep < SCENARIOS.length - 1) {
+        if (currentStep < scenariosList.length - 1) {
             setCurrentStep(prev => prev + 1);
             setMode('context');
         } else {
             router.push(isPostTest ? '/credits' : '/game/narrative/instructions');
         }
     };
+
+    const handleRegresar = () => {
+        if (currentStep > 0) {
+            setCurrentStep(prev => prev - 1);
+        } else {
+            router.push(isPostTest ? "/marking/post-intro" : "/marking/intro");
+        }
+    };
+
+    if (scenariosList.length === 0 || !scenario) {
+        return (
+            <div className="flex h-screen w-full items-center justify-center bg-game-bg">
+                <p className="text-game-muted animate-pulse uppercase tracking-widest text-[10px] italic">Iniciando motor de test...</p>
+            </div>
+        );
+    }
+
+    const isCompleted = completedScenarios.includes(scenario.id);
+    const showRegresar = isCompleted || timeLeft === 0;
 
     return (
         <div className="flex flex-col h-screen w-full bg-game-bg text-game-text overflow-hidden relative font-sans">
@@ -131,33 +258,36 @@ function MarkingTestContent() {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 1.05 }}
-                        className="flex flex-col h-full items-center justify-center p-6 text-center"
+                        className="flex flex-col h-full w-full items-center justify-center p-6 text-center overflow-y-auto custom-scrollbar"
                     >
-                        <div className="my-auto space-y-12 shrink-0">
+                        <div className="my-auto space-y-12 py-8 w-full max-w-xl shrink-0">
                             <header className="space-y-2 shrink-0">
-                                <h2 className="text-game-accent uppercase tracking-[0.3em] text-[10px] font-bold italic">Escenario {currentStep + 1} de {SCENARIOS.length}</h2>
+                                <h2 className="text-game-accent uppercase tracking-[0.3em] text-[10px] font-bold italic">Escenario {currentStep + 1} de {scenariosList.length}</h2>
                                 <h1 className="text-3xl md:text-5xl font-bold uppercase italic tracking-tighter">Misión</h1>
                             </header>
 
-                            <div className="bg-game-surface/30 p-8 md:p-12 border border-game-muted/20 rounded-sm max-w-xl mx-auto shadow-2xl shrink-0">
+                            <div className="bg-game-surface/30 p-8 md:p-12 border border-game-muted/20 rounded-sm max-w-xl mx-auto shadow-2xl shrink-0 space-y-4">
                                 <p className="text-zinc-300 leading-relaxed text-sm md:text-xl italic">
                                     "{scenario.context}"
                                 </p>
+                                <div className="pt-4 border-t border-zinc-800 text-[10px] md:text-xs text-game-accent uppercase tracking-widest font-mono">
+                                    Tiempo límite: {scenario.time} segundos.
+                                </div>
                             </div>
 
-                            <div className="flex flex-col w-full max-w-xs mx-auto space-y-4 shrink-0">
+                            <div className="flex flex-col w-full max-w-xs mx-auto space-y-3 shrink-0">
                                 <button 
                                     onClick={startMarking}
                                     className="h-14 w-full bg-game-accent text-game-bg font-bold uppercase tracking-widest text-xs active:scale-95 transition-all shadow-2xl"
                                 >
                                     Iniciar Evaluación
                                 </button>
-                                <Link 
-                                    href="/marking/intro"
+                                <button 
+                                    onClick={handleRegresar}
                                     className="h-12 w-full border border-zinc-700 text-game-muted font-bold uppercase tracking-widest text-[10px] flex items-center justify-center hover:bg-game-surface hover:text-game-accent transition-all active:scale-95"
                                 >
                                     Regresar
-                                </Link>
+                                </button>
                             </div>
                         </div>
                     </motion.div>
@@ -190,13 +320,30 @@ function MarkingTestContent() {
                             />
                         </main>
 
-                        <footer className="p-4 bg-game-bg border-t border-game-muted/10 shrink-0 z-20">
-                            <button 
-                                onClick={handleConfirmMarking}
-                                className="h-12 w-full max-w-lg mx-auto block bg-game-accent text-game-bg font-bold uppercase tracking-widest text-xs transition-all active:scale-95 shadow-2xl hover:bg-game-text"
-                            >
-                                Confirmar Marcado
-                            </button>
+                        <footer className="p-4 bg-game-bg border-t border-game-muted/10 shrink-0 z-20 flex flex-col items-center space-y-4">
+                            {timeLeft === 0 && (
+                                <p className="text-[10px] text-amber-400 font-mono uppercase tracking-widest text-center">
+                                    Tiempo agotado. Puedes seguir viendo la vista pero no marcar.
+                                </p>
+                            )}
+
+                            <div className="flex flex-col w-full max-w-xs mx-auto space-y-3">
+                                <button 
+                                    onClick={handleConfirmMarking}
+                                    className="h-14 w-full bg-game-accent text-game-bg font-bold uppercase tracking-widest text-xs active:scale-95 transition-all shadow-2xl hover:bg-game-text"
+                                >
+                                    Confirmar Marcado
+                                </button>
+
+                                {showRegresar && (
+                                    <button 
+                                        onClick={handleRegresar}
+                                        className="h-12 w-full border border-zinc-700 text-game-muted font-bold uppercase tracking-widest text-[10px] flex items-center justify-center hover:bg-game-surface hover:text-game-accent transition-all active:scale-95"
+                                    >
+                                        Regresar
+                                    </button>
+                                )}
+                            </div>
                         </footer>
                     </motion.div>
                 )}

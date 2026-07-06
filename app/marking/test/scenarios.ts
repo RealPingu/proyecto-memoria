@@ -88,7 +88,7 @@ export const SCENARIOS: Scenario[] = [
         title: 'Costos Ocultos - Ticket',
         context: 'Tu objetivo es comprar la entrada por el precio anunciado de 25.000 CLP.',
         mockupUrl: '/assets/mockups/hidden_costs_1.svg',
-        time: 30,
+        time: 40,
         patternOptions: [
             { id: 'opt_hc_1', label: 'Costos Ocultos', isCorrect: true },
             { id: 'opt_hc_2', label: 'Anuncios Disfrazados', isCorrect: false },
@@ -122,9 +122,9 @@ export const SCENARIOS: Scenario[] = [
     {
         id: 'sn_04',
         title: 'Costos Ocultos - Seguro',
-        context: 'Tu objetivo es comprar el kit de supervivencia y el saco de dormir impermeable.',
+        context: 'Tu objetivo es comprar el kit de supervivencia and el saco de dormir impermeable.',
         mockupUrl: '/assets/mockups/hidden_costs_2.svg',
-        time: 30,
+        time: 35,
         patternOptions: [
             { id: 'opt_hc2_1', label: 'Costos Ocultos', isCorrect: true },
             { id: 'opt_hc2_2', label: 'Colarse en el Carrito', isCorrect: true },
@@ -153,7 +153,7 @@ export const SCENARIOS: Scenario[] = [
         title: 'Comparación - Unidades',
         context: 'Tu objetivo es elegir el plan de gimnasio más conveniente.',
         mockupUrl: '/assets/mockups/comparison_prevention_1.svg',
-        time: 30,
+        time: 80,
         patternOptions: [
             { id: 'opt_cp1_1', label: 'Prevención de Comparación', isCorrect: true },
             { id: 'opt_cp1_2', label: 'Costos Ocultos', isCorrect: false },
@@ -196,7 +196,7 @@ export const SCENARIOS: Scenario[] = [
         title: 'Comparación - Cebo',
         context: 'Tu objetivo es elegir el plan de streaming más conveniente.',
         mockupUrl: '/assets/mockups/comparison_prevention_2.svg',
-        time: 30,
+        time: 80,
         patternOptions: [
             { id: 'opt_cp2_1', label: 'Prevención de Comparación', isCorrect: true },
             { id: 'opt_cp2_2', label: 'Costos Ocultos', isCorrect: false },
@@ -253,7 +253,7 @@ export const SCENARIOS: Scenario[] = [
         title: 'Portal de Acceso - Control',
         context: 'Tu objetivo es iniciar sesión en una app.',
         mockupUrl: '/assets/mockups/control_1.svg',
-        time: 30,
+        time: 25,
         patternOptions: [
             { id: 'opt_ctrl1_none', label: 'No se observan patrones oscuros', isCorrect: true },
             { id: 'opt_ctrl1_da', label: 'Anuncios Disfrazados', isCorrect: false },
@@ -267,7 +267,7 @@ export const SCENARIOS: Scenario[] = [
         title: 'Checkout de Compra - Control',
         context: 'Tu objetivo es completar la compra de tus audífonos.',
         mockupUrl: '/assets/mockups/control_2.svg',
-        time: 30,
+        time: 35,
         patternOptions: [
             { id: 'opt_ctrl2_none', label: 'No se observan patrones oscuros', isCorrect: true },
             { id: 'opt_ctrl2_da', label: 'Anuncios Disfrazados', isCorrect: false },

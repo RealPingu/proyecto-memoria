@@ -21,6 +21,7 @@ interface ScenarioResult {
     selectedPatterns: string[];
     isCorrectCategorized?: boolean;
     timeTaken: number;
+    markedPoints: { x: number, y: number, id: number }[];
 }
 
 export default function MarkingSimulatorPage() {
@@ -47,6 +48,12 @@ export default function MarkingSimulatorPage() {
 
     // Historial acumulado para el resumen final
     const [results, setResults] = useState<ScenarioResult[]>([]);
+
+    // Ref para evitar closures
+    const markedPointsRef = useRef(markedPoints);
+    useEffect(() => {
+        markedPointsRef.current = markedPoints;
+    }, [markedPoints]);
 
     // Inicializar y barajar el split-half balanceado
     useEffect(() => {
@@ -80,11 +87,41 @@ export default function MarkingSimulatorPage() {
     // Escenario actual de acuerdo al flujo
     const currentScenario = flowStep === 'pre_test' ? preScenarios[currentScenarioIdx] : postScenarios[currentScenarioIdx];
 
+    // Lógica para inicializar y cargar el estado correcto de un escenario al cambiar de índice
+    useEffect(() => {
+        if (!isInitialized || !currentScenario) return;
+
+        const hasBeenCompleted = results.some(r => r.scenarioId === currentScenario.id);
+
+        if (hasBeenCompleted) {
+            const previousResult = results.find(r => r.scenarioId === currentScenario.id)!;
+            setModeToCompleted(previousResult);
+        } else {
+            setModeToContext();
+        }
+    }, [currentScenarioIdx, flowStep, isInitialized]);
+
+    const setModeToCompleted = (res: ScenarioResult) => {
+        setSubMode('marking');
+        setTimerActive(false);
+        setTimeLeft(0);
+        setMarkedPoints(res.markedPoints || []);
+    };
+
+    const setModeToContext = () => {
+        setSubMode('context');
+        setTimerActive(false);
+        setTimeLeft(currentScenario.time);
+        setMarkedPoints([]);
+        setSelectedPatterns([]);
+    };
+
     // Lógica del Temporizador
     useEffect(() => {
         if (!timerActive || timeLeft <= 0) {
             if (timeLeft <= 0 && timerActive) {
-                handleConfirmMarking(); // Auto-confirmar si se acaba el tiempo
+                setTimerActive(false); // Detener y bloquear marcas al expirar
+                saveScenarioProgress(); // Auto-completar en memoria
             }
             return;
         }
@@ -97,17 +134,6 @@ export default function MarkingSimulatorPage() {
     const startPhase = (step: 'pre_test' | 'post_test') => {
         setFlowStep(step);
         setCurrentScenarioIdx(0);
-        loadScenario(0, step);
-    };
-
-    const loadScenario = (idx: number, step: FlowStep) => {
-        const targetList = step === 'pre_test' ? preScenarios : postScenarios;
-        const sc = targetList[idx];
-        setMarkedPoints([]);
-        setSelectedPatterns([]);
-        setTimeLeft(sc.time);
-        setSubMode('context');
-        setTimerActive(false);
     };
 
     const startMarking = () => {
@@ -117,7 +143,7 @@ export default function MarkingSimulatorPage() {
     };
 
     const handleMark = (x: number, y: number) => {
-        if (!timerActive) return;
+        if (!timerActive || timeLeft <= 0) return;
         const threshold = 4;
         const existingIndex = markedPoints.findIndex(pt => 
             Math.abs(pt.x - x) < threshold && Math.abs(pt.y - y) < threshold
@@ -163,28 +189,48 @@ export default function MarkingSimulatorPage() {
         return { tp, fp, fn };
     };
 
+    const saveScenarioProgress = () => {
+        const timeTaken = (Date.now() - startTime) / 1000;
+        const { tp, fp, fn } = evaluateMarkingCollision(markedPointsRef.current, currentScenario.correctAreas);
+
+        const result: ScenarioResult = {
+            scenarioId: currentScenario.id,
+            title: currentScenario.title,
+            phase: flowStep === 'pre_test' ? 'pre' : 'post',
+            markedPointsCount: markedPointsRef.current.length,
+            tp,
+            fp,
+            fn,
+            selectedPatterns: [],
+            timeTaken,
+            markedPoints: markedPointsRef.current
+        };
+
+        // Reemplazar o añadir resultado
+        setResults(prev => {
+            const index = prev.findIndex(r => r.scenarioId === currentScenario.id);
+            if (index !== -1) {
+                const copy = [...prev];
+                copy[index] = result;
+                return copy;
+            }
+            return [...prev, result];
+        });
+    };
+
     const handleConfirmMarking = () => {
         setTimerActive(false);
-        const timeTaken = (Date.now() - startTime) / 1000;
 
-        // Evaluar aciertos y fallos de marcado
-        const { tp, fp, fn } = evaluateMarkingCollision(markedPoints, currentScenario.correctAreas);
+        const hasBeenCompleted = results.some(r => r.scenarioId === currentScenario.id);
+        if (hasBeenCompleted) {
+            nextScenario();
+            return;
+        }
+
+        saveScenarioProgress();
 
         if (flowStep === 'pre_test') {
-            // En Pre-Test guardamos el resultado directamente y avanzamos
-            const result: ScenarioResult = {
-                scenarioId: currentScenario.id,
-                title: currentScenario.title,
-                phase: 'pre',
-                markedPointsCount: markedPoints.length,
-                tp,
-                fp,
-                fn,
-                selectedPatterns: [],
-                timeTaken
-            };
-            setResults(prev => [...prev, result]);
-            advanceScenario([result]);
+            nextScenario();
         } else {
             // En Post-Test pasamos al quiz de selección de patrones
             setSubMode('selection');
@@ -214,20 +260,26 @@ export default function MarkingSimulatorPage() {
             fn,
             selectedPatterns,
             isCorrectCategorized,
-            timeTaken
+            timeTaken,
+            markedPoints
         };
 
-        const newResults = [...results, result];
-        setResults(newResults);
-        advanceScenario(newResults);
+        setResults(prev => {
+            const index = prev.findIndex(r => r.scenarioId === currentScenario.id);
+            if (index !== -1) {
+                const copy = [...prev];
+                copy[index] = result;
+                return copy;
+            }
+            return [...prev, result];
+        });
+        
+        nextScenario();
     };
 
-    const advanceScenario = (currentResults: ScenarioResult[]) => {
+    const nextScenario = () => {
         if (currentScenarioIdx < 3) {
-            // Siguiente escenario de la misma fase
-            const nextIdx = currentScenarioIdx + 1;
-            setCurrentScenarioIdx(nextIdx);
-            loadScenario(nextIdx, flowStep);
+            setCurrentScenarioIdx(prev => prev + 1);
         } else {
             // Fin de la fase activa
             if (flowStep === 'pre_test') {
@@ -235,6 +287,14 @@ export default function MarkingSimulatorPage() {
             } else {
                 setFlowStep('results');
             }
+        }
+    };
+
+    const handleRegresar = () => {
+        if (currentScenarioIdx > 0) {
+            setCurrentScenarioIdx(prev => prev - 1);
+        } else {
+            setFlowStep(flowStep === 'pre_test' ? 'instructions_pre' : 'transition_post');
         }
     };
 
@@ -274,6 +334,9 @@ export default function MarkingSimulatorPage() {
             </div>
         );
     }
+
+    const isCompleted = results.some(r => r.scenarioId === currentScenario?.id);
+    const showRegresar = isCompleted || timeLeft === 0;
 
     return (
         <div className="flex flex-col h-screen w-full bg-zinc-950 text-zinc-100 overflow-hidden font-sans select-none">
@@ -326,7 +389,7 @@ export default function MarkingSimulatorPage() {
                                     En cada pantalla, tu misión es identificar y <strong>marcar con un clic</strong> todo elemento interactivo o de texto que consideres sospechoso, engañoso, o que intente apartarte del objetivo original.
                                 </p>
                                 <p>
-                                    <strong>Nota importante:</strong> En esta primera etapa, simplemente marcarás las zonas y confirmarás. No se te harán preguntas teóricas sobre qué patrón es. Tendrás un límite de <strong>30 segundos</strong> por pantalla.
+                                    <strong>Nota importante:</strong> En esta primera etapa, simplemente marcarás las zonas y confirmarás. No se te harán preguntas teóricas sobre qué patrón es. Tendrás un tiempo límite variable acorde a la cantidad de elementos o texto de la pantalla.
                                 </p>
                             </div>
                             <button
@@ -349,27 +412,40 @@ export default function MarkingSimulatorPage() {
                                     initial={{ opacity: 0, scale: 0.98 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     exit={{ opacity: 0, scale: 1.02 }}
-                                    className="flex flex-col h-full items-center justify-center p-6 text-center max-w-xl mx-auto space-y-12"
+                                    className="flex flex-col h-full w-full items-center justify-center p-6 text-center overflow-y-auto custom-scrollbar"
                                 >
-                                    <div className="space-y-3">
-                                        <span className="text-teal-400 uppercase tracking-[0.25em] text-[10px] font-bold font-mono">
-                                            Misión {currentScenarioIdx + 1} de 4 ({flowStep === 'pre_test' ? 'Pre-Test' : 'Post-Test'})
-                                        </span>
-                                        <h3 className="text-4xl font-extrabold uppercase italic tracking-tighter text-zinc-100">
-                                            {currentScenario.title}
-                                        </h3>
+                                    <div className="my-auto space-y-12 py-8 w-full max-w-xl shrink-0">
+                                        <div className="space-y-3 shrink-0">
+                                            <span className="text-teal-400 uppercase tracking-[0.25em] text-[10px] font-bold font-mono">
+                                                Misión {currentScenarioIdx + 1} de 4 ({flowStep === 'pre_test' ? 'Pre-Test' : 'Post-Test'})
+                                            </span>
+                                            <h3 className="text-4xl font-extrabold uppercase italic tracking-tighter text-zinc-100">
+                                                {currentScenario.title}
+                                            </h3>
+                                        </div>
+                                        <div className="bg-zinc-900/60 p-8 border border-zinc-800 rounded-lg shadow-2xl space-y-4 shrink-0">
+                                            <p className="text-zinc-300 leading-relaxed text-base md:text-lg italic">
+                                                "{currentScenario.context}"
+                                            </p>
+                                            <div className="pt-4 border-t border-zinc-800 text-[10px] md:text-xs text-teal-400 uppercase tracking-widest font-mono">
+                                                Tiempo límite: {currentScenario.time} segundos.
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-col w-full max-w-xs mx-auto space-y-3 shrink-0">
+                                            <button 
+                                                onClick={startMarking}
+                                                className="h-14 w-full bg-teal-500 text-zinc-950 font-bold uppercase tracking-widest text-xs active:scale-95 transition-all shadow-lg hover:bg-teal-400"
+                                            >
+                                                Comenzar Escenario
+                                            </button>
+                                            <button 
+                                                onClick={handleRegresar}
+                                                className="h-12 w-full border border-zinc-700 text-zinc-400 font-bold uppercase tracking-widest text-[10px] flex items-center justify-center hover:bg-zinc-800 hover:text-white transition-all active:scale-95"
+                                            >
+                                                Regresar
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div className="bg-zinc-900/60 p-8 border border-zinc-800 rounded-lg shadow-2xl">
-                                        <p className="text-zinc-300 leading-relaxed text-base md:text-lg italic">
-                                            "{currentScenario.context}"
-                                        </p>
-                                    </div>
-                                    <button 
-                                        onClick={startMarking}
-                                        className="h-14 w-full max-w-xs bg-teal-500 text-zinc-950 font-bold uppercase tracking-widest text-xs active:scale-95 transition-all shadow-lg hover:bg-teal-400"
-                                    >
-                                        Comenzar Escenario
-                                    </button>
                                 </motion.div>
                             )}
 
@@ -405,18 +481,35 @@ export default function MarkingSimulatorPage() {
                                             mockupUrl={currentScenario.mockupUrl}
                                             markedPoints={markedPoints}
                                             onMark={handleMark}
-                                            isActive={timerActive}
+                                            isActive={timerActive && timeLeft > 0}
                                         />
                                     </div>
 
                                     {/* Footer para confirmar */}
-                                    <div className="p-4 bg-zinc-950 border-t border-zinc-900 shrink-0 text-center">
-                                        <button
-                                            onClick={handleConfirmMarking}
-                                            className="h-12 w-full max-w-md bg-teal-500 text-zinc-950 font-bold uppercase tracking-widest text-xs transition-all active:scale-95 shadow-md hover:bg-teal-400"
-                                        >
-                                            Confirmar Marcado e Identificación
-                                        </button>
+                                    <div className="p-4 bg-zinc-950 border-t border-zinc-900 shrink-0 text-center flex flex-col items-center space-y-4">
+                                        {timeLeft === 0 && (
+                                            <p className="text-[10px] text-amber-400 font-mono uppercase tracking-widest text-center">
+                                                Tiempo agotado. Puedes seguir viendo la vista pero no marcar.
+                                            </p>
+                                        )}
+
+                                        <div className="flex flex-col w-full max-w-xs mx-auto space-y-3">
+                                            <button
+                                                onClick={handleConfirmMarking}
+                                                className="h-14 w-full bg-teal-500 text-zinc-950 font-bold uppercase tracking-widest text-xs transition-all active:scale-95 shadow-md hover:bg-teal-400"
+                                            >
+                                                Confirmar Marcado
+                                            </button>
+
+                                            {showRegresar && (
+                                                <button
+                                                    onClick={handleRegresar}
+                                                    className="h-12 w-full border border-zinc-700 text-zinc-400 font-bold uppercase tracking-widest text-[10px] flex items-center justify-center hover:bg-zinc-800 hover:text-white transition-all active:scale-95"
+                                                >
+                                                    Regresar
+                                                </button>
+                                            )}
+                                        </div>
                                     </div>
                                 </motion.div>
                             )}
@@ -500,7 +593,7 @@ export default function MarkingSimulatorPage() {
                                     Analizarás las <strong>4 pantallas restantes</strong> (las contrapartes de cada categoría).
                                 </p>
                                 <p>
-                                    La mecánica de marcado es exactamente la misma (limite de 30 segundos). Sin embargo, en esta fase, **luego de confirmar tus marcas, deberás clasificar qué patrón detectaste** seleccionando la opción correcta a nivel bajo (con los nombres usados en la historia).
+                                    La mecánica de marcado es exactamente la misma. Sin embargo, en esta fase, **luego de confirmar tus marcas, deberás clasificar qué patrón detectaste** seleccionando la opción correcta a nivel bajo (con los nombres usados en la historia).
                                 </p>
                             </div>
                             <button

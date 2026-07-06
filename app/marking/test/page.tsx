@@ -199,11 +199,11 @@ function MarkingTestContent() {
 
         const timeTaken = (Date.now() - startTime) / 1000;
 
-        // Calcular métricas de colisión (TP, FP, FN) en el cliente
+        // Calcular métricas de colisión (aciertos, fallos, omisiones) en el cliente
         const areas = scenario.correctAreas || [];
         const points = markedPointsRef.current;
-        let tp = 0;
-        let fp = 0;
+        let aciertos = 0;
+        let fallos = 0;
         const matchedIndices = new Set<number>();
 
         points.forEach(p => {
@@ -217,12 +217,21 @@ function MarkingTestContent() {
                 }
             }
             if (!hit) {
-                fp++;
+                fallos++;
             }
         });
 
-        tp = matchedIndices.size;
-        const fn = areas.length - tp;
+        aciertos = matchedIndices.size;
+        const omisiones = areas.length - aciertos;
+
+        // Evaluar si la categorización del quiz es correcta
+        const correctPatternIds = scenario.patternOptions
+            ? scenario.patternOptions.filter(o => o.isCorrect).map(o => o.id)
+            : [];
+        const quizCorrecto = isPostTest
+            ? (selectedPatterns.length === correctPatternIds.length &&
+               selectedPatterns.every(id => correctPatternIds.includes(id)))
+            : null;
 
         try {
             await fetch('/api/marking/save', {
@@ -235,9 +244,10 @@ function MarkingTestContent() {
                     points: points.map(p => ({ x: p.x, y: p.y })),
                     selectedPatterns,
                     timeTaken,
-                    tp,
-                    fp,
-                    fn
+                    aciertos,
+                    fallos,
+                    omisiones,
+                    quizCorrecto
                 }),
             });
         } catch (e) {

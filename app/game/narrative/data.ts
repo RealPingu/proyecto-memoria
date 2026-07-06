@@ -866,10 +866,10 @@ Los <tremble color="#2a256f">patrones oscuros</tremble> tienen <heartbeat color=
     illustration: {
       label: 'Escena 23: El protagonista y el Ojo contemplando un cielo estrellado y pacífico.'
     },
-    next: 'scene_11_end'
+    next: 'scene_23_end'
   },
-  'scene_11_end': {
-    id: 'scene_11_end',
+  'scene_23_end': {
+    id: 'scene_23_end',
     speaker: 'system',
     speakerLabel: 'Narrador',
     text: `¡Felicitaciones! Has completado con éxito la <heartbeat color="#2a256f">demo</heartbeat> de Antipatrón. ¡<heartbeat color="#ef4444">Muchas gracias</heartbeat> por jugar y aprender a identificar y combatir las trampas del <tremble color="#2a256f">patrón oscuro</tremble>!`,

@@ -340,6 +340,15 @@ export default function NarrativeIntroPage() {
               localStorage.setItem('antipatron_narrative_state', JSON.stringify(remote));
               localStorage.setItem('antipatron_last_node', remote.currentNodeId);
               localStorage.setItem('antipatron_visited_nodes', JSON.stringify(remote.visitedNodes));
+            } else {
+              // Si no hay datos en el servidor, guardamos el estado local actual o el inicial
+              const payload = localStateStr ? JSON.parse(localStateStr) : {
+                currentNodeId: 'scene_1_init',
+                visitedNodes: ['scene_1_init'],
+                transitions: [],
+                decisions: []
+              };
+              syncTelemetry(payload.currentNodeId, payload.visitedNodes, payload.transitions, payload.decisions);
             }
           })
           .catch(err => console.error("Error sincronizando estado remoto de la narrativa:", err));
@@ -350,7 +359,7 @@ export default function NarrativeIntroPage() {
   // Persistir el último nodo visitado, historial y desbloquear nuevos nodos
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      if (currentNodeId === 'scene_11_end') {
+      if (currentNodeId === 'scene_23_end') {
         // Al terminar, limpiamos el guardado para comenzar de nuevo en la siguiente sesión
         localStorage.removeItem('antipatron_last_node');
         localStorage.removeItem('antipatron_narrative_history');
@@ -844,7 +853,7 @@ export default function NarrativeIntroPage() {
       currentNodeId === 'scene_23_init_1' ||
       currentNodeId === 'scene_23_init_2' ||
       currentNodeId === 'scene_23_init_3' ||
-      currentNodeId === 'scene_11_end'
+      currentNodeId === 'scene_23_end'
     ) {
       return <Scene23DesenlaceFinal />;
     }
@@ -868,15 +877,15 @@ export default function NarrativeIntroPage() {
       <Battle1MockupDirectRender
         onCorrect={() => {
           setHistory(prev => [...prev, 'scene_14_choice']);
-          setCurrentNodeId('scene_14_resultado_2');
+          changeNode('scene_14_resultado_2', 'forward');
         }}
         onIncorrect={() => {
           setHistory(prev => [...prev, 'scene_14_choice']);
-          setCurrentNodeId('scene_14_resultado_1');
+          changeNode('scene_14_resultado_1', 'forward');
         }}
         onExit={() => {
           setHistory(prev => [...prev, 'scene_14_choice']);
-          setCurrentNodeId('scene_14_resultado_3');
+          changeNode('scene_14_resultado_3', 'forward');
         }}
         onBack={handleBack}
         visitedNodes={visitedNodes}
@@ -892,11 +901,11 @@ export default function NarrativeIntroPage() {
       <Battle2DripPricingRender
         onCorrect={() => {
           setHistory(prev => [...prev, 'scene_15_choice']);
-          setCurrentNodeId('scene_15_resultado_1');
+          changeNode('scene_15_resultado_1', 'forward');
         }}
         onIncorrect={() => {
           setHistory(prev => [...prev, 'scene_15_choice']);
-          setCurrentNodeId('scene_15_resultado_2');
+          changeNode('scene_15_resultado_2', 'forward');
         }}
         onBack={handleBack}
         visitedNodes={visitedNodes}
@@ -912,11 +921,11 @@ export default function NarrativeIntroPage() {
       <Battle3ReferencePricingRender
         onCorrect={() => {
           setHistory(prev => [...prev, 'scene_18_choice']);
-          setCurrentNodeId('scene_18_resultado_1');
+          changeNode('scene_18_resultado_1', 'forward');
         }}
         onIncorrect={() => {
           setHistory(prev => [...prev, 'scene_18_choice']);
-          setCurrentNodeId('scene_18_resultado_2');
+          changeNode('scene_18_resultado_2', 'forward');
         }}
         onBack={handleBack}
         visitedNodes={visitedNodes}

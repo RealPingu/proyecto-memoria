@@ -425,7 +425,7 @@ export default function SceneDialogueEditorPage() {
       currentNodeId === 'scene_23_init_1' ||
       currentNodeId === 'scene_23_init_2' ||
       currentNodeId === 'scene_23_init_3' ||
-      currentNodeId === 'scene_11_end'
+      currentNodeId === 'scene_23_end'
     ) {
       return <Scene23DesenlaceFinal />;
     }

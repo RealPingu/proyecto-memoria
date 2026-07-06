@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
   try {
-    const { playerId, scenarioId, phase, points, selectedPatterns, timeTaken, tp, fp, fn } = await request.json();
+    const { playerId, scenarioId, phase, points, selectedPatterns, timeTaken, aciertos, fallos, omisiones, quizCorrecto } = await request.json();
 
     if (!playerId || !scenarioId || !phase) {
       return NextResponse.json({ error: 'Faltan datos obligatorios' }, { status: 400 });
@@ -29,9 +29,10 @@ export async function POST(request: Request) {
       points: points || [],
       selectedPatterns: selectedPatterns || [],
       timeTaken: timeTaken,
-      tp: typeof tp === 'number' ? tp : null,
-      fp: typeof fp === 'number' ? fp : null,
-      fn: typeof fn === 'number' ? fn : null
+      aciertos: typeof aciertos === 'number' ? aciertos : null,
+      fallos: typeof fallos === 'number' ? fallos : null,
+      omisiones: typeof omisiones === 'number' ? omisiones : null,
+      quizCorrecto: typeof quizCorrecto === 'boolean' ? quizCorrecto : null
     };
 
     // 3. Hacer UPSERT en la base de datos (1 sola fila por jugador)

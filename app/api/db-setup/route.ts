@@ -14,6 +14,7 @@ export async function GET() {
         consent_given BOOLEAN DEFAULT FALSE,
         nickname TEXT,
         age INTEGER,
+        personal_experience TEXT DEFAULT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
     `;

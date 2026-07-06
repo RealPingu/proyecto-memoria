@@ -487,12 +487,7 @@ export default function NarrativeIntroPage() {
   // Función para avanzar de nodo (actualizando el historial interno)
   const advanceNode = (nextId: string, updatedDecisionsOverride?: any[]) => {
     if (nextId === 'post-test-intro') {
-      const isConsenting = localStorage.getItem('antipatron_consent') !== 'false';
-      if (isConsenting) {
-        router.push('/marking/post-intro');
-      } else {
-        router.push('/credits');
-      }
+      router.push('/game/narrative/experience');
       return;
     }
     if (NARRATIVE_NODES[nextId]) {

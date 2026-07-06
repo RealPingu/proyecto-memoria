@@ -7,32 +7,23 @@ import { motion, AnimatePresence } from 'framer-motion';
 // Banco de temas basado en documentacion/SURVEY_QUESTIONS.md
 const DIMENSIONS = [
     'Hábitos de Consumo e Interacción Digital',
-    'Competencia Técnica e Informática',
-    'Conciencia de Diseño y Patrones Oscuros',
-    'Marco Legal y Derechos del Consumidor'
+    'Competencia Técnica e Interfaces',
+    'Diseño Persuasivo y Patrones Oscuros'
 ];
 
 const SURVEY_QUESTIONS = [
-    { id: 'd1_q1', text: 'Paso gran parte de mi tiempo diario utilizando redes sociales y aplicaciones de entretenimiento.', dimension: 0 },
-    { id: 'd1_q2', text: 'Utilizo sitios web y aplicaciones móviles para realizar tareas importantes (estudios, trabajo, trámites).', dimension: 0 },
-    { id: 'd1_q3', text: 'Suelo revisar y ajustar las configuraciones de privacidad al instalar una nueva aplicación.', dimension: 0 },
-    { id: 'd1_q4', text: 'Dedico tiempo a leer o escanear los puntos clave de los términos y condiciones antes de aceptar un servicio.', dimension: 0 },
-    { id: 'd1_q5', text: 'Abandono sitios web o aplicaciones si las condiciones de uso o permisos solicitados me parecen sospechosos o tediosos.', dimension: 0 },
-    { id: 'd2_q1', text: 'Entiendo claramente qué son conceptos como las "cookies" y cómo afectan mi privacidad al navegar.', dimension: 1 },
-    { id: 'd2_q2', text: 'Comprendo que los algoritmos de recomendación filtran y deciden gran parte del contenido que veo en línea.', dimension: 1 },
-    { id: 'd2_q3', text: 'Me siento capaz de explicar de forma básica cómo se almacena y procesa mi información en la nube.', dimension: 1 },
-    { id: 'd2_q4', text: 'Realizo compras y trámites bancarios en línea con total seguridad y confianza técnica.', dimension: 1 },
-    { id: 'd2_q5', text: 'Tengo conocimientos básicos sobre la estructura interna de una web (servidores, bases de datos o código).', dimension: 1 },
-    { id: 'd3_q1', text: 'Reconozco cuando una interfaz intenta guiarme hacia una decisión que beneficia a la empresa y no a mí.', dimension: 2 },
-    { id: 'd3_q2', text: 'Noto rápidamente cuando un diseño es confuso a propósito para dificultar acciones como cancelar una suscripción.', dimension: 2 },
-    { id: 'd3_q3', text: 'Estoy familiarizado con conceptos de diseño de interfaces (UI) y experiencia de usuario (UX).', dimension: 2 },
-    { id: 'd3_q4', text: 'Identifico tácticas de presión psicológica como contadores de tiempo falsos o avisos de stock limitado.', dimension: 2 },
-    { id: 'd3_q5', text: 'Soy consciente de que la disposición de los elementos y los colores influyen directamente en mis decisiones.', dimension: 2 },
-    { id: 'd4_q1', text: 'Conozco mis derechos fundamentales bajo la Ley de Protección al Consumidor en el ámbito digital.', dimension: 3 },
-    { id: 'd4_q2', text: 'Sé a qué organismos o instituciones acudir en caso de sentirme engañado por una plataforma web.', dimension: 3 },
-    { id: 'd4_q3', text: 'Entiendo las implicancias legales de otorgar mis datos a plataformas digitales de empresas extranjeras.', dimension: 3 },
-    { id: 'd4_q4', text: 'Soy consciente de las regulaciones existentes sobre publicidad engañosa y prácticas abusivas en internet.', dimension: 3 },
-    { id: 'd4_q5', text: 'Considero que la legislación actual es suficiente para protegerme contra las tácticas de manipulación en la web.', dimension: 3 }
+    { id: 'd1_q1', text: 'Utilizo frecuentemente mi teléfono celular para navegar en redes sociales, mensajería y aplicaciones de entretenimiento.', dimension: 0 },
+    { id: 'd1_q2', text: 'Utilizo con regularidad computadoras para realizar tareas complejas o importantes (trámites bancarios, estudios, trabajo).', dimension: 0 },
+    { id: 'd1_q3', text: 'Me siento cómodo instalando aplicaciones, descargando archivos y configurando cuentas en distintos dispositivos.', dimension: 0 },
+    { id: 'd1_q4', text: 'Suelo revisar o ajustar las opciones de privacidad y configuración de las aplicaciones y servicios web que utilizo.', dimension: 0 },
+    { id: 'd2_q1', text: 'Entiendo claramente conceptos comunes de internet como "cookies", caché de navegación o almacenamiento en la nube.', dimension: 1 },
+    { id: 'd2_q2', text: 'Comprendo la diferencia conceptual entre "Interfaz de Usuario" (UI) y "Experiencia de Usuario" (UX).', dimension: 1 },
+    { id: 'd2_q3', text: 'Entiendo cómo funcionan a nivel general los algoritmos que filtran y recomiendan el contenido que veo en redes.', dimension: 1 },
+    { id: 'd2_q4', text: 'Tengo nociones básicas de seguridad en internet, tales como el uso de conexiones seguras (HTTPS) o verificación en dos pasos.', dimension: 1 },
+    { id: 'd3_q1', text: 'Reconozco cuando una página web utiliza colores o la disposición de sus botones para manipularme a tomar una decisión.', dimension: 2 },
+    { id: 'd3_q2', text: 'Noto rápidamente cuando un diseño dificulta intencionalmente acciones como cancelar una suscripción o rechazar permisos.', dimension: 2 },
+    { id: 'd3_q3', text: 'Identifico tácticas de presión en tiendas en línea, como temporizadores de oferta regresivos o avisos de stock bajo.', dimension: 2 },
+    { id: 'd3_q4', text: 'Soy consciente de las consecuencias negativas de otorgar mis datos personales o aceptar condiciones sospechosas sin leer en internet.', dimension: 2 }
 ];
 
 export default function SurveyPage() {

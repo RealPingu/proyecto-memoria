@@ -202,21 +202,21 @@ export function SneakyStealthText({ text, color }: { text: string; color?: strin
         
         // Alternar izquierdo/derecho (pares e impares) como pies reales en marcha
         const isLeftFoot = i % 2 === 0;
-        const delay = isLeftFoot ? 0 : 0.8; // Para un ciclo de 1.6s
+        const delay = isLeftFoot ? 0 : 1.4; // Para un ciclo lento de 2.8s
         
         return (
           <motion.span 
             key={i} 
             className="inline-block origin-bottom font-bold" 
             animate={{ 
-              y: [0, -8, 0, 0, 0, 0],
-              scaleY: [1, 1.25, 1, 1, 1, 1],
-              scaleX: [1, 0.8, 1, 1, 1, 1],
-              rotate: isLeftFoot ? [0, 8, 0, 0, 0, 0] : [0, -8, 0, 0, 0, 0]
+              y: [0, -3.5, 0, 0, 0, 0],
+              scaleY: [1, 1.1, 1, 1, 1, 1],
+              scaleX: [1, 0.95, 1, 1, 1, 1],
+              rotate: isLeftFoot ? [0, 3, 0, 0, 0, 0] : [0, -3, 0, 0, 0, 0]
             }} 
             transition={{ 
               repeat: Infinity, 
-              duration: 1.6, 
+              duration: 2.8, 
               ease: "easeInOut", 
               delay: delay 
             }}
@@ -262,14 +262,14 @@ export function SpookyGhostText({ text, color }: { text: string; color?: string 
 export function FreneticHeartbeatText({ text, color }: { text: string; color?: string }) {
   const words = text.split(' ');
   return (
-    <span className="inline-flex flex-wrap gap-x-1 font-bold">
+    <span className="inline-flex flex-wrap gap-x-2.5 font-bold">
       {words.map((w, i) => (
         <motion.span 
           key={i} 
           className="inline-block" 
           style={{ color: color || '#f43f5e' }}
           animate={{ 
-            scale: [1, 1.25, 0.95, 1.25, 1]
+            scale: [1, 1.08, 0.98, 1.08, 1]
           }} 
           transition={{ 
             repeat: Infinity, 

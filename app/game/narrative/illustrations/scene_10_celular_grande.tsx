@@ -54,6 +54,10 @@ export default function Scene10CelularGrande() {
           <stop offset="70%" stopColor="#ffffff" stopOpacity="0" />
           <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
         </linearGradient>
+
+        <clipPath id="sweep-clip-pago">
+          <rect width="272" height="50" rx="12" />
+        </clipPath>
       </defs>
 
       {/* Fondo de la escena */}
@@ -198,7 +202,7 @@ export default function Scene10CelularGrande() {
                 transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
               >
                 <rect width="272" height="50" rx="12" fill="#22c55e"/>
-                <g style={{ clipPath: "inset(0px 0px 0px 0px round 12px)" }}>
+                <g clipPath="url(#sweep-clip-pago)">
                   <motion.rect
                     width="180" height="120" fill="url(#sweep-grad)" y="-35"
                     animate={{ x: [-200, 350] }}

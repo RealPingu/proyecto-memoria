@@ -16,7 +16,7 @@ import {
   SneakyStealthText,
   SpookyGhostText,
   FreneticHeartbeatText
-} from '@/app/game/narrative/components/dialogue_effects';
+} from '@/app/game/playground/components/dialogue_effects_playground';
 
 // Importación de ilustraciones SVG
 import Scene1Sleeping from '@/app/game/narrative/illustrations/scene_1_sleeping';

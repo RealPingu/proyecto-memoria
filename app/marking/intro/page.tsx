@@ -59,7 +59,7 @@ export default function MarkingIntroPage() {
                             </h2>
                             <div className="space-y-3 text-zinc-300 text-sm md:text-base leading-relaxed">
                                 <p>
-                                    La prueba de <span className="text-game-accent font-semibold">marcado</span> consiste en identificar todo aquel elemento que intente subvertir o desviarte del <span className="text-game-accent font-semibold">objetivo</span> del contexto de la vista.
+                                    La prueba de <span className="text-game-accent font-semibold">marcado</span> consiste en identificar todo aquel elemento que intente subvertir o desviarte del <span className="text-game-accent font-semibold">objetivo</span> del contexto de la vista. Si consideras que no hay ningún elemento que intente subvertir o desviarte del objetivo, puedes continuar sin realizar ninguna marca.
                                 </p>
                                 <p>
                                     Te daremos el contexto de la vista previo a la etapa de <span className="text-game-accent font-semibold">marcado</span>. Cada vista tendrá un <span className="text-amber-400 font-semibold">tiempo límite variable</span> (entre 25 y 80 segundos) acorde a la cantidad de elementos y texto que contiene.
@@ -113,10 +113,10 @@ export default function MarkingIntroPage() {
                 {/* Footer Actions */}
                 <footer className="shrink-0 pt-4 pb-2 md:pb-6">
                     <div className="flex flex-col md:flex-row w-full max-w-lg mx-auto gap-3 md:gap-4">
-                        <Link href="/marking/test" className="flex-1 h-12 bg-game-accent text-game-bg font-bold uppercase tracking-widest text-xs flex items-center justify-center shadow-lg active:scale-95 transition-all">
+                        <Link href="/marking/test" className="flex-1 h-16 md:h-12 bg-game-accent text-game-bg font-bold uppercase tracking-widest text-sm md:text-xs flex items-center justify-center shadow-lg active:scale-95 transition-all">
                             Comprender y Avanzar
                         </Link>
-                        <Link href="/survey" className="flex-1 h-12 border border-zinc-700 text-game-muted font-bold uppercase tracking-widest text-xs flex items-center justify-center hover:bg-game-surface hover:text-game-accent transition-all active:scale-95">
+                        <Link href="/survey" className="flex-1 h-16 md:h-12 border border-zinc-700 text-game-muted font-bold uppercase tracking-widest text-sm md:text-xs flex items-center justify-center hover:bg-game-surface hover:text-game-accent transition-all active:scale-95">
                             Regresar
                         </Link>
                     </div>

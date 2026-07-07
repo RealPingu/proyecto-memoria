@@ -177,14 +177,14 @@ export default function NarrativeExperiencePage() {
             <button
               onClick={handleSubmit}
               disabled={isSubmitting}
-              className="flex-1 h-12 bg-game-accent text-game-bg font-bold uppercase tracking-widest text-xs flex items-center justify-center shadow-lg active:scale-95 transition-all cursor-pointer border border-game-accent disabled:opacity-50"
+              className="flex-1 h-16 md:h-12 bg-game-accent text-game-bg font-bold uppercase tracking-widest text-sm md:text-xs flex items-center justify-center shadow-lg active:scale-95 transition-all cursor-pointer border border-game-accent disabled:opacity-50"
             >
               {isSubmitting ? 'Guardando...' : 'Enviar y Continuar'}
             </button>
             <button
               onClick={handleSkip}
               disabled={isSubmitting}
-              className="flex-1 h-12 border border-zinc-700 text-game-muted font-bold uppercase tracking-widest text-xs flex items-center justify-center hover:bg-game-surface hover:text-game-accent transition-all active:scale-95 cursor-pointer disabled:opacity-50"
+              className="flex-1 h-16 md:h-12 border border-zinc-700 text-game-muted font-bold uppercase tracking-widest text-sm md:text-xs flex items-center justify-center hover:bg-game-surface hover:text-game-accent transition-all active:scale-95 cursor-pointer disabled:opacity-50"
             >
               Omitir
             </button>

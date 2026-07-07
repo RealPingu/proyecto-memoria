@@ -61,14 +61,14 @@ export default function LikertIntroPage() {
                     <div className="flex flex-col md:flex-row w-full max-w-lg mx-auto gap-3 md:gap-4">
                         <Link
                             href="/survey"
-                            className="flex-1 flex items-center justify-center h-12 bg-game-accent text-game-bg font-bold uppercase tracking-widest text-xs transition-all hover:bg-game-text active:scale-95 text-center shadow-lg"
+                            className="flex-1 flex items-center justify-center h-16 md:h-12 bg-game-accent text-game-bg font-bold uppercase tracking-widest text-sm md:text-xs transition-all hover:bg-game-text active:scale-95 text-center shadow-lg"
                         >
                             Iniciar Cuestionario
                         </Link>
 
                         <Link
                             href="/survey/profile"
-                            className="flex-1 flex items-center justify-center h-12 border border-zinc-700 text-game-muted font-bold uppercase tracking-widest text-xs transition-all hover:bg-game-surface hover:text-game-accent active:scale-95 text-center"
+                            className="flex-1 flex items-center justify-center h-16 md:h-12 border border-zinc-700 text-game-muted font-bold uppercase tracking-widest text-sm md:text-xs transition-all hover:bg-game-surface hover:text-game-accent active:scale-95 text-center"
                         >
                             Corregir datos
                         </Link>

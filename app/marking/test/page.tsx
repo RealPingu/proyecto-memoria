@@ -324,13 +324,13 @@ function MarkingTestContent() {
                             <div className="flex flex-col w-full max-w-xs mx-auto space-y-3 shrink-0">
                                 <button 
                                     onClick={startMarking}
-                                    className="h-14 w-full bg-game-accent text-game-bg font-bold uppercase tracking-widest text-xs active:scale-95 transition-all shadow-2xl"
+                                    className="h-16 md:h-14 w-full bg-game-accent text-game-bg font-bold uppercase tracking-widest text-sm md:text-xs active:scale-95 transition-all shadow-2xl"
                                 >
                                     Iniciar Evaluación
                                 </button>
                                 <button 
                                     onClick={handleRegresar}
-                                    className="h-12 w-full border border-zinc-700 text-game-muted font-bold uppercase tracking-widest text-[10px] flex items-center justify-center hover:bg-game-surface hover:text-game-accent transition-all active:scale-95"
+                                    className="h-16 md:h-12 w-full border border-zinc-700 text-game-muted font-bold uppercase tracking-widest text-sm md:text-[10px] flex items-center justify-center hover:bg-game-surface hover:text-game-accent transition-all active:scale-95"
                                 >
                                     Regresar
                                 </button>
@@ -376,7 +376,7 @@ function MarkingTestContent() {
                             <div className="flex flex-col w-full max-w-xs mx-auto space-y-3">
                                 <button 
                                     onClick={handleConfirmMarking}
-                                    className="h-14 w-full bg-game-accent text-game-bg font-bold uppercase tracking-widest text-xs active:scale-95 transition-all shadow-2xl hover:bg-game-text"
+                                    className="h-16 md:h-14 w-full bg-game-accent text-game-bg font-bold uppercase tracking-widest text-sm md:text-xs active:scale-95 transition-all shadow-2xl hover:bg-game-text"
                                 >
                                     Confirmar Marcado
                                 </button>
@@ -384,7 +384,7 @@ function MarkingTestContent() {
                                 {showRegresar && (
                                     <button 
                                         onClick={handleRegresar}
-                                        className="h-12 w-full border border-zinc-700 text-game-muted font-bold uppercase tracking-widest text-[10px] flex items-center justify-center hover:bg-game-surface hover:text-game-accent transition-all active:scale-95"
+                                        className="h-16 md:h-12 w-full border border-zinc-700 text-game-muted font-bold uppercase tracking-widest text-sm md:text-[10px] flex items-center justify-center hover:bg-game-surface hover:text-game-accent transition-all active:scale-95"
                                     >
                                         Regresar
                                     </button>
@@ -442,7 +442,7 @@ function MarkingTestContent() {
                                 <button 
                                     onClick={handleConfirmSelection}
                                     disabled={selectedPatterns.length === 0}
-                                    className={`h-14 w-full font-bold uppercase tracking-widest text-xs transition-all active:scale-95 shadow-xl
+                                    className={`h-16 md:h-14 w-full font-bold uppercase tracking-widest text-sm md:text-xs transition-all active:scale-95 shadow-xl
                                     ${selectedPatterns.length > 0 ? 'bg-game-accent text-game-bg hover:bg-game-text' : 'bg-game-surface text-game-muted opacity-50 cursor-not-allowed'}`}
                                 >
                                     {isSubmitting ? 'Guardando...' : 'Siguiente Escenario'}

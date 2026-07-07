@@ -489,7 +489,7 @@ https://deceptive.design/types/disguised-ads/`,
     id: 'scene_15_init_1',
     speaker: 'subconscious',
     speakerLabel: 'Subconsciente',
-    text: `Una vez dentro del finalizar la compra, Camo se enfrenta a la <heartbeat color="#ef4444">tediosa tarea</heartbeat> de <heartbeat color="#ef4444">confirmar todos los pasos</heartbeat> para completar la compra...
+    text: `Una vez dentro de la pantalla de finalizar la compra, Camo se enfrenta a la <heartbeat color="#ef4444">tediosa tarea</heartbeat> de <heartbeat color="#ef4444">confirmar todos los pasos</heartbeat> para completar la compra...
 Sin perder la paciencia.`,
     illustration: {
       label: 'Escena 15: Camo en el sillón revisando el proceso de compra en su celular.'

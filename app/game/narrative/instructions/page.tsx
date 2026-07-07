@@ -45,6 +45,10 @@ export default function NarrativeInstructionsPage() {
               </p>
               
               <p className="leading-relaxed text-zinc-300 text-sm md:text-base">
+                Para ayudarte a seguir el hilo de la conversación, <span className="text-game-accent font-semibold">el nombre del personaje que está hablando</span> se mostrará de manera destacada justo encima del cuadro de texto.
+              </p>
+              
+              <p className="leading-relaxed text-zinc-300 text-sm md:text-base">
                 Algunas pantallas requerirán de tu atención para tomar la decisión correcta.
               </p>
               
@@ -64,7 +68,7 @@ export default function NarrativeInstructionsPage() {
           <div className="flex flex-col md:flex-row w-full max-w-lg mx-auto gap-3 md:gap-4">
             <button
               onClick={() => router.push('/game/narrative')}
-              className="flex-1 h-12 bg-game-accent text-game-bg font-bold uppercase tracking-widest text-xs flex items-center justify-center shadow-lg active:scale-95 transition-all cursor-pointer border border-game-accent"
+              className="flex-1 h-16 md:h-12 bg-game-accent text-game-bg font-bold uppercase tracking-widest text-sm md:text-xs flex items-center justify-center shadow-lg active:scale-95 transition-all cursor-pointer border border-game-accent"
             >
               Comenzar Aventura
             </button>
@@ -77,7 +81,7 @@ export default function NarrativeInstructionsPage() {
                   router.push('/survey/profile');
                 }
               }}
-              className="flex-1 h-12 border border-zinc-700 text-game-muted font-bold uppercase tracking-widest text-xs flex items-center justify-center hover:bg-game-surface hover:text-game-accent transition-all active:scale-95 cursor-pointer"
+              className="flex-1 h-16 md:h-12 border border-zinc-700 text-game-muted font-bold uppercase tracking-widest text-sm md:text-xs flex items-center justify-center hover:bg-game-surface hover:text-game-accent transition-all active:scale-95 cursor-pointer"
             >
               Regresar
             </button>

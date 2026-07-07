@@ -208,7 +208,7 @@ export default function PlayerProfilePage() {
                         <button
                             onClick={handleSubmit}
                             disabled={isSubmitting || nickname.length < 3 || !age || parsedAge < 18}
-                            className={`flex-1 h-12 font-bold uppercase tracking-widest text-xs transition-all active:scale-95 shadow-lg ${nickname.length < 3 || !age || isSubmitting || parsedAge < 18
+                            className={`flex-1 h-16 md:h-12 font-bold uppercase tracking-widest text-sm md:text-xs transition-all active:scale-95 shadow-lg ${nickname.length < 3 || !age || isSubmitting || parsedAge < 18
                                     ? 'bg-game-surface text-game-muted opacity-50 cursor-not-allowed'
                                     : 'bg-game-accent text-game-bg hover:bg-game-text'
                                 }`}
@@ -218,7 +218,7 @@ export default function PlayerProfilePage() {
 
                         <Link
                             href="/onboarding"
-                            className="flex-1 flex items-center justify-center h-12 border border-zinc-700 text-game-muted font-bold uppercase tracking-widest text-xs transition-all hover:bg-game-surface hover:text-game-accent active:scale-95 text-center"
+                            className="flex-1 flex items-center justify-center h-16 md:h-12 border border-zinc-700 text-game-muted font-bold uppercase tracking-widest text-sm md:text-xs transition-all hover:bg-game-surface hover:text-game-accent active:scale-95 text-center"
                         >
                             Regresar
                         </Link>

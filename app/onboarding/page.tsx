@@ -161,7 +161,7 @@ export default function OnboardingPage() {
                         <Link
                             href={consent ? "/survey/profile" : "/no-consent-intro"}
                             onClick={handleSaveConsent}
-                            className="flex-1 flex items-center justify-center h-12 bg-game-accent text-game-bg font-bold uppercase tracking-widest transition-all hover:bg-game-text active:scale-95 text-center text-xs"
+                            className="flex-1 flex items-center justify-center h-16 md:h-12 bg-game-accent text-game-bg font-bold uppercase tracking-widest transition-all hover:bg-game-text active:scale-95 text-center text-sm md:text-xs"
                         >
                             Comenzar la Experiencia
                         </Link>
@@ -169,7 +169,7 @@ export default function OnboardingPage() {
                         <Link
                             href="/"
                             onClick={() => logInteraction('return_to_menu')}
-                            className="flex-1 flex items-center justify-center h-12 border border-zinc-700 text-game-muted font-bold uppercase tracking-widest transition-all hover:bg-game-surface hover:text-game-accent active:scale-95 text-center text-xs"
+                            className="flex-1 flex items-center justify-center h-16 md:h-12 border border-zinc-700 text-game-muted font-bold uppercase tracking-widest transition-all hover:bg-game-surface hover:text-game-accent active:scale-95 text-center text-sm md:text-xs"
                         >
                             Volver al menú
                         </Link>
